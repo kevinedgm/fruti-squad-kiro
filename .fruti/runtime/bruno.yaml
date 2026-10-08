@@ -1,0 +1,30 @@
+agent: bruno
+owns: frontend_functionality_r3
+interface: natural-language
+read_order:
+  - .fruti/state/current.json
+  - .fruti/handoffs/current.json
+  - active_lima_profile
+  - approved_piece_contract
+  - relevant_registry_entry
+  - approved_coco_f3_and_css
+  - files_to_modify_and_direct_imports
+operations:
+  r3_build:
+    requires: [kiwi_round_approved, lima_contract_without_blockers, coco_f3_approved, coco_css]
+    references: [agentes/bruno/references/handoffs.md, agentes/bruno/references/component-contract.md]
+    implementation_target: inherit_from_active_profile
+    target_contract: .fruti/contracts/implementation-target.yaml
+    verify: [project_build, no_visual_literals_in_logic, functional_tests_when_available, browser_when_available, compare_with_coco_f3]
+output:
+  handoff: .fruti/handoffs/current.json
+  state: .fruti/state/current.json
+  next_owner: coco
+  include: [artifact, round, implementation_paths, changed_files, api, states, verified, not_verified, returned_decisions, pending]
+rules:
+  - never_edit_css_tokens_contracts_registry_hub
+  - never_invent_missing_deliveries
+  - never_add_dependencies_without_user_approval
+  - never_commit_or_push
+  - respect_redesign_scope_exclusions
+  - full_skill_manual_only_if_runtime_contract_is_insufficient
