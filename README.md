@@ -1540,3 +1540,10 @@ El propósito es que **cada decisión tenga un dueño, cada etapa tenga evidenci
 ## Licencia
 
 MIT.
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/marca/hecho-en-oaxaca/sello-horizontal-oscuro.svg">
+    <img src="assets/marca/hecho-en-oaxaca/sello-horizontal.svg" alt="Hecho en Oaxaca / Made in Oaxaca" width="180">
+  </picture>
+</p>
