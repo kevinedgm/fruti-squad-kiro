@@ -1,10 +1,10 @@
-# Generated for the Kiro distribution of Fruti Squad.
-target: kiro
+# Generated for the Codex distribution of Fruti Squad.
+target: codex
 roots:
-  agentes/kiwi: .kiro/skills/kiwi
-  agentes/coco: .kiro/skills/coco
-  agentes/mora: .kiro/skills/mora-docs
-  agentes/bruno: .kiro/skills/bruno
-  skills/lima: .kiro/skills/lima
-  skills/impeccable: .kiro/skills/impeccable
-  skills/improve-animations: .kiro/skills/improve-animations
+  agentes/kiwi: .agents/skills/kiwi
+  agentes/coco: .agents/skills/coco
+  agentes/mora: .agents/skills/mora-docs
+  agentes/bruno: .agents/skills/bruno
+  skills/lima: .agents/skills/lima
+  skills/impeccable: .agents/skills/impeccable
+  skills/improve-animations: .agents/skills/improve-animations

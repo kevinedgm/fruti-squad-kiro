@@ -1,0 +1,826 @@
+{
+  "version": 1,
+  "source_commit": "47141906fd0731ac3a8b3d25bd56678d2488d81b",
+  "transformations": [
+    ".kiro/skills → .agents/skills",
+    "steering → AGENTS.md",
+    "Kiro/product command labels → Codex",
+    "SKILL metadata normalized to name+description; Lima description shortened only",
+    "Kiro agent body → native TOML developer_instructions; permissions intent documented",
+    "agents/openai.yaml UI metadata generated; Impeccable helpers exposed as native agents"
+  ],
+  "skills": [
+    {
+      "source": ".kiro/skills/bruno/SKILL.md",
+      "target": ".agents/skills/bruno/SKILL.md",
+      "source_sha256": "3e16429b679af8c9184db4b6ec9250afef3fe29f1ec4eba5f0795c9feaa350fc",
+      "target_sha256": "1a25a943abd7b549f707a2090f2d6212fb624f3d9bc3c01ec1422f1bcdfc4326"
+    },
+    {
+      "source": ".kiro/skills/bruno/references/component-contract.md",
+      "target": ".agents/skills/bruno/references/component-contract.md",
+      "source_sha256": "2c5446d0ed2a88dccafea8e4d4b92d7c22f622bbe19edfc94323c4e3939767d6",
+      "target_sha256": "2c5446d0ed2a88dccafea8e4d4b92d7c22f622bbe19edfc94323c4e3939767d6"
+    },
+    {
+      "source": ".kiro/skills/bruno/references/handoffs.md",
+      "target": ".agents/skills/bruno/references/handoffs.md",
+      "source_sha256": "806eab1599c07bedd45871fe557911d2326a30af0cd60113df1985eaf5a29711",
+      "target_sha256": "806eab1599c07bedd45871fe557911d2326a30af0cd60113df1985eaf5a29711"
+    },
+    {
+      "source": ".kiro/skills/coco/SKILL.md",
+      "target": ".agents/skills/coco/SKILL.md",
+      "source_sha256": "5b40f8564adf173c4adb9dbde8b98f8589e155377a099a11cc4e702d752b973f",
+      "target_sha256": "2bcab1d5d19eb5975ee557560e7fb919fc4fed8ee5b762c283e11b2a2fcf303f"
+    },
+    {
+      "source": ".kiro/skills/coco/examples/data_contract.example.md",
+      "target": ".agents/skills/coco/examples/data_contract.example.md",
+      "source_sha256": "961cd589188ece2f926e09ab8e48afb7d65c40fc7286910a6d96c84beace1071",
+      "target_sha256": "961cd589188ece2f926e09ab8e48afb7d65c40fc7286910a6d96c84beace1071"
+    },
+    {
+      "source": ".kiro/skills/coco/first-run.md",
+      "target": ".agents/skills/coco/first-run.md",
+      "source_sha256": "d4c43fa8a74ebbb4351344b506f617f4c884dddc08db1de2a47f8954d149e73a",
+      "target_sha256": "d4c43fa8a74ebbb4351344b506f617f4c884dddc08db1de2a47f8954d149e73a"
+    },
+    {
+      "source": ".kiro/skills/coco/intake.md",
+      "target": ".agents/skills/coco/intake.md",
+      "source_sha256": "367e9bbe0a7ae26e2b837ce2b63b186971a0eb70f9a8c0754980f4fbb5bcb76f",
+      "target_sha256": "367e9bbe0a7ae26e2b837ce2b63b186971a0eb70f9a8c0754980f4fbb5bcb76f"
+    },
+    {
+      "source": ".kiro/skills/coco/profile-additions.md",
+      "target": ".agents/skills/coco/profile-additions.md",
+      "source_sha256": "dae3318e71632d231967a0a01c745119084e07f5fe48b4440f2757d232fecac3",
+      "target_sha256": "dae3318e71632d231967a0a01c745119084e07f5fe48b4440f2757d232fecac3"
+    },
+    {
+      "source": ".kiro/skills/impeccable/SKILL.md",
+      "target": ".agents/skills/impeccable/SKILL.md",
+      "source_sha256": "bd26092b9907022058a7d8e5cad68be80244a3e23a988a0ff0f2388d6703ed78",
+      "target_sha256": "65ff5bf9661107f0bbaa7fd2f58aa3441cc169e1800ff2ca1791df0fcf88e730"
+    },
+    {
+      "source": ".kiro/skills/impeccable/agents/impeccable_asset_producer.toml",
+      "target": ".agents/skills/impeccable/agents/impeccable_asset_producer.toml",
+      "source_sha256": "c501c745092c514db319d5e571cbd93b894ee9f127c4b5645b4fc74fafc2996c",
+      "target_sha256": "37080ea5e5b381adb7eae7a427231b0ad0dee0f0916fc1d6b673b7101a5b425b"
+    },
+    {
+      "source": ".kiro/skills/impeccable/agents/impeccable_documenter.toml",
+      "target": ".agents/skills/impeccable/agents/impeccable_documenter.toml",
+      "source_sha256": "2feb3768125ba6469c92a50d516727e6d42f44579165ddfd33409948e2a3803d",
+      "target_sha256": "2feb3768125ba6469c92a50d516727e6d42f44579165ddfd33409948e2a3803d"
+    },
+    {
+      "source": ".kiro/skills/impeccable/agents/impeccable_finish_reviewer.toml",
+      "target": ".agents/skills/impeccable/agents/impeccable_finish_reviewer.toml",
+      "source_sha256": "869fa5390b84bfd00d072f5280a9002ea3e3936edf5985241be641a87f03ff7b",
+      "target_sha256": "869fa5390b84bfd00d072f5280a9002ea3e3936edf5985241be641a87f03ff7b"
+    },
+    {
+      "source": ".kiro/skills/impeccable/agents/impeccable_manual_edit_applier.toml",
+      "target": ".agents/skills/impeccable/agents/impeccable_manual_edit_applier.toml",
+      "source_sha256": "6c9ce3e27ec4520ead001da3aad2a2ebba481c4e5cd22873db8890259ee579fe",
+      "target_sha256": "6c9ce3e27ec4520ead001da3aad2a2ebba481c4e5cd22873db8890259ee579fe"
+    },
+    {
+      "source": ".kiro/skills/impeccable/agents/openai.yaml",
+      "target": ".agents/skills/impeccable/agents/openai.yaml",
+      "source_sha256": "cbd8bd68fa00935dd0f179adb169252629cf7ee443ea9dc7db77e7ef2cf77446",
+      "target_sha256": "be12aa13ff8244c8ff9517baec8ea4fdb58fc23988000f004277b177394b0128"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/adapt.md",
+      "target": ".agents/skills/impeccable/reference/adapt.md",
+      "source_sha256": "bead87679caad7c537dd7c04c3bb78be56ac7eec279ad6aad7322f48ff2df2d9",
+      "target_sha256": "bead87679caad7c537dd7c04c3bb78be56ac7eec279ad6aad7322f48ff2df2d9"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/adapt.native.md",
+      "target": ".agents/skills/impeccable/reference/adapt.native.md",
+      "source_sha256": "6acc0bf221a4ddc6e5c6438348920b2ca2393b29c4314dbde2cdc23f2b1a9639",
+      "target_sha256": "6acc0bf221a4ddc6e5c6438348920b2ca2393b29c4314dbde2cdc23f2b1a9639"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/android.md",
+      "target": ".agents/skills/impeccable/reference/android.md",
+      "source_sha256": "058f81f256134841875fd3183e06b37a023de0c877fd2b9eecd97011640791fe",
+      "target_sha256": "058f81f256134841875fd3183e06b37a023de0c877fd2b9eecd97011640791fe"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/animate.md",
+      "target": ".agents/skills/impeccable/reference/animate.md",
+      "source_sha256": "d658c48ffbe0031e8e3b318996cad6ceafe29e40aa50d5bb25e4bf1d6839dc7c",
+      "target_sha256": "d658c48ffbe0031e8e3b318996cad6ceafe29e40aa50d5bb25e4bf1d6839dc7c"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/audit.md",
+      "target": ".agents/skills/impeccable/reference/audit.md",
+      "source_sha256": "910461b1c1f8216155165955c860a884a1e2f557cb38f21ef512ea90ef6503c2",
+      "target_sha256": "910461b1c1f8216155165955c860a884a1e2f557cb38f21ef512ea90ef6503c2"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/audit.native.md",
+      "target": ".agents/skills/impeccable/reference/audit.native.md",
+      "source_sha256": "960cb922bc934adbf9192e9428ff6bec1f382038166f02a785939c93b7391067",
+      "target_sha256": "960cb922bc934adbf9192e9428ff6bec1f382038166f02a785939c93b7391067"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/bolder.md",
+      "target": ".agents/skills/impeccable/reference/bolder.md",
+      "source_sha256": "f964506c0fae87b3c2c1db7016ddc9be9ef970bbcf5548d684b997b5d5991586",
+      "target_sha256": "f964506c0fae87b3c2c1db7016ddc9be9ef970bbcf5548d684b997b5d5991586"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/clarify.md",
+      "target": ".agents/skills/impeccable/reference/clarify.md",
+      "source_sha256": "173dd66abe65633910dcb04a51f40d6ff2a793f87088f022a02fc4cad24dd133",
+      "target_sha256": "173dd66abe65633910dcb04a51f40d6ff2a793f87088f022a02fc4cad24dd133"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/colorize.md",
+      "target": ".agents/skills/impeccable/reference/colorize.md",
+      "source_sha256": "bc5f71f1129d0f2c310d913d07c8dc609a1d25644121bd78c308f42d52a0b9e9",
+      "target_sha256": "bc5f71f1129d0f2c310d913d07c8dc609a1d25644121bd78c308f42d52a0b9e9"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/craft-floor.md",
+      "target": ".agents/skills/impeccable/reference/craft-floor.md",
+      "source_sha256": "e802e4f7bdc89050a9c0f2ca506e1d493a2316e6e810c0336c57aa073717ef3e",
+      "target_sha256": "e802e4f7bdc89050a9c0f2ca506e1d493a2316e6e810c0336c57aa073717ef3e"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/craft.md",
+      "target": ".agents/skills/impeccable/reference/craft.md",
+      "source_sha256": "9205e222bc6565b37fb504ceec93233c2d2a456802b69d16e6b1c44723907c4c",
+      "target_sha256": "9205e222bc6565b37fb504ceec93233c2d2a456802b69d16e6b1c44723907c4c"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/critique.md",
+      "target": ".agents/skills/impeccable/reference/critique.md",
+      "source_sha256": "4a0722c37a2ee361b1e4aead0c3adb14303f53c9d3a2b6fb5e941831593ad259",
+      "target_sha256": "cb8caddbb3919e5bf7f252143b519fb16db28a244642d937b186cb89962d9201"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/degraded/asset-producer.md",
+      "target": ".agents/skills/impeccable/reference/degraded/asset-producer.md",
+      "source_sha256": "e1fd962b951ddc1cc46812144ef9bd2cefc326fea19434514a658c2e317e2d87",
+      "target_sha256": "a8547c8565979894f0c07f92a96ac2a38e681a31fbf155ffeefc7566e185d9c2"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/degraded/documenter.md",
+      "target": ".agents/skills/impeccable/reference/degraded/documenter.md",
+      "source_sha256": "bcc05ea92faebb5c74037a9d4263a5ce9a56f5ab07c8ab3c59ee704d8cade745",
+      "target_sha256": "bcc05ea92faebb5c74037a9d4263a5ce9a56f5ab07c8ab3c59ee704d8cade745"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/degraded/finish-reviewer.md",
+      "target": ".agents/skills/impeccable/reference/degraded/finish-reviewer.md",
+      "source_sha256": "5f24c5a97b4ffcabc7c432b064cfdd04c7a2ad52f52e765be648dc0aadab8f38",
+      "target_sha256": "5f24c5a97b4ffcabc7c432b064cfdd04c7a2ad52f52e765be648dc0aadab8f38"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/degraded/manual-edit-applier.md",
+      "target": ".agents/skills/impeccable/reference/degraded/manual-edit-applier.md",
+      "source_sha256": "5fae7f8a2fc3ddd49ad0a413446dc44daedef5b6b7de5eb935bd2fbfad646d58",
+      "target_sha256": "5fae7f8a2fc3ddd49ad0a413446dc44daedef5b6b7de5eb935bd2fbfad646d58"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/delight.md",
+      "target": ".agents/skills/impeccable/reference/delight.md",
+      "source_sha256": "098a891028ce59c212b747d3c70468dd750aff7053a703d1336045ed31e0da7c",
+      "target_sha256": "098a891028ce59c212b747d3c70468dd750aff7053a703d1336045ed31e0da7c"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/distill.md",
+      "target": ".agents/skills/impeccable/reference/distill.md",
+      "source_sha256": "ea8432c90c30ecb0426662a681ead5c0941113079704e1a766cda09e85b15b4f",
+      "target_sha256": "ea8432c90c30ecb0426662a681ead5c0941113079704e1a766cda09e85b15b4f"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/doctor.md",
+      "target": ".agents/skills/impeccable/reference/doctor.md",
+      "source_sha256": "2e4846117a2fcdc1e4bc9570a5333da839649cb8ccdac6a30a87591ca05b4bb0",
+      "target_sha256": "a98b397cedeeaa1da57f3395b3d9b6c1fc477f4247fb9dc13e4da3da588283ff"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/document.md",
+      "target": ".agents/skills/impeccable/reference/document.md",
+      "source_sha256": "3673248740bcdd1122ccc610093ba2fe52f3943a61ce0b7170b74dc49e5b6098",
+      "target_sha256": "3673248740bcdd1122ccc610093ba2fe52f3943a61ce0b7170b74dc49e5b6098"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/extract.md",
+      "target": ".agents/skills/impeccable/reference/extract.md",
+      "source_sha256": "31b90048c0b540daec46762a10c2b6b6434737a89af005054d8b848d829d003b",
+      "target_sha256": "31b90048c0b540daec46762a10c2b6b6434737a89af005054d8b848d829d003b"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/harden.md",
+      "target": ".agents/skills/impeccable/reference/harden.md",
+      "source_sha256": "b31ff29c7a1ea979c6d039f7e8d17007410697ab49536690dca109f0af3f20f8",
+      "target_sha256": "b31ff29c7a1ea979c6d039f7e8d17007410697ab49536690dca109f0af3f20f8"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/hooks.md",
+      "target": ".agents/skills/impeccable/reference/hooks.md",
+      "source_sha256": "9ea642a166e9a86d2c389c756c94681921d92fce9d8975c267556ad9fe0e02c6",
+      "target_sha256": "12fefe52d80d25014e5f7e2f9b278275a675653d3d99ae8f0ecf344cdb9abbe6"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/init.md",
+      "target": ".agents/skills/impeccable/reference/init.md",
+      "source_sha256": "bb069b43c09109d7031b0374e31955749fec657b252d39782f11e8985aca2b51",
+      "target_sha256": "bb069b43c09109d7031b0374e31955749fec657b252d39782f11e8985aca2b51"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/ios.md",
+      "target": ".agents/skills/impeccable/reference/ios.md",
+      "source_sha256": "40c87038b5f75147a5952a96237acf312a327bf70c1bcd8e0a5f064625ae9668",
+      "target_sha256": "40c87038b5f75147a5952a96237acf312a327bf70c1bcd8e0a5f064625ae9668"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/layout.md",
+      "target": ".agents/skills/impeccable/reference/layout.md",
+      "source_sha256": "f74784c2ab47cecc7c7c7f0118368ba8ca30c5eca26d99f669c5f169a62fd160",
+      "target_sha256": "0bc7d7971b3edf2acd0580e847458dc6d84129d90715b452799ace3bed815c7c"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/live-setup.md",
+      "target": ".agents/skills/impeccable/reference/live-setup.md",
+      "source_sha256": "0e081d496eba4bd77aca81723d59120c10177a71c9551a60ab923c356fb3cf38",
+      "target_sha256": "2b5b2fbf5f658f34ea1997fb1aeebe01604d05187f75c6a4f1f55a5bc78520a4"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/live.md",
+      "target": ".agents/skills/impeccable/reference/live.md",
+      "source_sha256": "1104eb8cf49cae686068336d28c521998c60f271e87cb53b125d6adf5520fa33",
+      "target_sha256": "68c5636a7858dd0b5137a9229c15e25fdc2ee40a0f8a4e9d809f78e809256262"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/new-work.md",
+      "target": ".agents/skills/impeccable/reference/new-work.md",
+      "source_sha256": "27c4b6c90ad12a186136f9ece9cb1830d4a6e36b11382ab334efc4543f8082de",
+      "target_sha256": "85b9c2d051de94ee9129c58be111946f73035ca62bbd2a3936f4fa48768fe5cf"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/onboard.md",
+      "target": ".agents/skills/impeccable/reference/onboard.md",
+      "source_sha256": "ef2dde00030580ed2765cbf7be9b2ea4a6f64cb915b804fd6f6abcf38051c7b9",
+      "target_sha256": "ef2dde00030580ed2765cbf7be9b2ea4a6f64cb915b804fd6f6abcf38051c7b9"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/operate.md",
+      "target": ".agents/skills/impeccable/reference/operate.md",
+      "source_sha256": "a9d2203acd45ca33a13d5c68b02b23ed512425ac15f0e8438318ed124b43729d",
+      "target_sha256": "a9d2203acd45ca33a13d5c68b02b23ed512425ac15f0e8438318ed124b43729d"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/optimize.md",
+      "target": ".agents/skills/impeccable/reference/optimize.md",
+      "source_sha256": "f672ef8251a3ed4051a053d30819664951b17540b2899acd27d20e500c234abc",
+      "target_sha256": "f672ef8251a3ed4051a053d30819664951b17540b2899acd27d20e500c234abc"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/overdrive.md",
+      "target": ".agents/skills/impeccable/reference/overdrive.md",
+      "source_sha256": "fce6688138d2ceb1e3d2cde5231f54b1d8dc8748b4c95a7919aa83b6f924cf96",
+      "target_sha256": "fce6688138d2ceb1e3d2cde5231f54b1d8dc8748b4c95a7919aa83b6f924cf96"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/polish.md",
+      "target": ".agents/skills/impeccable/reference/polish.md",
+      "source_sha256": "add1bee76f897f989166a5b9ad1b38d9173248e29d668d5c885ae9a0eff73861",
+      "target_sha256": "81666fc7f783b4e3514db6554e713dc0479bd9cdedb06e93d15f8b579aae869a"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/quieter.md",
+      "target": ".agents/skills/impeccable/reference/quieter.md",
+      "source_sha256": "190a4e642ca362d7499f3c3ab123e21f18f75457d11f072b545a183f296e6495",
+      "target_sha256": "190a4e642ca362d7499f3c3ab123e21f18f75457d11f072b545a183f296e6495"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/routing.md",
+      "target": ".agents/skills/impeccable/reference/routing.md",
+      "source_sha256": "751ca124fd19bc8b045f8c222a2698fd75b684ac614917b943a0100341cb05d9",
+      "target_sha256": "ef0b8eca20e1321cf7216fd0bda41ce54b0cca197cfd1b075eb51f3436f59059"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/shape.md",
+      "target": ".agents/skills/impeccable/reference/shape.md",
+      "source_sha256": "a55f016c046cb6a27c55bd7f346375aeb506a755c4fbca19a5f92dbd42309c23",
+      "target_sha256": "a55f016c046cb6a27c55bd7f346375aeb506a755c4fbca19a5f92dbd42309c23"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/typeset.md",
+      "target": ".agents/skills/impeccable/reference/typeset.md",
+      "source_sha256": "d8829fc1fa9d850d0369c670baf76a90c3938e36c766827e2669839b60ede12c",
+      "target_sha256": "442749aed338f51c1a3ccfb182c6ade9b74b90590b67984062ac94a5b100e914"
+    },
+    {
+      "source": ".kiro/skills/impeccable/reference/visualize.md",
+      "target": ".agents/skills/impeccable/reference/visualize.md",
+      "source_sha256": "824b994782a1fe68a244bbdff7218a2e0854655d90cc0fb5ade7ef9259ba6305",
+      "target_sha256": "896da399bafcffb0623bdd81bb18709d6eab25c9d5917e739c8798f31ff0d076"
+    },
+    {
+      "source": ".kiro/skills/impeccable/scripts/VERSION",
+      "target": ".agents/skills/impeccable/scripts/VERSION",
+      "source_sha256": "800cf1c0392b24de7c0a1c6ea6778ecb433dec71c49a150bce96a98477527b2f",
+      "target_sha256": "800cf1c0392b24de7c0a1c6ea6778ecb433dec71c49a150bce96a98477527b2f"
+    },
+    {
+      "source": ".kiro/skills/impeccable/scripts/command-metadata.json",
+      "target": ".agents/skills/impeccable/scripts/command-metadata.json",
+      "source_sha256": "6bdbc3f745ceee15e10b050f109ce42bbeb53ab3c3b5239257de1d596654dee7",
+      "target_sha256": "6bdbc3f745ceee15e10b050f109ce42bbeb53ab3c3b5239257de1d596654dee7"
+    },
+    {
+      "source": ".kiro/skills/impeccable/scripts/data/font-index-failures.json",
+      "target": ".agents/skills/impeccable/scripts/data/font-index-failures.json",
+      "source_sha256": "835f19a0a3812f3652dd6979a2ce5597f654fd01f26e1b420b92d5f42b997ce4",
+      "target_sha256": "835f19a0a3812f3652dd6979a2ce5597f654fd01f26e1b420b92d5f42b997ce4"
+    },
+    {
+      "source": ".kiro/skills/impeccable/scripts/impeccable",
+      "target": ".agents/skills/impeccable/scripts/impeccable",
+      "source_sha256": "39d9600489073e227e4f4d55c451ce4252a6632ed7ae37923efbbcbc91f16d07",
+      "target_sha256": "39d9600489073e227e4f4d55c451ce4252a6632ed7ae37923efbbcbc91f16d07"
+    },
+    {
+      "source": ".kiro/skills/impeccable/scripts/impeccable.cmd",
+      "target": ".agents/skills/impeccable/scripts/impeccable.cmd",
+      "source_sha256": "759bab1d8adc071fdde2efcf6e2157aa4026f3c2b4f3c342a8070bf328011616",
+      "target_sha256": "759bab1d8adc071fdde2efcf6e2157aa4026f3c2b4f3c342a8070bf328011616"
+    },
+    {
+      "source": ".kiro/skills/impeccable/scripts/live-browser-dom.js",
+      "target": ".agents/skills/impeccable/scripts/live-browser-dom.js",
+      "source_sha256": "de1b7404f4cdfd7b515196afb17b74b1980f0bc88cb8681ae93a76ca48ec7bdb",
+      "target_sha256": "de1b7404f4cdfd7b515196afb17b74b1980f0bc88cb8681ae93a76ca48ec7bdb"
+    },
+    {
+      "source": ".kiro/skills/impeccable/scripts/live-browser-ignores.js",
+      "target": ".agents/skills/impeccable/scripts/live-browser-ignores.js",
+      "source_sha256": "c1cb6877ca99a0c1b38ba0c7d59f32702d3022f6821d8045f7133f7c40b6362f",
+      "target_sha256": "c1cb6877ca99a0c1b38ba0c7d59f32702d3022f6821d8045f7133f7c40b6362f"
+    },
+    {
+      "source": ".kiro/skills/impeccable/scripts/live-browser-session.js",
+      "target": ".agents/skills/impeccable/scripts/live-browser-session.js",
+      "source_sha256": "edddeb3fad88adec9a055b1bf9d5c75418cbe97a13b1a7f6765e73249e482563",
+      "target_sha256": "edddeb3fad88adec9a055b1bf9d5c75418cbe97a13b1a7f6765e73249e482563"
+    },
+    {
+      "source": ".kiro/skills/impeccable/scripts/modern-screenshot.umd.js",
+      "target": ".agents/skills/impeccable/scripts/modern-screenshot.umd.js",
+      "source_sha256": "bb36665889124a0b6e15f16045265737449c3bdcf2712cdb08af3cfa01563e2b",
+      "target_sha256": "bb36665889124a0b6e15f16045265737449c3bdcf2712cdb08af3cfa01563e2b"
+    },
+    {
+      "source": ".kiro/skills/improve-animations/AUDIT.md",
+      "target": ".agents/skills/improve-animations/AUDIT.md",
+      "source_sha256": "551c8473e20e5f4774680bc24d45e1c68e50992582720905c6b077756b7b5a55",
+      "target_sha256": "551c8473e20e5f4774680bc24d45e1c68e50992582720905c6b077756b7b5a55"
+    },
+    {
+      "source": ".kiro/skills/improve-animations/PLAN-TEMPLATE.md",
+      "target": ".agents/skills/improve-animations/PLAN-TEMPLATE.md",
+      "source_sha256": "0a08ac8e23fd2082d7ffb86aeed7b789de77328c3cf874b16f1a755f2ef0a6ad",
+      "target_sha256": "0a08ac8e23fd2082d7ffb86aeed7b789de77328c3cf874b16f1a755f2ef0a6ad"
+    },
+    {
+      "source": ".kiro/skills/improve-animations/SKILL.md",
+      "target": ".agents/skills/improve-animations/SKILL.md",
+      "source_sha256": "73962447464433476343e2c12cd08ab39cc99a9e5f3c118c5fb54ed897574ef6",
+      "target_sha256": "a99927d3c61f1f61a635616a565614124e103de8c61203a6adc24f5e320dec16"
+    },
+    {
+      "source": ".kiro/skills/kiwi/SKILL.md",
+      "target": ".agents/skills/kiwi/SKILL.md",
+      "source_sha256": "cb7cb4d5d7cb4d56dd1925fd452dbf12dc4fb58d6cbe13bc1c44ff8a088d3120",
+      "target_sha256": "6d0b5b195852ed3d71cc62d255aa53a7e81abf6aedfdc96aadb6c719574f1d54"
+    },
+    {
+      "source": ".kiro/skills/kiwi/assets/plantillas/brief.md",
+      "target": ".agents/skills/kiwi/assets/plantillas/brief.md",
+      "source_sha256": "4cd74e9f6c017956aaf52407ba71d0afab2d1c35559fef843b4d220cd5d7ae37",
+      "target_sha256": "4cd74e9f6c017956aaf52407ba71d0afab2d1c35559fef843b4d220cd5d7ae37"
+    },
+    {
+      "source": ".kiro/skills/kiwi/assets/plantillas/declaracion.md",
+      "target": ".agents/skills/kiwi/assets/plantillas/declaracion.md",
+      "source_sha256": "90e8c18badab28384ecea28b5c92538027aa5f545294ed04b9be62bbdc59d477",
+      "target_sha256": "90e8c18badab28384ecea28b5c92538027aa5f545294ed04b9be62bbdc59d477"
+    },
+    {
+      "source": ".kiro/skills/kiwi/assets/plantillas/flujo.md",
+      "target": ".agents/skills/kiwi/assets/plantillas/flujo.md",
+      "source_sha256": "fb17ba85aa5d89b0eb014bcb7722eb86010c05d3b62fe7f3ca6cd7bd740acc65",
+      "target_sha256": "fb17ba85aa5d89b0eb014bcb7722eb86010c05d3b62fe7f3ca6cd7bd740acc65"
+    },
+    {
+      "source": ".kiro/skills/kiwi/assets/plantillas/hallazgos.md",
+      "target": ".agents/skills/kiwi/assets/plantillas/hallazgos.md",
+      "source_sha256": "52e044ef78b73e0424e49c1b055360f14b1d7a50e6a4ce19c5c129cc7cfdd2b4",
+      "target_sha256": "52e044ef78b73e0424e49c1b055360f14b1d7a50e6a4ce19c5c129cc7cfdd2b4"
+    },
+    {
+      "source": ".kiro/skills/kiwi/assets/wireframe-base.html",
+      "target": ".agents/skills/kiwi/assets/wireframe-base.html",
+      "source_sha256": "45688898968c8fb864f3479282da0ebfe8119baa615845dbf9249b61df9b67a9",
+      "target_sha256": "45688898968c8fb864f3479282da0ebfe8119baa615845dbf9249b61df9b67a9"
+    },
+    {
+      "source": ".kiro/skills/kiwi/assets/wireframe-kit.css",
+      "target": ".agents/skills/kiwi/assets/wireframe-kit.css",
+      "source_sha256": "3b63441e08136ec7e4f4e26c4b28e6b5fc9179da2a9737cc8a30901f984fb5a8",
+      "target_sha256": "3b63441e08136ec7e4f4e26c4b28e6b5fc9179da2a9737cc8a30901f984fb5a8"
+    },
+    {
+      "source": ".kiro/skills/kiwi/references/brief-funcional.md",
+      "target": ".agents/skills/kiwi/references/brief-funcional.md",
+      "source_sha256": "5389848c0a80dba633ed8ca0840008aa24af068f06c5824ae1eeb36de19c2354",
+      "target_sha256": "5389848c0a80dba633ed8ca0840008aa24af068f06c5824ae1eeb36de19c2354"
+    },
+    {
+      "source": ".kiro/skills/kiwi/references/fidelidad.md",
+      "target": ".agents/skills/kiwi/references/fidelidad.md",
+      "source_sha256": "f30747324b15cd2a2c0eb49adebf6cf5e43d8cb3d59511ae961d8a4044d41ce1",
+      "target_sha256": "f30747324b15cd2a2c0eb49adebf6cf5e43d8cb3d59511ae961d8a4044d41ce1"
+    },
+    {
+      "source": ".kiro/skills/kiwi/references/geometry-contract.md",
+      "target": ".agents/skills/kiwi/references/geometry-contract.md",
+      "source_sha256": "0523edf1964060dd5e45dd7495ecb93cf3cc732abb2ca91a0a7143718c85c07e",
+      "target_sha256": "0523edf1964060dd5e45dd7495ecb93cf3cc732abb2ca91a0a7143718c85c07e"
+    },
+    {
+      "source": ".kiro/skills/kiwi/references/hig-web-pwa.md",
+      "target": ".agents/skills/kiwi/references/hig-web-pwa.md",
+      "source_sha256": "0bf4cb24fda3e0058b50c7dc3b717b994a2469da3dfd7df9e65e3f1c74af71ac",
+      "target_sha256": "0bf4cb24fda3e0058b50c7dc3b717b994a2469da3dfd7df9e65e3f1c74af71ac"
+    },
+    {
+      "source": ".kiro/skills/kiwi/references/user-flow.md",
+      "target": ".agents/skills/kiwi/references/user-flow.md",
+      "source_sha256": "08a6bc246c944de71f56ba08718daedcfb5271f0165d5ee960cd63bc444a7ab5",
+      "target_sha256": "08a6bc246c944de71f56ba08718daedcfb5271f0165d5ee960cd63bc444a7ab5"
+    },
+    {
+      "source": ".kiro/skills/kiwi/references/validacion.md",
+      "target": ".agents/skills/kiwi/references/validacion.md",
+      "source_sha256": "6c6789e97c19853d9465caa1838da718a5ee304c5165624f659bdff392b599bc",
+      "target_sha256": "6c6789e97c19853d9465caa1838da718a5ee304c5165624f659bdff392b599bc"
+    },
+    {
+      "source": ".kiro/skills/kiwi/references/wireframing.md",
+      "target": ".agents/skills/kiwi/references/wireframing.md",
+      "source_sha256": "cca95d77800868158f8168efde77d6d38a89d69b1a2a52afb353ba4c6f93a240",
+      "target_sha256": "cca95d77800868158f8168efde77d6d38a89d69b1a2a52afb353ba4c6f93a240"
+    },
+    {
+      "source": ".kiro/skills/kiwi/scripts/check_artifact.py",
+      "target": ".agents/skills/kiwi/scripts/check_artifact.py",
+      "source_sha256": "00bb2cbd9508193f4bd6f89c48f5f4d101ad749d2c48a76de7030e1da050f073",
+      "target_sha256": "00bb2cbd9508193f4bd6f89c48f5f4d101ad749d2c48a76de7030e1da050f073"
+    },
+    {
+      "source": ".kiro/skills/lima/README.md",
+      "target": ".agents/skills/lima/README.md",
+      "source_sha256": "bb57a39b7a5dfcba90dbd4d46976b272934ddbcf9de2908401a270649bbe14c2",
+      "target_sha256": "13e56796d77538b2fe4921f75736a085f83037263f2e6c1a5db5c8915af47577"
+    },
+    {
+      "source": ".kiro/skills/lima/SKILL.md",
+      "target": ".agents/skills/lima/SKILL.md",
+      "source_sha256": "9d188e6791228eb87d24992431b7e1e3923925eb331247344e675206cfcf0e89",
+      "target_sha256": "fe859bdba8f75af7c3f4a9a29b7e05c4ddda70f3ea71ecd4f9a1305191b3ff17"
+    },
+    {
+      "source": ".kiro/skills/lima/profiles/_TEMPLATE.md",
+      "target": ".agents/skills/lima/profiles/_TEMPLATE.md",
+      "source_sha256": "1d09072e57f948cccf102078c10a455c4b95c13e764fb15b9a6749162498049b",
+      "target_sha256": "187994bae3dff968923fadefc30011890007fff86203288f8ba73b1d8d349237"
+    },
+    {
+      "source": ".kiro/skills/lima/profiles/examples/intake.example.yaml",
+      "target": ".agents/skills/lima/profiles/examples/intake.example.yaml",
+      "source_sha256": "ac7746aa1619a8f87ac7e9825c64ae238c9539912e13cae85068dbce293f2ecd",
+      "target_sha256": "ac7746aa1619a8f87ac7e9825c64ae238c9539912e13cae85068dbce293f2ecd"
+    },
+    {
+      "source": ".kiro/skills/lima/reference/adaptive-design.md",
+      "target": ".agents/skills/lima/reference/adaptive-design.md",
+      "source_sha256": "2f1b2ec8a0ec298cbb2c47d75a5d6c66dd8573179e0469f30052c22acc67f794",
+      "target_sha256": "2f1b2ec8a0ec298cbb2c47d75a5d6c66dd8573179e0469f30052c22acc67f794"
+    },
+    {
+      "source": ".kiro/skills/lima/reference/component-api.md",
+      "target": ".agents/skills/lima/reference/component-api.md",
+      "source_sha256": "0a533753c94acb2ba0969aef9da5f3ef4762489e725222e4b50aed6ccd782375",
+      "target_sha256": "0a533753c94acb2ba0969aef9da5f3ef4762489e725222e4b50aed6ccd782375"
+    },
+    {
+      "source": ".kiro/skills/lima/reference/component-documentation.md",
+      "target": ".agents/skills/lima/reference/component-documentation.md",
+      "source_sha256": "6fd06b7ff769f96c3f37c922e35699d94d3678974185d2f50b016d9008ad17ce",
+      "target_sha256": "6fd06b7ff769f96c3f37c922e35699d94d3678974185d2f50b016d9008ad17ce"
+    },
+    {
+      "source": ".kiro/skills/lima/reference/design-hub.md",
+      "target": ".agents/skills/lima/reference/design-hub.md",
+      "source_sha256": "5c726c5e858a59c7467ed7ee3e6a3a8e08e31f69ed18e9943a0753265cada35a",
+      "target_sha256": "5c726c5e858a59c7467ed7ee3e6a3a8e08e31f69ed18e9943a0753265cada35a"
+    },
+    {
+      "source": ".kiro/skills/lima/reference/design-process.md",
+      "target": ".agents/skills/lima/reference/design-process.md",
+      "source_sha256": "26f56fac2ed0fb96e79211c94f0e262f43916e3248e5af1b012f8ac53d3fe046",
+      "target_sha256": "26f56fac2ed0fb96e79211c94f0e262f43916e3248e5af1b012f8ac53d3fe046"
+    },
+    {
+      "source": ".kiro/skills/lima/reference/first-run.md",
+      "target": ".agents/skills/lima/reference/first-run.md",
+      "source_sha256": "9ce55e1847245cca00f3f51b4a6db2a1e61efb6d800f0d0404abe92bf6102aab",
+      "target_sha256": "31739150f2d2426aa08ef8debc63b73214717bc3a6e712a31ae1e975117784a0"
+    },
+    {
+      "source": ".kiro/skills/lima/reference/impeccable-bridge.md",
+      "target": ".agents/skills/lima/reference/impeccable-bridge.md",
+      "source_sha256": "94c3e2c605ff7212675c943402118b3eeb541656a9a5cbf8f764a5dace94e08b",
+      "target_sha256": "06b7d6e151934cd6fc97d6bbae48060ce780b1cb70f3322faa0e0c140bfe910d"
+    },
+    {
+      "source": ".kiro/skills/lima/reference/intake.md",
+      "target": ".agents/skills/lima/reference/intake.md",
+      "source_sha256": "1600603bbe9a4d0324283059f36fd9f422fbb847b3042c7dc769f8b8798840e8",
+      "target_sha256": "1600603bbe9a4d0324283059f36fd9f422fbb847b3042c7dc769f8b8798840e8"
+    },
+    {
+      "source": ".kiro/skills/lima/reference/lifecycle.md",
+      "target": ".agents/skills/lima/reference/lifecycle.md",
+      "source_sha256": "4a58ddc1f757c761bcd13355837c6a45177f44819c0e4a833b75404ee6c5d325",
+      "target_sha256": "4a58ddc1f757c761bcd13355837c6a45177f44819c0e4a833b75404ee6c5d325"
+    },
+    {
+      "source": ".kiro/skills/lima/reference/project-profile.md",
+      "target": ".agents/skills/lima/reference/project-profile.md",
+      "source_sha256": "ccb5254951a4045e35e8e716a48b02caf2102ef493404d13c3ae2f78d1928428",
+      "target_sha256": "af320ad0a0a6e62de4b8f4e3777a1a24a221955383e2ed85156295e6a568c1a5"
+    },
+    {
+      "source": ".kiro/skills/lima/reference/promotion.md",
+      "target": ".agents/skills/lima/reference/promotion.md",
+      "source_sha256": "3c21faee6a5dc2a2ac6e98a24a5d20cdd7c0f6796939e92e602355f24888a10d",
+      "target_sha256": "3c21faee6a5dc2a2ac6e98a24a5d20cdd7c0f6796939e92e602355f24888a10d"
+    },
+    {
+      "source": ".kiro/skills/lima/reference/quality-gates.md",
+      "target": ".agents/skills/lima/reference/quality-gates.md",
+      "source_sha256": "2c5a982e55a8be8eab813779a43c2a477c91609e0463f733c22ebc2af15fd647",
+      "target_sha256": "2c5a982e55a8be8eab813779a43c2a477c91609e0463f733c22ebc2af15fd647"
+    },
+    {
+      "source": ".kiro/skills/lima/reference/registry.md",
+      "target": ".agents/skills/lima/reference/registry.md",
+      "source_sha256": "ad62194a660bb8870040d393b9d57571d5dab809313318dd60e675647d8215ef",
+      "target_sha256": "ad62194a660bb8870040d393b9d57571d5dab809313318dd60e675647d8215ef"
+    },
+    {
+      "source": ".kiro/skills/lima/reference/request-router.md",
+      "target": ".agents/skills/lima/reference/request-router.md",
+      "source_sha256": "4c47232ad6132bcacdb897aa8cc3c2b0f1fba26db2ffbaec89a935409d9330d3",
+      "target_sha256": "4c47232ad6132bcacdb897aa8cc3c2b0f1fba26db2ffbaec89a935409d9330d3"
+    },
+    {
+      "source": ".kiro/skills/lima/reference/runtime-qa.md",
+      "target": ".agents/skills/lima/reference/runtime-qa.md",
+      "source_sha256": "48eca633d21151aaa826445e88bf7176f97155f0fb52d7beccc98fa0aae7fb5c",
+      "target_sha256": "48eca633d21151aaa826445e88bf7176f97155f0fb52d7beccc98fa0aae7fb5c"
+    },
+    {
+      "source": ".kiro/skills/lima/reference/source-of-truth.md",
+      "target": ".agents/skills/lima/reference/source-of-truth.md",
+      "source_sha256": "1de7f3a4fb0dae12c6665227b4f6573f5ed9e8b51dc4303731ceae9e88d1c38f",
+      "target_sha256": "1de7f3a4fb0dae12c6665227b4f6573f5ed9e8b51dc4303731ceae9e88d1c38f"
+    },
+    {
+      "source": ".kiro/skills/lima/reference/ui-artifact-contract.md",
+      "target": ".agents/skills/lima/reference/ui-artifact-contract.md",
+      "source_sha256": "71aa21a07c02989a318a66be9ce7c7b6067d0b1c937c337e17570b61f3a98adb",
+      "target_sha256": "71aa21a07c02989a318a66be9ce7c7b6067d0b1c937c337e17570b61f3a98adb"
+    },
+    {
+      "source": ".kiro/skills/lima/scripts/README.md",
+      "target": ".agents/skills/lima/scripts/README.md",
+      "source_sha256": "ba576a286ea4cdbabe5a16069e842d7a1a14ad721b103be2f9cc9a24204329d5",
+      "target_sha256": "7dcb977756fbfd97b93455a3b24c15a63c49865df6e62dee0364dca96e0e53e3"
+    },
+    {
+      "source": ".kiro/skills/lima/scripts/init-project.sh",
+      "target": ".agents/skills/lima/scripts/init-project.sh",
+      "source_sha256": "4c21e00baf24e963faa9f6c345efbb922959f7a5eeb6d267ec111c0ee99beda2",
+      "target_sha256": "9ba89bf62ad029c6a107fd3394ce6c7f720e64f37415ac23bd8b6c5b8175c119"
+    },
+    {
+      "source": ".kiro/skills/lima/scripts/parse_intake.py",
+      "target": ".agents/skills/lima/scripts/parse_intake.py",
+      "source_sha256": "795f66d96fd9746c7af096885778fc1e06309d0f4737657790f7aeb27f6d0356",
+      "target_sha256": "795f66d96fd9746c7af096885778fc1e06309d0f4737657790f7aeb27f6d0356"
+    },
+    {
+      "source": ".kiro/skills/mora-docs/SKILL.md",
+      "target": ".agents/skills/mora-docs/SKILL.md",
+      "source_sha256": "de72553da82331bc6840a130fba6b08305af134bc6be5db374ad8a41d7f4bde8",
+      "target_sha256": "c55bd49b374fef173d65f8af755c61097eeb344042bf007fde9fb6a1c1b0797c"
+    },
+    {
+      "source": ".kiro/skills/mora-docs/documentation-round-standard.md",
+      "target": ".agents/skills/mora-docs/documentation-round-standard.md",
+      "source_sha256": "9a1db36d51838439f9ce15ab0d3fd251fb4268352406b8ff41cea7e619f3ca16",
+      "target_sha256": "9a1db36d51838439f9ce15ab0d3fd251fb4268352406b8ff41cea7e619f3ca16"
+    },
+    {
+      "source": ".kiro/skills/mora-docs/examples/mora-block.example.md",
+      "target": ".agents/skills/mora-docs/examples/mora-block.example.md",
+      "source_sha256": "0bd08e6f8f415f727a373ac8567f9bb9bfa3cff53a3bcea4d97d008a4eac7fb0",
+      "target_sha256": "8f3e20abe56d22d14e347b5c7b53a1a7c7755281591a397900d087cc1a46f59e"
+    },
+    {
+      "source": ".kiro/skills/mora-docs/first-run.md",
+      "target": ".agents/skills/mora-docs/first-run.md",
+      "source_sha256": "a27a56015b234d416f01ff51e8ad57efc728b25dc8447897bf588268ca102364",
+      "target_sha256": "a27a56015b234d416f01ff51e8ad57efc728b25dc8447897bf588268ca102364"
+    },
+    {
+      "source": ".kiro/skills/mora-docs/intake.md",
+      "target": ".agents/skills/mora-docs/intake.md",
+      "source_sha256": "5098762ce8cf2ba7c7652a2cb08ff77ebcc0c5242e467d04e9a6f1e3616e4806",
+      "target_sha256": "5098762ce8cf2ba7c7652a2cb08ff77ebcc0c5242e467d04e9a6f1e3616e4806"
+    },
+    {
+      "source": ".kiro/skills/mora-docs/profile-additions.md",
+      "target": ".agents/skills/mora-docs/profile-additions.md",
+      "source_sha256": "3032c9ed3ee997469593d1c9f5bd20600dc1e1c2626a025379f97cdb129a1b59",
+      "target_sha256": "3032c9ed3ee997469593d1c9f5bd20600dc1e1c2626a025379f97cdb129a1b59"
+    },
+    {
+      "source": ".kiro/skills/mora-docs/structural-repair.md",
+      "target": ".agents/skills/mora-docs/structural-repair.md",
+      "source_sha256": "83c695a58c251abb3606c43372345a2cacf4365da920bd03d45c0274e2ddbb87",
+      "target_sha256": "83c695a58c251abb3606c43372345a2cacf4365da920bd03d45c0274e2ddbb87"
+    },
+    {
+      "source": ".kiro/skills/mora-docs/templates/declaracion.template.md",
+      "target": ".agents/skills/mora-docs/templates/declaracion.template.md",
+      "source_sha256": "72244fd3259272a6976c2a28bc5c6afd8caf0d2e7c49e102514806d07b04519a",
+      "target_sha256": "72244fd3259272a6976c2a28bc5c6afd8caf0d2e7c49e102514806d07b04519a"
+    },
+    {
+      "source": ".kiro/skills/mora-docs/templates/encargo-estructura.template.md",
+      "target": ".agents/skills/mora-docs/templates/encargo-estructura.template.md",
+      "source_sha256": "66acd71bf2cdf32833ee3269f0bc08f0c45c1405af68e1f97e79d890dd1c7021",
+      "target_sha256": "66acd71bf2cdf32833ee3269f0bc08f0c45c1405af68e1f97e79d890dd1c7021"
+    }
+  ],
+  "shared_unchanged": [
+    {
+      "path": ".fruti/assets/avatars/bruno/bruno-tile.svg",
+      "sha256": "5d66b2cc719afa78588952a8ae5c41741b21095fb8097467b4e072c908d86df2"
+    },
+    {
+      "path": ".fruti/assets/avatars/bruno/bruno.small.svg",
+      "sha256": "6ab5423b71176aa98f20dda68be40d703a9880be1f5f846a951c1a16414b4022"
+    },
+    {
+      "path": ".fruti/assets/avatars/bruno/bruno.svg",
+      "sha256": "833d8ee7b316e199836582b1890990f70d63d339817ef939b378b1aecf51837d"
+    },
+    {
+      "path": ".fruti/assets/avatars/coco/coco-tile.svg",
+      "sha256": "a9a657700acaad645f2fcdc60aafb7d6b502d688f12a621348a9fdc242f8009d"
+    },
+    {
+      "path": ".fruti/assets/avatars/coco/coco.small.svg",
+      "sha256": "a25529e705c18ba7b27374cb7a61b420f2b53d670197135d7a0122bef911ce54"
+    },
+    {
+      "path": ".fruti/assets/avatars/coco/coco.svg",
+      "sha256": "f167318f0ad057eea7afa3bff295d89cddb65e562f8a965d7d4007257e121e4e"
+    },
+    {
+      "path": ".fruti/assets/avatars/fruti-squad/fruti-squad-tile.svg",
+      "sha256": "1530fbbd9d14c32a4595c53559d758662c47faa3fc67dc9358ad7f60d8f98999"
+    },
+    {
+      "path": ".fruti/assets/avatars/fruti-squad/fruti-squad.small.svg",
+      "sha256": "6dfb5413020e1ad5597c08ca7632b3cb0272dff9443e5d0b57be4b4fcdf61052"
+    },
+    {
+      "path": ".fruti/assets/avatars/fruti-squad/fruti-squad.svg",
+      "sha256": "c7017fdd2ba4a0c24facf3130fccf3eed95b01aae420924378a61e3e6f101144"
+    },
+    {
+      "path": ".fruti/assets/avatars/kiwi/kiwi-tile.svg",
+      "sha256": "e340dbe10dfd04abb6fc928863550f95994c2b58a27805439f8ca9515a398a40"
+    },
+    {
+      "path": ".fruti/assets/avatars/kiwi/kiwi.small.svg",
+      "sha256": "baeaede37bfdea6ab137764de516dec759c42e52c885ed03d737341ed8b9ba94"
+    },
+    {
+      "path": ".fruti/assets/avatars/kiwi/kiwi.svg",
+      "sha256": "b41003075699e889d2abf5bf16bd8b21bb59fff690190b646b52b8582837f221"
+    },
+    {
+      "path": ".fruti/assets/avatars/lima/lima-tile.svg",
+      "sha256": "c05d22ac05a1e6a2a335f97bb1ba05529af87fa3ae90842af77c0a38b2d8302d"
+    },
+    {
+      "path": ".fruti/assets/avatars/lima/lima.small.svg",
+      "sha256": "08a79ca92ef27baa7010721646d07eccfa2d20f64985e0bb48f6a66c4400849e"
+    },
+    {
+      "path": ".fruti/assets/avatars/lima/lima.svg",
+      "sha256": "d9d791539757d640696734639f2cee42156b3713f7c5cffc9c4206edc464a726"
+    },
+    {
+      "path": ".fruti/assets/avatars/mora/mora-tile.svg",
+      "sha256": "a96720cdddb2eafffc3436da6f410ca1452f304be008620d6ec56afa567950f0"
+    },
+    {
+      "path": ".fruti/assets/avatars/mora/mora.small.svg",
+      "sha256": "94150444e765e5d0b1f0aa43eef52719bb6cf00b224f3d71653ed0af88ad9656"
+    },
+    {
+      "path": ".fruti/assets/avatars/mora/mora.svg",
+      "sha256": "1d7be3e54ec7743040209d91f1fd136b0050b81594d4677ecae058974a2a400e"
+    },
+    {
+      "path": ".fruti/audit-manifest.yaml",
+      "sha256": "8bdea49e65500a51328ffc922cdc8f76caac8305ca719381469cd24eaea61b3e"
+    },
+    {
+      "path": ".fruti/contracts/documentation.yaml",
+      "sha256": "ef9c08573df530d516e05d6d2149ceafb3c046f6c0b148944194ea052768b7d1"
+    },
+    {
+      "path": ".fruti/contracts/implementation-target.yaml",
+      "sha256": "1ac4c122e0193e6ae97b90c7a86a8d9c64284109006b2c53f8a45d9ac2d7656f"
+    },
+    {
+      "path": ".fruti/contracts/theming.yaml",
+      "sha256": "839357f04a3c1cf213b21d3af4a10719ace069d02a2a217504c0388ef7f654b9"
+    },
+    {
+      "path": ".fruti/contracts/typography.yaml",
+      "sha256": "c19975e1112256e3ce7a0660bf3fc1eff2d4bdde3828244fd19f59ea6482cc37"
+    },
+    {
+      "path": ".fruti/defaults/theme.json",
+      "sha256": "ea1313a985fd419ecdc90baeb99dc2b7b44701de83d632cbbaf6a83775c478f6"
+    },
+    {
+      "path": ".fruti/handoffs/current.json",
+      "sha256": "245db576ab64ab6712f4c025ffd43f90707bd935c369eda938efbaeef1eaa2f3"
+    },
+    {
+      "path": ".fruti/identity/avatars.json",
+      "sha256": "6994e1d43467a05f0118f19bacc3f2ad43ac9824b10268704932a61fc6d0d824"
+    },
+    {
+      "path": ".fruti/policy.md",
+      "sha256": "74f854773ab028bb2a1124e3f34b5289467e51435794a0bdd46d3230f8574fd1"
+    },
+    {
+      "path": ".fruti/runtime/bruno.yaml",
+      "sha256": "752e0ba62cf418d3e1ae0926319ffb7392820a10e3edfee813075940e233a824"
+    },
+    {
+      "path": ".fruti/runtime/coco.yaml",
+      "sha256": "5af34d4025a3780be79ede8e50b0ea2abbf10b7c355e1a0a6df5f250d5b0f5a8"
+    },
+    {
+      "path": ".fruti/runtime/kiwi.yaml",
+      "sha256": "89a75963b69bb0b517f9569924800efd640911b4a5970a2f2a688ae9678fe682"
+    },
+    {
+      "path": ".fruti/runtime/lima.yaml",
+      "sha256": "35806df77918ab3c67f091d923ccbc348bab6f0538bbe36b3b2916bb57cc3fce"
+    },
+    {
+      "path": ".fruti/runtime/mora.yaml",
+      "sha256": "ff3a3e38398d7c595313eecfc242bae9f664e1b2fcf9f9bcfb63fa62f5717d64"
+    },
+    {
+      "path": ".fruti/state/current.json",
+      "sha256": "58d6e3a6d02b6a0066239a039bc509c19f8a4210f7fc78690a77b5fdcf8b8e82"
+    }
+  ]
+}

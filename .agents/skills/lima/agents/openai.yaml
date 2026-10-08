@@ -1,0 +1,5 @@
+interface:
+  display_name: Lima
+  short_description: 'Lima: contratos y evidencia UI'
+  default_prompt: Usa $lima para resolver esta solicitud respetando el flujo y contratos
+    de Fruti Squad.

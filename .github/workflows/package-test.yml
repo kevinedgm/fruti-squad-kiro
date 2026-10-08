@@ -2,7 +2,7 @@ name: package-test
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "codex"]
   pull_request:
 
 jobs:
@@ -14,6 +14,8 @@ jobs:
         with:
           node-version: 20
       - run: npm test
+      - run: python3 -m pip install PyYAML
+      - run: python3 scripts/validate-codex.py
       - name: Pack package
         run: npm pack
       - name: Install packed package in a clean project
@@ -23,9 +25,9 @@ jobs:
           TMP="$(mktemp -d)"
           cd "$TMP"
           npm init -y >/dev/null
-          npm install "$GITHUB_WORKSPACE"/fruti-squad-kiro-*.tgz
-          test -f .kiro/agents/fruti-squad.md
-          test -f .kiro/agents/bruno.md
-          test -f .kiro/skills/bruno/SKILL.md
+          npm install "$GITHUB_WORKSPACE"/fruti-squad-codex-*.tgz
+          test -f .codex/agents/fruti-squad.toml
+          test -f .codex/agents/bruno.toml
+          test -f .agents/skills/bruno/SKILL.md
           test -f .fruti/runtime/bruno.yaml
           echo "clean npm install provisioning passed"

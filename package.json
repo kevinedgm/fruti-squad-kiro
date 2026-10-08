@@ -1,25 +1,28 @@
 {
-  "name": "fruti-squad-kiro",
-  "version": "0.2.1",
-  "description": "Fruti Squad agents, skills, steering and runtime for Kiro",
+  "name": "fruti-squad-codex",
+  "version": "0.3.0",
+  "description": "Fruti Squad agents, skills and shared contracts for Codex",
   "license": "MIT",
   "private": false,
   "type": "commonjs",
   "bin": {
-    "fruti-squad-kiro": "bin/fruti-squad-kiro.js"
+    "fruti-squad-codex": "bin/fruti-squad-codex.js"
   },
   "scripts": {
     "postinstall": "node scripts-postinstall.cjs",
-    "install:kiro": "node bin/fruti-squad-kiro.js install",
-    "dry-run": "node bin/fruti-squad-kiro.js install --dry-run",
-    "test": "node test/install.test.cjs",
-    "init:project": "node bin/fruti-squad-kiro.js init"
+    "install:codex": "node bin/fruti-squad-codex.js install",
+    "dry-run": "node bin/fruti-squad-codex.js install --dry-run",
+    "test": "node test/install.test.cjs && node test/codex.test.cjs",
+    "init:project": "node bin/fruti-squad-codex.js init"
   },
   "files": [
-    "bin/",
+    "bin/fruti-squad-codex.js",
     "lib/",
-    ".kiro/",
+    ".agents/",
+    ".codex/",
     ".fruti/",
+    "AGENTS.md",
+    "docs/",
     "scripts-postinstall.cjs",
     "README.md",
     "LICENSE"
@@ -36,10 +39,10 @@
   },
   "homepage": "https://github.com/kevinedgm/fruti-squad-kiro#readme",
   "keywords": [
-    "kiro",
+    "codex",
     "agent",
     "skills",
-    "steering",
+    "agents-md",
     "multi-agent",
     "fruti-squad"
   ]

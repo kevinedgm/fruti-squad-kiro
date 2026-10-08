@@ -21,12 +21,12 @@ const numberValue = (flag) => {
 
 if (command === 'help' || argv.includes('--help') || argv.includes('-h')) {
   console.log([
-    'Fruti Squad for Kiro',
+    'Fruti Squad for Codex',
     '',
     'Usage:',
-    '  fruti-squad-kiro install [--force] [--dry-run] [--target <path>]',
-    '  fruti-squad-kiro init [options]',
-    '  fruti-squad-kiro theme [options]',
+    '  fruti-squad-codex install [--force] [--dry-run] [--target <path>]',
+    '  fruti-squad-codex init [options]',
+    '  fruti-squad-codex theme [options]',
     '',
     'Init defaults:',
     '  --theme starter',
@@ -146,6 +146,6 @@ try {
     process.exit(2);
   }
 } catch (err) {
-  console.error('fruti-squad-kiro: ' + err.message);
+  console.error('fruti-squad-codex: ' + err.message);
   process.exit(1);
 }
