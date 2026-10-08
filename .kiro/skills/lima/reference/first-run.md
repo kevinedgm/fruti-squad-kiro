@@ -60,6 +60,34 @@ npx fruti-squad-kiro init \
 
 Eso escribe `.fruti/theme/config.json`; no obliga a especificar `strong`, `soft`, `on-*`, semánticos ni oscuro manualmente.
 
+## Cambiar el tema después del init
+
+El `init` solo crea la configuración inicial. Después, modifica únicamente lo que necesites:
+
+```bash
+npx fruti-squad-kiro theme --brand "#7A1F5C"
+npx fruti-squad-kiro theme --shape pill --radius 12
+npx fruti-squad-kiro theme --font "Inter" --type-scale 1.3
+npx fruti-squad-kiro theme --categories 6
+npx fruti-squad-kiro theme --no-dark
+```
+
+El comando conserva las entradas no mencionadas.
+
+Para inspeccionar:
+
+```bash
+npx fruti-squad-kiro theme --show
+```
+
+Para volver al starter:
+
+```bash
+npx fruti-squad-kiro theme --reset
+```
+
+También se puede editar directamente `.fruti/theme/config.json`. No uses `.fruti/defaults/theme.json` como configuración local: ese archivo pertenece al preset reusable del paquete.
+
 ## Proyecto con design system existente
 
 ```bash
