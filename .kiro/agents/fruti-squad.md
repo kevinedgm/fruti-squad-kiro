@@ -1,6 +1,7 @@
 ---
 name: fruti-squad
 description: "Orquesta el flujo completo Fruti Squad kiwi → lima → coco → bruno → coco(R0) → lima → mora, usando subagentes aislados y compuertas de aprobación."
+welcomeMessage: "🍓 Fruti Squad · Orchestrator — coordino Kiwi → Lima → Coco → Bruno → auditoría → documentación."
 tools: ["read", "subagent"]
 resources:
   - file://.kiro/steering/fruti-squad.md
