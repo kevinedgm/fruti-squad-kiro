@@ -100,7 +100,50 @@ Handoff conecta etapas.
 
 ---
 
-# 2. Los miembros del squad
+# 2. Identidad visual del squad
+
+Los agentes comparten un sistema de iconos SVG pensado para funcionar desde **16×16 px** y conservar identidad por silueta, no solo por color.
+
+<table>
+  <tr>
+    <td align="center"><img src=".fruti/assets/avatars/kiwi/kiwi-tile.svg" width="56" alt="Kiwi"><br><strong>Kiwi</strong><br><sub>organizar</sub></td>
+    <td align="center"><img src=".fruti/assets/avatars/lima/lima-tile.svg" width="56" alt="Lima"><br><strong>Lima</strong><br><sub>validar</sub></td>
+    <td align="center"><img src=".fruti/assets/avatars/coco/coco-tile.svg" width="56" alt="Coco"><br><strong>Coco</strong><br><sub>inspeccionar</sub></td>
+    <td align="center"><img src=".fruti/assets/avatars/bruno/bruno-tile.svg" width="56" alt="Bruno"><br><strong>Bruno</strong><br><sub>conectar</sub></td>
+    <td align="center"><img src=".fruti/assets/avatars/mora/mora-tile.svg" width="56" alt="Mora"><br><strong>Mora</strong><br><sub>catalogar</sub></td>
+    <td align="center"><img src=".fruti/assets/avatars/fruti-squad/fruti-squad-tile.svg" width="56" alt="Fruti Squad"><br><strong>Squad</strong><br><sub>orquestar</sub></td>
+  </tr>
+</table>
+
+Los assets canónicos viven en:
+
+```text
+.fruti/assets/avatars/
+├── kiwi/
+├── lima/
+├── coco/
+├── bruno/
+├── mora/
+└── fruti-squad/
+```
+
+Cada identidad incluida en el paquete tiene:
+
+- `<name>.svg` — icono estándar con `currentColor`;
+- `<name>.small.svg` — variante mínima para tamaños pequeños;
+- `<name>-tile.svg` — avatar de marca con fondo y color propio.
+
+El índice machine-readable está en:
+
+```text
+.fruti/identity/avatars.json
+```
+
+> Kiro no expone actualmente un campo oficial para asignar un SVG personalizado como avatar nativo del agente. Por eso Fruti Squad conserva estos SVG como identidad canónica para README, documentación, extensiones e interfaces propias, mientras que `welcomeMessage` usa el símbolo/emoji como fallback dentro de Kiro.
+
+---
+
+# 3. Los miembros del squad
 
 ## 🥝 Kiwi · Structure
 
@@ -326,7 +369,7 @@ Si una API, estado o preview no existe, no lo inventa para completar una página
 
 ---
 
-# 3. El orquestador: `fruti-squad`
+# 4. El orquestador: `fruti-squad`
 
 Además de los agentes especializados existe:
 
@@ -376,7 +419,7 @@ Esto es especialmente importante en:
 
 ---
 
-# 4. Fidelidades y etapas
+# 5. Fidelidades y etapas
 
 Fruti Squad utiliza varios nombres cortos durante el flujo.
 
@@ -407,7 +450,7 @@ comprobar que lo construido cumple
 
 ---
 
-# 5. Arquitectura instalada
+# 6. Arquitectura instalada
 
 Después de instalar el paquete aparecen dos carpetas principales:
 
@@ -486,7 +529,7 @@ Contiene memoria compartida.
 
 ---
 
-# 6. ¿Qué es `.fruti/`?
+# 7. ¿Qué es `.fruti/`?
 
 `.fruti/` es el estado y protocolo compartido del squad.
 
@@ -626,7 +669,7 @@ Esto permite que los contratos internos sean portables.
 
 ---
 
-# 7. Skills adicionales
+# 8. Skills adicionales
 
 Además del squad principal se incluyen Skills auxiliares.
 
@@ -674,7 +717,7 @@ La animación no debe utilizarse como decoración gratuita. Debe explicar cambio
 
 ---
 
-# 8. Instalación
+# 9. Instalación
 
 ## Requisitos
 
@@ -718,7 +761,7 @@ No abras únicamente `.kiro/`.
 
 ---
 
-# 9. Instalación segura y conflictos
+# 10. Instalación segura y conflictos
 
 El instalador está diseñado para no destruir personalizaciones locales.
 
@@ -804,7 +847,7 @@ npx fruti-squad-kiro install
 
 ---
 
-# 10. Primer uso
+# 11. Primer uso
 
 Después de instalar:
 
@@ -835,7 +878,7 @@ Esos nombres existen para gobernar internamente el proceso, no para obligar al u
 
 ---
 
-# 11. Cuándo usar cada agente directamente
+# 12. Cuándo usar cada agente directamente
 
 No toda tarea necesita el squad completo.
 
@@ -905,7 +948,7 @@ la petición atraviesa varias responsabilidades:
 
 ---
 
-# 12. Fuentes de verdad
+# 13. Fuentes de verdad
 
 Fruti Squad intenta distinguir entre:
 
@@ -947,7 +990,7 @@ a menos que una fuente normativa lo confirme.
 
 ---
 
-# 13. Rediseño de productos existentes
+# 14. Rediseño de productos existentes
 
 Fruti Squad puede trabajar tanto en:
 
@@ -983,7 +1026,7 @@ El objetivo es conservar comportamiento necesario sin heredar accidentalmente to
 
 ---
 
-# 14. Perfiles de proyecto
+# 15. Perfiles de proyecto
 
 Las Skills son reutilizables entre proyectos.
 
@@ -1008,7 +1051,7 @@ Cada proyecto construye su propia configuración.
 
 ---
 
-# 15. Ownership: quién puede cambiar qué
+# 16. Ownership: quién puede cambiar qué
 
 Una de las reglas más importantes del squad es el ownership.
 
@@ -1038,7 +1081,7 @@ que es una excelente manera de conseguir seis fuentes de verdad y ninguna verdad
 
 ---
 
-# 16. Aislamiento y privacidad entre proyectos
+# 17. Aislamiento y privacidad entre proyectos
 
 Fruti Squad está diseñado para ser **reutilizable y agnóstico del producto**.
 
@@ -1082,7 +1125,7 @@ Si el repositorio consumidor es público, revisa también qué perfiles, contrat
 
 ---
 
-# 17. Handoffs en lugar de contexto infinito
+# 18. Handoffs en lugar de contexto infinito
 
 Los agentes no deberían pasarse conversaciones gigantes.
 
@@ -1111,7 +1154,7 @@ Así cada etapa consume el contexto necesario sin volver a investigar todo el re
 
 ---
 
-# 18. Actualizar Fruti Squad
+# 19. Actualizar Fruti Squad
 
 Si instalaste desde GitHub:
 
@@ -1135,7 +1178,7 @@ npx fruti-squad-kiro install --force
 
 ---
 
-# 19. Desinstalar
+# 20. Desinstalar
 
 npm puede quitar la dependencia:
 
@@ -1153,7 +1196,7 @@ Si quieres retirarlas, revísalas y elimínalas manualmente.
 
 ---
 
-# 20. Desarrollo del paquete
+# 21. Desarrollo del paquete
 
 Clona el repositorio:
 
@@ -1184,7 +1227,7 @@ La CI también realiza una instalación real del tarball en un proyecto temporal
 
 ---
 
-# 21. Estado del paquete npm
+# 22. Estado del paquete npm
 
 Actualmente el paquete puede instalarse directamente desde GitHub:
 
@@ -1208,7 +1251,7 @@ debe publicarse también en el registro público de npm.
 
 ---
 
-# 22. Preguntas frecuentes
+# 23. Preguntas frecuentes
 
 ## ¿Fruti Squad reemplaza Kiro?
 
@@ -1278,7 +1321,7 @@ Debe:
 
 ---
 
-# 23. Resumen
+# 24. Resumen
 
 ```text
 Fruti Squad
