@@ -13,6 +13,9 @@ Fecha: 8 de octubre de 2026. Línea base: `47141906fd0731ac3a8b3d25bd56678d2488d
 | Instalación e init | PASS | Dry-run, instalación repetida, preservación de conflictos, starter y existing |
 | CLI y tematización | PASS | install/init/theme/help; validación de colores y preservación de valores |
 | Tarball real | PASS | npm pack, npm install/postinstall e init en consumidor vacío |
+| Selección escrita de skills | PASS | 12/12 prompts, ocho skills y backend fuera de alcance; contexto independiente, no cliente Codex |
+| Scripts instalados desde raíz | PASS | Verificador Kiwi y bootstrap Lima ejecutados desde consumidor vacío |
+| Paquete de plugin | PASS de estructura | Manifiesto de compatibilidad, versión y ruta skills; sin instalación en directorio de plugins |
 | Prueba operativa escrita | PASS | Bloqueos de F3, auditoría de otra ronda, build correcto con fallo visual y auditoría sin cambios |
 | Cliente Codex CLI real | NO EJECUTADO | No disponible en el entorno de validación |
 | Calidad de una UI concreta | NO EJECUTADO | Requiere producto, datos, perfil aprobado, navegador y capturas de entrega |
@@ -39,3 +42,20 @@ Esta prueba verifica interpretación del procedimiento; no mide identidad visual
 Aplicar la misma política y audit manifest de Kiro a un artefacto real. Verificar técnica, estructura, visual, accesibilidad, design system y documentación. Registrar resultados por dimensión y evidencia vigente de la ronda. Una capacidad faltante no se da por comprobada.
 
 La adaptación conserva los mismos requisitos de calidad. La calidad final depende de ejecutarlos y satisfacerlos sobre el producto, con los permisos y herramientas efectivos del host.
+
+## Correcciones de la auditoría
+
+Versión 0.3.1, rama `codex`:
+
+- Kiwi y los diagramas de Coco/Mora asignan la funcionalidad R3 a Bruno. Coco conserva F3/CSS y la auditoría R0; Lima recibe el gate antes de Mora.
+- Los comandos Kiwi/Lima usan rutas explícitas desde la raíz del proyecto. Se ejecutaron el verificador Kiwi y el bootstrap Lima desde una instalación temporal.
+- Improve Animations mantiene su contrato de asesor sin editar producto. `execute` entrega el plan al squad con las mismas aprobaciones; se elimina la dependencia de una skill de revisión no distribuida y la contradicción del inicio sin tarea.
+- Se elimina el permiso textual heredado de avanzar con Coco sin las entradas obligatorias. Declarar una desviación no permite F3/R3 ni PASS.
+- Los cambios de texto anterior/nuevo están en `scripts/codex-corrections.json` y en el manifiesto de paridad; regenerar no pierde las correcciones. El validador contrasta el cuerpo completo con el origen más estas transformaciones declaradas.
+- Se añaden doce prompts reproducibles en `test/activation-cases.json`, regresiones de propiedad/alcance y el registro bruto `docs/codex-forward-test.json`. Un agente independiente eligió el dueño esperado en 12/12 y mantuvo los bloqueos de aprobación y de ronda. Es una evaluación escrita, no una prueba de activación del host.
+- `.codex-plugin/plugin.json` empaqueta las skills con el formato de compatibilidad soportado. La instalación completa por npm sigue siendo necesaria para provisionar los contratos, el estado y los agentes del proyecto. El plugin no está publicado ni probado en el directorio.
+
+Referencia de autoría: https://learn.chatgpt.com/docs/build-skills
+Formato de plugin: https://developers.openai.com/plugins/build/plugins
+
+No se afirma cumplimiento ejecutado del 100% ni identidad de calidad visual: quedan pendientes el cliente Codex real y la aceptación de una UI concreta con evidencia.

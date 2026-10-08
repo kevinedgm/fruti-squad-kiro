@@ -24,5 +24,5 @@ Para cada estado responde: **qué lo dispara, qué pasa si falla, se puede volve
 
 ## Comprobaciones automáticas mínimas
 
-- `scripts/check_artifact.py` sin errores.
+- `python3 .agents/skills/kiwi/scripts/check_artifact.py <archivo.html> --fidelidad F1` sin errores (usar F2 cuando corresponda; ejecutar desde la raíz del proyecto).
 - Navegador: 0 errores JS, 0 desborde horizontal en el cuerpo, targets ≥ 24 px (≥ 44 px en controles principales).

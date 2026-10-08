@@ -1,6 +1,104 @@
 {
-  "version": 1,
+  "version": 2,
   "source_commit": "47141906fd0731ac3a8b3d25bd56678d2488d81b",
+  "corrections": {
+    "kiwi/SKILL.md": [
+      {
+        "before": "| Implementar lo aprobado | Coco (R3) | Modifica producción |",
+        "after": "| Implementar lo aprobado | Bruno (R3 funcional), Coco (CSS) | Requiere contrato Lima y aprobación F3 vigente |"
+      },
+      {
+        "before": "→ **coco**, con mi wireframe aprobado como contrato",
+        "after": "→ **bruno** para funcionalidad, tras contrato Lima y F3 de Coco aprobado; Coco conserva CSS"
+      },
+      {
+        "before": "`python3 scripts/check_artifact.py <archivo.html> --fidelidad F1|F2`",
+        "after": "`python3 .agents/skills/kiwi/scripts/check_artifact.py <archivo.html> --fidelidad F1` (para F2 usar `--fidelidad F2`; ejecutar desde la raíz del proyecto)"
+      },
+      {
+        "before": "Coco  → construcción: alta fidelidad con el sistema real, implementación, auditoría",
+        "after": "Coco  → alta fidelidad con el sistema real (F3/CSS)\nBruno → funcionalidad frontend aprobada (R3)\nCoco  → auditoría canónica (R0)\nLima  → gate y lifecycle"
+      },
+      {
+        "before": "si lima, coco o mora detectan",
+        "after": "si lima, coco, bruno o mora detectan"
+      }
+    ],
+    "mora-docs/SKILL.md": [
+      {
+        "before": "Coco  → construcción: alta fidelidad con el sistema real, implementación, auditoría",
+        "after": "Coco  → alta fidelidad con el sistema real (F3/CSS)\nBruno → funcionalidad frontend aprobada (R3)\nCoco  → auditoría canónica (R0)\nLima  → gate y lifecycle"
+      },
+      {
+        "before": "diseño, código o evidencia de QA faltante → **coco**.",
+        "after": "diseño/CSS o evidencia de QA faltante → **coco**; funcionalidad frontend → **bruno**."
+      }
+    ],
+    "kiwi/references/fidelidad.md": [
+      {
+        "before": "| Construirlo en producción | R3 | coco |",
+        "after": "| Construirlo en producción | R3 | bruno (funcionalidad), coco (CSS) |"
+      },
+      {
+        "before": "kiwi entrega F0 y traspasa a coco",
+        "after": "kiwi entrega F0 aprobado, lima fija el contrato y traspasa a coco"
+      }
+    ],
+    "coco/SKILL.md": [
+      {
+        "before": "Si una sección heredada atribuye todo R3 a Coco, interpreta esa parte como capa visual/CSS y handoff a Bruno.",
+        "after": "R3 aquí designa únicamente la capa visual/CSS; entregar la funcionalidad a Bruno y volver para la auditoría R0."
+      },
+      {
+        "before": "kiwi → lima → coco → mora",
+        "after": "kiwi → lima → coco F3 → bruno R3 → coco R0 → lima gate → mora"
+      },
+      {
+        "before": "Coco  → construcción: alta fidelidad con el sistema real (F3), implementación (R3), auditoría (R0)   ← yo",
+        "after": "Coco  → alta fidelidad (F3) y CSS aprobado   ← yo\nBruno → funcionalidad frontend aprobada (R3)\nCoco  → auditoría canónica (R0)   ← yo\nLima  → gate y lifecycle"
+      },
+      {
+        "before": "si el usuario prefiere seguir contigo, sigue y declara la desviación.",
+        "after": "conservar la solicitud como propuesta y detener F3/R3 hasta disponer de las entradas y aprobaciones requeridas; una desviación declarada no permite PASS."
+      }
+    ],
+    "improve-animations/SKILL.md": [
+      {
+        "before": "When this skill is first invoked without a specific question, respond only with:\n\n> I'm ready to audit your animations and plan the fixes, my knowledge comes from Emil Kowalski's animation philosophy.\n\nDo not provide any other information until the user asks a question.",
+        "after": "On a bare invocation, start recon of the active project and continue the audit workflow below. If no project or motion surface is available, ask for that missing input. Respond in the user's language."
+      },
+      {
+        "before": "It does not review a single diff (that's `review-animations`), and it does not implement fixes itself.",
+        "after": "It does not implement fixes itself. Use AUDIT.md as the local motion criteria; Bruno verifies functional changes and Coco performs the canonical R0 review of the resulting UI."
+      },
+      {
+        "before": "If asked to \"just fix it\", decline and point to `improve-animations execute <plan>` or to running the plan with any agent.",
+        "after": "If asked to \"just fix it\", produce the plan and hand it to Fruti Squad: Lima validates contract/tokens, Coco owns F3/CSS, and Bruno owns functional R3. Reuse explicit approvals for the same scope; obtain missing structural/F3 approvals before dependent implementation. Return through Coco R0 → Lima gate → Mora. The advisor never dispatches an executor that bypasses these gates."
+      },
+      {
+        "before": "| `execute <plan>` | Dispatch an executor subagent to implement the plan in an isolated worktree, then review its diff with the `review-animations` bar and render a verdict |",
+        "after": "| `execute <plan>` | Hand off the plan to Fruti Squad under the existing contract and approval gates. This advisor remains read-only on product source; it does not execute or certify the implementation. |"
+      }
+    ],
+    "lima/README.md": [
+      {
+        "before": "bash scripts/init-project.sh",
+        "after": "bash .agents/skills/lima/scripts/init-project.sh"
+      }
+    ],
+    "lima/scripts/init-project.sh": [
+      {
+        "before": "bash scripts/init-project.sh",
+        "after": "bash .agents/skills/lima/scripts/init-project.sh"
+      }
+    ],
+    "kiwi/references/validacion.md": [
+      {
+        "before": "`scripts/check_artifact.py` sin errores.",
+        "after": "`python3 .agents/skills/kiwi/scripts/check_artifact.py <archivo.html> --fidelidad F1` sin errores (usar F2 cuando corresponda; ejecutar desde la raíz del proyecto)."
+      }
+    ]
+  },
   "transformations": [
     ".kiro/skills → .agents/skills",
     "steering → AGENTS.md",
@@ -32,7 +130,7 @@
       "source": ".kiro/skills/coco/SKILL.md",
       "target": ".agents/skills/coco/SKILL.md",
       "source_sha256": "5b40f8564adf173c4adb9dbde8b98f8589e155377a099a11cc4e702d752b973f",
-      "target_sha256": "2bcab1d5d19eb5975ee557560e7fb919fc4fed8ee5b762c283e11b2a2fcf303f"
+      "target_sha256": "83efb5447645df8133856479de2b7baa82205620886fb1df124bb418545ec61c"
     },
     {
       "source": ".kiro/skills/coco/examples/data_contract.example.md",
@@ -398,13 +496,13 @@
       "source": ".kiro/skills/improve-animations/SKILL.md",
       "target": ".agents/skills/improve-animations/SKILL.md",
       "source_sha256": "73962447464433476343e2c12cd08ab39cc99a9e5f3c118c5fb54ed897574ef6",
-      "target_sha256": "a99927d3c61f1f61a635616a565614124e103de8c61203a6adc24f5e320dec16"
+      "target_sha256": "99090cfbc3c19d8be14e2871a9f9d5a86cf6429abc1b2fded2d09d45e5b39c1e"
     },
     {
       "source": ".kiro/skills/kiwi/SKILL.md",
       "target": ".agents/skills/kiwi/SKILL.md",
       "source_sha256": "cb7cb4d5d7cb4d56dd1925fd452dbf12dc4fb58d6cbe13bc1c44ff8a088d3120",
-      "target_sha256": "6d0b5b195852ed3d71cc62d255aa53a7e81abf6aedfdc96aadb6c719574f1d54"
+      "target_sha256": "6f181824f89ac8ea9628bdc40a19057dd1306c92882c5468a5019f0c2eebf0ce"
     },
     {
       "source": ".kiro/skills/kiwi/assets/plantillas/brief.md",
@@ -452,7 +550,7 @@
       "source": ".kiro/skills/kiwi/references/fidelidad.md",
       "target": ".agents/skills/kiwi/references/fidelidad.md",
       "source_sha256": "f30747324b15cd2a2c0eb49adebf6cf5e43d8cb3d59511ae961d8a4044d41ce1",
-      "target_sha256": "f30747324b15cd2a2c0eb49adebf6cf5e43d8cb3d59511ae961d8a4044d41ce1"
+      "target_sha256": "ef351e714aebdde6c012a014c93646b102b36edc9a754f9e5766b26a5fe358bb"
     },
     {
       "source": ".kiro/skills/kiwi/references/geometry-contract.md",
@@ -476,7 +574,7 @@
       "source": ".kiro/skills/kiwi/references/validacion.md",
       "target": ".agents/skills/kiwi/references/validacion.md",
       "source_sha256": "6c6789e97c19853d9465caa1838da718a5ee304c5165624f659bdff392b599bc",
-      "target_sha256": "6c6789e97c19853d9465caa1838da718a5ee304c5165624f659bdff392b599bc"
+      "target_sha256": "a94dd4eceea9ce6c8f1f9eeb46b2894df370d84eb51a2c555270562fff714506"
     },
     {
       "source": ".kiro/skills/kiwi/references/wireframing.md",
@@ -494,7 +592,7 @@
       "source": ".kiro/skills/lima/README.md",
       "target": ".agents/skills/lima/README.md",
       "source_sha256": "bb57a39b7a5dfcba90dbd4d46976b272934ddbcf9de2908401a270649bbe14c2",
-      "target_sha256": "13e56796d77538b2fe4921f75736a085f83037263f2e6c1a5db5c8915af47577"
+      "target_sha256": "960658fcd8feafcd81fcde224b7f9778ff6a78f94326efeb6a669a8168b434df"
     },
     {
       "source": ".kiro/skills/lima/SKILL.md",
@@ -626,7 +724,7 @@
       "source": ".kiro/skills/lima/scripts/init-project.sh",
       "target": ".agents/skills/lima/scripts/init-project.sh",
       "source_sha256": "4c21e00baf24e963faa9f6c345efbb922959f7a5eeb6d267ec111c0ee99beda2",
-      "target_sha256": "9ba89bf62ad029c6a107fd3394ce6c7f720e64f37415ac23bd8b6c5b8175c119"
+      "target_sha256": "3acf4e62c5b95c8473c4b85d73523c4db1d8e9a3c268f9de881a8b5669c92af2"
     },
     {
       "source": ".kiro/skills/lima/scripts/parse_intake.py",
@@ -638,7 +736,7 @@
       "source": ".kiro/skills/mora-docs/SKILL.md",
       "target": ".agents/skills/mora-docs/SKILL.md",
       "source_sha256": "de72553da82331bc6840a130fba6b08305af134bc6be5db374ad8a41d7f4bde8",
-      "target_sha256": "c55bd49b374fef173d65f8af755c61097eeb344042bf007fde9fb6a1c1b0797c"
+      "target_sha256": "9999f4604447eaf6da485718d0bb13f455af7abc26f55ad281d88b78fe7e8ef0"
     },
     {
       "source": ".kiro/skills/mora-docs/documentation-round-standard.md",

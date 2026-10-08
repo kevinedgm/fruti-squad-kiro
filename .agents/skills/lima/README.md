@@ -30,7 +30,7 @@ La skill es pública y reutilizable. En un repo que nunca ha visto no hay perfil
 Después genera el perfil y scaffoldea las carpetas a las que apunta (Design Hub, registry, harness de QA con Playwright opcional). Para un bootstrap no interactivo de las carpetas, un comando:
 
 ```bash
-bash scripts/init-project.sh \
+bash .agents/skills/lima/scripts/init-project.sh \
   --name "<project-name>" --design-system "<design-system-name>" \
   --hub "design-hub" --qa playwright
 ```

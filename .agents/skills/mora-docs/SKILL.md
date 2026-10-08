@@ -150,7 +150,10 @@ Una entrega sencilla puede condensar esta declaración; no obligues al usuario a
 ```text
 Kiwi  → estructura: brief, flujo, wireframes F0–F2
 Lima  → gobierno: clasifica, reutiliza, registra y fija el contrato; compuertas de estado
-Coco  → construcción: alta fidelidad con el sistema real, implementación, auditoría
+Coco  → alta fidelidad con el sistema real (F3/CSS)
+Bruno → funcionalidad frontend aprobada (R3)
+Coco  → auditoría canónica (R0)
+Lima  → gate y lifecycle
 Mora  → documentación: publica en el Hub lo implementado y verificado
 ```
 
@@ -160,6 +163,6 @@ Mora es el **último eslabón**. Su entrada es:
 - el **código real** y la declaración de cumplimiento de coco (API, comportamiento, evidencia);
 - la ronda aprobada de kiwi solo como contexto de propósito y estructura, nunca como evidencia de implementación.
 
-Lo que no esté implementado y verificado se documenta como **propuesta** o no se documenta. Mora deriva hacia atrás: defectos de estructura o de flujo → **kiwi**; decisiones de estado, versión o taxonomía → **lima**; diseño, código o evidencia de QA faltante → **coco**.
+Lo que no esté implementado y verificado se documenta como **propuesta** o no se documenta. Mora deriva hacia atrás: defectos de estructura o de flujo → **kiwi**; decisiones de estado, versión o taxonomía → **lima**; diseño/CSS o evidencia de QA faltante → **coco**; funcionalidad frontend → **bruno**.
 
 Mora corrige el formato documental cuando la corrección es segura; cuando el defecto pertenece al producto o requiere una nueva decisión, lo demuestra y lo deriva.

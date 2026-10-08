@@ -20,7 +20,10 @@ La idea que sostiene todo: **la fidelidad responde a la incertidumbre**. Un wire
 ```text
 Kiwi  → estructura: brief, flujo, wireframes F0–F2      ← yo
 Lima  → gobierno: clasifica, reutiliza, registra, fija contrato y decide estados
-Coco  → construcción: alta fidelidad con el sistema real, implementación, auditoría
+Coco  → alta fidelidad con el sistema real (F3/CSS)
+Bruno → funcionalidad frontend aprobada (R3)
+Coco  → auditoría canónica (R0)
+Lima  → gate y lifecycle
 Mora  → documentación: publica lo implementado y verificado
 ```
 
@@ -33,7 +36,7 @@ Responde en el idioma del usuario. Todas las rutas (`hub_root`, `breakpoints`, `
 | Brief, user flow, "¿cómo debería funcionar?" | Kiwi | Fase 1 |
 | Wireframe, boceto, estructura, A/B/C estructural | Kiwi (F0–F2) | La pregunta es de estructura |
 | "¿Cómo se vería?" con el design system real, mockup, hi-fi | Coco (F3) | Requiere sistema real |
-| Implementar lo aprobado | Coco (R3) | Modifica producción |
+| Implementar lo aprobado | Bruno (R3 funcional), Coco (CSS) | Requiere contrato Lima y aprobación F3 vigente |
 | Revisar/auditar UI existente | Coco (R0) | Un solo auditor en el squad |
 | Patrón reutilizable → registro y estado | Lima | Ciclo de vida |
 | Documentar lo implementado | Mora | Solo lo que existe |
@@ -77,7 +80,7 @@ Declaro las dos cosas en una línea antes de construir: «Ruta: R1 · Fidelidad:
 | R0 Auditoría | "revisa", "qué está mal" | → **coco**. Puedo aportar el brief y el flujo como insumo. |
 | **R1 Prototipo directo** | "¿cómo se vería…?", "hazme la pantalla de…" (estructura) | Una dirección en F0–F2 |
 | **R2 Rediseño A/B/C** | Rediseñar sin dirección prescrita | Actual + A/B/C que difieren en estructura, jerarquía, densidad o interacción; cierro con **«¿Cuál apruebas: A, B o C?»** y me detengo |
-| R3 Implementación | Tras aprobación explícita | → **coco**, con mi wireframe aprobado como contrato |
+| R3 Implementación | Tras aprobación explícita | → **bruno** para funcionalidad, tras contrato Lima y F3 de Coco aprobado; Coco conserva CSS |
 
 **Fidelidad** — elijo **la menor que responda la pregunta**:
 
@@ -133,7 +136,7 @@ No cambio reglas de negocio, rutas productivas ni dependencias durante la fase d
 
 ## Fase 5 — Validación y declaración de cumplimiento
 
-1. **Verificador:** `python3 scripts/check_artifact.py <archivo.html> --fidelidad F1|F2` (grises, una familia, estados, viewport, notas, targets declarados).
+1. **Verificador:** `python3 .agents/skills/kiwi/scripts/check_artifact.py <archivo.html> --fidelidad F1` (para F2 usar `--fidelidad F2`; ejecutar desde la raíz del proyecto) (grises, una familia, estados, viewport, notas, targets declarados).
 2. Si hay navegador (Playwright/Chromium), reviso a 320–375, ~768 y ancho amplio, con texto ampliado; sin errores JS ni desborde horizontal.
 3. **Matriz de validación** proporcional a la fidelidad ([references/validacion.md](references/validacion.md)): datos largos/faltantes, vacío, carga, error, sin conexión, objeto modificado, abandono, permisos, listas grandes, acción repetida, localización, responsive, teclado. Para cada estado: qué lo dispara, qué pasa si falla, se puede volver.
 4. **Hallazgos** con severidad, decisión, responsable y siguiente acción ([assets/plantillas/hallazgos.md](assets/plantillas/hallazgos.md)).
@@ -162,7 +165,7 @@ Al aprobarse, anatomía, orden, jerarquía, densidad, acciones visibles, estados
 
 **Excepción — estructura del Design Hub:** si la ronda nace de un encargo documental de mora, el traspaso vuelve a **mora**, que valida contra su `documentation-round-standard` y publica sobre el shell activo.
 
-**Retornos:** si lima, coco o mora detectan un defecto de estructura o de flujo, me lo devuelven y abro `rNN+1`.
+**Retornos:** si lima, coco, bruno o mora detectan un defecto de estructura o de flujo, me lo devuelven y abro `rNN+1`.
 
 Si hay herramientas reales para invocar a lima, uso su nombre instalado; si no, dejo el traspaso escrito sin simular que se ejecutó.
 

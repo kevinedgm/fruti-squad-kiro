@@ -13,7 +13,7 @@
 # Hub, or registry, and prints the next commands + human-only TODOs.
 #
 # Usage:
-#   bash scripts/init-project.sh \
+#   bash .agents/skills/lima/scripts/init-project.sh \
 #     --name "<project-name>" \
 #     --design-system "<design-system-name>" \
 #     --hub "design-hub" \

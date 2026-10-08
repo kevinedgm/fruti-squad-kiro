@@ -43,7 +43,7 @@ También puedes hablar de forma natural: «rediseña este formulario», «ahora 
 | Mora | Documentación implementada y verificada | `$mora-docs` | `mora` |
 | Fruti Squad | Coordinación y compuertas | `$fruti-squad` | `fruti-squad` |
 
-Impeccable y Improve Animations conservan sus procedimientos y recursos. Los cuatro helpers nativos de Impeccable se incluyen también en `.codex/agents`.
+Impeccable conserva sus procedimientos y recursos. Improve Animations audita y escribe planes; su variante `execute` entrega el plan al squad y respeta las compuertas, sin modificar código como asesor. Los cuatro helpers nativos de Impeccable se incluyen también en `.codex/agents`.
 
 ## Flujo y calidad
 
@@ -81,3 +81,17 @@ Si no hay subagentes, declarar ejecución secuencial de roles con las mismas com
 Ver la [guía operativa](docs/codex-guia-operativa.md) para estructura completa, contratos, aprobaciones, creación de skills/agentes, tematización, verificaciones y límites heredados.
 
 MIT · [LICENSE](LICENSE)
+
+## Probar la instalación
+
+Abre Codex en la raíz de tu proyecto y selecciona `$fruti-squad` (o `/skills`). Prueba:
+
+```text
+Usa $fruti-squad para diseñar un formulario de registro. Comienza por Kiwi F1/F2, registra los estados y espera mi aprobación antes de pasar a F3.
+```
+
+Para comprobar los límites: «Solo audita esta UI; no cambies el código» debe ir a Coco R0. «Optimiza solo esta consulta SQL» no debe activar el flujo UI. Los prompts completos están en `test/activation-cases.json`.
+
+## Paquete de plugin
+
+`.codex-plugin/plugin.json` declara las ocho skills con el formato de compatibilidad soportado. Es un paquete de skills para pruebas locales; no está publicado en el directorio de plugins. Para mantener el flujo completo se requiere instalar en el proyecto con npm: esto provisiona `AGENTS.md`, `.fruti` y los agentes nativos, que el manifiesto de skills por sí solo no instala. No habilites simultáneamente copias de estas skills por plugin y por repo.

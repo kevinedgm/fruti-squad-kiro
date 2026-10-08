@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-08",
+  "surface": "Independent agent; written decisions, not Codex CLI activation",
+  "inputs": "Skill name/description, raw prompts without expected answers; selected skill body and AGENTS.md",
+  "matched": 12,
+  "total": 12,
+  "decisions": [
+    {
+      "id": "structure",
+      "skill": "kiwi",
+      "action": "Preparar el brief funcional, flujo y wireframe F0–F2 en grises; la aprobación estructural pendiente bloquea el handoff dependiente a Lima, y cualquier decisión de negocio que altere la estructura debe resolverse antes."
+    },
+    {
+      "id": "contract",
+      "skill": "lima",
+      "action": "Resolver el perfil activo, clasificar la pieza y revisar reutilización en el registry para fijar contrato y tokens; si falta perfil se requiere intake y si el alcance es estructural falta primero la ronda aprobada de Kiwi."
+    },
+    {
+      "id": "visual",
+      "skill": "coco",
+      "action": "Verificar el handoff vigente, perfil, estructura y contrato aprobados y preparar F3/CSS con el sistema real conservando la geometría; la funcionalidad corresponde a Bruno y queda bloqueada hasta aprobación F3 vigente."
+    },
+    {
+      "id": "functional",
+      "skill": "bruno",
+      "action": "Verificar estado, handoff, contrato, registry y F3/CSS aprobados de la ronda e implementar API y estados sin tocar CSS; una API real ausente o entradas no vigentes bloquean esa implementación y deben derivarse al dueño."
+    },
+    {
+      "id": "docs",
+      "skill": "mora-docs",
+      "action": "Resolver perfil, registry, código real y evidencia QA para documentar API y estados en modo M2 sobre el shell activo; cualquier dato o preview sin evidencia debe marcarse no verificado o pendiente y no inventarse."
+    },
+    {
+      "id": "refine",
+      "skill": "impeccable",
+      "action": "Preparar el contexto de Impeccable y el playbook polish para revisar la pieza preservando contrato e identidad; Lima gobierna los hallazgos y Coco aplica CSS, mientras cualquier cambio estructural o material requiere retorno y aprobación de la ronda correspondiente."
+    },
+    {
+      "id": "motion",
+      "skill": "improve-animations",
+      "action": "Iniciar recon de stack, superficie de motion y tokens para auditar y priorizar planes autocontenidos sin modificar producto; tras presentar hallazgos se espera selección del usuario salvo ejecución no interactiva y la falta de superficie bloquea el análisis."
+    },
+    {
+      "id": "full",
+      "skill": "fruti-squad",
+      "action": "Resolver política, estado, perfil y handoff e iniciar Kiwi para coordinar secuencialmente estructura, contrato, F3, Bruno, R0, gates y Mora; no avanzar etapas dependientes sin sus entradas y aprobaciones vigentes ni sustituir evidencia por resultados simulados."
+    },
+    {
+      "id": "backend",
+      "skill": null,
+      "action": "Trabajar únicamente sobre la consulta SQL del backend fuera del squad de UI; para una optimización concreta faltan la consulta, esquema y evidencia de rendimiento, sin activar ninguna de estas ocho skills."
+    },
+    {
+      "id": "approval",
+      "skill": "fruti-squad",
+      "action": "Solicitar aprobación del F3 de r03 y mantener bloqueado R3; la compliance de r02 no habilita el gate de r03 y stable requiere implementación verificada, R0 de esa misma ronda y las autorizaciones de lifecycle correspondientes."
+    },
+    {
+      "id": "audit",
+      "skill": "coco",
+      "action": "Activar R0 directo para inspeccionar la UI y emitir hallazgos priorizados y compliance sin cambios; un build correcto no certifica apariencia y las comprobaciones visuales o de navegador no realizadas deben declararse no verificadas."
+    },
+    {
+      "id": "motion-execute",
+      "skill": "improve-animations",
+      "action": "Preparar el handoff de plans/001-menu.md a Fruti Squad bajo contrato y compuertas existentes, manteniendo al advisor sin ejecución sobre producto; la aprobación F3 ausente bloquea la implementación dependiente y el advisor no puede certificarla."
+    }
+  ]
+}

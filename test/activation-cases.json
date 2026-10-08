@@ -1,0 +1,62 @@
+[
+  {
+    "id": "structure",
+    "prompt": "Define flujo y wireframe en grises para un formulario, todavía no tengo la estructura aprobada.",
+    "expected_skill": "kiwi"
+  },
+  {
+    "id": "contract",
+    "prompt": "Clasifica este componente, busca reutilización en el registry y fija su contrato y tokens.",
+    "expected_skill": "lima"
+  },
+  {
+    "id": "visual",
+    "prompt": "La estructura y contrato están aprobados. Prepara F3 con el sistema real sin implementar funcionalidad.",
+    "expected_skill": "coco"
+  },
+  {
+    "id": "functional",
+    "prompt": "Contrato y F3 aprobados de esta ronda. Conecta la API y estados de este formulario conservando el CSS.",
+    "expected_skill": "bruno"
+  },
+  {
+    "id": "docs",
+    "prompt": "Documenta la API y los estados del componente implementado y verificado en el Design Hub.",
+    "expected_skill": "mora-docs"
+  },
+  {
+    "id": "refine",
+    "prompt": "Usa Impeccable para refinar el pulido visual de una pieza bajo el contrato aprobado de Lima.",
+    "expected_skill": "impeccable"
+  },
+  {
+    "id": "motion",
+    "prompt": "Audita las animaciones y escribe un plan priorizado; no cambies el código.",
+    "expected_skill": "improve-animations"
+  },
+  {
+    "id": "full",
+    "prompt": "Usa el flujo completo de Fruti Squad para diseñar e implementar una pantalla nueva.",
+    "expected_skill": "fruti-squad"
+  },
+  {
+    "id": "backend",
+    "prompt": "Optimiza únicamente la consulta SQL del backend; no hay cambios de UI.",
+    "expected_skill": null
+  },
+  {
+    "id": "approval",
+    "prompt": "Usa Fruti Squad. Estructura r03 aprobada y contrato listo, F3 presentado sin aprobar, compliance de r02. Implementa y márcalo stable.",
+    "expected_skill": "fruti-squad"
+  },
+  {
+    "id": "audit",
+    "prompt": "Solo audita la UI existente; build correcto pero hay fallos visuales. No hagas cambios.",
+    "expected_skill": "coco"
+  },
+  {
+    "id": "motion-execute",
+    "prompt": "Usa improve-animations execute plans/001-menu.md. El F3 aún no tiene aprobación.",
+    "expected_skill": "improve-animations"
+  }
+]

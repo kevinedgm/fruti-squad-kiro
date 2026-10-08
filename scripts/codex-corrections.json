@@ -1,0 +1,98 @@
+{
+  "kiwi/SKILL.md": [
+    {
+      "before": "| Implementar lo aprobado | Coco (R3) | Modifica producción |",
+      "after": "| Implementar lo aprobado | Bruno (R3 funcional), Coco (CSS) | Requiere contrato Lima y aprobación F3 vigente |"
+    },
+    {
+      "before": "→ **coco**, con mi wireframe aprobado como contrato",
+      "after": "→ **bruno** para funcionalidad, tras contrato Lima y F3 de Coco aprobado; Coco conserva CSS"
+    },
+    {
+      "before": "`python3 scripts/check_artifact.py <archivo.html> --fidelidad F1|F2`",
+      "after": "`python3 .agents/skills/kiwi/scripts/check_artifact.py <archivo.html> --fidelidad F1` (para F2 usar `--fidelidad F2`; ejecutar desde la raíz del proyecto)"
+    },
+    {
+      "before": "Coco  → construcción: alta fidelidad con el sistema real, implementación, auditoría",
+      "after": "Coco  → alta fidelidad con el sistema real (F3/CSS)\nBruno → funcionalidad frontend aprobada (R3)\nCoco  → auditoría canónica (R0)\nLima  → gate y lifecycle"
+    },
+    {
+      "before": "si lima, coco o mora detectan",
+      "after": "si lima, coco, bruno o mora detectan"
+    }
+  ],
+  "mora-docs/SKILL.md": [
+    {
+      "before": "Coco  → construcción: alta fidelidad con el sistema real, implementación, auditoría",
+      "after": "Coco  → alta fidelidad con el sistema real (F3/CSS)\nBruno → funcionalidad frontend aprobada (R3)\nCoco  → auditoría canónica (R0)\nLima  → gate y lifecycle"
+    },
+    {
+      "before": "diseño, código o evidencia de QA faltante → **coco**.",
+      "after": "diseño/CSS o evidencia de QA faltante → **coco**; funcionalidad frontend → **bruno**."
+    }
+  ],
+  "kiwi/references/fidelidad.md": [
+    {
+      "before": "| Construirlo en producción | R3 | coco |",
+      "after": "| Construirlo en producción | R3 | bruno (funcionalidad), coco (CSS) |"
+    },
+    {
+      "before": "kiwi entrega F0 y traspasa a coco",
+      "after": "kiwi entrega F0 aprobado, lima fija el contrato y traspasa a coco"
+    }
+  ],
+  "coco/SKILL.md": [
+    {
+      "before": "Si una sección heredada atribuye todo R3 a Coco, interpreta esa parte como capa visual/CSS y handoff a Bruno.",
+      "after": "R3 aquí designa únicamente la capa visual/CSS; entregar la funcionalidad a Bruno y volver para la auditoría R0."
+    },
+    {
+      "before": "kiwi → lima → coco → mora",
+      "after": "kiwi → lima → coco F3 → bruno R3 → coco R0 → lima gate → mora"
+    },
+    {
+      "before": "Coco  → construcción: alta fidelidad con el sistema real (F3), implementación (R3), auditoría (R0)   ← yo",
+      "after": "Coco  → alta fidelidad (F3) y CSS aprobado   ← yo\nBruno → funcionalidad frontend aprobada (R3)\nCoco  → auditoría canónica (R0)   ← yo\nLima  → gate y lifecycle"
+    },
+    {
+      "before": "si el usuario prefiere seguir contigo, sigue y declara la desviación.",
+      "after": "conservar la solicitud como propuesta y detener F3/R3 hasta disponer de las entradas y aprobaciones requeridas; una desviación declarada no permite PASS."
+    }
+  ],
+  "improve-animations/SKILL.md": [
+    {
+      "before": "When this skill is first invoked without a specific question, respond only with:\n\n> I'm ready to audit your animations and plan the fixes, my knowledge comes from Emil Kowalski's animation philosophy.\n\nDo not provide any other information until the user asks a question.",
+      "after": "On a bare invocation, start recon of the active project and continue the audit workflow below. If no project or motion surface is available, ask for that missing input. Respond in the user's language."
+    },
+    {
+      "before": "It does not review a single diff (that's `review-animations`), and it does not implement fixes itself.",
+      "after": "It does not implement fixes itself. Use AUDIT.md as the local motion criteria; Bruno verifies functional changes and Coco performs the canonical R0 review of the resulting UI."
+    },
+    {
+      "before": "If asked to \"just fix it\", decline and point to `improve-animations execute <plan>` or to running the plan with any agent.",
+      "after": "If asked to \"just fix it\", produce the plan and hand it to Fruti Squad: Lima validates contract/tokens, Coco owns F3/CSS, and Bruno owns functional R3. Reuse explicit approvals for the same scope; obtain missing structural/F3 approvals before dependent implementation. Return through Coco R0 → Lima gate → Mora. The advisor never dispatches an executor that bypasses these gates."
+    },
+    {
+      "before": "| `execute <plan>` | Dispatch an executor subagent to implement the plan in an isolated worktree, then review its diff with the `review-animations` bar and render a verdict |",
+      "after": "| `execute <plan>` | Hand off the plan to Fruti Squad under the existing contract and approval gates. This advisor remains read-only on product source; it does not execute or certify the implementation. |"
+    }
+  ],
+  "lima/README.md": [
+    {
+      "before": "bash scripts/init-project.sh",
+      "after": "bash .agents/skills/lima/scripts/init-project.sh"
+    }
+  ],
+  "lima/scripts/init-project.sh": [
+    {
+      "before": "bash scripts/init-project.sh",
+      "after": "bash .agents/skills/lima/scripts/init-project.sh"
+    }
+  ],
+  "kiwi/references/validacion.md": [
+    {
+      "before": "`scripts/check_artifact.py` sin errores.",
+      "after": "`python3 .agents/skills/kiwi/scripts/check_artifact.py <archivo.html> --fidelidad F1` sin errores (usar F2 cuando corresponda; ejecutar desde la raíz del proyecto)."
+    }
+  ]
+}

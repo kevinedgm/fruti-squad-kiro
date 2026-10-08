@@ -36,7 +36,7 @@ La equivalencia es verificable en archivos: `docs/codex-parity.json` enumera rec
 
 Las fuentes Kiro quedan preservadas en la rama como línea base, pero el instalador Codex solo distribuye `.agents`, `.codex`, `.fruti` y `AGENTS.md`. No instala `.kiro`.
 
-La normalización de frontmatter deja `name` y `description` válidos. Lima tenía una descripción larga con un `:` sin comillas que invalidaba su YAML; la versión Codex usa una descripción corta válida y conserva el cuerpo del protocolo. Los helpers TOML de Impeccable también se exponen en `.codex/agents`.
+La normalización de frontmatter deja `name` y `description` válidos. Lima tenía una descripción larga con un `:` sin comillas que invalidaba su YAML; la versión Codex usa una descripción corta válida y conserva el protocolo con las correcciones explícitas de propiedad y rutas registradas en `scripts/codex-corrections.json`. Los helpers TOML de Impeccable también se exponen en `.codex/agents`.
 
 Igualdad de contratos y recursos significa igualdad de requisitos. La calidad de una entrega concreta se verifica ejecutando el pipeline sobre esa interfaz y su evidencia; una prueba de empaquetado no demuestra calidad visual.
 
@@ -223,7 +223,7 @@ interface:
 
 La descripción decide el matching inicial. El cuerpo se lee al activar la skill. Mantener las reglas y datos del proyecto en el perfil, no incrustar su nombre, paleta, stack ni entidades en la skill.
 
-En esta rama las siete skills heredadas se generan de `.kiro/skills`; `fruti-squad` es la entrada de coordinación propia. Para conservar paridad al modificar la fuente, ejecutar `scripts/build-codex.py` y revisar el resultado. No editar solo una copia generada y después regenerarla accidentalmente. Si se desea evolucionar Codex independientemente, declarar esa ruptura de paridad y cambiar el modelo de mantenimiento antes.
+En esta rama las siete skills heredadas se generan de `.kiro/skills`; `fruti-squad` es la entrada de coordinación propia. Para conservar paridad al modificar la fuente, ejecutar `scripts/build-codex.py` y revisar el resultado. No editar solo una copia generada y después regenerarla accidentalmente. Las correcciones de contradicciones heredadas se declaran con texto anterior/nuevo en `scripts/codex-corrections.json`; el generador exige que el texto de origen exista y el validador compara la transformación completa. La política, runtimes y contratos compartidos permanecen iguales al commit de origen.
 
 ## 7. Crear o modificar un agente
 

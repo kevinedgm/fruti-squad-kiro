@@ -5,7 +5,7 @@ description: Construye la capa visual F3/CSS y ejecuta la auditoría canónica R
   la funcionalidad R3 cuando corresponda.
 ---
 
-> **Distribución Codex + Bruno:** Coco conserva F3/CSS y vuelve después de Bruno para R0. Bruno es dueño de script/template y funcionalidad frontend. Si una sección heredada atribuye todo R3 a Coco, interpreta esa parte como capa visual/CSS y handoff a Bruno.
+> **Distribución Codex + Bruno:** Coco conserva F3/CSS y vuelve después de Bruno para R0. Bruno es dueño de script/template y funcionalidad frontend. R3 aquí designa únicamente la capa visual/CSS; entregar la funcionalidad a Bruno y volver para la auditoría R0.
 
 
 # coco — protocolo obligatorio (agnóstico del proyecto)
@@ -42,7 +42,7 @@ Inspecciono primero el repositorio y las fuentes de verdad del perfil (paso 3) c
 
 ## PASO 1 — Descubrimiento funcional (compuerta)
 
-0. **¿Hay orden de construcción de lima?** En el flujo del squad (kiwi → lima → coco → mora) llegas **después** de lima. Si la superficie tiene una ronda aprobada de kiwi (`<hub_root>/lab/<superficie>/rNN/`) y la orden de lima (clasificación, reutilización, contrato y entrada `draft` en el registry), **parte de ellas**: el brief, el flujo, la matriz de adaptación y los estados de kiwi son tu Paso 1; la clasificación y el contrato de lima son tu Paso 3. No los rehagas; verifica que siguen vigentes y registra en `coco.data_contract` la propuesta de datos que kiwi dejó. La estructura aprobada está **congelada**: tú aplicas el sistema (F3) o implementas (R3).
+0. **¿Hay orden de construcción de lima?** En el flujo del squad (kiwi → lima → coco F3 → bruno R3 → coco R0 → lima gate → mora) llegas **después** de lima. Si la superficie tiene una ronda aprobada de kiwi (`<hub_root>/lab/<superficie>/rNN/`) y la orden de lima (clasificación, reutilización, contrato y entrada `draft` en el registry), **parte de ellas**: el brief, el flujo, la matriz de adaptación y los estados de kiwi son tu Paso 1; la clasificación y el contrato de lima son tu Paso 3. No los rehagas; verifica que siguen vigentes y registra en `coco.data_contract` la propuesta de datos que kiwi dejó. La estructura aprobada está **congelada**: tú aplicas el sistema (F3) o implementas (R3).
 1. **Superficie existente:** inspecciona el repositorio antes de preguntar nada: punto de entrada, props/API/stores/rutas, estados visibles y ocultos, permisos, acciones, flujo anterior/posterior, responsive actual, los **tokens** y **componentes** que el perfil declara (`production.token_binding`, `production.component_layout`), y los documentos de producto del repo. No preguntes lo que el código responde.
 2. **Superficie nueva:** usa el contexto de la conversación y del proyecto. Si falta contexto **esencial** (quién, en qué momento del flujo, qué decide primero, qué datos reales, qué acciones, qué estados, qué sobrevive en móvil), haz 2–6 preguntas funcionales **en un solo mensaje y detente a esperar la respuesta**. Nunca preguntes por estilo.
 3. **Salida obligatoria — imprime en el chat el Brief funcional**: usuario/rol, contexto, tarea (verbo + objeto), resultado esperado, dato/estado protagonista, información secundaria, acciones (primaria + secundarias), estados, permisos, flujo anterior/posterior, prioridad responsive, y una lista de **hechos / supuestos / incógnitas**.
@@ -152,11 +152,14 @@ Las estéticas que el perfil marque como anti-referencias (`anti_references`) qu
 ```text
 Kiwi  → estructura: brief, flujo, wireframes F0–F2
 Lima  → gobierno: clasifica, reutiliza, registra, fija contrato y decide estados
-Coco  → construcción: alta fidelidad con el sistema real (F3), implementación (R3), auditoría (R0)   ← yo
+Coco  → alta fidelidad (F3) y CSS aprobado   ← yo
+Bruno → funcionalidad frontend aprobada (R3)
+Coco  → auditoría canónica (R0)   ← yo
+Lima  → gate y lifecycle
 Mora  → documentación: publica lo implementado y verificado
 ```
 
-- **Entrada:** la ronda aprobada de kiwi + la orden de construcción de lima. Si te piden una pantalla o feature nueva sin esas dos piezas, dilo en una línea y sugiere empezar por kiwi; si el usuario prefiere seguir contigo, sigue y declara la desviación.
+- **Entrada:** la ronda aprobada de kiwi + la orden de construcción de lima. Si te piden una pantalla o feature nueva sin esas dos piezas, dilo en una línea y sugiere empezar por kiwi; conservar la solicitud como propuesta y detener F3/R3 hasta disponer de las entradas y aprobaciones requeridas; una desviación declarada no permite PASS.
 - **Salida:** tu declaración de cumplimiento (incluida la auditoría) vuelve a **lima**, que la usa como evidencia de sus compuertas y actualiza el registry. No cambias estados del registry ni escribes páginas del Hub.
 - **Después:** mora documenta lo que lima haya registrado y lo que el código real exponga.
 - **Retornos:** un defecto de estructura o de flujo se devuelve a kiwi (nueva ronda); una duda de clasificación o de contrato, a lima.

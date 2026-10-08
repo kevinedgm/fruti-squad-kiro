@@ -4,6 +4,8 @@ import hashlib, json, pathlib, re, subprocess, tomllib, yaml
 root = pathlib.Path(__file__).resolve().parents[1]
 manifest = json.loads((root/'docs/codex-parity.json').read_text())
 errors = []
+# Fixes are explicitly reviewable and must agree with the checked-in patch ledger.
+assert manifest.get('corrections') == json.loads((root/'scripts/codex-corrections.json').read_text())
 def check(ok, message):
     if not ok: errors.append(message)
 def digest(p): return hashlib.sha256(p.read_bytes()).hexdigest()
@@ -16,6 +18,9 @@ for row in manifest['skills']:
     src = (root/row['source']).read_text()
     dst = (root/row['target']).read_text()
     expected = src.replace('.kiro/skills', '.agents/skills').replace('.kiro/steering/fruti-squad.md', 'AGENTS.md').replace('fruti-squad-kiro', 'fruti-squad-codex').replace('Kiro', 'Codex')
+    for correction in manifest.get('corrections',{}).get(row['source'].removeprefix('.kiro/skills/'),[]):
+        check(correction['before'] in expected, 'Stale declared correction: '+row['target'])
+        expected = expected.replace(correction['before'],correction['after'])
     if row['source'].endswith('/SKILL.md'):
         check(expected.split('---',2)[2]==dst.split('---',2)[2], 'Procedure body changed: '+row['target'])
     elif row['source'].endswith('/agents/openai.yaml'):
@@ -56,6 +61,10 @@ for p in (root/'.fruti/runtime').glob('*.yaml'):
     for op, settings in runtime['operations'].items():
         for ref in settings.get('references',[]) + settings.get('assets_on_demand',[]):
             check((root/resolve(ref)).is_file(), f'Missing runtime resource {p.name}:{op}: {ref}')
+plugin = json.loads((root/'.codex-plugin/plugin.json').read_text())
+check(plugin['skills']=='./.agents/skills/' and (root/plugin['skills']).is_dir(), 'Invalid plugin skills path')
+check(plugin['version']==json.loads((root/'package.json').read_text())['version'], 'Plugin/package version mismatch')
+check(set(manifest['corrections']).issubset({r['source'].removeprefix('.kiro/skills/') for r in manifest['skills']}), 'Correction target outside source inventory')
 # All adapted resources must be retained, and all native specialist bodies retain source instructions.
 check(len(list((root/'.kiro/skills').rglob('*')))>0, 'Missing baseline')
 check({r['source'] for r in manifest['skills']}=={p.relative_to(root).as_posix() for p in (root/'.kiro/skills').rglob('*') if p.is_file()}, 'Incomplete resource inventory')

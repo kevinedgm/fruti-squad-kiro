@@ -8,11 +8,11 @@
 | ¿Qué va primero? ¿Dónde vive cada cosa? ¿Cómo navego? | F1 lo-fi | kiwi |
 | ¿Cabe el contenido real? ¿Qué pasa en vacío/error? ¿Cómo cambia por espacio? | F2 mid-fi | kiwi |
 | ¿Cómo se percibe? ¿Qué microinteracción? ¿Listo para handoff visual? | F3 hi-fi | coco |
-| Construirlo en producción | R3 | coco |
+| Construirlo en producción | R3 | bruno (funcionalidad), coco (CSS) |
 
 ## Reglas
 
-- No es una escalera: se puede ir de F0 a F3 si el sistema es maduro y el patrón conocido (en ese caso, kiwi entrega F0 y traspasa a coco).
+- No es una escalera: se puede ir de F0 a F3 si el sistema es maduro y el patrón conocido (en ese caso, kiwi entrega F0 aprobado, lima fija el contrato y traspasa a coco).
 - Se puede terminar en F2 si la pregunta era estructural.
 - R2 exige diferencias de estructura, jerarquía, densidad o interacción. Cambiar colores no es una alternativa.
 - Sin design system real no existe F3: se detiene en F2 y se dice.

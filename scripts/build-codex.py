@@ -12,6 +12,7 @@ def write(path, text):
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(text)
 
+corrections = json.loads((ROOT / 'scripts/codex-corrections.json').read_text())
 records = []
 for src in sorted((ROOT / '.kiro/skills').rglob('*')):
     if not src.is_file():
@@ -20,6 +21,10 @@ for src in sorted((ROOT / '.kiro/skills').rglob('*')):
     dest = ROOT / '.agents/skills' / rel
     dest.parent.mkdir(parents=True, exist_ok=True)
     text = adapt(src.read_text())
+    for correction in corrections.get(rel.as_posix(), []):
+        if correction['before'] not in text:
+            raise ValueError('Stale correction: '+rel.as_posix())
+        text = text.replace(correction['before'], correction['after'])
     if rel.name == 'SKILL.md':
         _, front, body = text.split('---', 2)
         if rel.parts[0] == 'lima':
@@ -68,5 +73,5 @@ for src in sorted((ROOT / '.fruti').rglob('*')):
         shared.append({'path':src.relative_to(ROOT).as_posix(), 'sha256':hashlib.sha256(src.read_bytes()).hexdigest()})
 for record in records:
     record['target_sha256'] = hashlib.sha256((ROOT / record['target']).read_bytes()).hexdigest()
-write('docs/codex-parity.json', json.dumps({'version':1,'source_commit':BASE,'transformations':['.kiro/skills → .agents/skills', 'steering → AGENTS.md', 'Kiro/product command labels → Codex', 'SKILL metadata normalized to name+description; Lima description shortened only', 'Kiro agent body → native TOML developer_instructions; permissions intent documented', 'agents/openai.yaml UI metadata generated; Impeccable helpers exposed as native agents'], 'skills':records,'shared_unchanged':shared}, ensure_ascii=False, indent=2)+'\n')
+write('docs/codex-parity.json', json.dumps({'version':2,'source_commit':BASE,'corrections':corrections,'transformations':['.kiro/skills → .agents/skills', 'steering → AGENTS.md', 'Kiro/product command labels → Codex', 'SKILL metadata normalized to name+description; Lima description shortened only', 'Kiro agent body → native TOML developer_instructions; permissions intent documented', 'agents/openai.yaml UI metadata generated; Impeccable helpers exposed as native agents'], 'skills':records,'shared_unchanged':shared}, ensure_ascii=False, indent=2)+'\n')
 print(f'Built Codex adapter: {len(records)} skill resources; {len(shared)} unchanged shared files.')
