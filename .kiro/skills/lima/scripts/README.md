@@ -14,8 +14,8 @@ Ejecuta desde la **raíz del repo** del proyecto destino:
 
 ```bash
 bash <ruta-a-la-skill>/scripts/init-project.sh \
-  --name "Acme / PULZ" \
-  --design-system "PULZ" \
+  --name "<project-name>" \
+  --design-system "<design-system-name>" \
   --hub "design-hub" \
   --qa playwright
 ```

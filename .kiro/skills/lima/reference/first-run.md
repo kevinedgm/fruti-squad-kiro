@@ -48,8 +48,8 @@ El script parsea el intake (sin dependencias) y escribe el perfil con color_law/
 ```bash
 # desde la raíz del repo, apuntando a la ubicación de la skill:
 bash mis-agentes/skills/lima/scripts/init-project.sh \
-  --name "Acme / PULZ" \
-  --design-system "PULZ" \
+  --name "<project-name>" \
+  --design-system "<design-system-name>" \
   --hub "design-hub" \
   --qa playwright
 ```

@@ -14,8 +14,8 @@
 #
 # Usage:
 #   bash scripts/init-project.sh \
-#     --name "Acme / PULZ" \
-#     --design-system "PULZ" \
+#     --name "<project-name>" \
+#     --design-system "<design-system-name>" \
 #     --hub "design-hub" \
 #     --qa playwright
 #

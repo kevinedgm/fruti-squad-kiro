@@ -1,6 +1,6 @@
 # Design Hub — the laboratory
 
-Everything below `stable` is built and shown here; production is never touched during design. The Hub root and taxonomy come from the profile (`hub_root`, `hub_layout`) — never hardcode them here. (Example: the manik-lustre example profile puts the Hub at `Manik Design Hub/` with Design System / Responsive / Patrones UX / Flujos / Wireframes plus a shared stylesheet and `nav.js`; your project's taxonomy comes from your profile.)
+Everything below `stable` is built and shown here; production is never touched during design. The Hub root and taxonomy come from the profile (`hub_root`, `hub_layout`) — never hardcode them here.
 
 ## Where a piece goes
 

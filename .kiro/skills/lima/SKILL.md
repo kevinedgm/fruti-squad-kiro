@@ -18,7 +18,7 @@ The architectural brain of the design system. It turns simple, natural-language 
 
 **Project-agnostic core.** The skill itself contains no design-system, color, path, or stack specifics. Those live in the active **project profile** (see [reference/project-profile.md](reference/project-profile.md)). Load the active profile first, every session.
 
-**First run in a new project.** If there is no active profile yet (a fresh repo, or `profiles/` holds only `_TEMPLATE.md` and `examples/`), **initialize before designing**: generate a profile and scaffold the folders it points to (Design Hub, registry, optional QA harness). Run the guided flow or the one-command bootstrap in [reference/first-run.md](reference/first-run.md) / [scripts/init-project.sh](scripts/init-project.sh). A completed profile from a real project is kept as a reference at [profiles/examples/manik-lustre.md](profiles/examples/manik-lustre.md) — it is an example of a filled profile, never a default for other repos.
+**First run in a new project.** If there is no active profile yet (a fresh repo, or `profiles/` holds only `_TEMPLATE.md` and `examples/`), **initialize before designing**: generate a profile and scaffold the folders it points to (Design Hub, registry, optional QA harness). Run the guided flow or the one-command bootstrap in [reference/first-run.md](reference/first-run.md) / [scripts/init-project.sh](scripts/init-project.sh). Start from `profiles/_TEMPLATE.md`. This package intentionally does not ship completed profiles from real projects.
 
 ## Natural language is the interface
 
@@ -102,7 +102,7 @@ STABLE
 |---|---|
 | First run in a new project (no profile yet) — initialize | [reference/first-run.md](reference/first-run.md) + [scripts/README.md](scripts/README.md) |
 | The exact inputs to ask for on first run (fixed intake form + formats + mapping) | [reference/intake.md](reference/intake.md) |
-| The active project's system, tokens, paths, stack | the active profile in `profiles/` via [reference/project-profile.md](reference/project-profile.md) (example: [profiles/examples/manik-lustre.md](profiles/examples/manik-lustre.md)) |
+| The active project's system, tokens, paths, stack | the active profile in `profiles/` via [reference/project-profile.md](reference/project-profile.md) (start from `profiles/_TEMPLATE.md`) |
 | Understanding + classifying + intent | [reference/request-router.md](reference/request-router.md) |
 | Designing for purpose/experience before appearance (universal UX process) | [reference/design-process.md](reference/design-process.md) |
 | States, transitions, promotion gates | [reference/lifecycle.md](reference/lifecycle.md) |

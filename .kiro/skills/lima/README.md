@@ -31,7 +31,7 @@ Después genera el perfil y scaffoldea las carpetas a las que apunta (Design Hub
 
 ```bash
 bash scripts/init-project.sh \
-  --name "Acme / PULZ" --design-system "PULZ" \
+  --name "<project-name>" --design-system "<design-system-name>" \
   --hub "design-hub" --qa playwright
 ```
 
@@ -39,7 +39,7 @@ bash scripts/init-project.sh \
 
 ## Perfil de proyecto
 
-El núcleo de la skill no tiene nada específico de design system, color, ruta ni stack. Eso vive en `profiles/`. Parte de `profiles/_TEMPLATE.md`; un perfil ya completo de un proyecto real se conserva como referencia en `profiles/examples/manik-lustre.md` (design system Lustre, Manik Design Hub, Vue 3 + Tailwind) — un ejemplo, no un default para otros repos.
+El núcleo de la skill no contiene información específica de ningún producto, design system, ruta o stack. Todo eso vive en el perfil local del proyecto consumidor. Parte siempre de `profiles/_TEMPLATE.md`.
 
 ## Estado
 
@@ -51,7 +51,6 @@ La verdad persistente vive en el registry del perfil (la ruta es el `registry_pa
 |---|---|
 | `SKILL.md` | Router de lenguaje natural, principio rector, pipeline de dos fases, mapa de fases, reglas duras. |
 | `profiles/_TEMPLATE.md` | Plantilla de perfil en blanco y comentada para copiar en un proyecto nuevo. |
-| `profiles/examples/manik-lustre.md` | Ejemplo de un perfil completo (Lustre + Manik Design Hub + Vue/Tailwind). |
 | `scripts/init-project.sh` | Bootstrap de primera vez: genera un perfil + scaffoldea Hub/registry/QA. Acepta `--intake <archivo>` para un perfil completo. |
 | `scripts/parse_intake.py` | Parser sin dependencias para un intake YAML rellenado (lo usa `--intake`; sin PyYAML). |
 | `scripts/README.md` | Uso del script, flags y pasos posteriores. |

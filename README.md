@@ -995,7 +995,7 @@ Un perfil puede definir:
 - scripts de gobernanza;
 - configuración documental.
 
-Por eso este paquete **no instala un perfil fijo de ManikImpulsa ni de ningún otro producto**.
+Por eso este paquete **no incluye perfiles, ejemplos ni configuración perteneciente a proyectos reales**.
 
 Cada proyecto construye su propia configuración.
 

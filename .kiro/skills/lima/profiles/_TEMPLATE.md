@@ -8,7 +8,7 @@
 
   HOW TO USE
   1. Copy this file to profiles/<your-project>.md (lowercase, dashed).
-     e.g. profiles/acme-pulz.md
+     e.g. profiles/<project-name>.md
   2. Fill every field below by INSPECTING the repo (do not guess).
   3. Delete the fields that do not apply (e.g. runtime_qa if there is no
      browser QA harness yet) — but prefer scaffolding them (see scripts/).
@@ -19,8 +19,8 @@
 -->
 
 ```yaml
-name:                 # Human name of the profile. e.g. "Acme / PULZ"
-design_system:        # Name of the design system that is the visual truth. e.g. "PULZ"
+name:                 # Human name of the profile. e.g. "<project-name>"
+design_system:        # Name of the design system that is the visual truth. e.g. "<design-system-name>"
 
 truth_sources:        # Files that DEFINE tokens / visual law (real paths in this repo).
   # - path/to/tokens.(css|js|ts|json)     # design tokens (colors, spacing, radius, type)

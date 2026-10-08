@@ -4,7 +4,7 @@
 # Keys must match reference/intake.md exactly. AUTO = let the skill inspect the repo.
 
 project_name: "Acme Health"
-design_system_name: "PULZ"
+design_system_name: "<design-system-name>"
 
 color_law: |
   surface #FFFFFF     # page background

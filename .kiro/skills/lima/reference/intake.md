@@ -18,7 +18,7 @@ Antes de diseñar nada en un proyecto nuevo, la skill **pide un conjunto fijo de
 # Usa AUTO para que la skill inspeccione el repo y proponga un valor (te mostrará lo que encontró).
 
 project_name:            # REQUIRED. Nombre humano. p. ej. "Acme Health"
-design_system_name:      # REQUIRED. Nombre del sistema visual. p. ej. "PULZ". Si no existe, escribe NEW y la skill te ayuda a establecer uno mínimo.
+design_system_name:      # REQUIRED. Nombre del sistema visual del proyecto. Si no existe, escribe NEW y la skill te ayuda a establecer uno mínimo.
 
 # --- Ley visual (la única fuente de verdad visual) ---
 color_law: |             # REQUIRED (o NEW). Una línea por regla. Nombra el rol, el hex y el ÚNICO uso.

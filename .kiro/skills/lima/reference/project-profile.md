@@ -4,7 +4,7 @@ The skill core is universal. Everything project-specific — design system, toke
 
 ## Why
 
-The same skill must work on Lustre+Vue here and on, say, PULZ+React elsewhere. Nothing in `reference/*` (except this file) may hardcode a color, path, or framework. When a reference needs a project fact, it reads it from the active profile.
+The same skill must work across unrelated projects, frameworks and design systems without carrying information from one project into another. Nothing in `reference/*` (except this file) may hardcode a color, path, or framework. When a reference needs a project fact, it reads it from the active profile.
 
 ## Selecting the active profile
 
