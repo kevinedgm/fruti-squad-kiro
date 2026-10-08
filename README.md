@@ -1075,6 +1075,135 @@ npx fruti-squad-kiro init \
   --font "Inter"
 ```
 
+### ¿Y si después quiero cambiar el tema?
+
+No vuelvas a ejecutar todo el `init`. El starter vive en:
+
+```text
+.fruti/theme/config.json
+```
+
+Puedes cambiar solo una o varias entradas con:
+
+```bash
+npx fruti-squad-kiro theme [opciones]
+```
+
+Por ejemplo, cambiar únicamente la marca:
+
+```bash
+npx fruti-squad-kiro theme --brand "#7A1F5C"
+```
+
+Cambiar marca y acento:
+
+```bash
+npx fruti-squad-kiro theme \
+  --brand "#7A1F5C" \
+  --accent "#0F766E"
+```
+
+Cambiar forma y radios:
+
+```bash
+npx fruti-squad-kiro theme --shape pill --radius 12
+```
+
+Cambiar espaciado:
+
+```bash
+npx fruti-squad-kiro theme --space 5
+```
+
+Cambiar tipografía:
+
+```bash
+npx fruti-squad-kiro theme \
+  --font "Inter" \
+  --font-display "Instrument Serif" \
+  --font-size 16 \
+  --type-scale 1.3
+```
+
+Configurar colores de categoría:
+
+```bash
+npx fruti-squad-kiro theme --categories 6
+```
+
+Cambiar la estrategia de neutros:
+
+```bash
+npx fruti-squad-kiro theme \
+  --neutrals tinted \
+  --neutrals-hue accent
+```
+
+Activar o desactivar modo oscuro:
+
+```bash
+npx fruti-squad-kiro theme --dark
+npx fruti-squad-kiro theme --no-dark
+```
+
+Ver la configuración actual:
+
+```bash
+npx fruti-squad-kiro theme --show
+```
+
+Restablecer el starter:
+
+```bash
+npx fruti-squad-kiro theme --reset
+```
+
+`--reset` conserva el nombre del tema, pero devuelve las entradas visuales al preset de Fruti Squad.
+
+También puedes editar manualmente:
+
+```text
+.fruti/theme/config.json
+```
+
+Por ejemplo:
+
+```json
+{
+  "name": "Mi Design System",
+  "brand": "#7A1F5C",
+  "accent": "#0F766E",
+  "radius": 12,
+  "shape": "pill",
+  "space": 5,
+  "font": "Inter",
+  "fontDisplay": "Instrument Serif",
+  "fontSize": 16,
+  "typeScale": 1.3,
+  "neutrals": "tinted",
+  "neutralsHue": "accent",
+  "semanticCollision": "warn",
+  "categories": 6,
+  "dark": true
+}
+```
+
+La regla importante es:
+
+```text
+SÍ editar
+.fruti/theme/config.json
+
+NO editar como configuración del proyecto
+.fruti/defaults/theme.json
+```
+
+`.fruti/defaults/theme.json` es el preset reusable del paquete. `.fruti/theme/config.json` es la configuración propia del proyecto.
+
+Cambiar una entrada **no exige volver a declarar el resto**. El comando `theme` conserva todos los valores que no modificaste.
+
+No edites a mano variantes derivadas como `brand-strong`, `brand-soft`, `on-brand`, semánticos o colores oscuros derivados. Si necesitas una excepción avanzada, debe entrar por el contrato de tematización/`overrides`, no como un valor suelto dentro de un componente.
+
 ### Proyecto con design system existente
 
 ```bash
