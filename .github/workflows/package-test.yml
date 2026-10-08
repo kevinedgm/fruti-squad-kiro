@@ -23,7 +23,7 @@ jobs:
           TMP="$(mktemp -d)"
           cd "$TMP"
           npm init -y >/dev/null
-          npm install "$GITHUB_WORKSPACE/fruti-squad-kiro-0.1.0.tgz"
+          npm install "$GITHUB_WORKSPACE"/fruti-squad-kiro-*.tgz
           test -f .kiro/agents/fruti-squad.md
           test -f .kiro/agents/bruno.md
           test -f .kiro/skills/bruno/SKILL.md
