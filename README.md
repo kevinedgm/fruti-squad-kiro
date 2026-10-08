@@ -1026,28 +1026,81 @@ El objetivo es conservar comportamiento necesario sin heredar accidentalmente to
 
 ---
 
-# 15. Perfiles de proyecto
+# 15. Perfiles de proyecto y tematización
 
-Las Skills son reutilizables entre proyectos.
+Fruti Squad **no instala un perfil activo universal**. Instala una plantilla y un preset neutro; cada repositorio crea su propio perfil con:
 
-Las decisiones específicas de cada producto deben vivir en el **perfil del proyecto**, no hardcodeadas dentro del agente.
+```bash
+npx fruti-squad-kiro init
+```
 
-Un perfil puede definir:
+La tematización usa una estrategia de **configuración corta → tokens derivados**. No se pide una paleta completa ni una lista manual de cada estado.
 
-- framework;
-- lenguaje;
-- estrategia de estilos;
-- sistema de diseño;
-- rutas del Design Hub;
-- registry;
-- breakpoints de verificación;
-- accesibilidad objetivo;
-- scripts de gobernanza;
-- configuración documental.
+Defaults del starter:
 
-Por eso este paquete **no incluye perfiles, ejemplos ni configuración perteneciente a proyectos reales**.
+```json
+{
+  "brand": "#1F1F1F",
+  "accent": "#0B63CE",
+  "radius": 6,
+  "shape": "rounded",
+  "space": 4,
+  "font": "Instrument Sans",
+  "fontSize": 16,
+  "typeScale": 1.25,
+  "neutrals": "tinted",
+  "neutralsHue": "brand",
+  "semanticCollision": "warn",
+  "categories": 0,
+  "dark": true
+}
+```
 
-Cada proyecto construye su propia configuración.
+Si omites `primary`, usa `brand`; si omites `fontDisplay`, usa `font`. A partir de estas entradas, el contrato define la derivación de variantes `strong`, `soft`, `text`, `on-*`, semánticos, neutros, categorías y tema oscuro.
+
+### Inicialización rápida
+
+```bash
+npx fruti-squad-kiro init
+```
+
+### Personalizar el starter
+
+```bash
+npx fruti-squad-kiro init \
+  --brand "#7A1F5C" \
+  --accent "#0F766E" \
+  --shape pill \
+  --radius 12 \
+  --font "Inter"
+```
+
+### Proyecto con design system existente
+
+```bash
+npx fruti-squad-kiro init --theme existing --theme-source path/to/tokens.css
+```
+
+En modo `existing`, Fruti enlaza la fuente visual que ya posee el proyecto y **no crea otra verdad paralela**.
+
+Archivos relevantes:
+
+```text
+.fruti/defaults/theme.json       # preset reusable, nunca perfil activo
+.fruti/contracts/theming.yaml    # contrato de entradas, derivación y mínimos
+.fruti/theme/config.json         # input corto LOCAL del proyecto (starter)
+.kiro/skills/lima/profiles/...  # perfil local activo
+```
+
+La propiedad queda separada así:
+
+```text
+proyecto/usuario → inputs del tema
+contrato         → derivación
+componentes      → consumo de tokens
+```
+
+Los componentes no inventan colores, radios o espaciados para completar huecos del tema.
 
 ---
 
