@@ -2,6 +2,7 @@
 const path = require('path');
 const { install } = require('../lib/install.cjs');
 const { initProject } = require('../lib/init.cjs');
+const { updateTheme } = require('../lib/theme.cjs');
 
 const argv = process.argv.slice(2);
 const command = argv[0] && !argv[0].startsWith('-') ? argv.shift() : 'install';
@@ -25,6 +26,7 @@ if (command === 'help' || argv.includes('--help') || argv.includes('-h')) {
     'Usage:',
     '  fruti-squad-kiro install [--force] [--dry-run] [--target <path>]',
     '  fruti-squad-kiro init [options]',
+    '  fruti-squad-kiro theme [options]',
     '',
     'Init defaults:',
     '  --theme starter',
@@ -47,6 +49,18 @@ if (command === 'help' || argv.includes('--help') || argv.includes('-h')) {
     '  --dark | --no-dark',
     '  --hub <path> --qa none|playwright',
     '  --force',
+    '  --target <path>',
+    '',
+    'Theme options:',
+    '  --show                     print current .fruti/theme/config.json',
+    '  --reset                    restore starter defaults (keeps theme name)',
+    '  --brand <hex> --accent <hex> --primary <hex>',
+    '  --radius <px> --shape rounded|pill --space <px>',
+    '  --font <family> --font-display <family>',
+    '  --font-size <px> --type-scale <ratio>',
+    '  --neutrals tinted|pure --neutrals-hue brand|accent',
+    '  --semantic-collision warn|adjust --categories <0..12>',
+    '  --dark | --no-dark',
     '  --target <path>'
   ].join('\n'));
   process.exit(0);
@@ -93,6 +107,40 @@ try {
     console.log('  profile:  ' + result.profile);
     console.log('  theme:    ' + result.themeMode + ' · ' + result.themeSource);
     console.log('  registry: ' + result.registry);
+  } else if (command === 'theme') {
+    const patch = {};
+    const stringFlags = {
+      '--brand':'brand','--accent':'accent','--primary':'primary','--shape':'shape',
+      '--font':'font','--font-display':'fontDisplay','--neutrals':'neutrals',
+      '--neutrals-hue':'neutralsHue','--semantic-collision':'semanticCollision'
+    };
+    for (const [flag,key] of Object.entries(stringFlags)) {
+      const v = value(flag);
+      if (v !== undefined) patch[key] = v;
+    }
+    const numberFlags = {
+      '--radius':'radius','--space':'space','--font-size':'fontSize',
+      '--type-scale':'typeScale','--categories':'categories'
+    };
+    for (const [flag,key] of Object.entries(numberFlags)) {
+      const v = numberValue(flag);
+      if (v !== undefined) patch[key] = v;
+    }
+    if (argv.includes('--no-dark')) patch.dark = false;
+    else if (argv.includes('--dark')) patch.dark = true;
+
+    const result = updateTheme({
+      target,
+      patch,
+      show: argv.includes('--show'),
+      reset: argv.includes('--reset')
+    });
+    if (argv.includes('--show')) {
+      console.log(JSON.stringify(result.config, null, 2));
+    } else {
+      console.log('Fruti Squad theme updated → ' + result.file);
+      console.log('  changed: ' + (result.changed.length ? result.changed.join(', ') : 'none'));
+    }
   } else {
     console.error('Unknown command: ' + command);
     process.exit(2);
