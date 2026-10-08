@@ -5,7 +5,7 @@
   </picture>
 </p>
 
-# 🍓 Fruti Squad for Kiro
+# Fruti Squad for Kiro
 
 **Fruti Squad for Kiro** es un sistema multiagente para diseñar, gobernar, implementar, auditar y documentar interfaces de usuario dentro de proyectos asistidos por [Kiro](https://kiro.dev/).
 
