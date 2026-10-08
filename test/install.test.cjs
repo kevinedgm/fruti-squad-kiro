@@ -12,6 +12,9 @@ assert(fs.existsSync(path.join(target, '.kiro', 'agents', 'fruti-squad.md')));
 assert(fs.existsSync(path.join(target, '.kiro', 'agents', 'bruno.md')));
 assert(fs.existsSync(path.join(target, '.kiro', 'skills', 'bruno', 'SKILL.md')));
 assert(fs.existsSync(path.join(target, '.fruti', 'runtime', 'bruno.yaml')));
+assert(fs.existsSync(path.join(target, '.fruti', 'identity', 'avatars.json')));
+assert(fs.existsSync(path.join(target, '.fruti', 'assets', 'avatars', 'kiwi', 'kiwi.svg')));
+assert(fs.existsSync(path.join(target, '.fruti', 'assets', 'avatars', 'fruti-squad', 'fruti-squad-tile.svg')));
 
 result = install({ target, quiet: true });
 assert.strictEqual(result.conflicts.length, 0, 'second install should be idempotent');
