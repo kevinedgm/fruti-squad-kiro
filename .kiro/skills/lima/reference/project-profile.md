@@ -1,48 +1,58 @@
-# Project profile — how the skill binds to a concrete project
+# Project profile — binding the reusable skill to one project
 
-The skill core is universal. Everything project-specific — design system, tokens, Hub layout, registry location, production stack — lives in a **profile** under `profiles/`. Load the active profile first, every session.
+The skill core is universal. A project profile binds it to one repository without carrying information from any other project.
 
-## Why
+## There is no active global/default profile
 
-The same skill must work across unrelated projects, frameworks and design systems without carrying information from one project into another. Nothing in `reference/*` (except this file) may hardcode a color, path, or framework. When a reference needs a project fact, it reads it from the active profile.
+`profiles/_TEMPLATE.md` is only a template. A local active profile is created by:
+
+```bash
+npx fruti-squad-kiro init
+```
+
+## Theme model
+
+The profile uses a **short-input → derived-tokens** strategy.
+
+For a new project:
+
+```text
+.fruti/defaults/theme.json
+        +
+.fruti/theme/config.json   ← project inputs
+        ↓
+.fruti/contracts/theming.yaml
+        ↓
+derived theme contract
+```
+
+For an existing project:
+
+```text
+existing tokens/theme source
+        ↓
+profile theming.source
+        ↓
+Fruti reads it; it does not replace it
+```
 
 ## Selecting the active profile
 
-Ignore `profiles/_TEMPLATE.md` (the template) and anything under `profiles/examples/` (reference examples) when detecting the active profile.
+Ignore `_TEMPLATE.md` and anything under `profiles/examples/`.
 
-1. If exactly one active profile exists in `profiles/`, use it.
-2. If several exist, choose by matching the current repo (its design system name / stack) and confirm with the user if ambiguous.
-3. If none exists, **initialize** — create one from the template below by inspecting the repo (or run the bootstrap in [../scripts/init-project.sh](../scripts/init-project.sh)), and confirm it with the user before designing. Full playbook: [first-run.md](first-run.md).
+1. If `.fruti/state/current.json.profile_path` resolves, use it.
+2. Otherwise, if exactly one local profile exists, use it.
+3. If several exist, resolve against the repository and confirm if ambiguous.
+4. If none exists, initialize.
 
-## Profile template
+## Required profile concepts
 
-The canonical, commented template is [../profiles/_TEMPLATE.md](../profiles/_TEMPLATE.md) — copy it to `profiles/<your-project>.md` and fill it. A profile must define:
+- `theming`: mode, short config/source and derived-output contract.
+- `truth_sources`: canonical visual input files.
+- `hub_root` and `registry_path`.
+- `production`: detected stack and token binding.
+- `implementation`: framework/language/styling, resolved from the repo.
+- `accessibility`.
+- optional `runtime_qa`.
 
-```yaml
-name:                # human name of the profile
-design_system:       # name of the design system that is the visual truth
-truth_sources:       # files that define tokens/visual law (paths)
-  - ...
-color_law:           # the system's color rules, briefly
-type_law:            # typography rules
-hub_root:            # path to the Design Hub root
-hub_layout:          # the folder taxonomy inside the Hub
-registry_path:       # path to registry.json
-production:
-  detect: true       # always inspect; never assume
-  known_stack:       # what the repo uses today (confirmed by inspection)
-  token_binding:     # how Hub tokens map to production tokens
-  component_layout:  # where production components live + naming
-impeccable_path:     # where the impeccable skill is installed
-runtime_qa:          # optional: runner + harness_root + hub start/base_url + tests/evidence + viewports
-```
-
-## Which references consume the profile
-
-- source-of-truth.md → truth sources, color/type law
-- design-hub.md → hub_root, hub_layout
-- registry.md → registry_path
-- promotion.md → production.*
-- impeccable-bridge.md → impeccable_path
-
-Never restate these facts inside a reference; read them from the active profile.
+Legacy references to `color_law` and `type_law` are compatibility pointers. Their truth is derived from `theming.source`, not separately hand-maintained prose.
