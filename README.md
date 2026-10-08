@@ -1031,7 +1031,51 @@ que es una excelente manera de conseguir seis fuentes de verdad y ninguna verdad
 
 ---
 
-# 16. Handoffs en lugar de contexto infinito
+# 16. Aislamiento y privacidad entre proyectos
+
+Fruti Squad está diseñado para ser **reutilizable y agnóstico del producto**.
+
+El paquete distribuido no debe contener:
+
+- nombres de proyectos reales;
+- nombres de clientes;
+- rutas internas de otros repositorios;
+- perfiles completos de productos reales;
+- tokens o paletas pertenecientes a otro producto;
+- decisiones de negocio;
+- URLs internas;
+- credenciales;
+- ejemplos copiados de sistemas privados;
+- estados o handoffs procedentes de otro proyecto.
+
+Los ejemplos incluidos en el paquete utilizan únicamente placeholders como:
+
+```text
+<project-name>
+<design-system-name>
+<component-name>
+```
+
+La información específica se genera **después de instalar**, dentro del proyecto consumidor.
+
+Por ejemplo:
+
+```text
+.kiro/skills/lima/profiles/<project-name>.md
+.fruti/state/current.json
+.fruti/handoffs/current.json
+.fruti/tokens.json
+```
+
+Esos archivos pertenecen al proyecto donde se está trabajando, no al paquete reusable.
+
+> Regla: una Skill puede enseñar un procedimiento, pero nunca debe llevarse consigo la memoria privada de otro proyecto.
+
+Si el repositorio consumidor es público, revisa también qué perfiles, contratos y estados locales quieres versionar, porque pueden describir detalles propios de ese producto.
+
+---
+
+# 17. Handoffs en lugar de contexto infinito
 
 Los agentes no deberían pasarse conversaciones gigantes.
 
@@ -1060,7 +1104,7 @@ Así cada etapa consume el contexto necesario sin volver a investigar todo el re
 
 ---
 
-# 17. Actualizar Fruti Squad
+# 18. Actualizar Fruti Squad
 
 Si instalaste desde GitHub:
 
@@ -1084,7 +1128,7 @@ npx fruti-squad-kiro install --force
 
 ---
 
-# 18. Desinstalar
+# 19. Desinstalar
 
 npm puede quitar la dependencia:
 
@@ -1102,7 +1146,7 @@ Si quieres retirarlas, revísalas y elimínalas manualmente.
 
 ---
 
-# 19. Desarrollo del paquete
+# 20. Desarrollo del paquete
 
 Clona el repositorio:
 
@@ -1133,7 +1177,7 @@ La CI también realiza una instalación real del tarball en un proyecto temporal
 
 ---
 
-# 20. Estado del paquete npm
+# 21. Estado del paquete npm
 
 Actualmente el paquete puede instalarse directamente desde GitHub:
 
@@ -1157,7 +1201,7 @@ debe publicarse también en el registro público de npm.
 
 ---
 
-# 21. Preguntas frecuentes
+# 22. Preguntas frecuentes
 
 ## ¿Fruti Squad reemplaza Kiro?
 
@@ -1227,7 +1271,7 @@ Debe:
 
 ---
 
-# 22. Resumen
+# 23. Resumen
 
 ```text
 Fruti Squad
