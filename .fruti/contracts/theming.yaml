@@ -1,0 +1,73 @@
+version: 1
+strategy: short-input-derived-tokens
+source_of_truth:
+  starter: .fruti/theme/config.json
+  existing: active_project_theme_source
+
+principle:
+  - user_edits_inputs_not_derived_tokens
+  - missing_inputs_inherit_defaults
+  - primary_without_explicit_value_aliases_brand
+  - fontDisplay_without_explicit_value_aliases_font
+  - derived_outputs_are_never_hand_edited
+
+inputs:
+  name: { type: string, optional: true }
+  brand: { type: hex, optional: true }
+  accent: { type: hex, optional: true }
+  primary: { type: hex, optional: true }
+  radius: { type: number, min: 0, max: 64, optional: true }
+  shape: { type: enum, values: [rounded, pill], optional: true }
+  space: { type: number, min: 1, max: 16, optional: true }
+  font: { type: string, optional: true }
+  fontDisplay: { type: string, optional: true }
+  fontSize: { type: number, min: 8, max: 32, optional: true }
+  typeScale: { type: number, min: 1, max: 2, optional: true }
+  neutrals: { type: enum, values: [tinted, pure], optional: true }
+  neutralsHue: { type: enum, values: [brand, accent], optional: true }
+  semanticCollision: { type: enum, values: [warn, adjust], optional: true }
+  categories: { type: integer, min: 0, max: 12, optional: true }
+  dark: { type: [boolean, object], optional: true }
+  overrides: { type: object, optional: true }
+
+defaults:
+  file: .fruti/defaults/theme.json
+  primary: alias:brand
+  fontDisplay: alias:font
+
+derivation:
+  color_space: OKLCH
+  families: [brand, accent, primary, neutral, success, warning, danger, info]
+  per_family: [base, strong, soft, text, on, on-soft]
+  semantic_collision:
+    compare_against: [brand, accent, primary]
+    policy_from: semanticCollision
+  neutrals:
+    mode_from: neutrals
+    hue_from: neutralsHue
+  categories:
+    count_from: categories
+    max: 12
+  dark:
+    enabled_by_default: true
+    derive_from_light_inputs: true
+    explicit_dark_inputs_win: true
+
+accessibility_constraints:
+  text_contrast_min: 4.5
+  control_contrast_min: 3
+  focus_width_min_px: 2
+  text_size_min_px: 12
+  touch_target_coarse_min_px: 44
+
+modes:
+  starter:
+    description: create a local short theme config using defaults plus user overrides
+    config: .fruti/theme/config.json
+    generated_contract:
+      tokens: .fruti/theme/tokens.json
+      css: .fruti/theme/tokens.css
+  existing:
+    description: bind to the consuming project's existing token/theme source; do not replace it
+    config: null
+    generated_contract: null
