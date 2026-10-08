@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="uva-icon uva-lima" aria-hidden="true">
+  <style>.uva-lima{stroke-width:var(--uva-stroke,2)}.uva-lima--validar{--uva-lima-contenedor:uva-lima-trazar;--uva-lima-entrada:uva-lima-trazar;--uva-lima-eje:uva-lima-trazar;--uva-lima-salida:uva-lima-trazar}.uva-lima__contenedor{stroke-dasharray:1 1.1;animation:var(--uva-lima-contenedor,none) 360ms cubic-bezier(.2,.6,.3,1) 0ms 1 both}.uva-lima__entrada{stroke-dasharray:1 1.1;animation:var(--uva-lima-entrada,none) 160ms cubic-bezier(.3,0,.2,1) 300ms 1 both}.uva-lima__eje{stroke-dasharray:1 1.1;animation:var(--uva-lima-eje,none) 220ms cubic-bezier(.3,0,.2,1) 440ms 1 both}.uva-lima__salida{stroke-dasharray:1 1.1;animation:var(--uva-lima-salida,none) 160ms cubic-bezier(.3,0,.2,1) 640ms 1 both}@keyframes uva-lima-trazar{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}@media (prefers-reduced-motion:reduce){.uva-lima--validar{--uva-lima-contenedor:none;--uva-lima-entrada:none;--uva-lima-eje:none;--uva-lima-salida:none}}</style>
+  <path class="uva-lima__contenedor" pathLength="1" d="M12.00 3.00 L19.79 7.50 L19.79 16.50 L12.00 21.00 L4.21 16.50 L4.21 7.50Z"/>
+  <path class="uva-lima__entrada" pathLength="1" d="M9.75 9H14.25"/>
+  <path class="uva-lima__eje" pathLength="1" d="M12 9V15"/>
+  <path class="uva-lima__salida" pathLength="1" d="M9.75 15H14.25"/>
+</svg>
