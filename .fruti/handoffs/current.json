@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "artifact": null,
+  "round": null,
+  "from": null,
+  "to": null,
+  "operation": null,
+  "frozen_decisions": [],
+  "pieces": [],
+  "required_states": [],
+  "adaptive_contract": [],
+  "open_questions": [],
+  "blockers": [],
+  "evidence_paths": [],
+  "delta": []
+}
