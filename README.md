@@ -1,54 +1,124 @@
 # Fruti Squad for Kiro
 
-Fruti Squad adaptado a Kiro: agentes, skills, steering y runtime compartido para Kiwi, Lima, Coco, Bruno y Mora.
+Distribución nativa de Fruti Squad para Kiro: custom agents, Agent Skills, Steering y runtime compartido para Kiwi, Lima, Coco, Bruno y Mora.
 
-## Instalación desde GitHub
+## Instalación
+
+En la raíz del proyecto donde quieres usar el squad:
 
 ```bash
 npm install --save-dev github:kevinedgm/fruti-squad-kiro
 ```
 
-El `postinstall` copia de forma segura `.kiro/` y `.fruti/` al proyecto que ejecutó npm. Los archivos existentes con contenido distinto no se sobrescriben automáticamente.
+El `postinstall` copia automáticamente `.kiro/` y `.fruti/` al proyecto consumidor.
 
-## Reinstalar o actualizar archivos
+### Conflictos seguros
+
+El instalador:
+
+- crea archivos que no existen;
+- deja intactos los archivos idénticos;
+- no sobrescribe por defecto un archivo local distinto;
+- reporta conflictos para que no desaparezcan personalizaciones por arte de magia.
+
+Reaplicar manualmente:
 
 ```bash
 npx fruti-squad-kiro install
 ```
 
-Para reemplazar archivos existentes:
+Forzar reemplazo de conflictos:
 
 ```bash
 npx fruti-squad-kiro install --force
 ```
 
-Para inspeccionar sin escribir:
+Previsualizar sin escribir:
 
 ```bash
 npx fruti-squad-kiro install --dry-run
 ```
 
-## Agentes principales
+Instalar en otra carpeta:
 
-- `/fruti-squad`: orquestador
-- `/kiwi`: estructura y UX
-- `/lima`: gobernanza y contratos
-- `/coco`: construcción visual y auditoría
-- `/bruno`: implementación Vue / R3
-- `/mora`: documentación
+```bash
+npx fruti-squad-kiro install --target ../otro-proyecto
+```
 
-## Estructura
+Si npm se ejecuta con `--ignore-scripts`, el `postinstall` no corre. Ejecuta después `npx fruti-squad-kiro install`.
+
+## Flujo
+
+```text
+kiwi
+  ↓
+lima
+  ↓
+coco · F3/CSS
+  ↓
+bruno · R3 funcional
+  ↓
+coco · R0
+  ↓
+lima · gates
+  ↓
+mora
+```
+
+## Agentes
+
+| Comando | Responsabilidad |
+| --- | --- |
+| `/fruti-squad` | Orquestación completa |
+| `/kiwi` | Estructura y UX F0–F2 |
+| `/lima` | Gobernanza, contratos, tokens y lifecycle |
+| `/coco` | F3/CSS y auditoría R0 |
+| `/bruno` | Funcionalidad frontend R3 |
+| `/mora` | Documentación verificada |
+
+## Estructura instalada
 
 ```text
 .kiro/
-  agents/
-  skills/
-  steering/
+├── agents/
+├── skills/
+└── steering/
+
 .fruti/
-  runtime/
-  state/
-  handoffs/
-  contracts/
+├── contracts/
+├── handoffs/
+├── runtime/
+└── state/
 ```
 
-> El paquete está preparado para instalarse directamente desde GitHub. El comando corto `npm install fruti-squad-kiro` requerirá publicar posteriormente el paquete en el registro de npm.
+El paquete instala solo runtime/configuración reusable. El perfil y estado de cada proyecto se resuelven en el proyecto consumidor; no se incluye configuración fija de ManikImpulsa ni de otro producto.
+
+## Actualizar
+
+```bash
+npm update fruti-squad-kiro
+npx fruti-squad-kiro install
+```
+
+Para reemplazar personalizaciones locales con la versión nueva:
+
+```bash
+npx fruti-squad-kiro install --force
+```
+
+## Desarrollo
+
+```bash
+npm test
+npm pack --dry-run
+```
+
+## Nombre corto en npm
+
+El repositorio ya es un paquete npm válido. Para que también funcione:
+
+```bash
+npm install fruti-squad-kiro
+```
+
+debe publicarse después en el registro de npm. Mientras tanto, la instalación directa desde GitHub funciona con el comando de arriba.
