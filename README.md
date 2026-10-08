@@ -44,28 +44,28 @@ Eso produce resultados rápidos, pero difíciles de gobernar y repetir.
 
 Fruti Squad divide ese trabajo:
 
-```text
-🥝 Kiwi
-   estructura y UX
-      ↓
-🟢 Lima
-   gobernanza y contrato
-      ↓
-🥥 Coco
-   F3 visual + CSS
-      ↓
-🥐 Bruno
-   funcionalidad frontend R3
-      ↓
-🥥 Coco
-   auditoría R0
-      ↓
-🟢 Lima
-   gates / lifecycle
-      ↓
-🫐 Mora
-   documentación
-```
+<table>
+  <tr>
+    <td align="center"><img src=".fruti/assets/avatars/kiwi/kiwi-tile.svg" width="42" alt="Kiwi"><br><strong>Kiwi</strong><br><sub>estructura y UX</sub></td>
+    <td align="center">→</td>
+    <td align="center"><img src=".fruti/assets/avatars/lima/lima-tile.svg" width="42" alt="Lima"><br><strong>Lima</strong><br><sub>gobernanza y contrato</sub></td>
+    <td align="center">→</td>
+    <td align="center"><img src=".fruti/assets/avatars/coco/coco-tile.svg" width="42" alt="Coco"><br><strong>Coco</strong><br><sub>F3 visual + CSS</sub></td>
+    <td align="center">→</td>
+    <td align="center"><img src=".fruti/assets/avatars/bruno/bruno-tile.svg" width="42" alt="Bruno"><br><strong>Bruno</strong><br><sub>R3 funcional</sub></td>
+  </tr>
+  <tr>
+    <td align="center" colspan="7">↓</td>
+  </tr>
+  <tr>
+    <td align="center"><img src=".fruti/assets/avatars/coco/coco-tile.svg" width="42" alt="Coco R0"><br><strong>Coco</strong><br><sub>auditoría R0</sub></td>
+    <td align="center">→</td>
+    <td align="center"><img src=".fruti/assets/avatars/lima/lima-tile.svg" width="42" alt="Lima gates"><br><strong>Lima</strong><br><sub>gates / lifecycle</sub></td>
+    <td align="center">→</td>
+    <td align="center"><img src=".fruti/assets/avatars/mora/mora-tile.svg" width="42" alt="Mora"><br><strong>Mora</strong><br><sub>documentación</sub></td>
+    <td></td><td></td>
+  </tr>
+</table>
 
 Cada etapa trabaja sobre decisiones aprobadas anteriormente en vez de reinterpretar el producto desde cero.
 
@@ -139,13 +139,13 @@ El índice machine-readable está en:
 .fruti/identity/avatars.json
 ```
 
-> Kiro no expone actualmente un campo oficial para asignar un SVG personalizado como avatar nativo del agente. Por eso Fruti Squad conserva estos SVG como identidad canónica para README, documentación, extensiones e interfaces propias, mientras que `welcomeMessage` usa el símbolo/emoji como fallback dentro de Kiro.
+> Kiro no expone actualmente un campo oficial para asignar un SVG personalizado como avatar nativo del agente. Por eso Fruti Squad conserva estos SVG como identidad canónica para README, documentación, extensiones e interfaces propias. Dentro de Kiro, `welcomeMessage` usa el nombre y rol del agente sin sustituir el avatar por emojis de fruta.
 
 ---
 
 # 3. Los miembros del squad
 
-## 🥝 Kiwi · Structure
+## <img src=".fruti/assets/avatars/kiwi/kiwi-tile.svg" width="28" alt=""> Kiwi · Structure
 
 **Responsabilidad:** entender el problema y definir la estructura funcional antes de diseñar apariencia.
 
@@ -195,7 +195,7 @@ Kiwi trabaja principalmente en:
 
 ---
 
-## 🟢 Lima · Governance
+## <img src=".fruti/assets/avatars/lima/lima-tile.svg" width="28" alt=""> Lima · Governance
 
 **Responsabilidad:** convertir una estructura aprobada en una pieza gobernada por el sistema de diseño.
 
@@ -239,7 +239,7 @@ Lima no debería cambiar arbitrariamente la geometría congelada por Kiwi ni imp
 
 ---
 
-## 🥥 Coco · Visual Construction + Audit
+## <img src=".fruti/assets/avatars/coco/coco-tile.svg" width="28" alt=""> Coco · Visual Construction + Audit
 
 Coco tiene dos intervenciones distintas dentro del flujo.
 
@@ -292,7 +292,7 @@ Construir y auditar son dos momentos distintos.
 
 ---
 
-## 🥐 Bruno · Frontend R3
+## <img src=".fruti/assets/avatars/bruno/bruno-tile.svg" width="28" alt=""> Bruno · Frontend R3
 
 **Responsabilidad:** convertir la pieza aprobada en comportamiento frontend real.
 
@@ -344,7 +344,7 @@ Si falta una decisión, Bruno la devuelve al dueño correspondiente en vez de in
 
 ---
 
-## 🫐 Mora · Documentation
+## <img src=".fruti/assets/avatars/mora/mora-tile.svg" width="28" alt=""> Mora · Documentation
 
 **Responsabilidad:** documentar únicamente aquello que ya existe y fue verificado.
 
@@ -1323,34 +1323,25 @@ Debe:
 
 # 24. Resumen
 
-```text
-Fruti Squad
-│
-├── 🥝 Kiwi
-│   └── estructura
-│
-├── 🟢 Lima
-│   └── gobernanza
-│
-├── 🥥 Coco
-│   ├── F3 / CSS
-│   └── R0 audit
-│
-├── 🥐 Bruno
-│   └── R3 funcional
-│
-└── 🫐 Mora
-    └── documentación
+<table>
+  <tr>
+    <td align="center"><img src=".fruti/assets/avatars/kiwi/kiwi-tile.svg" width="48" alt="Kiwi"><br><strong>Kiwi</strong><br><sub>estructura</sub></td>
+    <td align="center"><img src=".fruti/assets/avatars/lima/lima-tile.svg" width="48" alt="Lima"><br><strong>Lima</strong><br><sub>gobernanza</sub></td>
+    <td align="center"><img src=".fruti/assets/avatars/coco/coco-tile.svg" width="48" alt="Coco"><br><strong>Coco</strong><br><sub>F3 / CSS / R0</sub></td>
+    <td align="center"><img src=".fruti/assets/avatars/bruno/bruno-tile.svg" width="48" alt="Bruno"><br><strong>Bruno</strong><br><sub>R3 funcional</sub></td>
+    <td align="center"><img src=".fruti/assets/avatars/mora/mora-tile.svg" width="48" alt="Mora"><br><strong>Mora</strong><br><sub>documentación</sub></td>
+    <td align="center"><img src=".fruti/assets/avatars/fruti-squad/fruti-squad-tile.svg" width="48" alt="Fruti Squad"><br><strong>Squad</strong><br><sub>orquestación</sub></td>
+  </tr>
+</table>
 
+```text
 Kiro
-│
 ├── Agents
 ├── Skills
 ├── Steering
 └── Subagents
 
 .fruti
-│
 ├── runtime
 ├── contracts
 ├── state

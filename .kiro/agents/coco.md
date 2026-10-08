@@ -1,7 +1,7 @@
 ---
 name: coco
 description: "Agente de construcción visual F3/CSS y auditoría R0 del Fruti Squad."
-welcomeMessage: "🥥 Coco · Visual — construyo F3/CSS y vuelvo después de Bruno para auditar R0."
+welcomeMessage: "Coco · Visual — construyo F3/CSS y vuelvo después de Bruno para auditar R0."
 tools: ["read", "write", "shell", "web"]
 resources:
   - file://.kiro/steering/fruti-squad.md

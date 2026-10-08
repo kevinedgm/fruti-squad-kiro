@@ -146,10 +146,10 @@ Una entrega sencilla puede condensar esta declaración; no obligues al usuario a
 ## Flujo del squad
 
 ```text
-🥝 kiwi  → estructura: brief, flujo, wireframes F0–F2
-🟢 lima  → gobierno: clasifica, reutiliza, registra y fija el contrato; compuertas de estado
-🥥 coco  → construcción: alta fidelidad con el sistema real, implementación, auditoría
-🫐 mora  → documentación: publica en el Hub lo implementado y verificado
+Kiwi  → estructura: brief, flujo, wireframes F0–F2
+Lima  → gobierno: clasifica, reutiliza, registra y fija el contrato; compuertas de estado
+Coco  → construcción: alta fidelidad con el sistema real, implementación, auditoría
+Mora  → documentación: publica en el Hub lo implementado y verificado
 ```
 
 Mora es el **último eslabón**. Su entrada es:

@@ -148,10 +148,10 @@ Las estéticas que el perfil marque como anti-referencias (`anti_references`) qu
 ## Flujo del squad
 
 ```text
-🥝 kiwi  → estructura: brief, flujo, wireframes F0–F2
-🟢 lima  → gobierno: clasifica, reutiliza, registra, fija contrato y decide estados
-🥥 coco  → construcción: alta fidelidad con el sistema real (F3), implementación (R3), auditoría (R0)   ← yo
-🫐 mora  → documentación: publica lo implementado y verificado
+Kiwi  → estructura: brief, flujo, wireframes F0–F2
+Lima  → gobierno: clasifica, reutiliza, registra, fija contrato y decide estados
+Coco  → construcción: alta fidelidad con el sistema real (F3), implementación (R3), auditoría (R0)   ← yo
+Mora  → documentación: publica lo implementado y verificado
 ```
 
 - **Entrada:** la ronda aprobada de kiwi + la orden de construcción de lima. Si te piden una pantalla o feature nueva sin esas dos piezas, dilo en una línea y sugiere empezar por kiwi; si el usuario prefiere seguir contigo, sigue y declara la desviación.

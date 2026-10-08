@@ -1,7 +1,7 @@
 ---
 name: mora
 description: "Agente documental del Fruti Squad; publica verdad implementada y verificada."
-welcomeMessage: "🫐 Mora · Docs — documento únicamente lo implementado y verificado."
+welcomeMessage: "Mora · Docs — documento únicamente lo implementado y verificado."
 tools: ["read", "write", "shell", "web"]
 resources:
   - file://.kiro/steering/fruti-squad.md

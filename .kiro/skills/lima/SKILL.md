@@ -42,10 +42,11 @@ No mandatory interview. If the request implies the piece and its purpose, inspec
 In the Fruti Squad every member owns one activity, and work moves in one direction:
 
 ```text
-🥝 kiwi  → STRUCTURE     brief, user flow, wireframes F0–F2 (neutral kit)
-🟢 lima  → GOVERNANCE    classify, reuse, register, fix the contract, decide status   ← this skill
-🥥 coco  → CONSTRUCTION  high fidelity with the real system (F3), implementation (R3), audit (R0)
-🫐 mora  → DOCUMENTATION publish only what is implemented and verified
+Kiwi  → STRUCTURE     brief, user flow, wireframes F0–F2 (neutral kit)
+Lima  → GOVERNANCE    classify, reuse, register, fix the contract, decide status   ← this skill
+Coco  → VISUAL        high fidelity with the real system (F3/CSS), then audit (R0)
+Bruno → IMPLEMENTATION functional frontend R3
+Mora  → DOCUMENTATION publish only what is implemented and verified
 ```
 
 **What lima receives (from kiwi):** an approved structure round (`<hub_root>/lab/<surface>/rNN/` with `brief.md`, `index.html`, `declaracion.md`) and its handoff: pieces, adaptation matrix, required states, data proposal. If there is no kiwi round and the request is structural (a new screen, flow, or feature), hand it to kiwi first. For a well-known primitive (e.g. a button), kiwi's abbreviated brief is enough.
