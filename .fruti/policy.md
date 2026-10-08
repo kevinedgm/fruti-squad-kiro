@@ -72,7 +72,7 @@ A request such as `cambia la fuente principal`, `cambia el color de acción`, or
 
 Fruti Squad supports both greenfield design and redesign of an existing product. A redesign is NOT permission to rewrite the application or treat legacy styling as target truth.
 
-When redesign intent is detected, Kiwi runs `understand → inventory → scope (user approval) → redesign_plan` (operations and rules in `.fruti/runtime/kiwi.yaml`), persisting to `.fruti/redesign/scope.yaml`, `.fruti/design/design-direction.yaml` and `.fruti/redesign/plan.yaml`. Only then the normal Kiwi → Lima → Coco → Mora handoffs run, per approved item. References are inspiration (qualities, not specifications).
+When redesign intent is detected, Kiwi runs `understand → inventory → scope (user approval) → redesign_plan` (operations and rules in `.fruti/runtime/kiwi.yaml`), persisting to `.fruti/redesign/scope.yaml`, `.fruti/design/design-direction.yaml` and `.fruti/redesign/plan.yaml`. Only then the normal Kiwi → Lima → Coco(F3/CSS) → Bruno(R3) → Coco(R0) → Lima gate → Mora handoffs run, per approved item. References are inspiration (qualities, not specifications).
 
 ### Redesign statuses
 
@@ -104,7 +104,7 @@ When the active profile has `design_system: NEW`, run `fruti foundations` before
 
 ## Full-squad design test
 
-`fruti test` is the acceptance harness for the design pipeline. It does not replace the agents; it creates `.fruti/tests/<round>/request.md` (and a `current/request.md` pointer to the latest one), which the active coding agent executes through Kiwi → Lima → Coco → Lima gate → Mora.
+`fruti test` is the acceptance harness for the design pipeline. It does not replace the agents; it creates `.fruti/tests/<round>/request.md` (and a `current/request.md` pointer to the latest one), which the active coding agent executes through Kiwi → Lima → Coco(F3/CSS) → Bruno(R3) → Coco(R0) → Lima gate → Mora.
 
 The test is successful only when it produces a multidimensional verdict (technical, structural, visual, accessibility, design_system, documentation) and every mandatory dimension passes. Build/type/runtime success alone is never design approval.
 
@@ -113,7 +113,7 @@ If `design_system: NEW` and minimum approved foundations are missing, stop befor
 The test is successful only when it produces:
 - Kiwi neutral F2 + decision/geometry evidence;
 - Lima approved or rejected contract with explicit reasons;
-- Coco real F3/implementation + compliance report;
+- Coco real F3/CSS + Bruno functional R3 + Coco compliance report;
 - Mora canonical Design Hub page whose Preview renders the verified component;
 - `.fruti/tests/<round>/result.md` with PASS/PARTIAL/FAIL for every stage.
 
@@ -125,7 +125,8 @@ A missing configured normative reference (including a project-specific interface
 
 - `.fruti/runtime/kiwi.yaml`: route structural work, define minimum inputs and handoff output.
 - `.fruti/runtime/lima.yaml`: route governance operations and registry/lifecycle reads.
-- `.fruti/runtime/coco.yaml`: route F3/R3/R0 and audit-manifest execution.
+- `.fruti/runtime/coco.yaml`: route F3/CSS, post-Bruno R0 and audit-manifest execution.
+- `.fruti/runtime/bruno.yaml`: route functional R3 implementation from approved Kiwi/Lima/Coco handoffs.
 - `.fruti/runtime/mora.yaml`: route documentation work from verified deltas.
 
 Read one runtime contract for the active owner. Do not read all four just because a full squad pipeline may eventually run; each stage reads its own contract when control reaches it.
@@ -134,7 +135,8 @@ Read one runtime contract for the active owner. Do not read all four just becaus
 
 - Kiwi: structure and UX, brief/flow/wireframes F0-F2. Read only structural references needed for the selected fidelity. Kiwi defines functional geometry and adaptive composition but does not invent visual styling.
 - Lima: governance, classification, reuse, registry, contracts, token ownership and lifecycle. Read only the reference for the current governance operation/gate.
-- Coco: F3 construction, implementation and canonical UI audit. Consume approved locks/contracts/tokens. For audits, use `.fruti/audit-manifest.yaml` plus automated evidence first; open prose standards only for failed/ambiguous/non-deterministic checks.
+- Coco: F3 visual construction/CSS and canonical R0 audit. Consume approved locks/contracts/tokens. Hand functional R3 to Bruno, then audit the implemented result. For audits, use `.fruti/audit-manifest.yaml` plus automated evidence first; open prose standards only for failed/ambiguous/non-deterministic checks.
+- Bruno: functional R3 implementation. Consume approved structure, contract/API and Coco F3/CSS; own script/template behavior, props/events/slots, state, keyboard/focus and functional accessibility. Do not redefine layout, tokens or CSS.
 - Mora: documentation of implemented/verified truth. Work from registry + approved contracts/tokens + Coco compliance report + targeted code/diff; document the delta. Do not reconstruct the whole design history or infer rules from the implementation.
 
 ## Handoff contract
@@ -157,7 +159,7 @@ Never copy whole reference documents into a handoff. The receiving agent treats 
 
 `.fruti/handoffs/current.json` and `.fruti/reports/compliance-current.json` are latest-pointers and MUST carry a `round` field. During a test round each stage also writes a round copy (`.fruti/tests/<round>/handoff-<stage>.json`, `.fruti/tests/<round>/compliance.json`). A stage must not consume a `current` file whose `round` differs from the active round.
 
-`<stage>` is one of exactly five ids, in pipeline order: `kiwi`, `lima` (contract, after Kiwi), `coco`, `lima-gate` (gate, after Coco), `mora`. Every stage that writes `handoffs/current.json` also updates `.fruti/state/current.json` (`round`, `phase`, `owner`, `next_owner`) and writes its round copy `.fruti/tests/<round>/handoff-<stage>.json`; only Coco writes `compliance.json`.
+`<stage>` is one of exactly six ids, in pipeline order: `kiwi`, `lima` (contract, after Kiwi), `coco` (F3/CSS), `bruno` (R3), `lima-gate` (after Coco R0), `mora`. Coco also writes the compliance evidence after Bruno; that audit is not a separate handoff stage id. Every stage that writes `handoffs/current.json` also updates `.fruti/state/current.json` (`round`, `phase`, `owner`, `next_owner`) and writes its round copy `.fruti/tests/<round>/handoff-<stage>.json`; only Coco writes `compliance.json`.
 
 ## Breakpoint semantics
 
