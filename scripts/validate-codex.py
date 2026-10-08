@@ -27,7 +27,7 @@ for row in manifest['shared_unchanged']:
 # Compare against the immutable upstream commit, not only a mutable manifest.
 paths = ['.kiro', *[x['path'] for x in manifest['shared_unchanged']]]
 result = subprocess.run(['git','diff','--exit-code',manifest['source_commit'],'--',*paths],cwd=root,capture_output=True,text=True)
-check(result.returncode==0, 'Kiro source/shared policy differs from source commit')
+check(result.returncode==0, 'Kiro source/shared policy differs from source commit' if result.returncode==1 else 'Source commit unavailable: fetch full history before parity validation ('+result.stderr.strip()+')')
 for p in (root/'.agents/skills').glob('*/SKILL.md'):
     parts = p.read_text().split('---',2)
     check(len(parts)==3, 'Missing frontmatter: '+str(p))
