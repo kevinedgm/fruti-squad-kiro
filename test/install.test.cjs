@@ -4,6 +4,7 @@ const os = require('os');
 const path = require('path');
 const { install } = require('../lib/install.cjs');
 const { initProject } = require('../lib/init.cjs');
+const { updateTheme } = require('../lib/theme.cjs');
 
 const target = fs.mkdtempSync(path.join(os.tmpdir(), 'fruti-squad-kiro-'));
 
@@ -33,6 +34,26 @@ assert.strictEqual(theme.accent, '#0B63CE');
 assert.strictEqual(theme.radius, 6);
 assert.strictEqual(theme.space, 4);
 assert.strictEqual(theme.dark, true);
+
+const changedTheme = updateTheme({
+  target,
+  patch: { brand: '#7A1F5C', radius: 12, shape: 'pill', dark: false }
+});
+assert.deepStrictEqual(changedTheme.changed.sort(), ['brand', 'dark', 'radius', 'shape'].sort());
+const themeAfter = JSON.parse(fs.readFileSync(path.join(target, '.fruti', 'theme', 'config.json'), 'utf8'));
+assert.strictEqual(themeAfter.brand, '#7A1F5C');
+assert.strictEqual(themeAfter.accent, '#0B63CE', 'unchanged values must be preserved');
+assert.strictEqual(themeAfter.radius, 12);
+assert.strictEqual(themeAfter.shape, 'pill');
+assert.strictEqual(themeAfter.dark, false);
+
+assert.throws(
+  () => updateTheme({ target, patch: { brand: 'red-ish' } }),
+  /brand must be/
+);
+
+const shown = updateTheme({ target, show: true });
+assert.strictEqual(shown.config.brand, '#7A1F5C');
 
 const state = JSON.parse(fs.readFileSync(path.join(target, '.fruti', 'state', 'current.json'), 'utf8'));
 assert.strictEqual(state.profile_path, '.kiro/skills/lima/profiles/example-app.md');
