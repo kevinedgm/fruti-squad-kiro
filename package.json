@@ -1,6 +1,6 @@
 {
   "name": "fruti-squad-kiro",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Fruti Squad agents, skills, steering and runtime for Kiro",
   "license": "MIT",
   "private": false,
@@ -12,7 +12,8 @@
     "postinstall": "node scripts-postinstall.cjs",
     "install:kiro": "node bin/fruti-squad-kiro.js install",
     "dry-run": "node bin/fruti-squad-kiro.js install --dry-run",
-    "test": "node test/install.test.cjs"
+    "test": "node test/install.test.cjs",
+    "init:project": "node bin/fruti-squad-kiro.js init"
   },
   "files": [
     "bin/",
@@ -34,5 +35,12 @@
     "url": "https://github.com/kevinedgm/fruti-squad-kiro/issues"
   },
   "homepage": "https://github.com/kevinedgm/fruti-squad-kiro#readme",
-  "keywords": ["kiro", "agent", "skills", "steering", "multi-agent", "fruti-squad"]
+  "keywords": [
+    "kiro",
+    "agent",
+    "skills",
+    "steering",
+    "multi-agent",
+    "fruti-squad"
+  ]
 }
