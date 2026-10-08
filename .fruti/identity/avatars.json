@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "nativeKiroAvatarSupport": false,
+  "basePath": ".fruti/assets/avatars",
+  "note": "Kiro does not currently expose a custom avatar field for agents. These SVGs are the canonical Fruti Squad visual identity for documentation, extensions and custom UI; welcomeMessage uses the symbol fallback.",
+  "members": {
+    "fruti-squad": {
+      "name": "Fruti Squad",
+      "role": "orchestrator",
+      "verb": "orquestar",
+      "symbol": "🍓",
+      "accent": "#F8F8F5",
+      "icon": ".fruti/assets/avatars/fruti-squad/fruti-squad.svg",
+      "small": ".fruti/assets/avatars/fruti-squad/fruti-squad.small.svg",
+      "tile": ".fruti/assets/avatars/fruti-squad/fruti-squad-tile.svg"
+    },
+    "kiwi": {
+      "name": "Kiwi",
+      "role": "structure",
+      "verb": "organizar",
+      "symbol": "🥝",
+      "accent": "#7FCF5B",
+      "icon": ".fruti/assets/avatars/kiwi/kiwi.svg",
+      "small": ".fruti/assets/avatars/kiwi/kiwi.small.svg",
+      "tile": ".fruti/assets/avatars/kiwi/kiwi-tile.svg"
+    },
+    "lima": {
+      "name": "Lima",
+      "role": "governance",
+      "verb": "validar",
+      "symbol": "🟢",
+      "accent": "#C9F36B",
+      "icon": ".fruti/assets/avatars/lima/lima.svg",
+      "small": ".fruti/assets/avatars/lima/lima.small.svg",
+      "tile": ".fruti/assets/avatars/lima/lima-tile.svg"
+    },
+    "coco": {
+      "name": "Coco",
+      "role": "visual-construction",
+      "verb": "inspeccionar",
+      "symbol": "🥥",
+      "accent": "#C89A68",
+      "icon": ".fruti/assets/avatars/coco/coco.svg",
+      "small": ".fruti/assets/avatars/coco/coco.small.svg",
+      "tile": ".fruti/assets/avatars/coco/coco-tile.svg"
+    },
+    "bruno": {
+      "name": "Bruno",
+      "role": "functional-builder",
+      "verb": "conectar",
+      "symbol": "🥐",
+      "accent": "#E5A447",
+      "icon": ".fruti/assets/avatars/bruno/bruno.svg",
+      "small": ".fruti/assets/avatars/bruno/bruno.small.svg",
+      "tile": ".fruti/assets/avatars/bruno/bruno-tile.svg"
+    },
+    "mora": {
+      "name": "Mora",
+      "role": "documentation",
+      "verb": "catalogar",
+      "symbol": "🫐",
+      "accent": "#8468E8",
+      "icon": ".fruti/assets/avatars/mora/mora.svg",
+      "small": ".fruti/assets/avatars/mora/mora.small.svg",
+      "tile": ".fruti/assets/avatars/mora/mora-tile.svg"
+    }
+  }
+}
