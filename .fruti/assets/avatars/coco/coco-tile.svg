@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="uva-icon uva-coco" role="img" aria-label="Coco">
+  <style>.uva-coco{stroke-width:var(--uva-stroke,2)}.uva-coco--inspeccionar{--uva-coco-circulo:uva-coco-trazar;--uva-coco-nodo1:uva-coco-aparecer;--uva-coco-nodo2:uva-coco-aparecer;--uva-coco-foco:uva-coco-aparecer}.uva-coco__circulo{stroke-dasharray:1 1.1;animation:var(--uva-coco-circulo,none) 360ms cubic-bezier(.2,.6,.3,1) 0ms 1 both}.uva-coco__nodo1{transform-box:fill-box;transform-origin:center;animation:var(--uva-coco-nodo1,none) 160ms cubic-bezier(.3,1.5,.5,1) 300ms 1 both}.uva-coco__nodo2{transform-box:fill-box;transform-origin:center;animation:var(--uva-coco-nodo2,none) 160ms cubic-bezier(.3,1.5,.5,1) 400ms 1 both}.uva-coco__foco{transform-box:fill-box;transform-origin:center;animation:var(--uva-coco-foco,none) 200ms cubic-bezier(.3,1.5,.5,1) 500ms 1 both}@keyframes uva-coco-trazar{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}@keyframes uva-coco-aparecer{from{opacity:0;transform:scale(0)}to{opacity:1;transform:none}}@media (prefers-reduced-motion:reduce){.uva-coco--inspeccionar{--uva-coco-circulo:none;--uva-coco-nodo1:none;--uva-coco-nodo2:none;--uva-coco-foco:none}}</style>
+  <rect width="24" height="24" rx="5.25" fill="#161616"/>
+  <g transform="translate(12 12) scale(0.96) translate(-12 -12)" fill="none" stroke="#C89A68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle class="uva-coco__circulo" pathLength="1" cx="12" cy="12" r="9"/>
+  <path class="uva-coco__nodo1" d="M8 15h0"/>
+  <path class="uva-coco__nodo2" d="M11 12h0"/>
+  <circle class="uva-coco__foco" cx="14.5" cy="8.5" r=".6" fill="#C89A68"/>
+  </g>
+</svg>

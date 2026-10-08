@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="uva-icon uva-bruno" aria-hidden="true">
+  <rect x="4" y="3" width="16" height="12" rx="4.5"/>
+  <path d="M9 21V15"/>
+  <path d="M15 15V21"/>
+</svg>
