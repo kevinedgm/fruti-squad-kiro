@@ -1,0 +1,15 @@
+{
+  "brand": "#1F1F1F",
+  "accent": "#0B63CE",
+  "radius": 6,
+  "shape": "rounded",
+  "space": 4,
+  "font": "Instrument Sans",
+  "fontSize": 16,
+  "typeScale": 1.25,
+  "neutrals": "tinted",
+  "neutralsHue": "brand",
+  "semanticCollision": "warn",
+  "categories": 0,
+  "dark": true
+}
