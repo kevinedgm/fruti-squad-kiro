@@ -43,6 +43,20 @@ El protocolo no define un número universal de intentos ni tiempo máximo del re
 
 Una revisión F2 permite evaluar estados e interacciones del wireframe; no afirma que API/backend ni producción estén implementados. El paso a Lima contrato sigue requiriendo la estructura aprobada por el usuario. El paso a Bruno sigue requiriendo F3 aprobado. No implementar producto para satisfacer un pedido limitado a wireframes.
 
+## Primera revisión completa de cada entrega
+
+Esta regla precisa la primera pasada del revisor sobre una entrega; no cambia el ciclo productor → revisor → devolución → reparación → reprobación, sus responsables ni sus aprobaciones.
+
+1. Antes de revisar, comprueba la identidad y hashes de la entrega, el brief, contrato/lock, perfil, plan y evidencia vigentes. Identifica todas las comprobaciones aplicables a la etapa y al alcance. Si falta una entrada, registra exactamente qué comprobaciones dependen de ella; continúa las independientes que puedas ejecutar.
+2. Recorre la matriz completa de alternativas, tamaños, estados y tareas aplicables, y todas las dimensiones obligatorias de la revisión. Contrasta estructura/contrato, composición y jerarquía, densidad, adaptación y recortes, contenido largo/ampliación, acciones, estados, teclado, foco y accesibilidad según la fidelidad entregada. F2 verifica el wireframe; no exige ni certifica una API/backend de producción inexistente.
+3. No detengas la revisión al encontrar el primer defecto. Continúa las comprobaciones independientes y registra todos los hallazgos observados antes de devolver la entrega. Una comprobación reproducible puede automatizarse; la inspección visual y las interacciones siguen requiriendo su evidencia correspondiente.
+4. Si un defecto impide revisar otros aspectos, identifica la dependencia y los casos afectados. Marca esos aspectos como «no verificado» y explica la causa. Un error de render puede bloquear sus casos, pero no justifica omitir otras alternativas, estados o comprobaciones accesibles. Aplica el diagnóstico de bloqueo vigente cuando no quede trabajo independiente ejecutable.
+5. Entrega una sola devolución consolidada de esa pasada. Cada hallazgo incluye regla/criterio, caso reproducible, región/archivo afectado, evidencia, dueño de reparación y restricciones congeladas. Agrupa repeticiones demostradas del mismo defecto e incluye todos los casos afectados; no supongas una causa común ni pierdas fallos independientes. El coordinador mantiene los handoffs existentes hacia cada dueño.
+6. Registra cobertura en el informe/compliance existente y en los campos aplicables de la revisión de evidencia: qué se comprobó y con qué casos, qué falló, qué quedó no verificado por una dependencia y qué se excluyó con justificación de alcance. Usa los estados y formatos actuales; no inventes un PASS, una aprobación ni un nuevo gate. Una lista de defectos sin cobertura no demuestra que la primera revisión esté completa.
+7. Emite el veredicto y realiza el handoff de devolución después de completar todas las comprobaciones ejecutables de la primera pasada. Durante ella comunica progreso o solicita información imprescindible sin convertir cada hallazgo en una devolución independiente. El revisor conserva su rol de inspección; no corrige producto para continuar su propia auditoría.
+
+La devolución consolidada no garantiza encontrar todos los errores ni aprobar en una ronda. Tras la reparación, sigue el paso 5 del ciclo obligatorio: nueva revisión/evidencia, reprobación de cada fallo y casos afectados, historial y aprobaciones vigentes. Si un defecto antes bloqueaba comprobaciones, ejecútalas cuando vuelva a ser posible; no declares cobertura que nunca se ejecutó.
+
 ## Qué debe demostrar la evidencia
 
 - Abrir el artefacto exacto de cada alternativa en navegador, no solo una miniatura o marco fijo. En F3/R3 revisar también la página anfitriona real y sus padres. Registrar URL, revisión y hashes de todos los archivos relevantes (incluidos CSS/imports que influyen en el render).

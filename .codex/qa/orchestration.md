@@ -32,6 +32,8 @@ Todas las rutas de este protocolo son relativas a la raíz del repositorio consu
 | Gate, harden y lifecycle | Lima | Coordina harden sin editar propiedad ajena, consume auditoría Coco y conserva aprobaciones de stable/promoción |
 | Documentación formal autorizada | Mora | Consume implementación y evidencia vigentes; Coco revisa el preview |
 
+Al encargar la primera revisión de una entrega, aplica la sección «Primera revisión completa de cada entrega» de `.codex/qa/pre-delivery.md`: el revisor completa las comprobaciones ejecutables y devuelve sus hallazgos en un lote; no cierra la inspección al encontrar el primer error. Esto no altera dueños, orden ni compuertas.
+
 El orquestador asigna objetivo, alcance, entregable, fuentes y revisión a cada delegación. Espera entregas dependientes y procesa su resultado. No hace correcciones de producto desde el rol coordinador. No convierte la auditoría de Coco en permiso para rediseñar o corregir cualquier archivo.
 
 ## Continuación automática

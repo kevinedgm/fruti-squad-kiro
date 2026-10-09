@@ -129,3 +129,7 @@ Ejecutar en la raíz del proyecto abierto en Codex. Actualizar primero la depend
 ### Probar la distribución como plugin local
 
 Desde 0.3.13, `npx fruti-squad-codex plugin --dry-run` y `npx fruti-squad-codex plugin` registran el paquete instalado en el marketplace del proyecto, preservando otros plugins. Después instala/habilita Fruti Squad desde ese marketplace en ChatGPT de escritorio. Registro no equivale a instalación ni a icono visible; selecciona el origen plugin si también aparecen las skills de repositorio. [Procedimiento y límites](docs/codex-local-plugin.md).
+
+### Primera revisión completa
+
+Desde 0.3.14, la primera pasada del revisor completa todas las comprobaciones aplicables y ejecutables antes de devolver una entrega, y consolida los hallazgos con evidencia y responsables. Las comprobaciones bloqueadas se identifican como no verificadas. Se conservan el ciclo, roles, estados, matriz y compuertas existentes; no se promete una sola ronda ni un ahorro medido. La regla canónica está en `.codex/qa/pre-delivery.md`.
