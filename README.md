@@ -26,6 +26,18 @@ npx fruti-squad-codex theme --brand '#1F1F1F' --accent '#0B63CE'
 
 Este paquete se instala desde la rama GitHub; no se ha publicado en npm. Si npm usa `--ignore-scripts`, ejecutar `npx fruti-squad-codex install` manualmente. `--force` reemplaza archivos distribuidos: revisar conflictos y preservar estado/perfiles del consumidor antes de usarlo.
 
+### Generar el tema
+
+En modo `starter`, `init` y `theme` generan y validan `.fruti/theme/tokens.css` y `.fruti/theme/tokens.json` desde `.fruti/theme/config.json`. El motor OKLCH de Grana está incluido en el paquete, fijado al commit indicado en `lib/vendor/grana/PROVENANCE.json`; no requiere instalar otra CLI ni acceso a red para generar.
+
+```bash
+npx fruti-squad-codex theme --brand '#052a76' --accent '#c2d225' --font "'Poppins', 'Inter', system-ui, sans-serif"
+# Si editaste config.json directamente, regenera con:
+npx fruti-squad-codex theme
+```
+
+`--show` solo lee la configuración. Un fallo de validación conserva los archivos previos; los avisos informativos se muestran sin afirmar una auditoría visual. El modo `existing` conserva su fuente y no genera tokens starter. Importa el CSS generado después de los tokens base de Grana en tu aplicación para aplicar sus variables `--g-*`; generar archivos no incorpora fuentes ni modifica imports del producto. No edites los outputs a mano. Editar el JSON por sí solo no ejecuta un watcher: debes ejecutar `theme`.
+
 ## Pedir trabajo
 
 ```text

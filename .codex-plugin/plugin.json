@@ -1,6 +1,6 @@
 {
   "name": "fruti-squad-codex",
-  "version": "0.3.14",
+  "version": "0.3.15",
   "description": "Fruti Squad UI skills. Requires project provisioning for .fruti contracts and native agents.",
   "skills": "./.agents/skills/",
   "interface": {

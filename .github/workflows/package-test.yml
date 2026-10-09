@@ -6,6 +6,17 @@ on:
   pull_request:
 
 jobs:
+  theme-compatibility:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [18, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: node test/theme.test.cjs
   test:
     runs-on: ubuntu-latest
     steps:
@@ -46,6 +57,10 @@ jobs:
           test -f .fruti/runtime/bruno.yaml
           test -f .codex/qa/verify-delivery.cjs
           test -f .codex/qa/pre-delivery.md
+          npx fruti-squad-codex init --brand '#052a76' --accent '#c2d225' --font 'Poppins, Inter, system-ui, sans-serif'
+          test -s .fruti/theme/tokens.css
+          test -s .fruti/theme/tokens.json
+          npx fruti-squad-codex theme
           npx fruti-squad-codex plugin --dry-run
           npx fruti-squad-codex plugin
           test -f .agents/plugins/marketplace.json

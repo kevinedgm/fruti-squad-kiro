@@ -146,6 +146,8 @@ try {
     } else {
       console.log('Fruti Squad theme updated → ' + result.file);
       console.log('  changed: ' + (result.changed.length ? result.changed.join(', ') : 'none'));
+      for (const file of result.generated) console.log('  generated: ' + file);
+      for (const warning of [...result.warnings, ...result.diagnostics]) console.warn('  warning: ' + (warning.message || JSON.stringify(warning)));
     }
   } else {
     console.error('Unknown command: ' + command);
