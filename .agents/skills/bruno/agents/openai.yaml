@@ -1,6 +1,6 @@
 interface:
   display_name: "Bruno"
-  short_description: "Bruno: contratos y evidencia UI"
+  short_description: "Implementación funcional, estados y foco R3"
   default_prompt: "Usa $bruno para resolver esta solicitud respetando el flujo y contratos de Fruti Squad."
   icon_small: "./assets/avatar-small.svg"
   icon_large: "./assets/avatar-large.svg"

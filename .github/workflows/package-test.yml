@@ -18,6 +18,8 @@ jobs:
       - run: npm test
       - run: python3 -m pip install PyYAML 'jsonschema>=4,<5'
       - run: python3 scripts/validate-codex.py
+      - name: Skill visual metadata and self-contained SVGs
+        run: python3 scripts/validate-skill-icons.py
       - name: TOML syntax and dated official schema
         run: python3 scripts/validate-codex-toml.py
       - name: Agent versus config schema regression

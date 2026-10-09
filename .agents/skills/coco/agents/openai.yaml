@@ -1,6 +1,6 @@
 interface:
   display_name: "Coco"
-  short_description: "Coco: contratos y evidencia UI"
+  short_description: "Construcción CSS y auditoría visual R0"
   default_prompt: "Usa $coco para resolver esta solicitud respetando el flujo y contratos de Fruti Squad."
   icon_small: "./assets/avatar-small.svg"
   icon_large: "./assets/avatar-large.svg"

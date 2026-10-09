@@ -38,6 +38,32 @@ try {
   assert.equal(fs.readFileSync(profile,'utf8'),'custom profile');
   for(const rel of ['AGENTS.md','.codex/config.toml','.fruti/state/current.json','.fruti/handoffs/current.json']) assert.equal(fs.readFileSync(path.join(target,rel),'utf8'),'local project data\n');
   assert(fs.existsSync(path.join(target,'.codex/qa/verify-delivery.cjs')));
+  // Visual-only updates preserve functional files, even when repairing missing icons.
+  const metadata = '.agents/skills/kiwi/agents/openai.yaml';
+  const icon = '.agents/skills/kiwi/assets/avatar-small.svg';
+  const large = '.agents/skills/kiwi/assets/avatar-large.svg';
+  fs.writeFileSync(path.join(target,metadata),'interface:\n  display_name: "Old name"\n  default_prompt: "Preserve my prompt"\npolicy:\n  allow_implicit_invocation: false\n');
+  fs.writeFileSync(path.join(target,icon),'outdated icon');
+  fs.writeFileSync(tool,'preserve skill procedure');
+  fs.writeFileSync(path.join(target,'.codex/agents/kiwi.toml'),'preserve model');
+  fs.unlinkSync(path.join(target,large));
+  const dryIcons = install({target,updateIcons:true,dryRun:true,quiet:true});
+  assert(dryIcons.updated.includes(metadata));
+  assert(!fs.existsSync(path.join(target,large)), 'visual dry-run must not create assets');
+  const icons = install({target,updateIcons:true,quiet:true});
+  assert.deepEqual(icons.updated.sort(),[icon,metadata].sort());
+  assert.deepEqual(icons.created,[large]);
+  assert(icons.backups.some(b=>fs.readFileSync(path.join(target,b),'utf8')==='outdated icon'));
+  for (const rel of [icon,large]) assert(fs.readFileSync(path.join(target,rel)).equals(fs.readFileSync(path.resolve(__dirname,'..',rel))));
+  const merged = fs.readFileSync(path.join(target,metadata),'utf8');
+  assert(merged.includes('icon_small: "./assets/avatar-small.svg"'));
+  assert(merged.includes('default_prompt: "Preserve my prompt"'));
+  assert(merged.includes('allow_implicit_invocation: false'));
+  fs.writeFileSync(path.join(target,metadata),'interface:\n  display_name: |\n    A multiline name\n');
+  assert(install({target,updateIcons:true,quiet:true}).conflicts.includes(metadata));
+  assert.equal(fs.readFileSync(tool,'utf8'),'preserve skill procedure');
+  assert.equal(fs.readFileSync(path.join(target,'.codex/agents/kiwi.toml'),'utf8'),'preserve model');
+  assert.equal(fs.readFileSync(profile,'utf8'),'custom profile');
   // Force is explicit; restores package-managed files, but never unrelated config.
   install({target,force:true,quiet:true});
   assert.equal(fs.readFileSync(path.join(target,'.codex/config.toml'),'utf8'),'local project data\n');

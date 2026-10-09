@@ -112,3 +112,14 @@ npx fruti-squad-codex install --update-tools
 `--update-tools` actualiza skills, agentes y QA distribuidos; conserva una copia de cada herramienta reemplazada en `.fruti/backups/codex-tools`. Preserva perfiles, estado, handoffs, tokens, tema y configuración del proyecto. `AGENTS.md` existente se reporta como conflicto y se conserva; las skills/agentes actualizados incluyen la obligación de leer el contrato de revisión. No hace falta reinicializar el proyecto ni usar `--force`.
 
 La versión 0.3.3 precisa la recuperación: un error de la integración de navegador no basta para detener el ciclo si hay una alternativa real y permitida en el proyecto. Las revisiones pendientes se esperan y procesan; un bloqueo terminal requiere error, intentos y dependencia concreta. Una declaración pendiente no solicita elegir A/B/C.
+
+## Iconos de skills
+
+`agents/openai.yaml` resuelve los iconos desde la raíz de cada skill, con SVG locales en `assets/`. Para sincronizar únicamente metadatos visuales e iconos desde el paquete instalado, preservando procedimientos, modelos y contratos:
+
+```bash
+npx fruti-squad-codex install --update-icons --dry-run
+npx fruti-squad-codex install --update-icons
+```
+
+Ejecutar en la raíz del proyecto abierto en Codex. Actualizar primero la dependencia GitHub si su versión es anterior a 0.3.10. La operación guarda respaldos de archivos reemplazados; no demuestra que la aplicación haya recargado los iconos. Ver [auditoría de iconos](docs/codex-icons-audit.md) para comprobar la copia, las superficies y los pasos pendientes.

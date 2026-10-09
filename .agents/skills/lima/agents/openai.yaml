@@ -1,6 +1,6 @@
 interface:
   display_name: "Lima"
-  short_description: "Lima: contratos y evidencia UI"
+  short_description: "Contratos, reutilización y compuertas UI"
   default_prompt: "Usa $lima para resolver esta solicitud respetando el flujo y contratos de Fruti Squad."
   icon_small: "./assets/avatar-small.svg"
   icon_large: "./assets/avatar-large.svg"

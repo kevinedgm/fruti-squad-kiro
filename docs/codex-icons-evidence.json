@@ -1,0 +1,545 @@
+{
+  "project": "repository checkout; branch codex",
+  "scope": "filesystem_only_not_Codex_discovery",
+  "skills": [
+    {
+      "skill": "bruno",
+      "copy": ".agents/skills/bruno",
+      "symlink": false,
+      "errors": [],
+      "stale_files": [],
+      "icons": {
+        "icon_small": {
+          "path": "assets/avatar-small.svg",
+          "sha256": "5d66b2cc719afa78588952a8ae5c41741b21095fb8097467b4e072c908d86df2",
+          "viewBox": [
+            0.0,
+            0.0,
+            24.0,
+            24.0
+          ],
+          "bytes": 1372
+        },
+        "icon_large": {
+          "path": "assets/avatar-large.svg",
+          "sha256": "5d66b2cc719afa78588952a8ae5c41741b21095fb8097467b4e072c908d86df2",
+          "viewBox": [
+            0.0,
+            0.0,
+            24.0,
+            24.0
+          ],
+          "bytes": 1372
+        }
+      },
+      "desktop": "not_verified",
+      "metadata_sha256": "5aa7a3aa30d2e302b956853b4b07f5069052908a60871ea5c668cd6f6ef5185f",
+      "status": "FILES_VALID"
+    },
+    {
+      "skill": "coco",
+      "copy": ".agents/skills/coco",
+      "symlink": false,
+      "errors": [],
+      "stale_files": [],
+      "icons": {
+        "icon_small": {
+          "path": "assets/avatar-small.svg",
+          "sha256": "a9a657700acaad645f2fcdc60aafb7d6b502d688f12a621348a9fdc242f8009d",
+          "viewBox": [
+            0.0,
+            0.0,
+            24.0,
+            24.0
+          ],
+          "bytes": 1695
+        },
+        "icon_large": {
+          "path": "assets/avatar-large.svg",
+          "sha256": "a9a657700acaad645f2fcdc60aafb7d6b502d688f12a621348a9fdc242f8009d",
+          "viewBox": [
+            0.0,
+            0.0,
+            24.0,
+            24.0
+          ],
+          "bytes": 1695
+        }
+      },
+      "desktop": "not_verified",
+      "metadata_sha256": "fb805ff7c96e16c55e3da72ac8911f949ad9400b778c81798e763815d8552947",
+      "status": "FILES_VALID"
+    },
+    {
+      "skill": "fruti-squad",
+      "copy": ".agents/skills/fruti-squad",
+      "symlink": false,
+      "errors": [],
+      "stale_files": [],
+      "icons": {
+        "icon_small": {
+          "path": "assets/avatar-small.svg",
+          "sha256": "1530fbbd9d14c32a4595c53559d758662c47faa3fc67dc9358ad7f60d8f98999",
+          "viewBox": [
+            0.0,
+            0.0,
+            24.0,
+            24.0
+          ],
+          "bytes": 2931
+        },
+        "icon_large": {
+          "path": "assets/avatar-large.svg",
+          "sha256": "1530fbbd9d14c32a4595c53559d758662c47faa3fc67dc9358ad7f60d8f98999",
+          "viewBox": [
+            0.0,
+            0.0,
+            24.0,
+            24.0
+          ],
+          "bytes": 2931
+        }
+      },
+      "desktop": "not_verified",
+      "metadata_sha256": "70f7dc8987dab5715bad9b48eb10b35b1bc9aad8e249bc8babf58d7755a409d6",
+      "status": "FILES_VALID"
+    },
+    {
+      "skill": "impeccable",
+      "copy": ".agents/skills/impeccable",
+      "symlink": false,
+      "errors": [],
+      "stale_files": [],
+      "icons": {
+        "icon_small": {
+          "path": "assets/avatar-small.svg",
+          "sha256": "1530fbbd9d14c32a4595c53559d758662c47faa3fc67dc9358ad7f60d8f98999",
+          "viewBox": [
+            0.0,
+            0.0,
+            24.0,
+            24.0
+          ],
+          "bytes": 2931
+        },
+        "icon_large": {
+          "path": "assets/avatar-large.svg",
+          "sha256": "1530fbbd9d14c32a4595c53559d758662c47faa3fc67dc9358ad7f60d8f98999",
+          "viewBox": [
+            0.0,
+            0.0,
+            24.0,
+            24.0
+          ],
+          "bytes": 2931
+        }
+      },
+      "desktop": "not_verified",
+      "metadata_sha256": "d42ed9aa100b3e8f2e834a4453dc374e4b6fba53f421565bf87493d9c82a66d9",
+      "status": "FILES_VALID"
+    },
+    {
+      "skill": "improve-animations",
+      "copy": ".agents/skills/improve-animations",
+      "symlink": false,
+      "errors": [],
+      "stale_files": [],
+      "icons": {
+        "icon_small": {
+          "path": "assets/avatar-small.svg",
+          "sha256": "1530fbbd9d14c32a4595c53559d758662c47faa3fc67dc9358ad7f60d8f98999",
+          "viewBox": [
+            0.0,
+            0.0,
+            24.0,
+            24.0
+          ],
+          "bytes": 2931
+        },
+        "icon_large": {
+          "path": "assets/avatar-large.svg",
+          "sha256": "1530fbbd9d14c32a4595c53559d758662c47faa3fc67dc9358ad7f60d8f98999",
+          "viewBox": [
+            0.0,
+            0.0,
+            24.0,
+            24.0
+          ],
+          "bytes": 2931
+        }
+      },
+      "desktop": "not_verified",
+      "metadata_sha256": "784f986f9e662ba615243f69d36d7732b5f12f06e085516329459445494da6c4",
+      "status": "FILES_VALID"
+    },
+    {
+      "skill": "kiwi",
+      "copy": ".agents/skills/kiwi",
+      "symlink": false,
+      "errors": [],
+      "stale_files": [],
+      "icons": {
+        "icon_small": {
+          "path": "assets/avatar-small.svg",
+          "sha256": "e340dbe10dfd04abb6fc928863550f95994c2b58a27805439f8ca9515a398a40",
+          "viewBox": [
+            0.0,
+            0.0,
+            24.0,
+            24.0
+          ],
+          "bytes": 1622
+        },
+        "icon_large": {
+          "path": "assets/avatar-large.svg",
+          "sha256": "e340dbe10dfd04abb6fc928863550f95994c2b58a27805439f8ca9515a398a40",
+          "viewBox": [
+            0.0,
+            0.0,
+            24.0,
+            24.0
+          ],
+          "bytes": 1622
+        }
+      },
+      "desktop": "not_verified",
+      "metadata_sha256": "9c1699eaf5b458d2403195b5893577d7d9b89e6838f679e094e16d61c6058b48",
+      "status": "FILES_VALID"
+    },
+    {
+      "skill": "lima",
+      "copy": ".agents/skills/lima",
+      "symlink": false,
+      "errors": [],
+      "stale_files": [],
+      "icons": {
+        "icon_small": {
+          "path": "assets/avatar-small.svg",
+          "sha256": "c05d22ac05a1e6a2a335f97bb1ba05529af87fa3ae90842af77c0a38b2d8302d",
+          "viewBox": [
+            0.0,
+            0.0,
+            24.0,
+            24.0
+          ],
+          "bytes": 1629
+        },
+        "icon_large": {
+          "path": "assets/avatar-large.svg",
+          "sha256": "c05d22ac05a1e6a2a335f97bb1ba05529af87fa3ae90842af77c0a38b2d8302d",
+          "viewBox": [
+            0.0,
+            0.0,
+            24.0,
+            24.0
+          ],
+          "bytes": 1629
+        }
+      },
+      "desktop": "not_verified",
+      "metadata_sha256": "c9069c873281ff320438871f725b91f2b18faf54fdb6b8f17821b4f2f13f8f15",
+      "status": "FILES_VALID"
+    },
+    {
+      "skill": "mora-docs",
+      "copy": ".agents/skills/mora-docs",
+      "symlink": false,
+      "errors": [],
+      "stale_files": [],
+      "icons": {
+        "icon_small": {
+          "path": "assets/avatar-small.svg",
+          "sha256": "a96720cdddb2eafffc3436da6f410ca1452f304be008620d6ec56afa567950f0",
+          "viewBox": [
+            0.0,
+            0.0,
+            24.0,
+            24.0
+          ],
+          "bytes": 1622
+        },
+        "icon_large": {
+          "path": "assets/avatar-large.svg",
+          "sha256": "a96720cdddb2eafffc3436da6f410ca1452f304be008620d6ec56afa567950f0",
+          "viewBox": [
+            0.0,
+            0.0,
+            24.0,
+            24.0
+          ],
+          "bytes": 1622
+        }
+      },
+      "desktop": "not_verified",
+      "metadata_sha256": "fcffc25c87cad37edab37c669fbf2fc14c0e962a3d318401d38c1ff1153d802c",
+      "status": "FILES_VALID"
+    }
+  ],
+  "date": "2026-10-09",
+  "render": {
+    "renderer": "Chromium via Playwright; not Codex desktop",
+    "entries": [
+      {
+        "skill": "bruno",
+        "field": "icon_small",
+        "size": 24,
+        "opaque_pixels": 564,
+        "foreground_pixels": 144,
+        "loaded": true
+      },
+      {
+        "skill": "bruno",
+        "field": "icon_small",
+        "size": 96,
+        "opaque_pixels": 8912,
+        "foreground_pixels": 1939,
+        "loaded": true
+      },
+      {
+        "skill": "bruno",
+        "field": "icon_large",
+        "size": 24,
+        "opaque_pixels": 564,
+        "foreground_pixels": 144,
+        "loaded": true
+      },
+      {
+        "skill": "bruno",
+        "field": "icon_large",
+        "size": 96,
+        "opaque_pixels": 8912,
+        "foreground_pixels": 1939,
+        "loaded": true
+      },
+      {
+        "skill": "coco",
+        "field": "icon_small",
+        "size": 24,
+        "opaque_pixels": 564,
+        "foreground_pixels": 166,
+        "loaded": true
+      },
+      {
+        "skill": "coco",
+        "field": "icon_small",
+        "size": 96,
+        "opaque_pixels": 8912,
+        "foreground_pixels": 2038,
+        "loaded": true
+      },
+      {
+        "skill": "coco",
+        "field": "icon_large",
+        "size": 24,
+        "opaque_pixels": 564,
+        "foreground_pixels": 166,
+        "loaded": true
+      },
+      {
+        "skill": "coco",
+        "field": "icon_large",
+        "size": 96,
+        "opaque_pixels": 8912,
+        "foreground_pixels": 2038,
+        "loaded": true
+      },
+      {
+        "skill": "fruti-squad",
+        "field": "icon_small",
+        "size": 24,
+        "opaque_pixels": 564,
+        "foreground_pixels": 128,
+        "loaded": true
+      },
+      {
+        "skill": "fruti-squad",
+        "field": "icon_small",
+        "size": 96,
+        "opaque_pixels": 8912,
+        "foreground_pixels": 1594,
+        "loaded": true
+      },
+      {
+        "skill": "fruti-squad",
+        "field": "icon_large",
+        "size": 24,
+        "opaque_pixels": 564,
+        "foreground_pixels": 128,
+        "loaded": true
+      },
+      {
+        "skill": "fruti-squad",
+        "field": "icon_large",
+        "size": 96,
+        "opaque_pixels": 8912,
+        "foreground_pixels": 1594,
+        "loaded": true
+      },
+      {
+        "skill": "impeccable",
+        "field": "icon_small",
+        "size": 24,
+        "opaque_pixels": 564,
+        "foreground_pixels": 128,
+        "loaded": true
+      },
+      {
+        "skill": "impeccable",
+        "field": "icon_small",
+        "size": 96,
+        "opaque_pixels": 8912,
+        "foreground_pixels": 1594,
+        "loaded": true
+      },
+      {
+        "skill": "impeccable",
+        "field": "icon_large",
+        "size": 24,
+        "opaque_pixels": 564,
+        "foreground_pixels": 128,
+        "loaded": true
+      },
+      {
+        "skill": "impeccable",
+        "field": "icon_large",
+        "size": 96,
+        "opaque_pixels": 8912,
+        "foreground_pixels": 1594,
+        "loaded": true
+      },
+      {
+        "skill": "improve-animations",
+        "field": "icon_small",
+        "size": 24,
+        "opaque_pixels": 564,
+        "foreground_pixels": 128,
+        "loaded": true
+      },
+      {
+        "skill": "improve-animations",
+        "field": "icon_small",
+        "size": 96,
+        "opaque_pixels": 8912,
+        "foreground_pixels": 1594,
+        "loaded": true
+      },
+      {
+        "skill": "improve-animations",
+        "field": "icon_large",
+        "size": 24,
+        "opaque_pixels": 564,
+        "foreground_pixels": 128,
+        "loaded": true
+      },
+      {
+        "skill": "improve-animations",
+        "field": "icon_large",
+        "size": 96,
+        "opaque_pixels": 8912,
+        "foreground_pixels": 1594,
+        "loaded": true
+      },
+      {
+        "skill": "kiwi",
+        "field": "icon_small",
+        "size": 24,
+        "opaque_pixels": 564,
+        "foreground_pixels": 168,
+        "loaded": true
+      },
+      {
+        "skill": "kiwi",
+        "field": "icon_small",
+        "size": 96,
+        "opaque_pixels": 8912,
+        "foreground_pixels": 2331,
+        "loaded": true
+      },
+      {
+        "skill": "kiwi",
+        "field": "icon_large",
+        "size": 24,
+        "opaque_pixels": 564,
+        "foreground_pixels": 168,
+        "loaded": true
+      },
+      {
+        "skill": "kiwi",
+        "field": "icon_large",
+        "size": 96,
+        "opaque_pixels": 8912,
+        "foreground_pixels": 2331,
+        "loaded": true
+      },
+      {
+        "skill": "lima",
+        "field": "icon_small",
+        "size": 24,
+        "opaque_pixels": 564,
+        "foreground_pixels": 154,
+        "loaded": true
+      },
+      {
+        "skill": "lima",
+        "field": "icon_small",
+        "size": 96,
+        "opaque_pixels": 8912,
+        "foreground_pixels": 2261,
+        "loaded": true
+      },
+      {
+        "skill": "lima",
+        "field": "icon_large",
+        "size": 24,
+        "opaque_pixels": 564,
+        "foreground_pixels": 154,
+        "loaded": true
+      },
+      {
+        "skill": "lima",
+        "field": "icon_large",
+        "size": 96,
+        "opaque_pixels": 8912,
+        "foreground_pixels": 2261,
+        "loaded": true
+      },
+      {
+        "skill": "mora-docs",
+        "field": "icon_small",
+        "size": 24,
+        "opaque_pixels": 564,
+        "foreground_pixels": 149,
+        "loaded": true
+      },
+      {
+        "skill": "mora-docs",
+        "field": "icon_small",
+        "size": 96,
+        "opaque_pixels": 8912,
+        "foreground_pixels": 2074,
+        "loaded": true
+      },
+      {
+        "skill": "mora-docs",
+        "field": "icon_large",
+        "size": 24,
+        "opaque_pixels": 564,
+        "foreground_pixels": 149,
+        "loaded": true
+      },
+      {
+        "skill": "mora-docs",
+        "field": "icon_large",
+        "size": 96,
+        "opaque_pixels": 8912,
+        "foreground_pixels": 2074,
+        "loaded": true
+      }
+    ]
+  },
+  "packed_install": {
+    "version": "0.3.10",
+    "result": "clean npm installation and visual synchronization executed; eight visual configurations and 16 SVGs match source",
+    "desktop_discovery": "not_verified"
+  }
+}

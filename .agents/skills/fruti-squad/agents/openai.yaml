@@ -1,6 +1,6 @@
 interface:
   display_name: "Fruti Squad · Orchestrator"
-  short_description: "Fruti Squad · Orchestrator: contratos y evidencia UI"
+  short_description: "Coordinación de roles y revisiones de UI"
   default_prompt: "Usa $fruti-squad para resolver esta solicitud respetando el flujo y contratos de Fruti Squad."
   icon_small: "./assets/avatar-small.svg"
   icon_large: "./assets/avatar-large.svg"

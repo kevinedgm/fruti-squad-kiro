@@ -594,7 +594,7 @@
       "source": ".kiro/skills/impeccable/agents/openai.yaml",
       "target": ".agents/skills/impeccable/agents/openai.yaml",
       "source_sha256": "cbd8bd68fa00935dd0f179adb169252629cf7ee443ea9dc7db77e7ef2cf77446",
-      "target_sha256": "dfc44e6bf2c5052cd85e4a6425658f996057d9bf9da2a25b0cc9576383252eb7"
+      "target_sha256": "d42ed9aa100b3e8f2e834a4453dc374e4b6fba53f421565bf87493d9c82a66d9"
     },
     {
       "source": ".kiro/skills/impeccable/reference/adapt.md",

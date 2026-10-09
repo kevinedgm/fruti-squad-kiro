@@ -136,7 +136,17 @@ avatars = json.loads((ROOT / '.fruti/identity/avatars.json').read_text())['membe
 for skill in [*skills.values(), 'impeccable', 'improve-animations', 'fruti-squad']:
     labels = {'mora-docs':'Mora · Documentation','fruti-squad':'Fruti Squad · Orchestrator','improve-animations':'Improve Animations'}
     label = labels.get(skill, skill.capitalize())
-    interface = {'display_name':label, 'short_description':f'{label}: contratos y evidencia UI', 'default_prompt':f'Usa ${skill} para resolver esta solicitud respetando el flujo y contratos de Fruti Squad.'}
+    blurbs = {
+        'kiwi':'Estructura, interacción y wireframes F0–F2',
+        'lima':'Contratos, reutilización y compuertas UI',
+        'coco':'Construcción CSS y auditoría visual R0',
+        'bruno':'Implementación funcional, estados y foco R3',
+        'mora-docs':'Documentación de UI implementada y verificada',
+        'impeccable':'Revisión y refinamiento de calidad UI',
+        'improve-animations':'Auditoría y planes de animación UI',
+        'fruti-squad':'Coordinación de roles y revisiones de UI',
+    }
+    interface = {'display_name':label, 'short_description':blurbs[skill], 'default_prompt':f'Usa ${skill} para resolver esta solicitud respetando el flujo y contratos de Fruti Squad.'}
     # Reuse the canonical tiles unchanged; portable even when a skill is installed alone.
     member = 'mora' if skill == 'mora-docs' else skill if skill in avatars else 'fruti-squad'
     avatar = avatars[member]

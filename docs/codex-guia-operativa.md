@@ -255,7 +255,7 @@ Los permisos efectivos dependen de Codex y del entorno. El texto del agente impo
 
 No instalar un sandbox más amplio ni sobrescribir la configuración del usuario para hacer funcionar el squad. Si el host carece de subagentes, declarar ejecución secuencial de los mismos roles y mantener compuertas. Si carece de navegador, declarar la evidencia visual pendiente.
 
-Los avatares SVG y su registro se conservan. `agents/openai.yaml` conecta `icon_small`, `icon_large` y `brand_color` con copias portables de los tiles canónicos dentro de cada skill. `.codex/qa/identity.md` define avisos por rol y el fallback textual. Los iconos del selector y las imágenes de avisos son superficies distintas de los eventos nativos de subagentes; esta adaptación no promete personalizar estos últimos.
+Los avatares SVG y su registro se conservan. `agents/openai.yaml` conecta `icon_small`, `icon_large` y `brand_color` con copias portables de los tiles canónicos dentro de cada skill. `.codex/qa/identity.md` define avisos por rol y el fallback textual. Los metadatos de las skills y los eventos nativos de subagentes son superficies distintas; esta adaptación no personaliza estos últimos ni inserta imágenes para simularlos. Consulta la [auditoría de iconos](codex-icons-audit.md) para sincronización, rutas y verificación manual.
 
 ## 9. Tematización y perfiles
 
