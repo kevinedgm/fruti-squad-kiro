@@ -110,3 +110,5 @@ npx fruti-squad-codex install --update-tools
 ```
 
 `--update-tools` actualiza skills, agentes y QA distribuidos; conserva una copia de cada herramienta reemplazada en `.fruti/backups/codex-tools`. Preserva perfiles, estado, handoffs, tokens, tema y configuración del proyecto. `AGENTS.md` existente se reporta como conflicto y se conserva; las skills/agentes actualizados incluyen la obligación de leer el contrato de revisión. No hace falta reinicializar el proyecto ni usar `--force`.
+
+La versión 0.3.3 precisa la recuperación: un error de la integración de navegador no basta para detener el ciclo si hay una alternativa real y permitida en el proyecto. Las revisiones pendientes se esperan y procesan; un bloqueo terminal requiere error, intentos y dependencia concreta. Una declaración pendiente no solicita elegir A/B/C.

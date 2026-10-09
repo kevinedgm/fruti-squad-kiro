@@ -36,4 +36,4 @@
 - **→ mora:**
 
 ## Siguiente paso del usuario
-Aprobar A/B/C · aprobar estructura → coco F3/R3 · nada
+Solo si READY_FOR_USER_REVIEW: elegir A/B/C o aprobar estructura → Lima contrato → Coco F3. Si revisión interna en curso: ninguno; el squad continúa. Si BLOCKED: acción mínima concreta y causa del bloqueo, sin solicitar aprobación de propuesta pendiente.

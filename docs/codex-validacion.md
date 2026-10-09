@@ -69,3 +69,11 @@ Se prueban además rechazo de ronda/revisión antigua, fuente o plan cambiado, c
 Un revisor independiente del código detectó rutas de bypass del gate (hallazgos ignorados, captura/trace repetido, plan omitido, aumento declarado sin método), que se corrigieron y añadieron a regresiones. También detectó un falso positivo con scroll interno permitido; el recolector respeta el scrollport intermedio y el test en navegador comprueba el caso válido y el recorte por padre que sigue siendo inválido.
 
 El ciclo productor → revisor → dueño → reprobación es obligatorio antes de presentar propuestas. Las aprobaciones reales del usuario siguen siendo independientes. Las pruebas no verifican todavía el componente nsaEencabezado.vue del consumidor ni una ejecución autónoma completa en su cliente Codex.
+
+## Continuidad tras una devolución (0.3.3)
+
+Una segunda revisión pendiente es trabajo en curso, no resultado terminal. La recuperación del navegador exige registrar error literal, comprobar servidor/recursos, corregir rutas propias del artefacto, reintentar con causa conocida y usar herramientas reales alternativas del proyecto cuando esté permitido. Si no queda alternativa autorizada, el bloqueo debe identificar operación, causa, intentos y la acción mínima necesaria; el borrador no se somete a elección A/B/C.
+
+La plantilla de declaración diferencia propuesta lista, revisión interna en curso y bloqueo terminal; elimina la solicitud automática de aprobación en una entrega pendiente. La recuperación no elude las restricciones del host ni inventa permisos o ejecución.
+
+Una prueba escrita en contexto independiente distinguió dos escenarios: integración de navegador fallida con harness/Playwright disponibles (continuar recuperación y esperar revisión Lima; sin pedir aprobación), y ejecutable ausente sin alternativas ni autorización de instalación ni capacidad de inspeccionar imágenes (BLOCKED con dependencia concreta). El agente mantuvo hallazgos reparados pendientes de reprobación y no trató el estado vacío del paquete como evidencia del consumidor. Es evaluación escrita, no una ejecución en el proyecto externo.

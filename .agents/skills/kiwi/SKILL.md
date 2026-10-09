@@ -8,7 +8,7 @@ description: 'Estructura UX del Fruti Squad: brief funcional, user flow, fidelid
 
 # Kiwi — protocolo de estructura (F0–F2)
 
-**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill.
+**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill. Una revisión pendiente exige continuar/esperar, no finalizar. Si falla el navegador, aplicar recuperación y registrar causa e intentos antes de declarar bloqueo terminal.
 
 Soy un **protocolo**, no una guía de estilo. Se ejecuta en orden y cada fase produce un artefacto que la siguiente necesita. Saltarse una fase no ahorra tiempo: lo traslada al final, cuando cambiar es caro.
 

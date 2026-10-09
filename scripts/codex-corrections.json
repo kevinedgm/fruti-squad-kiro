@@ -22,7 +22,7 @@
     },
     {
       "before": "# Kiwi — protocolo de estructura (F0–F2)",
-      "after": "# Kiwi — protocolo de estructura (F0–F2)\n\n**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill."
+      "after": "# Kiwi — protocolo de estructura (F0–F2)\n\n**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill. Una revisión pendiente exige continuar/esperar, no finalizar. Si falla el navegador, aplicar recuperación y registrar causa e intentos antes de declarar bloqueo terminal."
     }
   ],
   "mora-docs/SKILL.md": [
@@ -36,7 +36,7 @@
     },
     {
       "before": "# mora — curadora documental del Design Hub",
-      "after": "# mora — curadora documental del Design Hub\n\n**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill."
+      "after": "# mora — curadora documental del Design Hub\n\n**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill. Una revisión pendiente exige continuar/esperar, no finalizar. Si falla el navegador, aplicar recuperación y registrar causa e intentos antes de declarar bloqueo terminal."
     }
   ],
   "kiwi/references/fidelidad.md": [
@@ -68,7 +68,7 @@
     },
     {
       "before": "# coco — protocolo obligatorio (agnóstico del proyecto)",
-      "after": "# coco — protocolo obligatorio (agnóstico del proyecto)\n\n**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill."
+      "after": "# coco — protocolo obligatorio (agnóstico del proyecto)\n\n**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill. Una revisión pendiente exige continuar/esperar, no finalizar. Si falla el navegador, aplicar recuperación y registrar causa e intentos antes de declarar bloqueo terminal."
     }
   ],
   "improve-animations/SKILL.md": [
@@ -114,19 +114,25 @@
   "lima/SKILL.md": [
     {
       "before": "# Adaptive UI System Architect",
-      "after": "# Adaptive UI System Architect\n\n**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill."
+      "after": "# Adaptive UI System Architect\n\n**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill. Una revisión pendiente exige continuar/esperar, no finalizar. Si falla el navegador, aplicar recuperación y registrar causa e intentos antes de declarar bloqueo terminal."
     }
   ],
   "bruno/SKILL.md": [
     {
       "before": "# Bruno · constructor funcional R3",
-      "after": "# Bruno · constructor funcional R3\n\n**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill."
+      "after": "# Bruno · constructor funcional R3\n\n**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill. Una revisión pendiente exige continuar/esperar, no finalizar. Si falla el navegador, aplicar recuperación y registrar causa e intentos antes de declarar bloqueo terminal."
     }
   ],
   "kiwi/scripts/check_artifact.py": [
     {
       "before": "    print(f\"\\n{len(errors)} errores · {len(warns)} avisos\")",
       "after": "    print(f\"\\n{len(errors)} errores · {len(warns)} avisos\")\n    print(\"ALCANCE: validación ESTÁTICA únicamente. Render, recortes, responsive, visual y funcionalidad: NO VERIFICADOS por este script.\")\n    print(\"Antes de entregar: ejecutar revisión de navegador y gate .codex/qa/verify-delivery.cjs; un exit 0 aquí no es PASS de UI.\")"
+    }
+  ],
+  "kiwi/assets/plantillas/declaracion.md": [
+    {
+      "before": "Aprobar A/B/C · aprobar estructura → coco F3/R3 · nada",
+      "after": "Solo si READY_FOR_USER_REVIEW: elegir A/B/C o aprobar estructura → Lima contrato → Coco F3. Si revisión interna en curso: ninguno; el squad continúa. Si BLOCKED: acción mínima concreta y causa del bloqueo, sin solicitar aprobación de propuesta pendiente."
     }
   ]
 }

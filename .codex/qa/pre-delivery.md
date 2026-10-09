@@ -90,3 +90,25 @@ Después de inspeccionar todos los casos, el revisor agrega:
 Continuar automáticamente los defectos reparables dentro de la autorización vigente. No pedir al usuario que redacte instrucciones de QA o diagnostique el recorte. Si falta una herramienta, acceso o decisión auténtica de producto, comunicar el bloqueo concreto y conservar lo realizado como borrador no aprobado. Si el ciclo no progresa, investigar la causa y registrar qué falta; no convertir cansancio, número de intentos o un plazo en PASS.
 
 Las aprobaciones del usuario siguen siendo sobre propuestas concretas ya revisadas, y no autorizan silenciosamente ampliar el alcance. Si el usuario reporta un fallo en una propuesta entregada, reabrir la revisión y el caso; no pedirle que demuestre o repare el defecto para que el squad actúe.
+
+## Continuidad de ejecución y recuperación del navegador
+
+`NOT_REVIEWED`, revisión en curso, segunda revisión solicitada y corrección aplicada no son estados finales. Esperar la respuesta del revisor, procesar su resultado y completar la siguiente acción dependiente. No terminar la tarea con «falta completar la evidencia» cuando todavía hay una acción autorizada y ejecutable.
+
+Un error de una herramienta de navegador no prueba que todos los navegadores estén indisponibles. Registrar el error exacto y seguir esta recuperación dentro de las capacidades y permisos reales:
+
+1. Comprobar que la URL/servidor y el artefacto existen y son los de la revisión actual; revisar respuesta de recursos CSS/JS y las rutas. Resolver el servidor local o las rutas rotas que pertenezcan al alcance. Un HTML que depende de CSS de otra ronda no se comparte como artefacto autónomo: copiar el recurso permitido dentro de la ronda o incluirlo inline y revalidar.
+2. Reintentar después de corregir la causa conocida. No repetir ciegamente el mismo fallo.
+3. Si falla la integración de navegador del host, buscar la herramienta de navegador disponible del proyecto (harness QA, Playwright instalado, ejecutable ya disponible) y usarla por terminal si está permitido. Preferir la dependencia del consumidor; el paquete no instala Playwright en su propio árbol. Si cambia la herramienta, conservar URL/estados/viewports e inspección visual real.
+4. Un revisor puede recibir la evidencia capturada por el productor y abrir las imágenes/traces con las herramientas efectivas: no necesita iniciar otro servidor o navegador solo para duplicar la captura. Debe inspeccionarla, contrastarla y solicitar reprobación de los fallos; el productor no puede firmar su propio review. Si no puede ver imágenes/traces, tampoco puede declarar PASS visual.
+5. Si hace falta instalación, credenciales o acceso no autorizados, detener solo esa operación y pedir lo mínimo que realmente falte. No simular fallback ni afirmar que se ejecutó otro navegador. Respetar restricciones del host y autorizaciones vigentes.
+6. Solo declarar bloqueo terminal cuando no quede ruta de recuperación permitida y viable. Persistir un registro `blocker.json` con ronda/revisión, operación fallida, herramienta, error literal, intentos/resultados, alternativas disponibles o indisponibles, artefactos afectados, dueño y acción mínima necesaria. Un «navegador bloqueado» sin detalle no es diagnóstico completo.
+
+Al finalizar, distinguir únicamente:
+
+- `READY_FOR_USER_REVIEW`: propuesta reparada, evidencia vigente y review aceptado; pedir la aprobación o comentarios propios de esa etapa.
+- `BLOCKED`: dependencia concreta no resoluble en el entorno; explicar qué falta para continuar. Los artefactos permanecen borradores. No pedir elección A/B/C ni aprobación de F3.
+
+Las declaraciones y los hallazgos deben actualizarse después de cada devolución y reparación. Registrar hallazgo, dueño, cambio y reprobación pendiente/ejecutada. No dejar una primera declaración «pendiente» como si describiera la segunda revisión; no cerrar un hallazgo sin nueva evidencia.
+
+El «siguiente paso del usuario» debe ser «ninguno: revisión interna en curso» mientras el squad puede continuar, o la acción concreta del bloqueo terminal. Solo proponer elegir A/B/C cuando el gate esté listo. No prometer ejecución en segundo plano si el turno termina.

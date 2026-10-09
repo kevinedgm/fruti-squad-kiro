@@ -17,7 +17,7 @@ Kiwi (F0–F2 estructura) → Lima (clasificación/contrato) → Coco (F3/CSS) �
 
 ## Revisión interna antes de la entrega
 
-Antes de presentar una propuesta, aunque el usuario haya invocado solo Kiwi, aplicar `.codex/qa/pre-delivery.md`: productor → revisor → devolución al dueño → corrección y reprobación hasta estar listo. Usar agentes reales cuando estén disponibles; conservar aprobaciones del usuario como compuertas independientes. No pedir al usuario que detecte o diagnostique defectos básicos ni afirmar PASS visual desde un verificador estático. Sin evidencia real de navegador y revisión vigente, entregar solo estado de bloqueo/borrador; no solicitar aprobación de una UI certificada.
+Antes de presentar una propuesta, aunque el usuario haya invocado solo Kiwi, aplicar `.codex/qa/pre-delivery.md`: productor → revisor → devolución al dueño → corrección y reprobación hasta estar listo. Usar agentes reales cuando estén disponibles; conservar aprobaciones del usuario como compuertas independientes. Una revisión pendiente no es un cierre: esperar al revisor y completar reparación/reprobación. Si falla el navegador, diagnosticar y agotar las alternativas reales y permitidas de `.codex/qa/pre-delivery.md`; un fallo de herramienta no basta para declarar bloqueo terminal. No pedir al usuario que detecte o diagnostique defectos básicos ni afirmar PASS visual desde un verificador estático. Sin evidencia real de navegador y revisión vigente, entregar solo estado de bloqueo/borrador; no solicitar aprobación de una UI certificada.
 
 ## Adaptador de host
 

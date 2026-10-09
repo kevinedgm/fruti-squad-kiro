@@ -325,3 +325,9 @@ El recolector de navegador produce evidencia sin firmarla. Un revisor debe inspe
 Las herramientas son recursos Codex adicionales; los 33 archivos compartidos de Kiro conservan su contenido original. Las inserciones en SKILL/referencias se registran como transformaciones explícitas y se conservan al regenerar.
 
 Actualizar herramientas existentes con `install --update-tools`; las copias reemplazadas se respaldan y los datos/perfiles del proyecto se preservan. No ejecutar `init` de nuevo para aplicar una revisión del paquete.
+
+## Recuperación y estados de cierre (0.3.3)
+
+No finalizar por «revisión solicitada», «corrección aplicada» o «evidencia pendiente» si aún queda una acción interna viable. Esperar el resultado del especialista y continuar. El contrato `.codex/qa/pre-delivery.md` detalla diagnóstico y recuperación de navegador, uso permitido de herramientas existentes y los campos de `blocker.json` cuando el entorno impide continuar. Si la evidencia ya está capturada, el revisor puede inspeccionarla sin duplicar la infraestructura.
+
+Antes de solicitar aprobación, actualizar declaración y hallazgos con la revisión/evidencia vigentes. Una entrega BLOCKED informa el requisito concreto que falta; no pide elegir alternativas no aprobadas internamente. No se promete ejecución en segundo plano ni se fabrican herramientas o verificaciones.
