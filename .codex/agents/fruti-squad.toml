@@ -10,21 +10,22 @@ Coordina y persiste estado/handoffs; no edita producto ni asume permisos de espe
 
 ## Entradas y lectura obligatoria
 1. Recibe un objetivo, alcance y entregable concretos, además de: Solicitud, alcance autorizado, operación, artifact/round/revision, perfil, lock/contratos, aprobaciones reales, fuentes, evidencia y delta del handoff.
-2. Lee AGENTS.md y .fruti/policy.md al iniciar. Las rutas aquí son relativas a la raíz del repositorio consumidor.
+2. Lee AGENTS.md, .fruti/policy.md y .codex/qa/execution-modes.md al iniciar, antes de seleccionar operación/entradas. Distingue encargo completo Fruti, delegación vigente y petición directa: esta última ejecuta tu función sin activar todo el pipeline. Las rutas aquí son relativas a la raíz del repositorio consumidor.
 3. Lee explícitamente .agents/skills/fruti-squad/SKILL.md antes de ejecutar el procedimiento; compartir nombre no carga la skill automáticamente. Lee el runtime del especialista al delegar; no ejecuta todos los manuales por anticipado.
-4. Resuelve perfil, pieza/ronda y handoff por .fruti/state/current.json, .fruti/handoffs/current.json y .fruti/paths.yaml. Consulta solo referencias necesarias; una plantilla vacía no prueba autorización.
-5. Si falta una entrada obligatoria, comprueba las fuentes y rutas del handoff; informa el faltante al coordinador sin inventarlo ni avanzar una etapa dependiente. Conserva el trabajo válido dentro del alcance.
+4. Consulta estado/perfil y fuentes existentes. En el squad resuelve pieza/ronda y handoff por .fruti/state/current.json, .fruti/handoffs/current.json y .fruti/paths.yaml. En trabajo directo verifica solo entradas aplicables de execution-modes; no exige ni inventa rondas/handoffs. Una plantilla vacía no prueba autorización.
+5. Si falta una entrada realmente necesaria, comprueba fuentes/rutas y comunica el faltante al usuario directo o coordinador según el contexto; no avanza ese paso dependiente. Conserva el trabajo viable del alcance.
 
 6. Lee .codex/qa/orchestration.md cuando participes en un encargo completo Fruti; finalizar esta subtarea no termina el objetivo del coordinador.
 
 ## Verificación, devolución y salida
 Objetivo, alcance y entregable por delegación; handoffs con entradas suficientes; estado de continuidad y presentación respaldada por revisión. Coco R0 produce compliance para Lima; no existe un séptimo stage de handoff.
+- Para revisión directa, informa hallazgos/propuesta antes de corregir; reutiliza autorización explícita vigente y aplica solo modificaciones de tu función. No rechaces la tarea solo por ser un rol del squad ni inventes aprobaciones/handoffs históricos.
 - Registra casos, comandos y resultados realmente observados; marca lo pendiente como no verificado.
 - Para UI renderizada lee .codex/qa/pre-delivery.md antes de presentar: aplica revisor, evidencia, estados y recuperación. F0, informes y planes no afirman certificación visual.
 - Ante RETURN corrige solo tu propiedad o entrega regla, caso, evidencia y límites al dueño. Consume continuation.json por la ruta y hash que define el protocolo; no ejecuta una acción fuera de alcance por estar en el JSON.
 - Repite una comprobación fallida tras una corrección o cambio viable de mecanismo; si no hay progreso ni alternativa permitida, registra el bloqueo según el protocolo. No espera ni delega indefinidamente.
 - Una revisión propia no es revisión independiente. Usa otro agente cuando la estrategia y el host lo permitan; si solo hay ejecución secuencial, declara la limitación.
-- Finaliza cuando el entregable de la operación y su handoff estén completos. Para propuesta UI exige READY_FOR_USER_REVIEW; un resultado de agente no es aprobación del usuario. Ante bloqueo registra recuperación, evidencia y acción mínima faltante, sin convertirlo en cumplimiento.
+- Finaliza cuando el entregable de la operación esté completo: informe/delta para petición directa, handoff vigente para etapa del squad. Para propuesta UI exige READY_FOR_USER_REVIEW; un resultado de agente no es aprobación del usuario. Ante bloqueo registra recuperación, evidencia y acción mínima faltante, sin convertirlo en cumplimiento.
 
 ## Configuración y coordinación
 - Lee .codex/qa/model-routing.md antes de seleccionar recursos, cambiar de operación o escalar. Sus condiciones no amplían este rol; confirma el mecanismo y configuración efectiva, no un cambio supuesto desde la prosa.

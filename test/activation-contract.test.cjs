@@ -31,6 +31,11 @@ try {
  assert.equal(fs.readFileSync(path.join(target,orchestration),'utf8'),read(orchestration), 'installed coordinator protocol must match package');
  for(const role of ['kiwi','lima','coco','bruno','mora-docs','fruti-squad']) assert(read('.agents/skills/'+role+'/SKILL.md').includes(orchestration), 'role must explicitly load coordination protocol: '+role);
  for(const role of ['kiwi','lima','coco','bruno','mora','fruti-squad']) assert(read('.codex/agents/'+role+'.toml').includes(orchestration), 'native agent must explicitly load coordination protocol: '+role);
+ const modes='.codex/qa/execution-modes.md';
+ assert.equal(fs.readFileSync(path.join(target,modes),'utf8'),read(modes),'installed execution mode protocol must match package');
+ for(const role of ['kiwi','lima','coco','bruno','mora-docs','fruti-squad']) assert(read('.agents/skills/'+role+'/SKILL.md').includes(modes),'skill must read execution context before selecting workflow: '+role);
+ for(const role of ['kiwi','lima','coco','bruno','mora','fruti-squad']) assert(read('.codex/agents/'+role+'.toml').includes(modes),'agent must explicitly read direct/squad rules: '+role);
+ for(const id of ['direct-lima-audit','direct-coco-audit','direct-bruno-repair','direct-mora-docs','direct-kiwi-review','squad-redesign','direct-approval']) assert(cases.some(x=>x.id===id),'missing direct/squad routing scenario: '+id);
  for(const skill of skills){
   const dir=path.join(target,'.agents/skills',skill);
   const ui=fs.readFileSync(path.join(dir,'agents/openai.yaml'),'utf8');

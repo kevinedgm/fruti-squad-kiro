@@ -6,6 +6,8 @@ Lee `.codex/qa/orchestration.md` al continuar un encargo completo: este gate cer
 
 ## Alcance del gate y comunicación
 
+Lee `.codex/qa/execution-modes.md` para distinguir revisión directa y cadena del squad. Una auditoría informa primero y no modifica sin autorización; la reparación propia autorizada no obliga a reconstruir todas las etapas. El ciclo de revisión de una UI certificada y sus comprobaciones mantienen sus requisitos en ambos contextos; informes y correcciones textuales pueden cerrar con cobertura/pendientes explícitos.
+
 Para propuestas que integren bibliotecas o componentes existentes, lee `.codex/qa/project-components.md` y comprueba su tabla de reutilización, APIs reales y evidencia de coexistencia de estilos en navegador. Devuelve import/funcionalidad a Bruno, CSS a Coco y contrato/integración a Lima; no autorices cambios en bibliotecas ajenas al alcance.
 
 Este gate certifica propuestas UI renderizadas F1/F2/F3/R3 y previews documentales. F0 comprueba flujo y decisiones; informes R0/M0, planes de motion, inicialización y correcciones puramente textuales no afirman aprobación visual. Pueden entregar hallazgos o hechos verificados indicando lo no verificado; no usar ese informe para eludir una compuerta UI/lifecycle.

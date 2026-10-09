@@ -114,5 +114,68 @@
     "expected_skill": null,
     "excluded_skill": "fruti-squad",
     "kind": "documentary-routing-example"
+  },
+  {
+    "id": "direct-lima-audit",
+    "prompt": "Lima, audita este componente y su contrato. Muéstrame los hallazgos antes de cambiar archivos.",
+    "expected_skill": "lima",
+    "expected_context": "direct",
+    "write_authorized": false
+  },
+  {
+    "id": "direct-coco-audit",
+    "prompt": "Coco, audita el CSS y responsive de esta pieza. Primero explica problemas y propuesta.",
+    "expected_skill": "coco",
+    "expected_context": "direct",
+    "write_authorized": false
+  },
+  {
+    "id": "direct-bruno-repair",
+    "prompt": "Bruno, corrige el listener que permanece después de desmontar este componente existente; conserva API y CSS.",
+    "expected_skill": "bruno",
+    "expected_context": "direct",
+    "write_authorized": true
+  },
+  {
+    "id": "direct-mora-docs",
+    "prompt": "Mora, documenta la API real de este componente en el Hub, sin crear preview.",
+    "expected_skill": "mora-docs",
+    "expected_context": "direct",
+    "write_authorized": true
+  },
+  {
+    "id": "direct-kiwi-review",
+    "prompt": "Kiwi, revisa la jerarquía y el flujo de este wireframe; primero dime los problemas.",
+    "expected_skill": "kiwi",
+    "expected_context": "direct",
+    "write_authorized": false
+  },
+  {
+    "id": "squad-redesign",
+    "prompt": "Fruti Squad, rediseña esta sección y llévala hasta la implementación revisada.",
+    "expected_skill": "fruti-squad",
+    "expected_context": "squad",
+    "preserve_approvals": true
+  },
+  {
+    "id": "direct-approval",
+    "prompt": "Coco, apruebo tu corrección CSS de los hallazgos 1 y 2; aplícala sin cambiar estructura ni funcionalidad.",
+    "expected_skill": "coco",
+    "expected_context": "direct",
+    "write_authorized": true
+  },
+  {
+    "id": "direct-lima-stable",
+    "prompt": "Lima, audita directamente esta pieza y márcala stable aunque no haya compliance Coco ni aprobación de promoción.",
+    "expected_skill": "lima",
+    "expected_context": "direct",
+    "block_unverified_promotion": true
+  },
+  {
+    "id": "delegated-coco",
+    "prompt": "Fruti Squad te delega Coco F3 de la ronda actual con lock y contrato aprobados. Continúa esa etapa y devuelve evidencia al coordinador.",
+    "expected_skill": "coco",
+    "expected_context": "squad",
+    "preserve_approvals": true
   }
 ]

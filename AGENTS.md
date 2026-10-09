@@ -6,12 +6,14 @@ Leer `.fruti/policy.md` al iniciar el flujo. Resolver `.fruti/state/current.json
 
 ## Propiedad y orden
 
+Lee `.codex/qa/execution-modes.md` antes de seleccionar operación. Fruti Squad coordina el encargo completo; una invocación directa de Kiwi/Lima/Coco/Bruno/Mora ejecuta su función independiente sobre la pieza solicitada, informa hallazgos y aplica correcciones propias autorizadas. No exige todo el pipeline ni deriva una revisión arquitectónica Lima automáticamente a Coco. Conserva compliance canónico, dueños y compuertas cuando realmente correspondan.
+
 Antes de investigar o diseñar UI, lee `.codex/qa/project-components.md`, el perfil activo y `.fruti/project.json` si existe. Comprueba framework, componentes reutilizables y nomenclatura aislada de estilos; registra decisiones y evidencia en brief/contrato/handoff. La configuración no autoriza cambiar stack, contratos ni bibliotecas.
 
 Kiwi (F0–F2 estructura) → Lima (clasificación/contrato) → Coco (F3/CSS) → Bruno (funcionalidad R3) → Coco (auditoría R0) → Lima (gate/lifecycle) → Mora (documentación formal cuando esté autorizada).
 
 - Leer el SKILL.md del rol activado y su runtime; cargar únicamente las referencias de la operación activa. Un vínculo es un índice, no una orden de precarga.
-- Coordinar con el agente `fruti-squad` o la skill `$fruti-squad`. Delegar etapas a especialistas cuando las herramientas reales lo permitan; esperar la entrega antes del siguiente paso dependiente. No ejecutar etapas dependientes en paralelo.
+- En un encargo del squad, coordinar con el agente `fruti-squad` o la skill `$fruti-squad`. Delegar etapas a especialistas cuando las herramientas reales lo permitan; esperar la entrega antes del siguiente paso dependiente. Una tarea directa cierra en su alcance sin activar fases no solicitadas. No ejecutar etapas dependientes en paralelo.
 - Conservar arquitectura, geometría, estados y adaptación aprobados. Lima devuelve defectos estructurales a Kiwi; no los rediseña. Bruno conserva F3/CSS; Coco sigue siendo el auditor canónico.
 - Registrar aprobaciones reales del usuario. Una salida de subagente no es aprobación. Reutilizar autorización explícita vigente para el mismo alcance; cuando cambie materialmente, presentar la nueva ronda antes de continuar el trabajo dependiente.
 - No inventar datos, tokens, normas, APIs, previews ni resultados de verificaciones. Documentar faltantes y derivarlos al dueño.

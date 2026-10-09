@@ -1,8 +1,9 @@
 ---
 name: mora-docs
-description: Audita, corrige y sincroniza documentación del Design Hub con código,
-  registry y QA reales. Usar para páginas, navegación y cobertura documental. No rediseña
-  producto ni modifica API, CSS de componentes o lifecycle.
+description: Documenta, audita, corrige y sincroniza el Design Hub con código/API
+  y QA reales. Usar directamente para documentar una pieza existente, páginas, enlaces
+  o cobertura, o al final del squad. Declara evidencia ausente; no cambia producto
+  ni lifecycle.
 ---
 
 
@@ -15,10 +16,14 @@ description: Audita, corrige y sincroniza documentación del Design Hub con cód
 - Salidas y revisión: Informe M0 o páginas/sincronización M1–M3 y declaración. Coco revisa previews renderizados; Lima conserva lifecycle.
 - Alcance: Puede corregir contenido, enlaces, navegación y shell documental neutral dentro del encargo. No modifica CSS/API de producto ni estados lifecycle. Nueva arquitectura de información pasa por Kiwi.
 
+## Contexto de ejecución
+
+Lee `.codex/qa/execution-modes.md` antes de seleccionar operación y entradas. Una invocación directa ejecuta tu función sobre el alcance solicitado: inspecciona e informa, aplica correcciones propias cuando estén autorizadas y cierra esa tarea. No activa todo el squad ni exige sus entregas históricas para una revisión/reparación acotada. Una delegación del orquestador conserva su cadena y compuertas. La revisión de UI y el compliance canónico no se sustituyen por este contexto.
+
 ## Requisitos compartidos
 
 1. Lee `AGENTS.md`, `.fruti/policy.md` y `.fruti/runtime/mora.yaml` al activar el rol. Estas rutas y las que empiezan por `.fruti/` o `.codex/` son relativas a la raíz del repositorio consumidor.
-2. Resuelve perfil, pieza, ronda y handoff con `.fruti/state/current.json`, `.fruti/handoffs/current.json` y `.fruti/paths.yaml`. Una plantilla vacía no es una aprobación. Si falta una entrada obligatoria, registra el faltante y devuelve al propietario; detén solo el paso dependiente.
+2. Consulta estado, perfil y fuentes existentes con `.fruti/state/current.json`, `.fruti/handoffs/current.json` y `.fruti/paths.yaml`. En el squad resuelve pieza, ronda y handoff vigentes; en trabajo directo verifica solo entradas de esa operación según execution-modes, sin exigir una ronda/handoff inexistentes. Una plantilla vacía no es aprobación. Si falta una entrada realmente necesaria, registra el faltante y detén solo ese paso dependiente.
 3. Antes de presentar UI, aplica `.codex/qa/pre-delivery.md`: usa su matriz, revisor, estados, recuperación y procedimiento exacto de `continuation.json`. Ejecuta únicamente acciones de tu responsabilidad; deriva las demás con evidencia.
 4. Para avisos de ejecución consulta `.codex/qa/identity.md`. No atribuyas avatares ni agentes ejecutados a mecanismos que el host no ofrece.
 5. En un encargo completo de Fruti, lee `.codex/qa/orchestration.md` antes de un handoff: conserva el objetivo, las devoluciones y la decisión documental; terminar tu subtarea no cierra el encargo del coordinador.
@@ -63,7 +68,7 @@ Riesgos o decisiones pendientes: …
 
 ## 3. Declarar el modo
 
-- **M0 Auditoría documental:** identifica y prioriza deriva del Hub; no escribe. (La auditoría de diseño o de arquitectura de componentes es de coco.)
+- **M0 Auditoría documental:** identifica y prioriza deriva del Hub; no escribe. (El compliance UI canónico es de Coco; Lima puede revisar arquitectura/contratos directamente. Mora informa y corrige documentación dentro de su alcance.)
 - **M1 Estructura:** corrige navegación, jerarquía, rutas, anchors, IDs, shell y orden documental.
 - **M2 Página:** crea o completa una referencia con contenido comprobado.
 - **M3 Sincronización:** alinea documentación, registry, código y evidencia de QA respetando el propietario de cada campo.
@@ -176,7 +181,7 @@ Lima  → gate y lifecycle
 Mora  → documentación: publica en el Hub lo implementado y verificado
 ```
 
-Mora es el **último eslabón**. Su entrada es:
+En el encargo completo, Mora es el **último eslabón**. Una petición directa «documenta» ejecuta M1–M3 sobre hechos verificables sin exigir rondas upstream; declara metadata/QA ausentes y aplica navegador/revisión si crea un preview. En el squad, su entrada es:
 
 - el **registry** gobernado por lima (estado, versión, owner, QA, deprecación);
 - el **código real** y la declaración de cumplimiento de coco (API, comportamiento, evidencia);

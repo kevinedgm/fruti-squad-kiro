@@ -87,6 +87,21 @@ También puedes hablar de forma natural: «rediseña este formulario», «ahora 
 
 Impeccable conserva sus procedimientos y recursos. Improve Animations audita y escribe planes; su variante `execute` entrega el plan al squad y respeta las compuertas, sin modificar código como asesor. Los cuatro helpers nativos de Impeccable se incluyen también en `.codex/agents`.
 
+## Uso directo o encargo completo
+
+Desde 0.3.18, invocar Fruti Squad para diseñar/rediseñar un componente, pantalla o sección coordina el proceso completo. Invocar un especialista ejecuta su función sobre el alcance solicitado, sin exigir ni iniciar toda la cadena:
+
+| Petición | Comportamiento |
+| --- | --- |
+| «Fruti Squad, rediseña esta sección» | Coordina investigación, opciones, contrato, F3, implementación, auditoría/reparación y entrega con aprobaciones |
+| «Lima, audita este componente» | Revisa arquitectura, responsabilidades, reutilización y contratos; no lo rechaza por ser auditoría |
+| «Coco, audita esta UI» | Informa problemas visuales/CSS, accesibilidad y adaptación antes de modificar |
+| «Bruno, corrige este evento» | Aplica la reparación funcional delimitada, preservando diseño/CSS |
+| «Kiwi, revisa este flujo» | Revisa estructura/UX y propone correcciones de sus artefactos |
+| «Mora, documenta este componente» | Escribe documentación desde API/código reales y declara QA faltante |
+
+«Audita/revisa» no autoriza cambios: el rol presenta hallazgos y propuesta. «Audita y corrige», «documenta» o aprobación concreta de la reparación autorizan actuar dentro de su responsabilidad. Una revisión directa no sustituye compliance Coco ni aprueba stable/promoción. La certificación de UI mantiene navegador y revisión; no obliga a ejecutar todo el squad. [Regla canónica](.codex/qa/execution-modes.md). [Pruebas directas y límites](docs/codex-direct-mode-validation.md).
+
 ## Flujo y calidad
 
 Kiwi → aprobación estructural → Lima contrato → Coco F3/CSS → aprobación F3 → Bruno R3 → Coco R0 → Lima gate → entrega revisada → Mora cuando esté autorizada.

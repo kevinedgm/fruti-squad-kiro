@@ -1,6 +1,6 @@
 # Codex · Guía operativa para crear agentes y skills
 
-Adaptación de Fruti Squad for Kiro en la rama `codex`, basada en el commit `47141906fd0731ac3a8b3d25bd56678d2488d81b`. Configuración contrastada con la CLI del paquete 0.3.17: 9 de octubre de 2026. Las fuentes de compatibilidad del host conservan las fechas y límites de sus auditorías.
+Adaptación de Fruti Squad for Kiro en la rama `codex`, basada en el commit `47141906fd0731ac3a8b3d25bd56678d2488d81b`. Configuración contrastada con la CLI del paquete 0.3.18: 9 de octubre de 2026. Las fuentes de compatibilidad del host conservan las fechas y límites de sus auditorías.
 
 ## Contenido
 
@@ -152,6 +152,40 @@ AGENTS.md
 Las rutas lógicas como `agentes/kiwi/references/geometry-contract.md` se resuelven con `.fruti/paths.yaml` a `.agents/skills/kiwi/references/geometry-contract.md`. No cambiar esos contratos para satisfacer una ruta de host.
 
 ## 4. Flujo completo y compuertas
+
+### 4.1 Elegir por la invocación
+
+Lee [.codex/qa/execution-modes.md](../.codex/qa/execution-modes.md) antes de seleccionar fases:
+
+- **Fruti Squad para diseño/rediseño:** encargo completo de la pieza solicitada, con coordinación y devoluciones entre especialistas. No amplía una sección a toda la página ni cierra en candidate.
+- **Especialista directo:** ejecuta su función independiente. No exige la historia completa del squad para auditar, documentar o reparar un defecto delimitado de una pieza existente.
+- **Delegación del orquestador:** conserva la cadena del encargo vigente; no la confunde con una nueva petición directa.
+
+Ejemplos:
+
+```text
+Lima, audita la arquitectura y el contrato de NsaEncabezado.vue. Primero dime
+hallazgos, evidencia y propuesta de corrección; no cambies archivos todavía.
+
+Coco, audita su CSS y responsive. Primero presenta los problemas y las
+correcciones que puedes aplicar. Después de mi aprobación, corrige ese CSS.
+
+Bruno, corrige el evento duplicado de este componente existente, conservando
+API, geometría y estilos. Te autorizo esa reparación funcional.
+
+Kiwi, revisa la estructura de este wireframe y propone cómo simplificarla.
+
+Mora, documenta la API real de NsaEncabezado.vue en el Hub. No crees un preview
+nuevo y declara cualquier metadata de lifecycle o QA que no esté verificada.
+```
+
+En una revisión directa, el especialista inspecciona e informa antes de escribir. Si ya pediste «audita y corrige», «documenta» o aprobaste cambios concretos, comunica el delta y actúa sin pedir de nuevo. Conserva sus límites: Lima modifica gobierno/contratos/tokens autorizados, Coco CSS, Bruno funcionalidad, Kiwi artefactos de estructura y Mora documentación. Los hallazgos ajenos se explican y se derivan cuando realmente haga falta, sin activar el pipeline entero ni ampliar permisos.
+
+Una auditoría arquitectónica Lima no equivale a compliance Coco, pero es un trabajo válido por sí mismo. Una página Mora puede documentar código real sin ronda Kiwi ni registry/compliance inventados: deja lifecycle/QA ausentes como no verificados. Una UI nueva o certificada conserva sus comprobaciones y revisión del gate; stable/promoción mantienen sus aprobaciones.
+
+Validación de esta distinción: [pruebas directas por rol y límites](codex-direct-mode-validation.md).
+
+### 4.2 Cadena del encargo completo
 
 | Paso | Dueño | Entrada | Entrega / condición de salida |
 |---|---|---|---|

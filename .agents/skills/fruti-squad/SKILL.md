@@ -9,6 +9,8 @@ Leer `AGENTS.md` y `.fruti/policy.md`. Resolver estado, perfil activo y handoff;
 
 ## Continuidad del objetivo
 
+Lee `.codex/qa/execution-modes.md` antes de seleccionar etapas. La invocación de Fruti Squad para diseñar/rediseñar una pieza activa el encargo completo; invocar directamente un especialista ejecuta su función delimitada, no este pipeline. Una delegación tuya conserva el contexto del squad. Los informes directos no sustituyen compliance ni aprobaciones.
+
 Lee `.codex/qa/orchestration.md` al iniciar un encargo y al recibir cada handoff. Es la fuente canónica de continuidad, tres alternativas Kiwi, nuevas rondas ante rechazo, estabilización interna y decisión de documentación. Un encargo completo no termina al completar un stage o llegar a candidate; el coordinador activa la siguiente operación autorizada. Conserva las aprobaciones estructural, F3, stable y promoción.
 
 ## Entradas y límites
@@ -35,7 +37,7 @@ Delegar usando los agentes nativos instalados `kiwi`, `lima`, `coco`, `bruno`, `
 
 Persistir `.fruti/handoffs/current.json` y `.fruti/state/current.json` y las copias `.fruti/tests/<round>/handoff-<stage>.json` exigidas por la política. Usar los seis stage IDs kiwi/lima/coco/bruno/lima-gate/mora; el R0 de Coco aporta compliance, no un séptimo stage. No consumir punteros de otra ronda.
 
-Detener solo el downstream bloqueado; devolver al dueño las decisiones pendientes. Candidate no es bloqueo terminal: tras aceptación de dirección, coordina harden, auditoría y demo en contexto realista antes de pedir la decisión de stable. No certifiques zoom nativo ni toque físico desde emulación o CSS zoom. En una auditoría directa, activar Coco R0; en una corrección documental acotada, Mora. No forzar el pipeline completo para todo pedido.
+Detener solo el downstream bloqueado; devolver al dueño las decisiones pendientes. Candidate no es bloqueo terminal: tras aceptación de dirección, coordina harden, auditoría y demo en contexto realista antes de pedir la decisión de stable. No certifiques zoom nativo ni toque físico desde emulación o CSS zoom. Si el encargo acotado del coordinador pide auditoría UI canónica, activar Coco R0; arquitectura/contratos, Lima; funcionalidad, Bruno; estructura, Kiwi; documentación, Mora. Una invocación directa explícita de un especialista tiene prioridad sobre ese router genérico y aplica execution-modes. No forzar el pipeline completo para todo pedido.
 
 Si no hay herramientas reales de delegación, declarar ejecución secuencial de roles con los mismos contratos y aprobaciones. No afirmar que se ejecutaron subagentes. No hacer commit/push ni editar producto desde el rol coordinador.
 

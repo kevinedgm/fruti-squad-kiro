@@ -30,8 +30,15 @@ for src in sorted((ROOT / '.kiro/skills').rglob('*')):
         if rel.parts[0] == 'lima':
             front = '\n'.join('description: ' + json.dumps(line[len('description: '):]) if line.startswith('description: ') else line for line in front.splitlines())
         meta = yaml.safe_load(front)
-        if meta['name'] == 'lima':
-            meta['description'] = 'Gobierna piezas UI del Fruti Squad: clasificación, reutilización, contratos, tokens, registry y lifecycle draft→candidate→stable. Usar al crear, rediseñar, refinar o promover componentes, patrones o pantallas. Coordina Impeccable y consume la auditoría de Coco; no sustituye a Kiwi ni a Bruno. No usar para backend.'
+        role_descriptions = {
+            'kiwi': 'Diseña y revisa estructura/UX, flujos y wireframes neutrales F0–F2. Usar directamente para brief, jerarquía, navegación, densidad y alternativas, o como etapa del squad. Corrige sus artefactos autorizados; no implementa CSS final ni lógica de producción.',
+            'lima': 'Gobierna y audita arquitectura UI, responsabilidades, reutilización, contratos, tokens, registry y lifecycle. Usar directamente al revisar un componente o ajustar gobierno autorizado, o como etapa del squad. No implementa CSS/lógica ni sustituye compliance Coco o geometría Kiwi.',
+            'coco': 'Audita UI visual, accesibilidad, adaptación y CSS; construye F3 y corrige CSS autorizado preservando estructura/API. Usar directamente o como etapa del squad. Informa antes de corregir salvo autorización vigente. Produce compliance R0 canónico; no implementa lógica ni gobierna lifecycle.',
+            'bruno': 'Implementa y revisa funcionalidad frontend: script/template, props, eventos, slots, v-model, estados, teclado, foco y ARIA. Usar directamente para una reparación funcional delimitada o R3 del squad con contrato aprobado. Preserva estructura, CSS, tokens y negocio.',
+            'mora-docs': 'Documenta, audita, corrige y sincroniza el Design Hub con código/API y QA reales. Usar directamente para documentar una pieza existente, páginas, enlaces o cobertura, o al final del squad. Declara evidencia ausente; no cambia producto ni lifecycle.'
+        }
+        if meta['name'] in role_descriptions:
+            meta['description'] = role_descriptions[meta['name']]
         text = '---\n' + yaml.safe_dump(meta, allow_unicode=True, sort_keys=False) + '---' + body
     dest.write_text(text)
     shutil.copymode(src, dest)
@@ -55,7 +62,7 @@ agent_contracts = {
         'output': 'Brief, flujo, geometría, matriz adaptativa, wireframe F1/F2 o Mermaid F0, declaración y handoff. Lima revisa el borrador F1/F2 antes de presentarlo; tras aprobación estructural, Lima fija el contrato.',
     },
     'lima': {
-        'description': 'Delegar clasificación, reutilización, contratos, tokens, registry y compuertas lifecycle. Revisa borradores Kiwi y F3 Coco; devuelve defectos sin implementar las correcciones de otros roles.',
+        'description': 'Delegar gobierno UI, auditoría arquitectónica directa, reutilización, contratos, tokens, registry y lifecycle. Revisa y corrige gobierno autorizado sin exigir el squad completo; no implementa correcciones de otros roles.',
         'inputs': 'Operación, pieza/ronda y perfil. Para contrato: estructura aprobada. Para revisión de borrador: artefacto y evidencia actual. Para gate: compliance vigente de Coco y registry.',
         'limits': 'Gobierna contratos, tokens, registry y lifecycle según la política. No escribe estructura Kiwi, CSS Coco, funcionalidad Bruno ni páginas Mora. Impeccable opera en revisión; deriva cada hallazgo al dueño.',
         'output': 'Clasificación reuse/extend/new/local, contrato y orden Coco; o revisión con hallazgos; o decisión de gate y registry actualizado. Candidate, stable y promoción conservan sus compuertas independientes.',
@@ -63,11 +70,11 @@ agent_contracts = {
     'coco': {
         'description': 'Delegar construcción F3/CSS dentro de una estructura aprobada o auditoría R0 de UI existente. Produce compliance canónico; no implementa funcionalidad R3 ni rediseña geometría.',
         'inputs': 'Para F3: estructura aprobada, contrato/orden Lima, tokens y foundations. Para R0: superficie real, fuentes, contrato y evidencia disponible; registra faltantes sin asumir un sistema.',
-        'limits': 'Construye F3/CSS dentro del lock y registra datos comprobados en coco.data_contract. R0 inspecciona sin modificar producto; devuelve estructura a Kiwi, funcionalidad a Bruno y gobierno a Lima. Mora escribe páginas; Lima registry.',
+        'limits': 'Construye F3/CSS dentro del lock y registra datos comprobados en coco.data_contract. R0 inspecciona sin modificar producto; después de informe y autorización puede corregir CSS propio en una tarea separada. Devuelve estructura a Kiwi, funcionalidad a Bruno y gobierno a Lima. Mora escribe páginas; Lima registry.',
         'output': 'F3/CSS y declaración para revisión Lima; tras aprobación F3, handoff Bruno. En R0, compliance con reglas, casos, evidencias y comprobaciones no verificadas para Lima gate.',
     },
     'bruno': {
-        'description': 'Delegar funcionalidad frontend R3 cuando estructura, contrato y F3/CSS estén aprobados: API, script/template, eventos, estados, semántica, teclado, foco y ARIA.',
+        'description': 'Delegar revisión/reparación funcional directa o R3 aprobado del squad: API, script/template, eventos, estados, semántica, teclado, foco y ARIA. Preserva estructura/CSS; no exige una ronda nueva para reparar un defecto acotado autorizado.',
         'inputs': 'Pieza/ronda, estructura aprobada, contrato Lima sin blockers, F3/CSS aprobado, API/código reales y handoff vigente. No infiere aprobación de una plantilla o de la entrega de otro agente.',
         'limits': 'Modifica script/template funcional y accesibilidad dentro del contrato. Preserva anatomía, acciones, clases y CSS de Coco, tokens, negocio y adaptación. Si reparar requiere rediseñar, deriva el hallazgo antes de escribir.',
         'output': 'Archivos cambiados, API/estados implementados, verificaciones ejecutadas y pendientes, y handoff Coco R0. Build verifica compilación; navegador/pruebas demuestran solo los casos ejecutados.',
@@ -105,21 +112,22 @@ for name in [*skills, 'fruti-squad']:
 
 ## Entradas y lectura obligatoria
 1. Recibe un objetivo, alcance y entregable concretos, además de: {spec['inputs']}
-2. Lee AGENTS.md y .fruti/policy.md al iniciar. Las rutas aquí son relativas a la raíz del repositorio consumidor.
+2. Lee AGENTS.md, .fruti/policy.md y .codex/qa/execution-modes.md al iniciar, antes de seleccionar operación/entradas. Distingue encargo completo Fruti, delegación vigente y petición directa: esta última ejecuta tu función sin activar todo el pipeline. Las rutas aquí son relativas a la raíz del repositorio consumidor.
 3. Lee explícitamente .agents/skills/{skill}/SKILL.md antes de ejecutar el procedimiento; compartir nombre no carga la skill automáticamente. {runtime}
-4. Resuelve perfil, pieza/ronda y handoff por .fruti/state/current.json, .fruti/handoffs/current.json y .fruti/paths.yaml. Consulta solo referencias necesarias; una plantilla vacía no prueba autorización.
-5. Si falta una entrada obligatoria, comprueba las fuentes y rutas del handoff; informa el faltante al coordinador sin inventarlo ni avanzar una etapa dependiente. Conserva el trabajo válido dentro del alcance.
+4. Consulta estado/perfil y fuentes existentes. En el squad resuelve pieza/ronda y handoff por .fruti/state/current.json, .fruti/handoffs/current.json y .fruti/paths.yaml. En trabajo directo verifica solo entradas aplicables de execution-modes; no exige ni inventa rondas/handoffs. Una plantilla vacía no prueba autorización.
+5. Si falta una entrada realmente necesaria, comprueba fuentes/rutas y comunica el faltante al usuario directo o coordinador según el contexto; no avanza ese paso dependiente. Conserva el trabajo viable del alcance.
 
 6. Lee .codex/qa/orchestration.md cuando participes en un encargo completo Fruti; finalizar esta subtarea no termina el objetivo del coordinador.
 
 ## Verificación, devolución y salida
 {spec['output']}
+- Para revisión directa, informa hallazgos/propuesta antes de corregir; reutiliza autorización explícita vigente y aplica solo modificaciones de tu función. No rechaces la tarea solo por ser un rol del squad ni inventes aprobaciones/handoffs históricos.
 - Registra casos, comandos y resultados realmente observados; marca lo pendiente como no verificado.
 - Para UI renderizada lee .codex/qa/pre-delivery.md antes de presentar: aplica revisor, evidencia, estados y recuperación. F0, informes y planes no afirman certificación visual.
 - Ante RETURN corrige solo tu propiedad o entrega regla, caso, evidencia y límites al dueño. Consume continuation.json por la ruta y hash que define el protocolo; no ejecuta una acción fuera de alcance por estar en el JSON.
 - Repite una comprobación fallida tras una corrección o cambio viable de mecanismo; si no hay progreso ni alternativa permitida, registra el bloqueo según el protocolo. No espera ni delega indefinidamente.
 - Una revisión propia no es revisión independiente. Usa otro agente cuando la estrategia y el host lo permitan; si solo hay ejecución secuencial, declara la limitación.
-- Finaliza cuando el entregable de la operación y su handoff estén completos. Para propuesta UI exige READY_FOR_USER_REVIEW; un resultado de agente no es aprobación del usuario. Ante bloqueo registra recuperación, evidencia y acción mínima faltante, sin convertirlo en cumplimiento.
+- Finaliza cuando el entregable de la operación esté completo: informe/delta para petición directa, handoff vigente para etapa del squad. Para propuesta UI exige READY_FOR_USER_REVIEW; un resultado de agente no es aprobación del usuario. Ante bloqueo registra recuperación, evidencia y acción mínima faltante, sin convertirlo en cumplimiento.
 
 ## Configuración y coordinación
 - Lee .codex/qa/model-routing.md antes de seleccionar recursos, cambiar de operación o escalar. Sus condiciones no amplían este rol; confirma el mecanismo y configuración efectiva, no un cambio supuesto desde la prosa.

@@ -2,6 +2,8 @@
 
 Natural language in; a structured decision out. Runs first, every time.
 
+Primero lee `.codex/qa/execution-modes.md` (raíz). Una invocación directa del rol tiene prioridad sobre el router genérico: Lima revisa arquitectura/contratos y corrige gobierno autorizado sin activar la cadena completa ni sustituir compliance Coco.
+
 ## Step 1 — Understand the need
 
 Resolve: what is this for, how is it used, what UX problem it solves. If the request answers this, proceed. If a **product decision that changes the experience** is missing, ask that one thing (source-of-truth.md), then proceed.
@@ -36,9 +38,9 @@ Same artifact, different workflow:
 
 `intent` selects the workflow:
 
-- `create` / `redesign` → full pipeline (SKILL.md), ending at the Candidate Gate.
+- `create` / `redesign` → en un encargo Fruti completo, aplicar `.codex/qa/orchestration.md` y continuar hasta implementación revisada; candidate no es cierre. En invocación directa, ejecutar la operación propia solicitada y resolver solo sus dependencias, según execution-modes.
 - `critique` / `distill` / `adapt` / `polish` → re-enter that pre-candidate stage on the current piece.
-- `harden` para estabilización → post-candidate con dirección aceptada. `audit` de estabilización requiere candidate; una auditoría directa R0 de Coco o M0 de Mora puede inspeccionar cualquier estado y entregar hallazgos, sin promoverlo ni construirlo.
+- `harden` para estabilización → post-candidate con dirección aceptada. `audit` de estabilización requiere candidate; una revisión directa del especialista puede inspeccionar cualquier estado y entregar hallazgos sin promoverlo. Lima revisa arquitectura/contratos, Coco UI/R0, Bruno funcionalidad, Kiwi estructura y Mora documentación; una corrección posterior requiere autorización y responsabilidad propias.
 - `promote` → promotion.md (piece must be `stable`).
 - `deprecate` → deprecation path in lifecycle.md.
 
@@ -62,4 +64,4 @@ Propose promoting a solution to a shared Pattern only when it **appears in two o
 
 ## Handoff
 
-Continue to ui-artifact-contract.md (what to design) and design-hub.md (where). No approval stop here; the mandatory gates are Candidate Gate (pre-candidate) and the Stable Gate + production approval (post-candidate).
+Para contratación, continúa a ui-artifact-contract.md y design-hub.md con las entradas/aprobaciones requeridas. Para auditoría directa, entrega hallazgos y propuesta al usuario; con autorización, corrige tu alcance y reprueba. No activa Candidate/Stable Gate si no se solicitó esa transición. Las compuertas de promoción mantienen sus aprobaciones.

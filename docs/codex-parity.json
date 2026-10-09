@@ -58,6 +58,26 @@
       {
         "before": "4. Para avisos de ejecución consulta `.codex/qa/identity.md`. No atribuyas avatares ni agentes ejecutados a mecanismos que el host no ofrece.",
         "after": "4. Para avisos de ejecución consulta `.codex/qa/identity.md`. No atribuyas avatares ni agentes ejecutados a mecanismos que el host no ofrece.\n5. En un encargo completo de Fruti, lee `.codex/qa/orchestration.md` antes de un handoff: conserva el objetivo, las devoluciones y la decisión documental; terminar tu subtarea no cierra el encargo del coordinador."
+      },
+      {
+        "before": "## Requisitos compartidos",
+        "after": "## Contexto de ejecución\n\nLee `.codex/qa/execution-modes.md` antes de seleccionar operación y entradas. Una invocación directa ejecuta tu función sobre el alcance solicitado: inspecciona e informa, aplica correcciones propias cuando estén autorizadas y cierra esa tarea. No activa todo el squad ni exige sus entregas históricas para una revisión/reparación acotada. Una delegación del orquestador conserva su cadena y compuertas. La revisión de UI y el compliance canónico no se sustituyen por este contexto.\n\n## Requisitos compartidos"
+      },
+      {
+        "before": "| Revisar/auditar UI existente | Coco (R0) | Un solo auditor en el squad |",
+        "after": "| Auditoría UI canónica del squad | Coco (R0) | Compliance de interfaz |\n| Revisión directa de estructura/UX invocando Kiwi | Kiwi | Informe y corrección de artefactos propios autorizados |"
+      },
+      {
+        "before": "| R0 Auditoría | \"revisa\", \"qué está mal\" | → **coco**. Puedo aportar el brief y el flujo como insumo. |",
+        "after": "| R0 Auditoría UI canónica | Auditoría general del squad | → **coco**. Puedo aportar brief y flujo. Una revisión directa de estructura/UX invocando Kiwi se resuelve aquí según `.codex/qa/execution-modes.md`, sin afirmar compliance R0. |"
+      },
+      {
+        "before": "**Siguiente paso: Lima.** Cuando el usuario aprueba la estructura,",
+        "after": "**En el squad, siguiente paso: Lima.** Una tarea directa cierra con sus artefactos/evidencia y decisión estructural; no inicia contrato, F3 ni implementación no solicitados. Cuando el usuario aprueba la estructura dentro del encargo completo,"
+      },
+      {
+        "before": "2. Resuelve perfil, pieza, ronda y handoff con `.fruti/state/current.json`, `.fruti/handoffs/current.json` y `.fruti/paths.yaml`. Una plantilla vacía no es una aprobación. Si falta una entrada obligatoria, registra el faltante y devuelve al propietario; detén solo el paso dependiente.",
+        "after": "2. Consulta estado, perfil y fuentes existentes con `.fruti/state/current.json`, `.fruti/handoffs/current.json` y `.fruti/paths.yaml`. En el squad resuelve pieza, ronda y handoff vigentes; en trabajo directo verifica solo entradas de esa operación según execution-modes, sin exigir una ronda/handoff inexistentes. Una plantilla vacía no es aprobación. Si falta una entrada realmente necesaria, registra el faltante y detén solo ese paso dependiente."
       }
     ],
     "mora-docs/SKILL.md": [
@@ -88,6 +108,22 @@
       {
         "before": "4. Para avisos de ejecución consulta `.codex/qa/identity.md`. No atribuyas avatares ni agentes ejecutados a mecanismos que el host no ofrece.",
         "after": "4. Para avisos de ejecución consulta `.codex/qa/identity.md`. No atribuyas avatares ni agentes ejecutados a mecanismos que el host no ofrece.\n5. En un encargo completo de Fruti, lee `.codex/qa/orchestration.md` antes de un handoff: conserva el objetivo, las devoluciones y la decisión documental; terminar tu subtarea no cierra el encargo del coordinador."
+      },
+      {
+        "before": "## Requisitos compartidos",
+        "after": "## Contexto de ejecución\n\nLee `.codex/qa/execution-modes.md` antes de seleccionar operación y entradas. Una invocación directa ejecuta tu función sobre el alcance solicitado: inspecciona e informa, aplica correcciones propias cuando estén autorizadas y cierra esa tarea. No activa todo el squad ni exige sus entregas históricas para una revisión/reparación acotada. Una delegación del orquestador conserva su cadena y compuertas. La revisión de UI y el compliance canónico no se sustituyen por este contexto.\n\n## Requisitos compartidos"
+      },
+      {
+        "before": "(La auditoría de diseño o de arquitectura de componentes es de coco.)",
+        "after": "(El compliance UI canónico es de Coco; Lima puede revisar arquitectura/contratos directamente. Mora informa y corrige documentación dentro de su alcance.)"
+      },
+      {
+        "before": "Mora es el **último eslabón**. Su entrada es:",
+        "after": "En el encargo completo, Mora es el **último eslabón**. Una petición directa «documenta» ejecuta M1–M3 sobre hechos verificables sin exigir rondas upstream; declara metadata/QA ausentes y aplica navegador/revisión si crea un preview. En el squad, su entrada es:"
+      },
+      {
+        "before": "2. Resuelve perfil, pieza, ronda y handoff con `.fruti/state/current.json`, `.fruti/handoffs/current.json` y `.fruti/paths.yaml`. Una plantilla vacía no es una aprobación. Si falta una entrada obligatoria, registra el faltante y devuelve al propietario; detén solo el paso dependiente.",
+        "after": "2. Consulta estado, perfil y fuentes existentes con `.fruti/state/current.json`, `.fruti/handoffs/current.json` y `.fruti/paths.yaml`. En el squad resuelve pieza, ronda y handoff vigentes; en trabajo directo verifica solo entradas de esa operación según execution-modes, sin exigir una ronda/handoff inexistentes. Una plantilla vacía no es aprobación. Si falta una entrada realmente necesaria, registra el faltante y detén solo ese paso dependiente."
       }
     ],
     "kiwi/references/fidelidad.md": [
@@ -140,6 +176,26 @@
       {
         "before": "4. Para avisos de ejecución consulta `.codex/qa/identity.md`. No atribuyas avatares ni agentes ejecutados a mecanismos que el host no ofrece.",
         "after": "4. Para avisos de ejecución consulta `.codex/qa/identity.md`. No atribuyas avatares ni agentes ejecutados a mecanismos que el host no ofrece.\n5. En un encargo completo de Fruti, lee `.codex/qa/orchestration.md` antes de un handoff: conserva el objetivo, las devoluciones y la decisión documental; terminar tu subtarea no cierra el encargo del coordinador."
+      },
+      {
+        "before": "## Requisitos compartidos",
+        "after": "## Contexto de ejecución\n\nLee `.codex/qa/execution-modes.md` antes de seleccionar operación y entradas. Una invocación directa ejecuta tu función sobre el alcance solicitado: inspecciona e informa, aplica correcciones propias cuando estén autorizadas y cierra esa tarea. No activa todo el squad ni exige sus entregas históricas para una revisión/reparación acotada. Una delegación del orquestador conserva su cadena y compuertas. La revisión de UI y el compliance canónico no se sustituyen por este contexto.\n\n## Requisitos compartidos"
+      },
+      {
+        "before": "R0 es solo lectura del producto: registra hallazgos y deriva reparaciones.",
+        "after": "R0 inspecciona sin modificar; después de presentar hallazgos, puede aplicar una corrección CSS propia autorizada como tarea de construcción separada, según `.codex/qa/execution-modes.md`. Deriva reparaciones de otras responsabilidades."
+      },
+      {
+        "before": "Ejecuta los pasos de construcción en orden para F3. En R0 inspecciona las fuentes y ejecuta las verificaciones pertinentes sin construir ni solicitar aprobaciones de prototipo.",
+        "after": "Ejecuta los pasos de construcción en orden para F3 nuevo. En R0 inspecciona las fuentes y ejecuta verificaciones sin modificar ni solicitar prototipos. Para una corrección CSS directa autorizada sobre una pieza existente, preserva diseño/contrato y aplica `.codex/qa/execution-modes.md`; no exige una cadena nueva ni convierte R0 en permiso para editar."
+      },
+      {
+        "before": "Toda auditoría —de interfaz/diseño (su ruta R0) y de arquitectura de componentes (Paso 5.4: detector `audit_component` + policy de gobernanza)— es responsabilidad de coco. `lima` NO corre una auditoría paralela:",
+        "after": "La auditoría canónica R0 —interfaz/diseño y arquitectura de componentes con detector `audit_component`— aporta el compliance del squad. Esto no prohíbe una revisión arquitectónica directa de Lima según `.codex/qa/execution-modes.md`; esa revisión no firma compliance Coco. Para una compuerta, Lima no reemplaza esa evidencia con una revisión propia:"
+      },
+      {
+        "before": "2. Resuelve perfil, pieza, ronda y handoff con `.fruti/state/current.json`, `.fruti/handoffs/current.json` y `.fruti/paths.yaml`. Una plantilla vacía no es una aprobación. Si falta una entrada obligatoria, registra el faltante y devuelve al propietario; detén solo el paso dependiente.",
+        "after": "2. Consulta estado, perfil y fuentes existentes con `.fruti/state/current.json`, `.fruti/handoffs/current.json` y `.fruti/paths.yaml`. En el squad resuelve pieza, ronda y handoff vigentes; en trabajo directo verifica solo entradas de esa operación según execution-modes, sin exigir una ronda/handoff inexistentes. Una plantilla vacía no es aprobación. Si falta una entrada realmente necesaria, registra el faltante y detén solo ese paso dependiente."
       }
     ],
     "improve-animations/SKILL.md": [
@@ -194,6 +250,22 @@
       {
         "before": "10. Entrega a Mora registry actualizado, fuentes reales, compliance y evidencia. Mora documenta; Lima no escribe páginas del Hub.",
         "after": "10. Entrega a Mora registry actualizado, fuentes reales, compliance y evidencia cuando la documentación formal esté solicitada o el usuario la elija según `.codex/qa/orchestration.md`. En un encargo ordinario sin esa autorización, devuelve la implementación revisada al coordinador para observaciones y decisión documental. El procedimiento completo `fruti test` conserva su página Mora obligatoria. Mora documenta; Lima no escribe páginas del Hub."
+      },
+      {
+        "before": "## Requisitos compartidos",
+        "after": "## Contexto de ejecución\n\nLee `.codex/qa/execution-modes.md` antes de seleccionar operación y entradas. Una invocación directa ejecuta tu función sobre el alcance solicitado: inspecciona e informa, aplica correcciones propias cuando estén autorizadas y cierra esa tarea. No activa todo el squad ni exige sus entregas históricas para una revisión/reparación acotada. Una delegación del orquestador conserva su cadena y compuertas. La revisión de UI y el compliance canónico no se sustituyen por este contexto.\n\n## Requisitos compartidos"
+      },
+      {
+        "before": "Activa Lima para clasificar, resolver reuse/extend/new/local, fijar contratos, revisar borradores F1/F2, evaluar compuertas o promover una pieza estable.",
+        "after": "Activa Lima para clasificar, resolver reuse/extend/new/local, fijar contratos, auditar directamente arquitectura/contratos y reutilización, revisar borradores F1/F2, evaluar compuertas o promover una pieza estable."
+      },
+      {
+        "before": "## Procedimiento\n\n1.",
+        "after": "## Procedimiento\n\nEn una revisión directa, aplica primero el procedimiento de `.codex/qa/execution-modes.md`: inspecciona responsabilidades, acoplamiento, API/contratos, reutilización y fuentes de la pieza según lo solicitado. Entrega hallazgos con evidencia y propuesta; corrige los archivos de gobierno autorizados, no CSS ni lógica. No responde «no puedo auditar porque corresponde a Coco» ni ejecuta automáticamente los diez pasos de contratación/promoción siguientes. Estos pasos se seleccionan por la operación real del encargo.\n\n1."
+      },
+      {
+        "before": "2. Resuelve perfil, pieza, ronda y handoff con `.fruti/state/current.json`, `.fruti/handoffs/current.json` y `.fruti/paths.yaml`. Una plantilla vacía no es una aprobación. Si falta una entrada obligatoria, registra el faltante y devuelve al propietario; detén solo el paso dependiente.",
+        "after": "2. Consulta estado, perfil y fuentes existentes con `.fruti/state/current.json`, `.fruti/handoffs/current.json` y `.fruti/paths.yaml`. En el squad resuelve pieza, ronda y handoff vigentes; en trabajo directo verifica solo entradas de esa operación según execution-modes, sin exigir una ronda/handoff inexistentes. Una plantilla vacía no es aprobación. Si falta una entrada realmente necesaria, registra el faltante y detén solo ese paso dependiente."
       }
     ],
     "bruno/SKILL.md": [
@@ -212,6 +284,18 @@
       {
         "before": "4. Para avisos de ejecución consulta `.codex/qa/identity.md`. No atribuyas avatares ni agentes ejecutados a mecanismos que el host no ofrece.",
         "after": "4. Para avisos de ejecución consulta `.codex/qa/identity.md`. No atribuyas avatares ni agentes ejecutados a mecanismos que el host no ofrece.\n5. En un encargo completo de Fruti, lee `.codex/qa/orchestration.md` antes de un handoff: conserva el objetivo, las devoluciones y la decisión documental; terminar tu subtarea no cierra el encargo del coordinador."
+      },
+      {
+        "before": "## Requisitos compartidos",
+        "after": "## Contexto de ejecución\n\nLee `.codex/qa/execution-modes.md` antes de seleccionar operación y entradas. Una invocación directa ejecuta tu función sobre el alcance solicitado: inspecciona e informa, aplica correcciones propias cuando estén autorizadas y cierra esa tarea. No activa todo el squad ni exige sus entregas históricas para una revisión/reparación acotada. Una delegación del orquestador conserva su cadena y compuertas. La revisión de UI y el compliance canónico no se sustituyen por este contexto.\n\n## Requisitos compartidos"
+      },
+      {
+        "before": "## Antes de escribir\n\n1.",
+        "after": "## Antes de escribir\n\nPara una reparación funcional directa, recibe el defecto y autorización, inspecciona API/código y fuentes vigentes y preserva diseño/CSS. No exige reconstruir una ronda completa para arreglar un evento o foco delimitado; si falta una decisión que cambie contrato/estructura, resuelve solo esa dependencia. Las entradas de la lista siguiente corresponden al R3 del squad o a la construcción que realmente las necesita, no a toda revisión funcional.\n\n1."
+      },
+      {
+        "before": "2. Resuelve perfil, pieza, ronda y handoff con `.fruti/state/current.json`, `.fruti/handoffs/current.json` y `.fruti/paths.yaml`. Una plantilla vacía no es una aprobación. Si falta una entrada obligatoria, registra el faltante y devuelve al propietario; detén solo el paso dependiente.",
+        "after": "2. Consulta estado, perfil y fuentes existentes con `.fruti/state/current.json`, `.fruti/handoffs/current.json` y `.fruti/paths.yaml`. En el squad resuelve pieza, ronda y handoff vigentes; en trabajo directo verifica solo entradas de esa operación según execution-modes, sin exigir una ronda/handoff inexistentes. Una plantilla vacía no es aprobación. Si falta una entrada realmente necesaria, registra el faltante y detén solo ese paso dependiente."
       }
     ],
     "kiwi/scripts/check_artifact.py": [
@@ -256,6 +340,22 @@
       {
         "before": "\n- `create` / `redesign` → full pipeline (SKILL.md), ending at the Candidate Gate.\n- `critique` / `distill` / `adapt` / `polish` → re-enter that pre-candidate stage on the current piece.\n- `harden` / `audit` → post-candidate stabilization stage; only valid once the piece is `candidate`.\n- `promote` → promotion.md (piece must be `stable`).\n- `deprecate` → deprecation path in lifecycle.md.\n\n",
         "after": "\n- `create` / `redesign` → full pipeline (SKILL.md), ending at the Candidate Gate.\n- `critique` / `distill` / `adapt` / `polish` → re-enter that pre-candidate stage on the current piece.\n- `harden` para estabilización → post-candidate con dirección aceptada. `audit` de estabilización requiere candidate; una auditoría directa R0 de Coco o M0 de Mora puede inspeccionar cualquier estado y entregar hallazgos, sin promoverlo ni construirlo.\n- `promote` → promotion.md (piece must be `stable`).\n- `deprecate` → deprecation path in lifecycle.md.\n\n"
+      },
+      {
+        "before": "Natural language in; a structured decision out. Runs first, every time.",
+        "after": "Natural language in; a structured decision out. Runs first, every time.\n\nPrimero lee `.codex/qa/execution-modes.md` (raíz). Una invocación directa del rol tiene prioridad sobre el router genérico: Lima revisa arquitectura/contratos y corrige gobierno autorizado sin activar la cadena completa ni sustituir compliance Coco."
+      },
+      {
+        "before": "- `create` / `redesign` → full pipeline (SKILL.md), ending at the Candidate Gate.",
+        "after": "- `create` / `redesign` → en un encargo Fruti completo, aplicar `.codex/qa/orchestration.md` y continuar hasta implementación revisada; candidate no es cierre. En invocación directa, ejecutar la operación propia solicitada y resolver solo sus dependencias, según execution-modes."
+      },
+      {
+        "before": "una auditoría directa R0 de Coco o M0 de Mora puede inspeccionar cualquier estado y entregar hallazgos, sin promoverlo ni construirlo.",
+        "after": "una revisión directa del especialista puede inspeccionar cualquier estado y entregar hallazgos sin promoverlo. Lima revisa arquitectura/contratos, Coco UI/R0, Bruno funcionalidad, Kiwi estructura y Mora documentación; una corrección posterior requiere autorización y responsabilidad propias."
+      },
+      {
+        "before": "Continue to ui-artifact-contract.md (what to design) and design-hub.md (where). No approval stop here; the mandatory gates are Candidate Gate (pre-candidate) and the Stable Gate + production approval (post-candidate).",
+        "after": "Para contratación, continúa a ui-artifact-contract.md y design-hub.md con las entradas/aprobaciones requeridas. Para auditoría directa, entrega hallazgos y propuesta al usuario; con autorización, corrige tu alcance y reprueba. No activa Candidate/Stable Gate si no se solicitó esa transición. Las compuertas de promoción mantienen sus aprobaciones."
       }
     ],
     "lima/reference/impeccable-bridge.md": [
@@ -270,6 +370,14 @@
       {
         "before": "## Capability → phase",
         "after": "Continuidad Codex: en un encargo completo, lee `.codex/qa/orchestration.md` desde la raíz del repositorio. La aceptación de dirección permite continuar las operaciones internas de estabilización ya incluidas en el encargo; no exige otra orden de etapa. Conserva aprobación explícita para stable y promoción, dueños de reparación y procedencia de evidencia.\n\n## Capability → phase"
+      },
+      {
+        "before": "`harden`/`audit` run only after candidate, on purpose:",
+        "after": "En estabilización del squad, `harden`/`audit` se ejecutan después de candidate. Las revisiones directas se rigen por `.codex/qa/execution-modes.md` y no requieren candidate. In the stabilization chain:"
+      },
+      {
+        "before": "The `audit.md` playbook still lives in impeccable and coco may drive it; lima does not run it itself.",
+        "after": "The `audit.md` playbook still lives in impeccable and coco may drive it for canonical compliance. Lima puede consultar criterios pertinentes en su revisión arquitectónica directa, con alcance y evidencia explícitos; no la presenta como auditoría Coco ni evidencia sustitutiva de Stable Gate."
       }
     ],
     "lima/reference/promotion.md": [
@@ -547,6 +655,12 @@
         "before": "`harden` and `audit` run here, not before candidate.",
         "after": "`harden` and `audit` run here, not before candidate. For a complete Codex Fruti request, read `.codex/qa/orchestration.md` from the repository root: after the direction is accepted, continue harden, audit and realistic-context evidence without waiting for another stage command. Explicit Stable Gate approval and production approval remain mandatory. A limited prototype request does not authorize the whole pipeline."
       }
+    ],
+    "bruno/references/handoffs.md": [
+      {
+        "before": "Bruno consume evidencia, no nombres de proyecto fijos.",
+        "after": "Bruno consume evidencia, no nombres de proyecto fijos.\n\nLee `.codex/qa/execution-modes.md` (raíz) para una petición directa. La tabla siguiente rige el consumo de handoffs del squad; no exige fabricarlos para una reparación funcional delimitada y autorizada sobre una pieza existente. Preserva sus fuentes vigentes y resuelve dependencias materiales antes de escribir."
+      }
     ]
   },
   "transformations": [
@@ -562,7 +676,7 @@
       "source": ".kiro/skills/bruno/SKILL.md",
       "target": ".agents/skills/bruno/SKILL.md",
       "source_sha256": "3e16429b679af8c9184db4b6ec9250afef3fe29f1ec4eba5f0795c9feaa350fc",
-      "target_sha256": "213282d4646c7ca5034be5e0f5f96646d48e7257e7ea6efe3f28e40ac4c86f42"
+      "target_sha256": "a7110f818b29d7e6ea6de53b32d82ba4f0031e61e2c39e5a54a86fc4ea345666"
     },
     {
       "source": ".kiro/skills/bruno/references/component-contract.md",
@@ -574,13 +688,13 @@
       "source": ".kiro/skills/bruno/references/handoffs.md",
       "target": ".agents/skills/bruno/references/handoffs.md",
       "source_sha256": "806eab1599c07bedd45871fe557911d2326a30af0cd60113df1985eaf5a29711",
-      "target_sha256": "806eab1599c07bedd45871fe557911d2326a30af0cd60113df1985eaf5a29711"
+      "target_sha256": "bb61160c58ca0ef4ce37514cfe266988efbdf4e317cab5c9b353a0aaa3ae27a4"
     },
     {
       "source": ".kiro/skills/coco/SKILL.md",
       "target": ".agents/skills/coco/SKILL.md",
       "source_sha256": "5b40f8564adf173c4adb9dbde8b98f8589e155377a099a11cc4e702d752b973f",
-      "target_sha256": "e4f9cc0a1a7e5f785a6b72deef64067997c574f59cb0e17ed603304c3c0d42ce"
+      "target_sha256": "ecb2d1d8d5226efeab08c9c6f0854b7be0a42fabcf2bef0f3d49d091c664b647"
     },
     {
       "source": ".kiro/skills/coco/examples/data_contract.example.md",
@@ -952,7 +1066,7 @@
       "source": ".kiro/skills/kiwi/SKILL.md",
       "target": ".agents/skills/kiwi/SKILL.md",
       "source_sha256": "cb7cb4d5d7cb4d56dd1925fd452dbf12dc4fb58d6cbe13bc1c44ff8a088d3120",
-      "target_sha256": "60a94712bb37aba3fc00af29abf35199d2af75aaf490d4b6c0c3198828e4b5da"
+      "target_sha256": "152392a8b9d073430728f6571ad329998301b9b8bb503997b98e5a67478e5df5"
     },
     {
       "source": ".kiro/skills/kiwi/assets/plantillas/brief.md",
@@ -1048,7 +1162,7 @@
       "source": ".kiro/skills/lima/SKILL.md",
       "target": ".agents/skills/lima/SKILL.md",
       "source_sha256": "9d188e6791228eb87d24992431b7e1e3923925eb331247344e675206cfcf0e89",
-      "target_sha256": "a55bca2bd729073c4d96775b05b6fed6fa761e4b8bd796fddde1f8e8218c33a7"
+      "target_sha256": "da9509e0b6113f5036a23afce21c22fd21df90bcae1ac7873d3b7ee42a995dbd"
     },
     {
       "source": ".kiro/skills/lima/profiles/_TEMPLATE.md",
@@ -1102,7 +1216,7 @@
       "source": ".kiro/skills/lima/reference/impeccable-bridge.md",
       "target": ".agents/skills/lima/reference/impeccable-bridge.md",
       "source_sha256": "94c3e2c605ff7212675c943402118b3eeb541656a9a5cbf8f764a5dace94e08b",
-      "target_sha256": "44449989269690f348e173614abc129fe192955ecfde632116cb987d26229f27"
+      "target_sha256": "3879680bd04430a70ab47bb00e4f0ab30d27f486fa24b4074f6e814d43eec7a3"
     },
     {
       "source": ".kiro/skills/lima/reference/intake.md",
@@ -1144,7 +1258,7 @@
       "source": ".kiro/skills/lima/reference/request-router.md",
       "target": ".agents/skills/lima/reference/request-router.md",
       "source_sha256": "4c47232ad6132bcacdb897aa8cc3c2b0f1fba26db2ffbaec89a935409d9330d3",
-      "target_sha256": "de679beaa71ed0c53d54c1324f5a0614b68139de368a7c8194b9b45a400dd278"
+      "target_sha256": "3d3ad8eb4546d005152daa0ae0bbaaddd2c5c5c2c86596a0e4dcad1ed02802f1"
     },
     {
       "source": ".kiro/skills/lima/reference/runtime-qa.md",
@@ -1186,7 +1300,7 @@
       "source": ".kiro/skills/mora-docs/SKILL.md",
       "target": ".agents/skills/mora-docs/SKILL.md",
       "source_sha256": "de72553da82331bc6840a130fba6b08305af134bc6be5db374ad8a41d7f4bde8",
-      "target_sha256": "97cb6f8bfebc0e5c06574d901e547add8ba630382363dd29a47add613684c046"
+      "target_sha256": "f638dda0b37b757138d28c7d9a5c882e897786e5113c832da8998edc194688bd"
     },
     {
       "source": ".kiro/skills/mora-docs/documentation-round-standard.md",

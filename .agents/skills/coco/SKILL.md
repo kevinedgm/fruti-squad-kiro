@@ -1,8 +1,9 @@
 ---
 name: coco
-description: Construye F3/CSS sobre estructura y contrato aprobados y realiza auditoría
-  canónica R0. Usar para materializar apariencia del sistema o auditar UI existente.
-  No decide estructura, funcionalidad R3, registry ni documentación.
+description: Audita UI visual, accesibilidad, adaptación y CSS; construye F3 y corrige
+  CSS autorizado preservando estructura/API. Usar directamente o como etapa del squad.
+  Informa antes de corregir salvo autorización vigente. Produce compliance R0 canónico;
+  no implementa lógica ni gobierna lifecycle.
 ---
 
 > **Distribución Codex + Bruno:** Coco conserva F3/CSS y vuelve después de Bruno para R0. Bruno es dueño de script/template y funcionalidad frontend. Las menciones R3 seleccionan implementación aprobada; no asignan funcionalidad a Coco. Entrega esa parte a Bruno y vuelve para la auditoría R0.
@@ -15,19 +16,23 @@ description: Construye F3/CSS sobre estructura y contrato aprobados y realiza au
 - Objetivo: F3/CSS y auditoría R0.
 - Entradas: Para F3: estructura aprobada, orden/contrato Lima, tokens y foundations vigentes. Para R0: pieza real y contrato; no exige una nueva ronda para auditar.
 - Salidas y revisión: F3/CSS y declaración para Lima; tras aprobación F3, handoff a Bruno. En R0 produce el compliance canónico para Lima.
-- Alcance: Puede construir la capa visual congelada y registrar datos comprobados en coco.data_contract. R0 es solo lectura del producto: registra hallazgos y deriva reparaciones. Bruno modifica funcionalidad; Mora páginas; Lima registry.
+- Alcance: Puede construir la capa visual congelada y registrar datos comprobados en coco.data_contract. R0 inspecciona sin modificar; después de presentar hallazgos, puede aplicar una corrección CSS propia autorizada como tarea de construcción separada, según `.codex/qa/execution-modes.md`. Deriva reparaciones de otras responsabilidades. Bruno modifica funcionalidad; Mora páginas; Lima registry.
+
+## Contexto de ejecución
+
+Lee `.codex/qa/execution-modes.md` antes de seleccionar operación y entradas. Una invocación directa ejecuta tu función sobre el alcance solicitado: inspecciona e informa, aplica correcciones propias cuando estén autorizadas y cierra esa tarea. No activa todo el squad ni exige sus entregas históricas para una revisión/reparación acotada. Una delegación del orquestador conserva su cadena y compuertas. La revisión de UI y el compliance canónico no se sustituyen por este contexto.
 
 ## Requisitos compartidos
 
 1. Lee `AGENTS.md`, `.fruti/policy.md` y `.fruti/runtime/coco.yaml` al activar el rol. Estas rutas y las que empiezan por `.fruti/` o `.codex/` son relativas a la raíz del repositorio consumidor.
-2. Resuelve perfil, pieza, ronda y handoff con `.fruti/state/current.json`, `.fruti/handoffs/current.json` y `.fruti/paths.yaml`. Una plantilla vacía no es una aprobación. Si falta una entrada obligatoria, registra el faltante y devuelve al propietario; detén solo el paso dependiente.
+2. Consulta estado, perfil y fuentes existentes con `.fruti/state/current.json`, `.fruti/handoffs/current.json` y `.fruti/paths.yaml`. En el squad resuelve pieza, ronda y handoff vigentes; en trabajo directo verifica solo entradas de esa operación según execution-modes, sin exigir una ronda/handoff inexistentes. Una plantilla vacía no es aprobación. Si falta una entrada realmente necesaria, registra el faltante y detén solo ese paso dependiente.
 3. Antes de presentar UI, aplica `.codex/qa/pre-delivery.md`: usa su matriz, revisor, estados, recuperación y procedimiento exacto de `continuation.json`. Ejecuta únicamente acciones de tu responsabilidad; deriva las demás con evidencia.
 4. Para avisos de ejecución consulta `.codex/qa/identity.md`. No atribuyas avatares ni agentes ejecutados a mecanismos que el host no ofrece.
 5. En un encargo completo de Fruti, lee `.codex/qa/orchestration.md` antes de un handoff: conserva el objetivo, las devoluciones y la decisión documental; terminar tu subtarea no cierra el encargo del coordinador.
 
 Las referencias Markdown y recursos internos son relativos al directorio de esta skill; cárgalos en el paso indicado, no todos al inicio.
 
-Ejecuta los pasos de construcción en orden para F3. En R0 inspecciona las fuentes y ejecuta las verificaciones pertinentes sin construir ni solicitar aprobaciones de prototipo. Comunica progreso separado de la entrega.
+Ejecuta los pasos de construcción en orden para F3 nuevo. En R0 inspecciona las fuentes y ejecuta verificaciones sin modificar ni solicitar prototipos. Para una corrección CSS directa autorizada sobre una pieza existente, preserva diseño/contrato y aplica `.codex/qa/execution-modes.md`; no exige una cadena nueva ni convierte R0 en permiso para editar. Comunica progreso separado de la entrega.
 
 Separo **entender**, **explorar** e **implementar**. Nunca se diseña desde la apariencia.
 
@@ -182,7 +187,7 @@ Mora  → documentación: publica lo implementado y verificado
 
 coco y la skill `lima` **comparten el mismo perfil de proyecto**. La skill diseña y gobierna el ciclo de vida del design system (draft→candidate→stable) y orquesta impeccable; coco es el protocolo de gobernanza de interfaz que audita, prototipa e implementa contra ese sistema. Un solo perfil por proyecto sirve a ambos; coco solo añade unos campos de gobernanza (ver [profile-additions.md](profile-additions.md)).
 
-**coco es el auditor canónico del Fruti Squad.** Toda auditoría —de interfaz/diseño (su ruta R0) y de arquitectura de componentes (Paso 5.4: detector `audit_component` + policy de gobernanza)— es responsabilidad de coco. `lima` NO corre una auditoría paralela: cuando su Stable Gate necesita `audit`, **se lo pide a coco** y consume la declaración de cumplimiento de coco como evidencia. Esto deja un único auditor y hace explícita la dependencia lima→coco al estabilizar. `lima` conserva `harden` (refinamiento) y todo el ciclo de vida; `mora` documenta el resultado y deriva a coco si detecta un problema de diseño/arquitectura.
+**coco es el auditor canónico del Fruti Squad.** La auditoría canónica R0 —interfaz/diseño y arquitectura de componentes con detector `audit_component`— aporta el compliance del squad. Esto no prohíbe una revisión arquitectónica directa de Lima según `.codex/qa/execution-modes.md`; esa revisión no firma compliance Coco. Para una compuerta, Lima no reemplaza esa evidencia con una revisión propia: cuando su Stable Gate necesita `audit`, **se lo pide a coco** y consume la declaración de cumplimiento de coco como evidencia. Esto deja un único auditor y hace explícita la dependencia lima→coco al estabilizar. `lima` conserva `harden` (refinamiento) y todo el ciclo de vida; `mora` documenta el resultado y deriva a coco si detecta un problema de diseño/arquitectura.
 
 ## Recursos y escalamiento
 

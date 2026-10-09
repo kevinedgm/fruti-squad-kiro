@@ -4,6 +4,8 @@ Todas las rutas de este protocolo son relativas a la raíz del repositorio consu
 
 ## Encargo y alcance
 
+Lee `.codex/qa/execution-modes.md` antes de seleccionar la cadena. Este protocolo coordina encargos Fruti completos y sus delegaciones; una invocación directa de un especialista ejecuta su función y corrección autorizada, sin imponer este recorrido. Una revisión arquitectónica Lima no reemplaza compliance Coco, pero no se rechaza por ser directa.
+
 Al iniciar la investigación y delegar cada etapa, lee `.codex/qa/project-components.md` y transmite raíces de componentes, framework comprobado y namespace. La tabla de reutilización viaja en artefactos/handoffs existentes; no recrees controles ni amplíes permisos sobre bibliotecas por conveniencia.
 
 - Una invocación de Fruti Squad para crear o rediseñar una pieza comprende investigación, alternativas, contrato, F3, implementación R3, auditoría, reparación y entrega de la pieza solicitada. No exige al usuario pedir las etapas por separado.
