@@ -1,6 +1,6 @@
 # Codex · Guía operativa para crear agentes y skills
 
-Adaptación de Fruti Squad for Kiro en la rama `codex`, basada en el commit `47141906fd0731ac3a8b3d25bd56678d2488d81b`. Fecha de verificación documental: 8 de octubre de 2026.
+Adaptación de Fruti Squad for Kiro en la rama `codex`, basada en el commit `47141906fd0731ac3a8b3d25bd56678d2488d81b`. Configuración contrastada con la CLI del paquete 0.3.17: 9 de octubre de 2026. Las fuentes de compatibilidad del host conservan las fechas y límites de sus auditorías.
 
 ## Contenido
 
@@ -12,7 +12,7 @@ Adaptación de Fruti Squad for Kiro en la rama `codex`, basada en el commit `471
 6. Crear o modificar una skill
 7. Crear o modificar un agente
 8. Permisos y compatibilidad
-9. Tematización y perfiles
+9. Configuración: perfil, tema, componentes, framework, estilos y QA
 10. Validación y mantenimiento
 11. Fuentes y límites
 
@@ -60,12 +60,35 @@ npx fruti-squad-codex install
 
 `postinstall` copia los archivos al proyecto, conserva archivos distintos y reporta conflictos. Si ya existe `AGENTS.md`, integrarlo manualmente: añadir una sección Fruti que mande leer `.fruti/policy.md`, `.fruti/state/current.json`, `.fruti/paths.yaml` y el flujo de roles descrito aquí. No reemplazar las instrucciones propias del proyecto. Un conflicto en un agente o skill exige reconciliar el archivo antes de afirmar que la instalación está completa.
 
-El instalador no escribe `.codex/config.toml`, para preservar la configuración del usuario. Si se deshabilitaron los subagentes, habilitarlos explícitamente en la configuración del cliente:
+El instalador no escribe `.codex/config.toml` ni concede permisos, herramientas o subagentes. Consulta [la auditoría de agentes](codex-agents-audit.md) y la documentación del cliente instalado antes de modificar su configuración; no copies un campo de agente TOML al esquema de configuración general.
 
-```toml
-[agents]
-enabled = true
+### Elegir el tipo de proyecto antes de inicializar
+
+| Situación | Operación | Resultado |
+| --- | --- | --- |
+| Proyecto nuevo o tema derivado propio | `init --theme starter` | Perfil, entrada corta del tema y tokens/CSS derivados |
+| Proyecto con tema ya vigente | `init --theme existing --theme-source <archivo>` | Perfil enlazado a esa fuente; no reemplaza ni genera tema starter |
+| Fruti ya inicializado | `project` y/o `theme`, según el ajuste | Cambia configuración puntual sin reinicializar el perfil |
+| Actualizar herramientas Fruti | Instalar dependencia y ejecutar `install --update-tools` | Actualiza herramientas distribuidas con backups y conserva datos del proyecto |
+
+La sección [9](#9-configuración-perfil-tema-componentes-framework-estilos-y-qa) contiene ejemplos completos. No uses `init --force` para actualizar una dependencia.
+
+### Plugin local opcional y copias duplicadas
+
+La dependencia npm instala las herramientas y skills del proyecto. El plugin añade su distribución a la interfaz del cliente; no sustituye `.fruti`, el perfil ni los agentes del consumidor.
+
+Si quieres registrar el plugin por primera vez:
+
+```bash
+npx fruti-squad-codex plugin --dry-run
+npx fruti-squad-codex plugin
 ```
+
+Ejecuta desde el consumidor donde está `node_modules/fruti-squad-codex`. Después instala/habilita Fruti Squad en el marketplace mostrado en Plugins. El comando registra una fuente, no instala ni recarga automáticamente la copia de caché del cliente. Si el plugin ya está registrado y su ruta no cambia, no necesitas registrar otra vez para usar una CLI nueva. Para cargar skills nuevas desde el plugin, actualiza o recarga esa instalación mediante la interfaz disponible y comprueba el origen/version.
+
+Las skills de proyecto y plugin pueden aparecer simultáneamente. No invoques una entrada ambigua por su nombre: selecciona el origen o comprueba su ruta desde el catálogo del cliente. Registrar otra vez no elimina duplicados. Este paquete aún no ofrece un modo de instalación que desactive automáticamente las skills de repositorio al habilitar el plugin. No borres copias personales ni cachés globales para actualizarlo.
+
+Los iconos de skills y plugins dependen de la superficie compatible. `agents/openai.yaml` no configura avatares de subagentes. Véase [registro local](codex-local-plugin.md) y [auditoría de iconos](codex-icons-audit.md). Actualizar una CLI de tema no requiere reinstalar el plugin.
 
 Codex descubre skills de repositorio en `.agents/skills` desde el directorio actual hasta la raíz. Los agentes locales se descubren en `.codex/agents`. Abrir el proyecto completo, no solo una carpeta de skills.
 
@@ -192,7 +215,7 @@ Cada ronda es inmutable: `.fruti/tests/rNN/`. `current` apunta al último pedido
 
 Los punteros `handoffs/current.json` y `reports/compliance-current.json` deben llevar `round`. No consumir un puntero de r02 como evidencia vigente de r03. Mostrar artifacts downstream faltantes como NOT GENERATED.
 
-`design_system: NEW` exige foundations propuestas y aprobadas antes de PASS visual final. El bootstrap de configuración no genera por sí solo tokens derivados ni certifica foundations.
+`design_system: NEW` exige foundations propuestas y aprobadas antes de PASS visual final. Desde 0.3.15, `init --theme starter` genera tokens y CSS validados. Esa generación no certifica foundations, composición, imports del producto ni una entrega visual.
 
 ## 6. Crear o modificar una skill
 
@@ -259,24 +282,233 @@ No instalar un sandbox más amplio ni sobrescribir la configuración del usuario
 
 Los avatares SVG y su registro se conservan. `agents/openai.yaml` conecta `icon_small`, `icon_large` y `brand_color` con copias portables de los tiles canónicos dentro de cada skill. `.codex/qa/identity.md` define avisos por rol y el fallback textual. Los metadatos de las skills y los eventos nativos de subagentes son superficies distintas; esta adaptación no personaliza estos últimos ni inserta imágenes para simularlos. Consulta la [auditoría de iconos](codex-icons-audit.md) para sincronización, rutas y verificación manual.
 
-## 9. Tematización y perfiles
+## 9. Configuración: perfil, tema, componentes, framework, estilos y QA
 
-`init` conserva los defaults, formatos y estrategia original:
+Ejecuta los comandos desde la raíz del proyecto consumidor. Todas las rutas de configuración siguientes son relativas a esa raíz. `--target <carpeta>` permite dirigir un comando a otro proyecto; comprueba el destino antes de escribir.
+
+### 9.1 Qué se configura y dónde vive
+
+| Archivo | Qué contiene | Cómo cambiarlo | Comprobación |
+| --- | --- | --- | --- |
+| `.agents/skills/lima/profiles/<slug>.md` | Tema activo, Hub, registry, implementación y QA | `init` en primer uso; después, reconciliar campos concretos con Lima | Leer la ruta `profile_path` del estado y ese perfil |
+| `.fruti/state/current.json` | Puntero al perfil y ronda vigente | Lo mantiene el flujo; no sustituye las decisiones del perfil | Verificar que las rutas existen y la ronda coincide |
+| `.fruti/project.json` | Framework declarado, raíces de componentes y prefijo propio | `project`; admite las mismas opciones en primer `init` | `project --show` |
+| `.fruti/theme/config.json` | Inputs cortos del tema starter | `theme` o edición del JSON seguida de `theme` | `theme --show` |
+| `.fruti/theme/tokens.css` | Variables CSS derivadas | Regenerar con `theme`; no editar a mano | Salida `generated`, contenido y uso real en la aplicación |
+| `.fruti/theme/tokens.json` | Tokens documentados con valores, procedencia y contrastes | Regenerar con `theme`; no editar a mano | JSON legible y coherente con CSS/configuración |
+| Fuente indicada por `theming.source` en modo existing | Tema propio ya vigente | Herramientas de ese proyecto | Compilación/generación propia y auditoría del delta |
+| `.agents/plugins/marketplace.json` | Registro de la fuente del plugin | `plugin` | Registro resoluble; instalación efectiva se comprueba aparte en el cliente |
+
+No confundas `.fruti/theme/tokens.json` generado con un `.fruti/tokens.json` canónico que pueda tener el consumidor. La CLI de tema no modifica este último, CSS ajeno ni imports de producción.
+
+### 9.2 Primer uso con tema derivado
+
+Ejemplo para un proyecto Vue 3 que ya tiene componentes bajo `grana-ui/src/components`:
 
 ```bash
-npx fruti-squad-codex init --name 'Mi proyecto' --theme starter
-npx fruti-squad-codex init --name 'Mi proyecto' --theme existing --theme-source src/styles/tokens.css
-npx fruti-squad-codex theme --brand '#1F1F1F' --accent '#0B63CE' --radius 6
-npx fruti-squad-codex theme --font 'Instrument Sans' --font-size 16 --type-scale 1.25
-npx fruti-squad-codex theme --space 4 --shape rounded --dark
+npm install --save-dev 'github:kevinedgm/fruti-squad-kiro#codex'
+npx fruti-squad-codex init \
+  --name 'Mi proyecto' \
+  --theme starter \
+  --brand '#052a76' \
+  --accent '#c2d225' \
+  --font "'Poppins', 'Inter', system-ui, sans-serif" \
+  --framework vue3 \
+  --components grana-ui/src/components \
+  --css-prefix nsa-ui
+```
+
+Sustituye framework y carpeta por los reales. `--components` requiere una carpeta existente dentro del proyecto; no la crea. Si todavía no tienes componentes, omite esa opción. `--framework` declara el stack, no instala Vue ni migra código. Se contrasta con dependencias y entradas reales antes de diseñar.
+
+El primer `init` crea entrada de tema, tokens/CSS, perfil, carpetas Hub y registry, y activa ese perfil en el estado. Los valores no indicados heredan `.fruti/defaults/theme.json`. Repetir `init` sin `--force` conserva tema y perfil existentes, aunque regenera el tema starter retenido y actualiza punteros del estado; no uses ese comportamiento para cambiar de proyecto o reemplazar un perfil. Usa los comandos puntuales siguientes.
+
+### 9.3 Primer uso con tema existente
+
+```bash
+npx fruti-squad-codex init \
+  --name 'Mi proyecto' \
+  --theme existing \
+  --theme-source src/styles/tokens.css \
+  --framework vue3 \
+  --components src/components \
+  --css-prefix nsa-ui
+```
+
+Comprueba antes que `--theme-source` sea la fuente real y exista: la CLI enlaza esa ruta explícita, no valida el contenido de una fuente ajena. Sin `--theme-source`, busca candidatos conocidos; revisa lo elegido. Este modo no genera ni sustituye tokens starter. `theme` rechaza regenerar cuando el perfil activo declara existing, incluso si quedó un `config.json` starter antiguo.
+
+No combines `--theme existing` con flags de colores esperando que cambien la fuente externa: usa su configuración y generador reales. Bootstrap/Vuetify/Grana instalados se inspeccionan en su versión real; Fruti no los instala ni cambia su tema por declararlos.
+
+### 9.4 Cambiar colores o fuentes de un tema starter
+
+```bash
+npx fruti-squad-codex theme \
+  --brand '#052a76' \
+  --accent '#c2d225' \
+  --font "'Poppins', 'Inter', system-ui, sans-serif"
+```
+
+Solo cambian los inputs indicados. Se conservan los restantes, se ejecuta el motor OKLCH de Grana incluido en el paquete y se regeneran ambos outputs si la validación pasa. Los avisos se muestran; no equivalen a aprobación visual. Un fallo de validación no sobrescribe los archivos previos. No hace falta instalar otra CLI ni acceder a red para generar.
+
+Si editas `.fruti/theme/config.json` manualmente, ejecuta:
+
+```bash
+npx fruti-squad-codex theme
+```
+
+No hay watcher automático. `theme --show` solo lee y no regenera. `theme --reset` restaura todos los defaults del tema conservando el nombre; no lo uses si quieres conservar tu marca. No combines `--reset` con flags esperando conservarlos: el reset toma los defaults.
+
+La cadena de fuentes admite una familia o un stack CSS entre comillas. La CLI no descarga fuentes. La aplicación debe cargarlas y utilizar las variables generadas.
+
+### 9.5 Opciones completas de tema
+
+Estas opciones se aceptan en `theme` y en el primer `init --theme starter`. Los límites numéricos validan inputs; el motor además puede rechazar un tema que no cumpla las comprobaciones de contraste/tipografía.
+
+| Flag | Campo JSON | Valores / default |
+| --- | --- | --- |
+| `--brand` | `brand` | HEX `#RGB`/`#RRGGBB`; `#1F1F1F` |
+| `--accent` | `accent` | HEX; `#0B63CE` |
+| `--primary` | `primary` | HEX opcional; sin valor explícito, alias de brand |
+| `--radius` | `radius` | 0–64 px; 6 |
+| `--shape` | `shape` | `rounded` / `pill`; rounded |
+| `--space` | `space` | 1–16 px de base; 4 |
+| `--font` | `font` | Familia o stack; Instrument Sans |
+| `--font-display` | `fontDisplay` | Opcional; sin valor explícito, alias de font |
+| `--font-size` | `fontSize` | 8–32 px de base; 16 |
+| `--type-scale` | `typeScale` | 1–2; 1.25 |
+| `--neutrals` | `neutrals` | `tinted` / `pure`; tinted |
+| `--neutrals-hue` | `neutralsHue` | `brand` / `accent`; brand |
+| `--semantic-collision` | `semanticCollision` | `warn` / `adjust`; warn |
+| `--categories` | `categories` | Entero 0–12; 0 |
+| `--dark` / `--no-dark` | `dark` | Activa/desactiva derivados oscuros; true |
+
+El contrato también admite `overrides` y un objeto `dark` explícito en el JSON. No son flags de CLI: consulta `.fruti/contracts/theming.yaml` y la validación del motor antes de editarlos. Si primary/fontDisplay ya están definidos explícitamente, cambiar brand/font no los elimina ni vuelve a convertirlos en aliases.
+
+Ejemplos de ajustes independientes:
+
+```bash
+npx fruti-squad-codex theme --radius 8 --shape rounded --space 4
+npx fruti-squad-codex theme --font-size 16 --type-scale 1.25
+npx fruti-squad-codex theme --neutrals tinted --neutrals-hue brand
+npx fruti-squad-codex theme --semantic-collision adjust --categories 4
+npx fruti-squad-codex theme --dark
+```
+
+### 9.6 Aplicar el CSS a la aplicación
+
+El output usa variables `--g-*`, por ejemplo `--g-color-brand` y `--g-font-ui`. Es un tema que se aplica después de los tokens base de Grana. Usa el import/punto de entrada de Grana que ya funciona en tu proyecto y después importa `.fruti/theme/tokens.css` desde tu entrada de estilos. La ruta relativa depende de la ubicación del archivo que importa; no hay un import universal para todas las apps.
+
+En Vue/Vite, revisa la entrada real (`main.ts`, `main.js` o su hoja de estilos) antes de agregar el import. Fruti no lo agrega automáticamente. Comprueba en navegador una pieza que consuma `--g-*`, el valor computado y que las fuentes carguen. Si la aplicación usa otros tokens, su integración requiere un mapeo aprobado por Lima; no sustituyas variables globales de Bootstrap/Vuetify para forzar el tema.
+
+### 9.7 Configurar o cambiar la base de componentes
+
+En un proyecto ya inicializado:
+
+```bash
+npx fruti-squad-codex project \
+  --framework vue3 \
+  --components grana-ui/src/components \
+  --css-prefix nsa-ui
+```
+
+El resultado se guarda en `.fruti/project.json`:
+
+```json
+{
+  "framework": "vue3",
+  "component_roots": ["grana-ui/src/components"],
+  "css_prefix": "nsa-ui"
+}
+```
+
+| Opción | Qué cambia | Regla |
+| --- | --- | --- |
+| `--framework` | Stack/version declarado | Texto como `vue3` o `vue2`; se contrasta con código/dependencias |
+| `--components` | Lista de raíces para investigar reutilización | Repetible; cada carpeta debe existir dentro del proyecto |
+| `--css-prefix` | Namespace de estilos nuevos propios | Minúsculas, números y guiones; comienza con letra |
+| `--show` | Nada | Muestra configuración actual; `{}` indica que aún no hay decisiones declaradas |
+
+Los campos omitidos se conservan. Proporcionar `--components` reemplaza la lista completa; no agrega silenciosamente una raíz a las anteriores:
+
+```bash
+npx fruti-squad-codex project \
+  --components grana-ui/src/components \
+  --components src/components
+```
+
+Se normalizan rutas y rechazan rutas/symlinks que salgan del proyecto. Para una biblioteca npm, el squad inspecciona la dependencia instalada y sus exports; no es obligatorio apuntar a `node_modules` ni modificarla.
+
+Este comando no sobrescribe perfil, tema, estado ni componentes. Los campos declarados complementan el perfil; donde no hay configuración, el flujo usa el perfil vigente y detección AUTO. Si el framework declarado contradice el instalado, Lima debe reconciliarlo antes de implementar, sin migrar por su cuenta.
+
+### 9.8 Reutilización y estilos sin colisiones
+
+Antes de diseñar un botón, campo, diálogo o breadcrumbs, Kiwi investiga las piezas disponibles. Lima decide reutilizar/componer/extender o crear y registra API, fuente y justificación. Coco aplica F3; Bruno integra funcionalidad. El handoff incluye la tabla de reutilización, no solo el nombre de la biblioteca.
+
+Con prefijo `nsa-ui`, los estilos nuevos pueden usar:
+
+```css
+.nsa-ui-stat-filter { /* raíz propia */ }
+.nsa-ui-stat-filter__title { /* elemento */ }
+.nsa-ui-stat-filter--compact { /* variante */ }
+```
+
+No se renombra la API/clases existentes del componente rediseñado por configurar ese prefijo. Se rechazan prefijos reservados como `g`, `grana`, `v`, `vuetify`, `bs`, `bootstrap`, `btn`, `row`, `col` y `container`, y variantes con guion. Coco además comprueba usos existentes, scope, overlays y coexistencia real; la validación del prefijo no garantiza aislamiento.
+
+Evita clases genéricas y sobrescrituras globales. `<style scoped>` ayuda en Vue, pero no resuelve automáticamente portales/teleports, herencia o tokens. El procedimiento y responsabilidades están en `.codex/qa/project-components.md`.
+
+### 9.9 Hub, QA y perfil activo
+
+En el primer `init`, usa `--hub <carpeta>` (default `design-hub`), `--design-system <nombre>` (default nombre de proyecto), `--qa none|playwright` (default none). El perfil incluye viewports 1440, 1024, 768 y 390 y objetivo WCAG 2.2 AA.
+
+`--qa playwright` crea carpetas QA y declara el runner; no instala Playwright ni ejecuta pruebas. `--qa none` no anula la obligación de navegador del gate UI: el flujo debe resolver capacidades reales y declarar bloqueos cuando corresponda.
+
+Para cambiar Hub, implementación o QA de un perfil activo, pide a Lima actualizar campos concretos y reconciliar rutas/registry/estado existentes. La CLI `project` solo modifica framework, raíces y namespace; no ofrece flags para todos los campos del perfil. No reinicialices con `--force` para conseguir una edición puntual.
+
+Hay un bootstrap heredado alternativo, `bash .agents/skills/lima/scripts/init-project.sh` con intake, que puede crear un harness. No ejecutes ambos bootstraps como si sus efectos fueran equivalentes: elige una ruta y conserva un único perfil activo.
+
+### 9.10 Comprobar configuración y primer encargo
+
+```bash
+node -p "require('./node_modules/fruti-squad-codex/package.json').version"
+npx fruti-squad-codex project --show
 npx fruti-squad-codex theme --show
 ```
 
-Starter escribe `.fruti/theme/config.json` y un perfil local en `.agents/skills/lima/profiles/<slug>.md`. Existing enlaza el sistema existente. Los campos AUTO se resuelven mediante el contrato de implementation-target, se persisten y no se preguntan repetidamente.
+Usa `theme --show` solo cuando existe configuración starter; en existing inspecciona el perfil y su fuente. La versión de node_modules comprueba el paquete, no la copia de skills ni el plugin que carga la sesión.
 
-Cambiar la entrada propietaria, regenerar derivados mediante las capacidades reales del proyecto y auditar el delta. La CLI del paquete modifica configuración; no incluye un generador OKLCH de tokens ni CSS. No editar outputs derivados como una segunda fuente visual.
+Para verificar herramientas instaladas:
 
-Hay dos rutas de bootstrap heredadas: CLI npm `init` y `bash .agents/skills/lima/scripts/init-project.sh` con intake. La segunda puede crear un harness Playwright; ambas necesitan confirmar/resolver el perfil y conservar una sola referencia activa desde el estado. No confundir configuración propuesta con aprobación de diseño.
+```bash
+npx fruti-squad-codex install --update-tools --dry-run
+```
+
+Cero cambios de herramientas pendientes indica coincidencia con el paquete en esas rutas. Los conflictos restantes de AGENTS/perfiles/documentación pueden ser adaptaciones locales: revísalos, no uses force para ocultarlos. Comprueba además la ruta de la skill seleccionada y recarga su sesión cuando el cliente lo requiera; una comparación de archivos no prueba carga efectiva.
+
+Pedido de prueba después de configurar:
+
+```text
+Usa $fruti-squad para rediseñar grana-ui/src/components/NsaEncabezado/NsaEncabezado.vue.
+Lee el perfil activo y .fruti/project.json. Comprueba el framework y los componentes
+existentes antes de proponer controles, conserva API y funcionalidad y aplica la
+nomenclatura propia de estilos. Ejecuta el flujo completo y presenta las alternativas
+revisadas para elegir, con evidencia real y lo pendiente identificado.
+```
+
+Al revisar la entrega, busca la tabla de reutilización con APIs/rutas reales, el namespace usado y pruebas de coexistencia. No confundas configuración válida, build, auditoría visual ni una ronda completa ejecutada.
+
+### 9.11 Resolver problemas frecuentes
+
+| Síntoma | Comprobación | Acción |
+| --- | --- | --- |
+| Cambió config.json pero CSS quedó igual | ¿Ejecutaste theme? ¿La versión es ≥0.3.15? | Actualiza el paquete y ejecuta `theme`; no hay watcher |
+| Se generó CSS pero la pantalla no cambió | Import, orden de hojas, variables computadas y fuentes | Integra el output después de defaults y prueba el consumidor real |
+| `Component directory not found` | Ruta desde raíz/destino del comando | Corrige la carpeta; no declares una raíz inexistente |
+| `symlink leaves the project` | Destino real del enlace | Usa fuente dentro del proyecto o inspecciona la dependencia instalada |
+| Prefijo rechazado | Formato y nombres reservados | Elige uno propio y comprueba colisiones locales |
+| Theme rechaza modo starter | Perfil activo: theming.mode | Conserva existing y su generador, o reconcilia un cambio de modo con Lima |
+| Dos entradas Fruti | Origen/rutas: proyecto, personal o plugin | Selecciona la fuente concreta; repetir registro no elimina duplicados |
+| Plugin muestra versión anterior | Versión instalada en la interfaz, no solo npm | Actualiza/recarga la copia del plugin; no borres cachés globales |
+| Icono del subagente no coincide | Superficie del host | No se controla desde openai.yaml; no altera la ejecución del rol |
+| QA no puede ejecutarse | Herramienta, error e intentos reales | Aplica recuperación de pre-delivery; declara lo no verificado |
 
 ## 10. Validación y mantenimiento
 
@@ -302,7 +534,27 @@ Revisar el diff: el generador normaliza únicamente el adaptador declarado; la c
 
 Prueba de aceptación práctica: instalar el tarball en un proyecto vacío; verificar discovery, configurar perfil, ejecutar una interfaz representativa con estados reales y capturas por modo, registrar aprobaciones y recorrer todos los dueños. Comparar el resultado con los mismos contratos y dimensiones que Kiro. No cerrar una prueba solo por tener un tarball instalable.
 
-Para actualizar un consumidor, repetir la instalación de la rama y reconciliar conflictos. `--force` sobrescribe los archivos distribuidos, incluyendo estado/handoff iniciales; revisar el dry-run y respaldar personalizaciones antes de elegirlo. No usarlo como reparación automática de un proyecto activo.
+### Actualizar un consumidor sin reinicializar
+
+```bash
+npm install --save-dev 'github:kevinedgm/fruti-squad-kiro#codex'
+npx fruti-squad-codex install --update-tools --dry-run
+npx fruti-squad-codex install --update-tools
+node -p "require('./node_modules/fruti-squad-codex/package.json').version"
+```
+
+`--update-tools` actualiza skills, agentes y protocolos QA distribuidos con backups en `.fruti/backups/codex-tools`. Conserva perfiles, tema, estado, handoffs y fuentes del consumidor. AGENTS y documentación existentes distintos siguen como conflictos; reconcilia instrucciones locales y consulta la guía vigente del paquete en `node_modules/fruti-squad-codex/docs/codex-guia-operativa.md` o en GitHub. No sobrescribas evidencia documental antigua como si correspondiera a la versión nueva.
+
+Si ya tienes tema starter y solo necesitas regenerar sus outputs, ejecuta después `npx fruti-squad-codex theme`. Para cambiar raíces/framework/prefijo, usa `project`. No ejecutes init de nuevo para aplicar una revisión del paquete. `--force` reemplaza archivos distribuidos, incluidos estado/handoff iniciales; no lo uses como actualización automática de un proyecto activo.
+
+Para sincronizar solo los metadatos e imágenes de skills:
+
+```bash
+npx fruti-squad-codex install --update-icons --dry-run
+npx fruti-squad-codex install --update-icons
+```
+
+Esto preserva procedimientos y modelos, pero no demuestra que el cliente haya recargado o mostrado los iconos. El plugin se actualiza aparte en su interfaz cuando necesitas skills nuevas de ese origen; no es necesario para ejecutar los comandos de configuración del paquete.
 
 ## 11. Fuentes y límites
 

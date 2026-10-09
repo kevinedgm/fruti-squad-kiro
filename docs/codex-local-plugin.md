@@ -1,5 +1,7 @@
 # Registro local del plugin Fruti Squad · 0.3.13
 
+El registro se introdujo en 0.3.13. Para configurar o actualizar el paquete actual, consulta la [guía operativa](codex-guia-operativa.md#2-instalación-y-primer-uso). Actualizar `theme`/`project` no exige registrar o reinstalar el plugin; cargar skills nuevas desde el origen plugin requiere actualizar/recargar su copia en la interfaz del cliente.
+
 ## Qué cambia
 
 Fruti Squad ya tenía `.codex-plugin/plugin.json` apuntando a `./.agents/skills/`. Se conserva ese formato de compatibilidad y la fuente única de las ocho skills. No se migra ni duplica su contenido a otra carpeta.

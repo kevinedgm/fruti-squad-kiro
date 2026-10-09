@@ -6,6 +6,20 @@ Versión Codex del Fruti Squad de Kiro, en la rama `codex`. Conserva el flujo, l
 
 **[Codex · Guía operativa para crear agentes y skills](docs/codex-guia-operativa.md)** · [Trazabilidad de paridad](docs/codex-parity.json) · [Fuente Kiro](https://github.com/kevinedgm/fruti-squad-kiro/tree/main)
 
+La [guía de configuración](docs/codex-guia-operativa.md#9-configuración-perfil-tema-componentes-framework-estilos-y-qa) explica qué configura cada comando, dónde escribe y cómo verificarlo. Elige tu caso:
+
+| Necesitas | Sección |
+| --- | --- |
+| Instalar por primera vez o distinguir proyecto/plugin | [Instalación y primer uso](docs/codex-guia-operativa.md#2-instalación-y-primer-uso) |
+| Crear un tema desde brand, accent y fuentes | [Primer uso con tema derivado](docs/codex-guia-operativa.md#92-primer-uso-con-tema-derivado) |
+| Conservar el tema de una aplicación existente | [Tema existente](docs/codex-guia-operativa.md#93-primer-uso-con-tema-existente) |
+| Cambiar valores y regenerar tokens/CSS | [Cambiar el tema](docs/codex-guia-operativa.md#94-cambiar-colores-o-fuentes-de-un-tema-starter) y [todas las opciones](docs/codex-guia-operativa.md#95-opciones-completas-de-tema) |
+| Indicar framework, carpetas de componentes y namespace | [Base de componentes](docs/codex-guia-operativa.md#97-configurar-o-cambiar-la-base-de-componentes) |
+| Aplicar CSS y evitar colisiones con bibliotecas | [Integrar el CSS](docs/codex-guia-operativa.md#96-aplicar-el-css-a-la-aplicación) y [estilos propios](docs/codex-guia-operativa.md#98-reutilización-y-estilos-sin-colisiones) |
+| Configurar Hub/QA o verificar qué versión se usa | [Hub y perfil](docs/codex-guia-operativa.md#99-hub-qa-y-perfil-activo) y [comprobaciones](docs/codex-guia-operativa.md#910-comprobar-configuración-y-primer-encargo) |
+| Actualizar sin borrar tema, estado ni perfil | [Actualizar un consumidor](docs/codex-guia-operativa.md#actualizar-un-consumidor-sin-reinicializar) |
+| Resolver CSS sin cambios, duplicados, rutas o iconos | [Problemas frecuentes](docs/codex-guia-operativa.md#911-resolver-problemas-frecuentes) |
+
 ## Instalar
 
 Desde la raíz del proyecto:
