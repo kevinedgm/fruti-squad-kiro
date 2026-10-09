@@ -19,6 +19,10 @@
     {
       "before": "si lima, coco o mora detectan",
       "after": "si lima, coco, bruno o mora detectan"
+    },
+    {
+      "before": "# Kiwi — protocolo de estructura (F0–F2)",
+      "after": "# Kiwi — protocolo de estructura (F0–F2)\n\n**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill."
     }
   ],
   "mora-docs/SKILL.md": [
@@ -29,6 +33,10 @@
     {
       "before": "diseño, código o evidencia de QA faltante → **coco**.",
       "after": "diseño/CSS o evidencia de QA faltante → **coco**; funcionalidad frontend → **bruno**."
+    },
+    {
+      "before": "# mora — curadora documental del Design Hub",
+      "after": "# mora — curadora documental del Design Hub\n\n**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill."
     }
   ],
   "kiwi/references/fidelidad.md": [
@@ -57,6 +65,10 @@
     {
       "before": "si el usuario prefiere seguir contigo, sigue y declara la desviación.",
       "after": "conservar la solicitud como propuesta y detener F3/R3 hasta disponer de las entradas y aprobaciones requeridas; una desviación declarada no permite PASS."
+    },
+    {
+      "before": "# coco — protocolo obligatorio (agnóstico del proyecto)",
+      "after": "# coco — protocolo obligatorio (agnóstico del proyecto)\n\n**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill."
     }
   ],
   "improve-animations/SKILL.md": [
@@ -93,6 +105,28 @@
     {
       "before": "`scripts/check_artifact.py` sin errores.",
       "after": "`python3 .agents/skills/kiwi/scripts/check_artifact.py <archivo.html> --fidelidad F1` sin errores (usar F2 cuando corresponda; ejecutar desde la raíz del proyecto)."
+    },
+    {
+      "before": "## Comprobaciones automáticas mínimas",
+      "after": "## Revisión antes de presentar\n\nAplicar `.codex/qa/pre-delivery.md`: Lima revisa el borrador F2 y devuelve defectos a Kiwi antes de pedir aprobación estructural. Capturas y revisión de contenido/acciones alcanzables por alternativa, estados y viewport son obligatorias. Revisar recortes verticales/horizontales y padres; no basta con medir el cuerpo. El usuario evalúa una propuesta revisada, no sustituye la QA interna.\n\n## Comprobaciones automáticas mínimas"
+    }
+  ],
+  "lima/SKILL.md": [
+    {
+      "before": "# Adaptive UI System Architect",
+      "after": "# Adaptive UI System Architect\n\n**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill."
+    }
+  ],
+  "bruno/SKILL.md": [
+    {
+      "before": "# Bruno · constructor funcional R3",
+      "after": "# Bruno · constructor funcional R3\n\n**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill."
+    }
+  ],
+  "kiwi/scripts/check_artifact.py": [
+    {
+      "before": "    print(f\"\\n{len(errors)} errores · {len(warns)} avisos\")",
+      "after": "    print(f\"\\n{len(errors)} errores · {len(warns)} avisos\")\n    print(\"ALCANCE: validación ESTÁTICA únicamente. Render, recortes, responsive, visual y funcionalidad: NO VERIFICADOS por este script.\")\n    print(\"Antes de entregar: ejecutar revisión de navegador y gate .codex/qa/verify-delivery.cjs; un exit 0 aquí no es PASS de UI.\")"
     }
   ]
 }

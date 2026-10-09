@@ -27,6 +27,17 @@ try {
   for (const rel of ['AGENTS.md','.fruti/state/current.json','.fruti/handoffs/current.json']) assert(preserved.conflicts.includes(rel));
   assert.equal(fs.readFileSync(path.join(target,'.codex/config.toml'),'utf8'),'local project data\n');
   assert.equal(fs.readFileSync(path.join(target,'AGENTS.md'),'utf8'),'local project data\n');
+  // Updating shipped tools must preserve live project state and profiles.
+  const profile = path.join(target,'.agents/skills/lima/profiles/custom.md');
+  fs.writeFileSync(profile,'custom profile');
+  const tool = path.join(target,'.agents/skills/kiwi/SKILL.md');
+  fs.writeFileSync(tool,'old customized skill');
+  const upgraded = install({target,updateTools:true,quiet:true});
+  assert(upgraded.updated.includes('.agents/skills/kiwi/SKILL.md'));
+  assert(upgraded.backups.some(b=>fs.readFileSync(path.join(target,b),'utf8')==='old customized skill'));
+  assert.equal(fs.readFileSync(profile,'utf8'),'custom profile');
+  for(const rel of ['AGENTS.md','.codex/config.toml','.fruti/state/current.json','.fruti/handoffs/current.json']) assert.equal(fs.readFileSync(path.join(target,rel),'utf8'),'local project data\n');
+  assert(fs.existsSync(path.join(target,'.codex/qa/verify-delivery.cjs')));
   // Force is explicit; restores package-managed files, but never unrelated config.
   install({target,force:true,quiet:true});
   assert.equal(fs.readFileSync(path.join(target,'.codex/config.toml'),'utf8'),'local project data\n');

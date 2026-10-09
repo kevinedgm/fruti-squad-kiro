@@ -59,3 +59,13 @@ Referencia de autoría: https://learn.chatgpt.com/docs/build-skills
 Formato de plugin: https://developers.openai.com/plugins/build/plugins
 
 No se afirma cumplimiento ejecutado del 100% ni identidad de calidad visual: quedan pendientes el cliente Codex real y la aceptación de una UI concreta con evidencia.
+
+## Reparación del ciclo de evaluación (0.3.2)
+
+El reporte estático limpio no prueba una interfaz completa. Se reprodujo un encabezado con altura fija y overflow hidden que obtiene cero errores y avisos estáticos. La nueva captura en Chromium detectó el recorte y el gate rechazó la entrega; al reparar la altura, la prueba de render pasó. La evidencia recién capturada sin firma de revisión permaneció bloqueada. El resultado READY de la prueba usa una firma sintética exclusivamente para comprobar la mecánica del gate, no como juicio visual de un producto.
+
+Se prueban además rechazo de ronda/revisión antigua, fuente o plan cambiado, caso omitido, imágenes/traces reutilizados, fallo de interacción, teclado ausente, hallazgo abierto/sin reprobación y revisión de capturas/traces ausente. El test de instalación verifica actualización de herramientas con backup y conservación de perfil, estado y configuración.
+
+Un revisor independiente del código detectó rutas de bypass del gate (hallazgos ignorados, captura/trace repetido, plan omitido, aumento declarado sin método), que se corrigieron y añadieron a regresiones. También detectó un falso positivo con scroll interno permitido; el recolector respeta el scrollport intermedio y el test en navegador comprueba el caso válido y el recorte por padre que sigue siendo inválido.
+
+El ciclo productor → revisor → dueño → reprobación es obligatorio antes de presentar propuestas. Las aprobaciones reales del usuario siguen siendo independientes. Las pruebas no verifican todavía el componente nsaEencabezado.vue del consumidor ni una ejecución autónoma completa en su cliente Codex.

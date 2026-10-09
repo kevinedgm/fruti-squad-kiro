@@ -24,7 +24,7 @@ if (command === 'help' || argv.includes('--help') || argv.includes('-h')) {
     'Fruti Squad for Codex',
     '',
     'Usage:',
-    '  fruti-squad-codex install [--force] [--dry-run] [--target <path>]',
+    '  fruti-squad-codex install [--update-tools] [--force] [--dry-run] [--target <path>]',
     '  fruti-squad-codex init [options]',
     '  fruti-squad-codex theme [options]',
     '',
@@ -74,7 +74,8 @@ try {
     install({
       target,
       force: argv.includes('--force'),
-      dryRun: argv.includes('--dry-run')
+      dryRun: argv.includes('--dry-run'),
+      updateTools: argv.includes('--update-tools')
     });
   } else if (command === 'init') {
     install({ target, force: false, quiet: true });

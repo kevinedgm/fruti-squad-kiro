@@ -223,6 +223,8 @@ def main():
     for e in errors:
         print("  ✘", e)
     print(f"\n{len(errors)} errores · {len(warns)} avisos")
+    print("ALCANCE: validación ESTÁTICA únicamente. Render, recortes, responsive, visual y funcionalidad: NO VERIFICADOS por este script.")
+    print("Antes de entregar: ejecutar revisión de navegador y gate .codex/qa/verify-delivery.cjs; un exit 0 aquí no es PASS de UI.")
     return 1 if errors else 0
 
 

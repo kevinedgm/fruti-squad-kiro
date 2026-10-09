@@ -315,3 +315,13 @@ Límites heredados preservados y declarados:
 - El launcher Impeccable puede resolver un binario externo; no hay binario de plataforma incluido en esta línea base. Su propio SKILL.md define el fallback si el launcher falla. No certificar checks que no corrieron.
 - La prosa heredada contiene atribuciones antiguas de R3 a Coco y pautas previas del shell documental. El runtime, la política y los contratos compartidos ya establecen Bruno como dueño funcional y shell neutral; el adaptador mantiene esa interpretación original explícita.
 - Las pruebas estáticas y de instalación no ejecutan Codex CLI real ni prueban calidad visual de una aplicación. Mantener separadas compatibilidad de formato, integridad del flujo y aceptación de una entrega UI.
+
+## Compuerta operativa antes de presentar propuestas
+
+La revisión interna se aplica incluso a invocaciones de una skill sin coordinador. Leer `.codex/qa/pre-delivery.md` al preparar una entrega. Kiwi produce F2, Lima revisa el borrador y devuelve defectos a Kiwi antes de solicitar la aprobación estructural; esta revisión no reemplaza el contrato final ni la aprobación. Para F3, Lima/Impeccable revisan y Coco corrige. Para R3, Coco R0 devuelve defectos al dueño y Lima decide el gate con evidencia vigente.
+
+El recolector de navegador produce evidencia sin firmarla. Un revisor debe inspeccionar las capturas y traces y repetir la tarea por espacio y teclado. El gate verifica identidad, hashes, matriz y cierre de hallazgos; no puede garantizar por código la honestidad del modelo. Las capturas con contenido recortado, casos faltantes o evidencia obsoleta bloquean la presentación certificada. El ciclo no requiere que el usuario redacte un prompt de QA.
+
+Las herramientas son recursos Codex adicionales; los 33 archivos compartidos de Kiro conservan su contenido original. Las inserciones en SKILL/referencias se registran como transformaciones explícitas y se conservan al regenerar.
+
+Actualizar herramientas existentes con `install --update-tools`; las copias reemplazadas se respaldan y los datos/perfiles del proyecto se preservan. No ejecutar `init` de nuevo para aplicar una revisión del paquete.

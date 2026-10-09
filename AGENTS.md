@@ -15,6 +15,10 @@ Kiwi (F0–F2 estructura) → Lima (clasificación/contrato) → Coco (F3/CSS) �
 - No inventar datos, tokens, normas, APIs, previews ni resultados de verificaciones. Documentar faltantes y derivarlos al dueño.
 - Persistir handoffs y estado compactos con la ronda correcta, incluyendo las copias de ronda exigidas por la política. No reutilizar evidencia de otra ronda como evidencia recién generada.
 
+## Revisión interna antes de la entrega
+
+Antes de presentar una propuesta, aunque el usuario haya invocado solo Kiwi, aplicar `.codex/qa/pre-delivery.md`: productor → revisor → devolución al dueño → corrección y reprobación hasta estar listo. Usar agentes reales cuando estén disponibles; conservar aprobaciones del usuario como compuertas independientes. No pedir al usuario que detecte o diagnostique defectos básicos ni afirmar PASS visual desde un verificador estático. Sin evidencia real de navegador y revisión vigente, entregar solo estado de bloqueo/borrador; no solicitar aprobación de una UI certificada.
+
 ## Adaptador de host
 
 La política, runtime y contratos `.fruti` resuelven las atribuciones heredadas del texto profundo (incluidas menciones antiguas de Coco como dueño de todo R3 y del shell del Hub). `.fruti/contracts/documentation.yaml` gobierna el shell neutral y los previews aislados. No usar `.kiro` para la ejecución de Codex.

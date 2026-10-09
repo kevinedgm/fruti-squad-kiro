@@ -22,6 +22,10 @@ Proporcional a la fidelidad: F0 valida flujo y errores; F1 añade navegación y 
 
 Para cada estado responde: **qué lo dispara, qué pasa si falla, se puede volver.**
 
+## Revisión antes de presentar
+
+Aplicar `.codex/qa/pre-delivery.md`: Lima revisa el borrador F2 y devuelve defectos a Kiwi antes de pedir aprobación estructural. Capturas y revisión de contenido/acciones alcanzables por alternativa, estados y viewport son obligatorias. Revisar recortes verticales/horizontales y padres; no basta con medir el cuerpo. El usuario evalúa una propuesta revisada, no sustituye la QA interna.
+
 ## Comprobaciones automáticas mínimas
 
 - `python3 .agents/skills/kiwi/scripts/check_artifact.py <archivo.html> --fidelidad F1` sin errores (usar F2 cuando corresponda; ejecutar desde la raíz del proyecto).

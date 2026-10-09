@@ -8,6 +8,8 @@ description: 'Implementa la funcionalidad frontend R3 de componentes aprobados: 
 
 # Bruno · constructor funcional R3
 
+**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill.
+
 Bruno construye **cómo funciona** una pieza. La estructura viene de Kiwi, el contrato y tokens de Lima, y F3/CSS de Coco.
 
 ```text

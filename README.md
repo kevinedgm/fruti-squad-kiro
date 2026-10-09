@@ -95,3 +95,18 @@ Para comprobar los límites: «Solo audita esta UI; no cambies el código» debe
 ## Paquete de plugin
 
 `.codex-plugin/plugin.json` declara las ocho skills con el formato de compatibilidad soportado. Es un paquete de skills para pruebas locales; no está publicado en el directorio de plugins. Para mantener el flujo completo se requiere instalar en el proyecto con npm: esto provisiona `AGENTS.md`, `.fruti` y los agentes nativos, que el manifiesto de skills por sí solo no instala. No habilites simultáneamente copias de estas skills por plugin y por repo.
+
+## Revisión automática entre agentes (0.3.2)
+
+Un pedido directo a Kiwi también activa la revisión interna antes de mostrar A/B/C: Kiwi → Lima revisión → Kiwi reparación/reprobación. F3 pasa por Lima/Impeccable en modo revisión y Coco corrige; R3 pasa por Coco R0 y vuelve al dueño del defecto. El usuario recibe la propuesta revisada para decidir dirección y preferencias; las aprobaciones de estructura, F3 y promoción siguen siendo suyas.
+
+El gate `.codex/qa/verify-delivery.cjs` exige evidencia vigente por alternativa, viewport, estados y tarea: capturas, traces, inspección del revisor, pruebas de recorte vertical/horizontal y resultados de interacción/teclado. `check_artifact.py` ahora declara explícitamente su alcance estático. Sin navegador/evidencia, se informa bloqueo y no se certifica UI.
+
+Para actualizar una instalación existente:
+
+```bash
+npm install --save-dev 'github:kevinedgm/fruti-squad-kiro#codex'
+npx fruti-squad-codex install --update-tools
+```
+
+`--update-tools` actualiza skills, agentes y QA distribuidos; conserva una copia de cada herramienta reemplazada en `.fruti/backups/codex-tools`. Preserva perfiles, estado, handoffs, tokens, tema y configuración del proyecto. `AGENTS.md` existente se reporta como conflicto y se conserva; las skills/agentes actualizados incluyen la obligación de leer el contrato de revisión. No hace falta reinicializar el proyecto ni usar `--force`.

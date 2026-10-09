@@ -7,6 +7,8 @@ description: Coordina el flujo UI Fruti Squad en Codex mediante Kiwi, Lima, Coco
 
 Leer `AGENTS.md` y `.fruti/policy.md`. Resolver estado, perfil activo y handoff; nunca fijar un proyecto consumidor en la skill. Resolver las rutas lógicas mediante `.fruti/paths.yaml`.
 
+Antes de cada presentación al usuario aplicar `.codex/qa/pre-delivery.md`: solicitar revisión al dueño indicado, devolver fallos al productor y repetir corrección/comprobación automáticamente dentro del alcance. No tratar un informe de self-check como QA independiente. Kiwi → Lima revisión del borrador ocurre antes de solicitar aprobación estructural; el contrato definitivo sigue después de esa aprobación. Para F3, Lima usa Impeccable en revisión y Coco corrige; Bruno permanece bloqueado hasta aprobación F3. R3 vuelve a Coco R0 y Lima gate. No imponer el pipeline de producción a un pedido limitado a propuesta.
+
 Coordinar sin sustituir a los especialistas:
 
 1. Kiwi resuelve brief, flujo, estructura y adaptación F0–F2. En rediseño, completar understand → inventory → scope aprobado → redesign_plan antes de construir.

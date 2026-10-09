@@ -1,6 +1,6 @@
 {
   "name": "fruti-squad-codex",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Fruti Squad agents, skills and shared contracts for Codex",
   "license": "MIT",
   "private": false,
@@ -12,8 +12,9 @@
     "postinstall": "node scripts-postinstall.cjs",
     "install:codex": "node bin/fruti-squad-codex.js install",
     "dry-run": "node bin/fruti-squad-codex.js install --dry-run",
-    "test": "node test/install.test.cjs && node test/codex.test.cjs && node test/activation-contract.test.cjs",
-    "init:project": "node bin/fruti-squad-codex.js init"
+    "test": "node test/install.test.cjs && node test/codex.test.cjs && node test/activation-contract.test.cjs && node test/delivery-gate.test.cjs",
+    "init:project": "node bin/fruti-squad-codex.js init",
+    "test:browser": "node test/browser-delivery.test.cjs"
   },
   "files": [
     "bin/fruti-squad-codex.js",

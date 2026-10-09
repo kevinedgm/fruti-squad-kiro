@@ -22,6 +22,10 @@
       {
         "before": "si lima, coco o mora detectan",
         "after": "si lima, coco, bruno o mora detectan"
+      },
+      {
+        "before": "# Kiwi — protocolo de estructura (F0–F2)",
+        "after": "# Kiwi — protocolo de estructura (F0–F2)\n\n**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill."
       }
     ],
     "mora-docs/SKILL.md": [
@@ -32,6 +36,10 @@
       {
         "before": "diseño, código o evidencia de QA faltante → **coco**.",
         "after": "diseño/CSS o evidencia de QA faltante → **coco**; funcionalidad frontend → **bruno**."
+      },
+      {
+        "before": "# mora — curadora documental del Design Hub",
+        "after": "# mora — curadora documental del Design Hub\n\n**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill."
       }
     ],
     "kiwi/references/fidelidad.md": [
@@ -60,6 +68,10 @@
       {
         "before": "si el usuario prefiere seguir contigo, sigue y declara la desviación.",
         "after": "conservar la solicitud como propuesta y detener F3/R3 hasta disponer de las entradas y aprobaciones requeridas; una desviación declarada no permite PASS."
+      },
+      {
+        "before": "# coco — protocolo obligatorio (agnóstico del proyecto)",
+        "after": "# coco — protocolo obligatorio (agnóstico del proyecto)\n\n**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill."
       }
     ],
     "improve-animations/SKILL.md": [
@@ -96,6 +108,28 @@
       {
         "before": "`scripts/check_artifact.py` sin errores.",
         "after": "`python3 .agents/skills/kiwi/scripts/check_artifact.py <archivo.html> --fidelidad F1` sin errores (usar F2 cuando corresponda; ejecutar desde la raíz del proyecto)."
+      },
+      {
+        "before": "## Comprobaciones automáticas mínimas",
+        "after": "## Revisión antes de presentar\n\nAplicar `.codex/qa/pre-delivery.md`: Lima revisa el borrador F2 y devuelve defectos a Kiwi antes de pedir aprobación estructural. Capturas y revisión de contenido/acciones alcanzables por alternativa, estados y viewport son obligatorias. Revisar recortes verticales/horizontales y padres; no basta con medir el cuerpo. El usuario evalúa una propuesta revisada, no sustituye la QA interna.\n\n## Comprobaciones automáticas mínimas"
+      }
+    ],
+    "lima/SKILL.md": [
+      {
+        "before": "# Adaptive UI System Architect",
+        "after": "# Adaptive UI System Architect\n\n**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill."
+      }
+    ],
+    "bruno/SKILL.md": [
+      {
+        "before": "# Bruno · constructor funcional R3",
+        "after": "# Bruno · constructor funcional R3\n\n**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill."
+      }
+    ],
+    "kiwi/scripts/check_artifact.py": [
+      {
+        "before": "    print(f\"\\n{len(errors)} errores · {len(warns)} avisos\")",
+        "after": "    print(f\"\\n{len(errors)} errores · {len(warns)} avisos\")\n    print(\"ALCANCE: validación ESTÁTICA únicamente. Render, recortes, responsive, visual y funcionalidad: NO VERIFICADOS por este script.\")\n    print(\"Antes de entregar: ejecutar revisión de navegador y gate .codex/qa/verify-delivery.cjs; un exit 0 aquí no es PASS de UI.\")"
       }
     ]
   },
@@ -112,7 +146,7 @@
       "source": ".kiro/skills/bruno/SKILL.md",
       "target": ".agents/skills/bruno/SKILL.md",
       "source_sha256": "3e16429b679af8c9184db4b6ec9250afef3fe29f1ec4eba5f0795c9feaa350fc",
-      "target_sha256": "1a25a943abd7b549f707a2090f2d6212fb624f3d9bc3c01ec1422f1bcdfc4326"
+      "target_sha256": "4becc1e602ddb0bb21ad64959e61c995b25dba34bbd2939d7bf4053edc765ced"
     },
     {
       "source": ".kiro/skills/bruno/references/component-contract.md",
@@ -130,7 +164,7 @@
       "source": ".kiro/skills/coco/SKILL.md",
       "target": ".agents/skills/coco/SKILL.md",
       "source_sha256": "5b40f8564adf173c4adb9dbde8b98f8589e155377a099a11cc4e702d752b973f",
-      "target_sha256": "83efb5447645df8133856479de2b7baa82205620886fb1df124bb418545ec61c"
+      "target_sha256": "035fdb78c8516331cd5ff581a61a53a28640824e00400109baced3a2730a55c0"
     },
     {
       "source": ".kiro/skills/coco/examples/data_contract.example.md",
@@ -502,7 +536,7 @@
       "source": ".kiro/skills/kiwi/SKILL.md",
       "target": ".agents/skills/kiwi/SKILL.md",
       "source_sha256": "cb7cb4d5d7cb4d56dd1925fd452dbf12dc4fb58d6cbe13bc1c44ff8a088d3120",
-      "target_sha256": "6f181824f89ac8ea9628bdc40a19057dd1306c92882c5468a5019f0c2eebf0ce"
+      "target_sha256": "dc93ac744be3aaada3be921b444c6f22895200deef368f47a87a6b423dd29ff7"
     },
     {
       "source": ".kiro/skills/kiwi/assets/plantillas/brief.md",
@@ -574,7 +608,7 @@
       "source": ".kiro/skills/kiwi/references/validacion.md",
       "target": ".agents/skills/kiwi/references/validacion.md",
       "source_sha256": "6c6789e97c19853d9465caa1838da718a5ee304c5165624f659bdff392b599bc",
-      "target_sha256": "a94dd4eceea9ce6c8f1f9eeb46b2894df370d84eb51a2c555270562fff714506"
+      "target_sha256": "f0ea6507caced2ddb8b7b21cc0304a31aa71c1d89f272ce0ced4b2c4a0a8d17a"
     },
     {
       "source": ".kiro/skills/kiwi/references/wireframing.md",
@@ -586,7 +620,7 @@
       "source": ".kiro/skills/kiwi/scripts/check_artifact.py",
       "target": ".agents/skills/kiwi/scripts/check_artifact.py",
       "source_sha256": "00bb2cbd9508193f4bd6f89c48f5f4d101ad749d2c48a76de7030e1da050f073",
-      "target_sha256": "00bb2cbd9508193f4bd6f89c48f5f4d101ad749d2c48a76de7030e1da050f073"
+      "target_sha256": "c9dc83cad1edd1390ad7989a117e58c12690e49cf57161e3f4423767467f81ac"
     },
     {
       "source": ".kiro/skills/lima/README.md",
@@ -598,7 +632,7 @@
       "source": ".kiro/skills/lima/SKILL.md",
       "target": ".agents/skills/lima/SKILL.md",
       "source_sha256": "9d188e6791228eb87d24992431b7e1e3923925eb331247344e675206cfcf0e89",
-      "target_sha256": "fe859bdba8f75af7c3f4a9a29b7e05c4ddda70f3ea71ecd4f9a1305191b3ff17"
+      "target_sha256": "a5518c3e2520d595238daae5062f0ed71ba6f885135876ccfce3f24bddac1442"
     },
     {
       "source": ".kiro/skills/lima/profiles/_TEMPLATE.md",
@@ -736,7 +770,7 @@
       "source": ".kiro/skills/mora-docs/SKILL.md",
       "target": ".agents/skills/mora-docs/SKILL.md",
       "source_sha256": "de72553da82331bc6840a130fba6b08305af134bc6be5db374ad8a41d7f4bde8",
-      "target_sha256": "9999f4604447eaf6da485718d0bb13f455af7abc26f55ad281d88b78fe7e8ef0"
+      "target_sha256": "0fa117efd11b04112e3db9aac206efef2d1c00eaa2452b31733e3acbb29430cd"
     },
     {
       "source": ".kiro/skills/mora-docs/documentation-round-standard.md",

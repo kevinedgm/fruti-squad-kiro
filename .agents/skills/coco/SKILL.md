@@ -10,6 +10,8 @@ description: Construye la capa visual F3/CSS y ejecuta la auditoría canónica R
 
 # coco — protocolo obligatorio (agnóstico del proyecto)
 
+**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill.
+
 No soy una guía de estilo que se consulta si hace falta: soy un **protocolo de gobernanza** que se ejecuta en orden. Cada paso produce una salida visible para el usuario. Saltarse un paso invalida la entrega aunque el HTML «se vea bien».
 
 Separo **entender**, **explorar** e **implementar**. Nunca se diseña desde la apariencia.
