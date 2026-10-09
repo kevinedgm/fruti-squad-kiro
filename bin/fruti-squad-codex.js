@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const path = require('path');
 const { install } = require('../lib/install.cjs');
+const { registerPlugin } = require('../lib/plugin.cjs');
 const { initProject } = require('../lib/init.cjs');
 const { updateTheme } = require('../lib/theme.cjs');
 
@@ -25,6 +26,7 @@ if (command === 'help' || argv.includes('--help') || argv.includes('-h')) {
     '',
     'Usage:',
     '  fruti-squad-codex install [--update-tools | --update-icons] [--force] [--dry-run] [--target <path>]',
+    '  fruti-squad-codex plugin [--dry-run] [--target <path>]',
     '  fruti-squad-codex init [options]',
     '  fruti-squad-codex theme [options]',
     '',
@@ -78,6 +80,8 @@ try {
       updateTools: argv.includes('--update-tools'),
       updateIcons: argv.includes('--update-icons')
     });
+  } else if (command === 'plugin') {
+    registerPlugin({target, dryRun: argv.includes('--dry-run')});
   } else if (command === 'init') {
     install({ target, force: false, quiet: true });
     const result = initProject({

@@ -46,4 +46,8 @@ jobs:
           test -f .fruti/runtime/bruno.yaml
           test -f .codex/qa/verify-delivery.cjs
           test -f .codex/qa/pre-delivery.md
-          echo "clean npm install provisioning passed"
+          npx fruti-squad-codex plugin --dry-run
+          npx fruti-squad-codex plugin
+          test -f .agents/plugins/marketplace.json
+          test -f node_modules/fruti-squad-codex/assets/composer-icon.svg
+          echo "clean npm install provisioning and plugin registration passed"

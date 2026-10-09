@@ -125,3 +125,7 @@ npx fruti-squad-codex install --update-icons
 ```
 
 Ejecutar en la raíz del proyecto abierto en Codex. Actualizar primero la dependencia GitHub si su versión es anterior a 0.3.10. La operación guarda respaldos de archivos reemplazados; no demuestra que la aplicación haya recargado los iconos. Ver [auditoría de iconos](docs/codex-icons-audit.md) para comprobar la copia, las superficies y los pasos pendientes.
+
+### Probar la distribución como plugin local
+
+Desde 0.3.13, `npx fruti-squad-codex plugin --dry-run` y `npx fruti-squad-codex plugin` registran el paquete instalado en el marketplace del proyecto, preservando otros plugins. Después instala/habilita Fruti Squad desde ese marketplace en ChatGPT de escritorio. Registro no equivale a instalación ni a icono visible; selecciona el origen plugin si también aparecen las skills de repositorio. [Procedimiento y límites](docs/codex-local-plugin.md).
