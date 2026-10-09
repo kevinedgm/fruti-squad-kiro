@@ -39,7 +39,21 @@ async function collect(planPath,outPath,{chromium}={}){
    for(const a of c.actions||[]){if(a.type==='fill')await page.locator(a.selector).fill(a.value);else if(a.type==='click')await page.locator(a.selector).click();else if(a.type==='press')await page.keyboard.press(a.key);else throw Error('unsupported setup action')}
    if(c.zoom===2)await page.evaluate(()=>{document.documentElement.style.zoom='2'});
    await page.evaluate(()=>document.fonts.ready);
-   for(const x of c.expected||[]){const loc=page.locator(x.selector);if(x.visible!==undefined&&(await loc.isVisible())!==x.visible)findings.push(x.selector+': wrong visibility');if(x.text!==undefined&&(await loc.textContent())!==x.text)findings.push(x.selector+': wrong state text');if(x.textIncludes!==undefined&&!(await loc.textContent())?.includes(x.textIncludes))findings.push(x.selector+': state content missing')}
+   for(const x of c.expected||[]){
+    const loc=page.locator(x.selector),deadline=Date.now()+5000;let failures=[];
+    do{
+     failures=[];
+     if(x.visible!==undefined&&(await loc.isVisible())!==x.visible)failures.push(x.selector+': wrong visibility');
+     if(x.text!==undefined||x.textIncludes!==undefined){
+      const content=await loc.textContent({timeout:Math.max(1,deadline-Date.now())});
+      if(x.text!==undefined&&content!==x.text)failures.push(x.selector+': wrong state text');
+      if(x.textIncludes!==undefined&&!content?.includes(x.textIncludes))failures.push(x.selector+': state content missing');
+     }
+     if(!failures.length||Date.now()>=deadline)break;
+     await page.waitForTimeout(50);
+    }while(Date.now()<deadline);
+    findings.push(...failures);
+   }
    const horizontal=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1||document.body.scrollWidth>innerWidth+1);
    if(horizontal)findings.push('horizontal overflow');
    for(const selector of c.required||[]){

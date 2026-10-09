@@ -30,3 +30,5 @@ Detener solo el downstream bloqueado; devolver al dueño las decisiones pendient
 Si no hay herramientas reales de delegación, declarar ejecución secuencial de roles con los mismos contratos y aprobaciones. No afirmar que se ejecutaron subagentes. No hacer commit/push ni editar producto desde el rol coordinador.
 
 Leer `docs/codex-guia-operativa.md` solo para dudas de instalación, autoría o compatibilidad de host. No inventar comandos `fruti test`/`fruti foundations`: son procedimientos documentados, no verbos de la CLI distribuida.
+
+IN_PROGRESS y RETURN del gate son trabajo interno: ejecutar sus acciones con dueño, completar la matriz y esperar al revisor. No cerrar el turno por QA pendiente. El revisor debe evaluar cada alternativa contra los objetivos observables del pedido y devolver controles redundantes o propuestas que no resuelven el problema original. Explicar beneficio y coste al presentar la propuesta ya revisada.

@@ -77,3 +77,9 @@ Una segunda revisión pendiente es trabajo en curso, no resultado terminal. La r
 La plantilla de declaración diferencia propuesta lista, revisión interna en curso y bloqueo terminal; elimina la solicitud automática de aprobación en una entrega pendiente. La recuperación no elude las restricciones del host ni inventa permisos o ejecución.
 
 Una prueba escrita en contexto independiente distinguió dos escenarios: integración de navegador fallida con harness/Playwright disponibles (continuar recuperación y esperar revisión Lima; sin pedir aprobación), y ejecutable ausente sin alternativas ni autorización de instalación ni capacidad de inspeccionar imágenes (BLOCKED con dependencia concreta). El agente mantuvo hallazgos reparados pendientes de reprobación y no trató el estado vacío del paquete como evidencia del consumidor. Es evaluación escrita, no una ejecución en el proyecto externo.
+
+## Objetivos y estados accionables (0.3.4)
+
+El gate distingue IN_PROGRESS (captura/revisión por completar), RETURN (defectos a reparar) y BLOCKED (dependencia terminal documentada). Devuelve siguientes acciones con dueño y exige evaluación razonada por alternativa/objetivo. Se conserva el orden de aprobaciones del flujo original. Los estados del consumidor que no cambian el componente se delimitan explícitamente para no exigir una matriz artificial.
+
+Las regresiones comprueban que evidencia pendiente no termina como bloqueo, que un objetivo incumplido invalida un PASS geométrico y que un diagnóstico vago no basta para BLOCKED. Chromium reproduce un control de ruta redundante con ancho expanded sin overflow, verifica su eliminación y comprueba apertura móvil con teclado. El recolector espera el resultado de interacciones asíncronas dentro del timeout en lugar de devolver un fallo prematuro. Son pruebas del paquete y del mecanismo de fallo: no certifican el componente Vue del proyecto externo ni la ejecución autónoma del host Codex.

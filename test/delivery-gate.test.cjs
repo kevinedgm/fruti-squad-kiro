@@ -15,7 +15,7 @@ try{
  const good=review({...Object.fromEntries(['artifact','round','revision','stage','producer'].map(k=>[k,p[k]])),inputs:p.inputs,plan_sha256:hash(path.join(root,'plan.json')),runs});
  const run=e=>verify(p,e,root,path.join(root,'plan.json'));
  assert.equal(run(good).status,'READY_FOR_USER_REVIEW');
- function reject(change,message){const e=structuredClone(good);change(e);assert.equal(run(e).status,'BLOCKED',message)}
+ function reject(change,message){const e=structuredClone(good);change(e);assert.notEqual(run(e).status,'READY_FOR_USER_REVIEW',message)}
  reject(e=>e.review={status:'NOT_REVIEWED'},'self-check does not authorize delivery');
  reject(e=>e.review.role='kiwi','producer cannot approve itself');
  reject(e=>e.review.screenshots_reviewed=[],'uninspected screenshots');
@@ -25,7 +25,7 @@ try{
  reject(e=>e.runs[1].screenshots=e.runs[0].screenshots,'reused screenshots');
  reject(e=>e.runs[1].trace=e.runs[0].trace,'reused trace');
  reject(e=>e.runs.find(r=>r.zoom===2).zoom_method='none','enlargement missing');
- assert.equal(verify(p,good,root).status,'BLOCKED','plan file mandatory');
+ assert.equal(verify(p,good,root).status,'IN_PROGRESS','plan file mandatory');
  reject(e=>e.review.traces_reviewed=[],'trace review missing');
  reject(e=>e.runs.find(r=>r.task).checks.task_completion='FAIL','task incomplete');
  reject(e=>e.runs.find(r=>r.keyboard).checks.keyboard='NOT_VERIFIED','keyboard missing');
@@ -37,7 +37,23 @@ try{
  reject(e=>e.review.findings=[{rule_id:'CLIP',status:'closed',retest_case_ids:[]}],'closure without retest');
  reject(e=>e.runs[0].errors=['Console error'],'browser errors');
  reject(e=>e.plan_sha256='old','modified plan');
+ const pending=structuredClone(good);pending.review={status:'NOT_REVIEWED'};
+ assert.equal(run(pending).status,'IN_PROGRESS','pending review continues internally');
+ assert(run(pending).next_actions.some(a=>a.owner==='lima'));
+ const returned=structuredClone(good);returned.review.objective_checks[0].status='RETURN';
+ returned.review.objective_checks[0].rationale='Redundant disclosure competes with heading while full trail is already visible';
+ assert.equal(run(returned).status,'RETURN','geometric PASS does not override failure of user objective');
+ const incomplete=structuredClone(good);incomplete.runs.pop();
+ assert.equal(run(incomplete).status,'IN_PROGRESS','unfinished matrix is work, not terminal block');
+ incomplete.blocker={owner:'kiwi',error:'browser blocked'};
+ assert.equal(run(incomplete).status,'IN_PROGRESS','vague blocker cannot end task');
+ incomplete.blocker={plan_sha256:incomplete.plan_sha256,owner:'kiwi',operation:'capture remaining case',tool:'chromium',error:'Executable absent',required_action:'Provide a permitted browser executable',attempts:[{operation:'launch existing browser',result:'Executable absent'}],alternatives:[{status:'not-permitted',reason:'Environment forbids installing a browser'}]};
+ assert.equal(run(incomplete).status,'BLOCKED','documented unavailable recovery route is a terminal block');
+ const staleBlock=structuredClone(incomplete);staleBlock.plan_sha256='old';staleBlock.blocker.plan_sha256='old';
+ assert.equal(run(staleBlock).status,'IN_PROGRESS','obsolete blocker cannot end current revision');
+ reject(e=>e.review.objective_checks[0].evidence_case_ids=['normal-320'],'goal must be contrasted in mobile and expanded');
+ reject(e=>e.review.objective_checks=[],'review must address user objective');
  fs.appendFileSync(path.join(root,'component.html'),'<!-- revision changed -->');
- assert.equal(run(good).status,'BLOCKED','changed source invalidates evidence');
+ assert.equal(run(good).status,'IN_PROGRESS','changed source invalidates evidence');
  console.log('Delivery gate regressions passed: clipping, missing/stale evidence, reviewer and retest gates');
 }finally{fs.rmSync(root,{recursive:true,force:true})}

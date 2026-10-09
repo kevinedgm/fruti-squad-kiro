@@ -53,7 +53,14 @@ function verify(plan,evidence,root=process.cwd(),planPath) {
  }
  check(new Set(shots).size===shots.length,'reused screenshots across cases');
  check(new Set(traces).size===traces.length,'reused traces across cases');
+ const objectives=plan.objectives||[];
+ check(objectives.length>0&&objectives.every(o=>o.id&&typeof o.criterion==='string'&&o.criterion.trim()),'explicit user objectives required');
+ check(new Set(objectives.map(o=>o.id)).size===objectives.length,'duplicate objective ids');
  const review=evidence.review||{};
+ for(const variant of variants)for(const objective of objectives){
+  const assessments=(review.objective_checks||[]).filter(x=>x.variant===variant&&x.objective_id===objective.id);
+  check(assessments.length===1&&assessments[0].status==='PASS'&&typeof assessments[0].rationale==='string'&&assessments[0].rationale.trim()&&assessments[0].evidence_case_ids?.length&&assessments[0].evidence_case_ids.every(id=>cases.some(c=>c.id===id&&c.variant===variant))&&[c=>c.width<=375,c=>c.width>=1024].every(predicate=>assessments[0].evidence_case_ids.some(id=>cases.some(c=>c.id===id&&c.variant===variant&&predicate(c)))),`objective not demonstrated: ${variant}/${objective.id}`);
+ }
  check(review.role===reviewers[plan.stage]&&review.role!==plan.producer,'independent owning reviewer required');
  check(review.status==='PASS'&&typeof review.summary==='string'&&review.summary.trim().length>0,'review not accepted');
  check(review.plan_sha256===evidence.plan_sha256,'review of another plan');
@@ -61,11 +68,23 @@ function verify(plan,evidence,root=process.cwd(),planPath) {
  check(Array.isArray(review.traces_reviewed)&&traces.every(s=>review.traces_reviewed.includes(s)),'traces not inspected by reviewer');
  for(const dim of ['structural','visual','accessibility'])check(review.dimensions?.[dim]==='PASS','review dimension not PASS: '+dim);
  check(Array.isArray(review.findings)&&review.findings.every(f=>f.status==='closed'&&f.rule_id&&f.retest_case_ids?.length&&f.retest_case_ids.every(id=>cases.some(c=>c.id===id))),'open/unretested findings');
- return {status:errors.length?'BLOCKED':'READY_FOR_USER_REVIEW',errors};
+ if(!errors.length)return {status:'READY_FOR_USER_REVIEW',errors,next_actions:[]};
+ // Missing evidence is work to perform, never proof of a terminal environment block.
+ const blocker=evidence.blocker;
+ const terminal=blocker&&blocker.plan_sha256===evidence.plan_sha256&&planPath&&blocker.plan_sha256===hash(planPath)&&['artifact','round','revision','stage','producer'].every(k=>evidence[k]===plan[k])&&blocker.owner&&blocker.operation&&blocker.tool&&blocker.error&&blocker.required_action&&blocker.attempts?.length&&blocker.attempts.every(a=>a.operation&&a.result)&&blocker.alternatives?.length&&blocker.alternatives.every(a=>a.reason&&['unavailable','not-permitted'].includes(a.status));
+ if(terminal)return {status:'BLOCKED',errors,next_actions:[{owner:blocker.owner,action:blocker.required_action}],blocker};
+ const runs=evidence.runs||[];
+ const failed=runs.some(r=>r.findings?.length||r.errors?.length||Object.values(r.checks||{}).some(v=>['FAIL','BLOCKED'].includes(v)))||review.status==='RETURN'||review.findings?.some(f=>f.status!=='closed')||review.objective_checks?.some(x=>x.status==='RETURN'||x.status==='FAIL');
+ const status=failed?'RETURN':'IN_PROGRESS';
+ return {status,errors,next_actions:[
+  {owner:plan.producer,action:failed?'Repair the reported defects, then regenerate affected evidence for the current revision.':'Complete missing cases and regenerate stale evidence for the current revision.'},
+  {owner:reviewers[plan.stage],action:'Inspect current captures and task traces, assess every user objective for each alternative, then return defects or complete the review.'},
+  {owner:plan.producer,action:'Run this gate again; continue internally until READY_FOR_USER_REVIEW or a documented terminal blocker.'}
+ ]};
 }
 if(require.main===module){
  try{const [planPath,evidencePath]=process.argv.slice(2);if(!planPath||!evidencePath)throw Error('Usage: node .codex/qa/verify-delivery.cjs <plan.json> <evidence.json> (project root cwd)');
   const result=verify(JSON.parse(fs.readFileSync(planPath)),JSON.parse(fs.readFileSync(evidencePath)),process.cwd(),planPath);console.log(JSON.stringify(result,null,2));process.exitCode=result.errors.length?1:0;
- }catch(e){console.error('BLOCKED:',e.message);process.exitCode=1}
+ }catch(e){console.error('IN_PROGRESS: repair plan/evidence input:',e.message);process.exitCode=1}
 }
 module.exports={verify,hash};

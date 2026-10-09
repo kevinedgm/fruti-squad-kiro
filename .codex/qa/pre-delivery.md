@@ -38,7 +38,7 @@ node .codex/qa/collect-browser.cjs .fruti/tests/rNN/rev-01/plan.json .fruti/test
 node .codex/qa/verify-delivery.cjs .fruti/tests/rNN/rev-01/plan.json .fruti/tests/rNN/rev-01/evidence.json
 ```
 
-El recolector usa Playwright existente; no instala paquetes ni cambia el proyecto. Si no hay navegador disponible, usar el navegador real del host y producir el mismo formato con sus capturas/logs y trazabilidad, o marcar `BLOCKED`. Nunca certificar visual/responsive sin poder verlo.
+El recolector usa Playwright existente; no instala paquetes ni cambia el proyecto. Si no hay navegador disponible, usar el navegador real del host y producir el mismo formato con sus capturas/logs y trazabilidad, y ejecutar la recuperación indicada abajo. Solo un bloqueo terminal documentado permite `BLOCKED`. Nunca certificar visual/responsive sin poder verlo.
 
 El recolector deja `review.status: NOT_REVIEWED`. El revisor debe inspeccionar las imágenes y completar la revisión; el recolector nunca firma una aprobación. `verify-delivery` rechaza matriz incompleta, fuente/plan/capturas/traces obsoletos, fallo detectado, revisión faltante, mismo rol productor/revisor, dimensiones no PASS y hallazgos abiertos o sin reprobación. Exit 0 significa listo para revisión del usuario, nunca aprobado por él ni stable.
 
@@ -57,6 +57,7 @@ El gate verifica integridad y cobertura del registro. No puede comprobar por sí
   "inputs": [{"path": "design-hub/lab/encabezado/r03/index.html", "sha256": "SHA256_REAL"}],
   "profile_viewports": [390, 768, 1024, 1440],
   "variants": ["A", "B", "C"],
+  "objectives": [{"id": "density", "criterion": "Reducir densidad manteniendo breadcrumbs y subtítulo claros, sin controles redundantes"}],
   "required_states": ["normal", "long-content", "loading", "error"],
   "cases": [
     {"id": "A-normal-320", "variant": "A", "url": "http://localhost:4321/URL_REAL", "width": 320, "height": 844, "state": "normal", "zoom": 1, "required": ["SELECTOR_TITULO_REAL", "SELECTOR_ACCION_REAL"], "actions": []}
@@ -78,6 +79,7 @@ Después de inspeccionar todos los casos, el revisor agrega:
   "plan_sha256": "HASH_DEL_PLAN_REVISADO",
   "screenshots_reviewed": ["RUTAS_DE_TODAS_LAS_CAPTURAS_INSPECCIONADAS"],
   "traces_reviewed": ["RUTAS_DE_TODOS_LOS_TRACES_INSPECCIONADOS"],
+  "objective_checks": [{"variant": "A", "objective_id": "density", "status": "PASS", "rationale": "OBSERVACION_REAL_COMPARADA_CON_EL_COMPONENTE_ORIGINAL", "evidence_case_ids": ["CASO_MOVIL_REAL", "CASO_EXPANDED_REAL"]}],
   "dimensions": {"structural": "PASS", "visual": "PASS", "accessibility": "PASS"},
   "findings": [{"rule_id": "RESP-CLIPPING", "status": "closed", "retest_case_ids": ["CASO_REAL_REPETIDO"]}]
 }
@@ -104,6 +106,11 @@ Un error de una herramienta de navegador no prueba que todos los navegadores est
 5. Si hace falta instalación, credenciales o acceso no autorizados, detener solo esa operación y pedir lo mínimo que realmente falte. No simular fallback ni afirmar que se ejecutó otro navegador. Respetar restricciones del host y autorizaciones vigentes.
 6. Solo declarar bloqueo terminal cuando no quede ruta de recuperación permitida y viable. Persistir un registro `blocker.json` con ronda/revisión, operación fallida, herramienta, error literal, intentos/resultados, alternativas disponibles o indisponibles, artefactos afectados, dueño y acción mínima necesaria. Un «navegador bloqueado» sin detalle no es diagnóstico completo.
 
+El gate devuelve acciones con dueño. Ejecutarlas en el mismo encargo:
+
+- `IN_PROGRESS`: faltan casos, evidencia vigente o revisión; completar captura, esperar al revisor y volver a ejecutar el gate. No es una entrega ni un bloqueo.
+- `RETURN`: hay defectos técnicos o un objetivo incumplido; devolver al productor, corregir y reprobar. No terminar con un resumen de QA pendiente.
+
 Al finalizar, distinguir únicamente:
 
 - `READY_FOR_USER_REVIEW`: propuesta reparada, evidencia vigente y review aceptado; pedir la aprobación o comentarios propios de esa etapa.
@@ -112,3 +119,15 @@ Al finalizar, distinguir únicamente:
 Las declaraciones y los hallazgos deben actualizarse después de cada devolución y reparación. Registrar hallazgo, dueño, cambio y reprobación pendiente/ejecutada. No dejar una primera declaración «pendiente» como si describiera la segunda revisión; no cerrar un hallazgo sin nueva evidencia.
 
 El «siguiente paso del usuario» debe ser «ninguno: revisión interna en curso» mientras el squad puede continuar, o la acción concreta del bloqueo terminal. Solo proponer elegir A/B/C cuando el gate esté listo. No prometer ejecución en segundo plano si el turno termina.
+
+## Calidad de la propuesta y QA proporcional al componente
+
+Antes de diseñar, extraer objetivos observables del pedido en `plan.objectives` (`id`, `criterion`) y registrar el problema del componente original. Por cada alternativa, explicar en el brief qué cambia, cómo mejora la tarea y qué coste introduce. El revisor completa `objective_checks` para cada pareja alternativa/objetivo, con justificación y casos realmente inspeccionados. Un PASS geométrico no sustituye estos juicios. Si no puede explicar la propuesta de forma sencilla o esta conserva/empeora el problema original, devolverla a Kiwi.
+
+En un encabezado menos denso con breadcrumbs y subtítulo, evaluar jerarquía, espacio ocupado, lectura de la ubicación y descubribilidad de navegación. Una variante compacta con disclosure debe mostrarlo solo cuando hay ruta oculta; si la ruta ya es visible, el control redundante es un fallo aunque no exista overflow. El título y subtítulo no compiten con ese control. Validar abrir/cerrar con foco, teclado y contenido largo; documentar ventajas y coste de interacción. No recomendar A/B/C indistintas solo para completar tres alternativas.
+
+Delimitar el componente y los estados del consumidor antes de armar la matriz. Carga/vacío/error/offline/permisos que no cambian el encabezado pertenecen al consumidor: declararlos fuera de `required_states`, con razón y revisión explícitas en brief/declaración. No repetir una matriz completa de un estado externo idéntico por cada alternativa. Si cambian contenido, navegación o permisos del componente, sí deben probarse. Mantener por alternativa los anchos, contenido largo, ampliación y tareas aplicables exigidos arriba; no excluir móvil ni navegación para acortar QA. No agregar controles al componente solo para fabricar una tarea de prueba.
+
+Preparar el plan completo al inicio y ejecutar el recolector sobre toda la matriz, en lugar de terminar después de dos casos corregidos. Mantener un registro de casos ejecutados/pendientes y siguiente acción con dueño; el agente coordinador consume ese registro y continúa. Al compartir el artefacto, incluir sus recursos y una explicación breve de cada alternativa, su beneficio y el coste que el usuario debe decidir. El usuario no tiene que interpretar una propuesta sin explicación.
+
+`BLOCKED` necesita `evidence.blocker` de la revisión actual: `plan_sha256`, `owner`, `operation`, `tool`, `error` literal, `required_action`, `attempts` con `operation`/`result` y `alternatives` con `status` (`unavailable` o `not-permitted`) y `reason`. El gate comprueba que el registro esté completo; el coordinador verifica que realmente se agotaron las rutas permitidas. No inventar ese registro para cerrar una matriz incompleta. El archivo `blocker.json` conserva el diagnóstico íntegro.
