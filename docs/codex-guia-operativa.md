@@ -241,7 +241,9 @@ Entregar evidencia, bloqueos y handoff; no inventar un PASS.
 """
 ```
 
-Son obligatorios `name`, `description`, `developer_instructions`. El `name` identifica al agente; mantener el mismo nombre de archivo facilita localizarlo. Omitir modelo y esfuerzo para heredar las elecciones de la sesión, salvo una configuración expresamente decidida. Los especialistas Impeccable conservan su configuración upstream.
+Son obligatorios `name`, `description`, `developer_instructions`. El `name` identifica al agente; mantener el mismo nombre de archivo facilita localizarlo. Omitir modelo y esfuerzo para heredar las elecciones de la sesión, salvo una configuración expresamente decidida. Los seis agentes del squad no declaran modelo ni esfuerzo. Los cuatro helpers Impeccable conservan esfuerzo explícito: medium para asset producer, documenter y manual edit applier; high para finish reviewer. Ninguno declara modelo, sandbox, red ni MCP. Los valores efectivos dependen de la sesión y pueden diferir de estos defaults.
+
+Consulta la [auditoría de agentes](codex-agents-audit.md) para la versión comprobada, el esquema fechado y sus límites. El esquema de configuración general no incluye por sí solo la identidad de un agente independiente. No colocar `nickname_candidates` en la raíz del agente: el esquema consultado lo define en `[agents.<rol>]`. Una configuración antigua mediante `config_file` no exige migración si sigue siendo compatible.
 
 Para un nuevo dueño real del pipeline: actualizar responsabilidades, runtime y contratos/handoffs que correspondan, y validar toda la cadena. No crear un agente que absorba R0 de Coco, geometría de Kiwi o lifecycle de Lima por conveniencia.
 
@@ -280,8 +282,10 @@ En el checkout del paquete:
 
 ```bash
 npm test
-python3 -m pip install PyYAML
+python3 -m pip install PyYAML 'jsonschema>=4,<5'
 python3 scripts/validate-codex.py
+python3 scripts/validate-codex-toml.py
+python3 -m unittest discover -s test -p 'codex_toml_test.py'
 npm pack
 ```
 

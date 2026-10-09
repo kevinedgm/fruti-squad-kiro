@@ -73,4 +73,8 @@ npm install --save-dev 'github:kevinedgm/fruti-squad-kiro#codex'
 npx fruti-squad-codex install --update-tools
 ```
 
-Revisar el resultado del instalador y confirmar versión 0.3.7 antes de reanudar la ronda vigente. Reutilizar artefactos/aprobaciones actuales únicamente para el mismo alcance; evidencia obsoleta requiere nueva captura/revisión.
+Revisar el resultado del instalador y confirmar versión 0.3.8 antes de reanudar la ronda vigente. Reutilizar artefactos/aprobaciones actuales únicamente para el mismo alcance; evidencia obsoleta requiere nueva captura/revisión.
+
+## Ampliación: agentes y configuración TOML
+
+La auditoría de sección 13 y sus cambios están documentados en [codex-agents-audit.md](codex-agents-audit.md). La versión 0.3.8 incorpora diez agentes revisados, cuatro mirrors consistentes y validación separada del esquema. Las comprobaciones históricas de 0.3.7 indicadas arriba conservan su alcance; no equivalen a ejecución nativa de los agentes actualizados.
