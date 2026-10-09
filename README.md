@@ -117,7 +117,7 @@ La versión 0.3.3 precisa la recuperación: un error de la integración de naveg
 
 ## Iconos de skills
 
-`agents/openai.yaml` resuelve los iconos desde la raíz de cada skill, con SVG locales en `assets/`. Para sincronizar únicamente metadatos visuales e iconos desde el paquete instalado, preservando procedimientos, modelos y contratos:
+`agents/openai.yaml` resuelve los iconos desde la raíz de cada skill, con assets locales en `assets/`. La versión 0.3.12 prueba únicamente el icono pequeño de Fruti Squad como PNG equivalente, conservando los SVG originales; no confirma todavía su visualización en escritorio. Véase [prueba y reversión](docs/codex-icon-png-probe.md). Para sincronizar únicamente metadatos visuales e iconos desde el paquete instalado, preservando procedimientos, modelos y contratos:
 
 ```bash
 npx fruti-squad-codex install --update-icons --dry-run

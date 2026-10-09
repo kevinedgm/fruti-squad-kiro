@@ -155,6 +155,10 @@ for skill in [*skills.values(), 'impeccable', 'improve-animations', 'fruti-squad
     for size in ['small', 'large']:
         write(f'.agents/skills/{skill}/assets/avatar-{size}.svg', (ROOT / avatar['tile']).read_text())
     interface.update({'icon_small':'./assets/avatar-small.svg', 'icon_large':'./assets/avatar-large.svg', 'brand_color':avatar['accent']})
+    # Controlled desktop selector test; retain the canonical SVG and all other icons.
+    if skill == 'fruti-squad':
+        assert (ROOT / '.agents/skills/fruti-squad/assets/avatar-small.png').is_file()
+        interface['icon_small'] = './assets/avatar-small.png'
     write(f'.agents/skills/{skill}/agents/openai.yaml', 'interface:\n' + ''.join(f'  {key}: {json.dumps(value, ensure_ascii=False)}\n' for key, value in interface.items()))
 
 # Preserve all shared contracts/runtime/evidence formats; only path mapping changes.

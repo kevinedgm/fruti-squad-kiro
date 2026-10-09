@@ -38,6 +38,18 @@ try {
   assert.equal(fs.readFileSync(profile,'utf8'),'custom profile');
   for(const rel of ['AGENTS.md','.codex/config.toml','.fruti/state/current.json','.fruti/handoffs/current.json']) assert.equal(fs.readFileSync(path.join(target,rel),'utf8'),'local project data\n');
   assert(fs.existsSync(path.join(target,'.codex/qa/verify-delivery.cjs')));
+  // The one-skill PNG probe must sync to existing installs and retain its SVG.
+  const squadMetadata='.agents/skills/fruti-squad/agents/openai.yaml';
+  const squadPng='.agents/skills/fruti-squad/assets/avatar-small.png';
+  fs.writeFileSync(path.join(target,squadMetadata),fs.readFileSync(path.join(target,squadMetadata),'utf8').replace('avatar-small.png','avatar-small.svg'));
+  fs.unlinkSync(path.join(target,squadPng));
+  const pngDry=install({target,updateIcons:true,dryRun:true,quiet:true});
+  assert(pngDry.created.includes(squadPng)); assert(pngDry.updated.includes(squadMetadata));
+  assert(!fs.existsSync(path.join(target,squadPng)));
+  const pngUpdate=install({target,updateIcons:true,quiet:true});
+  assert(pngUpdate.created.includes(squadPng)); assert(pngUpdate.updated.includes(squadMetadata));
+  assert(fs.existsSync(path.join(target,'.agents/skills/fruti-squad/assets/avatar-small.svg')));
+  assert(fs.readFileSync(path.join(target,squadPng)).equals(fs.readFileSync(path.resolve(__dirname,'..',squadPng))));
   // Visual-only updates preserve functional files, even when repairing missing icons.
   const metadata = '.agents/skills/kiwi/agents/openai.yaml';
   const icon = '.agents/skills/kiwi/assets/avatar-small.svg';

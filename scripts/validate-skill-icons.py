@@ -8,6 +8,8 @@ import json
 import math
 import pathlib
 import re
+import struct
+import zlib
 import xml.etree.ElementTree as ET
 import yaml
 
@@ -61,6 +63,37 @@ def audit(root):
                 image = skill / relative
                 assert image.resolve().is_relative_to(skill.resolve()), f'Asset escapes skill: {key}'
                 assert image.is_file() and image.stat().st_size, f'Missing/empty {key}'
+                if image.suffix == '.png':
+                    assert name == 'fruti-squad' and key == 'icon_small', f'Unexpected PNG test: {key}'
+                    data = image.read_bytes()
+                    assert data[:8] == b'\x89PNG\r\n\x1a\n', 'Invalid PNG signature'
+                    offset, chunks, compressed = 8, [], b''
+                    while offset < len(data):
+                        assert offset + 12 <= len(data), 'Truncated PNG chunk'
+                        length = struct.unpack('>I', data[offset:offset+4])[0]
+                        kind = data[offset+4:offset+8]
+                        end = offset + 12 + length
+                        assert end <= len(data), 'Truncated PNG data'
+                        body = data[offset+8:offset+8+length]
+                        crc = struct.unpack('>I', data[offset+8+length:end])[0]
+                        assert zlib.crc32(kind + body) & 0xffffffff == crc, 'Invalid PNG CRC'
+                        chunks.append(kind)
+                        if kind == b'IHDR':
+                            assert len(body) == 13, 'Invalid PNG IHDR'
+                            width, height, depth, color, compression, filtering, interlace = struct.unpack('>IIBBBBB', body)
+                            assert (width, height, depth) == (96, 96, 8), 'Invalid PNG dimensions/depth'
+                            assert color in (2, 6) and (compression, filtering, interlace) == (0, 0, 0), 'Unexpected PNG encoding'
+                        if kind == b'IDAT': compressed += body
+                        offset = end
+                        if kind == b'IEND': break
+                    assert chunks[0] == b'IHDR' and chunks[-1] == b'IEND' and offset == len(data), 'Incomplete PNG'
+                    pixels = zlib.decompress(compressed)
+                    assert len(pixels) == height * (1 + width * (4 if color == 6 else 3)), 'Invalid PNG pixel stream'
+                    canonical = SOURCE / '.agents/skills' / name / relative
+                    if not canonical.is_file() or sha(image) != sha(canonical):
+                        row['stale_files'].append(relative.as_posix())
+                    row['icons'][key] = {'path': str(image.resolve()), 'sha256': sha(image), 'dimensions': [width, height], 'bytes': image.stat().st_size}
+                    continue
                 # Package-specific format check, not a whitelist for all Codex clients.
                 assert image.suffix == '.svg', f'Unexpected package format: {key}'
                 svg = ET.fromstring(image.read_bytes())

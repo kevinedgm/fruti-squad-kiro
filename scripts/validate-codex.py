@@ -58,7 +58,11 @@ for p in (root/'.agents/skills').glob('*/SKILL.md'):
         ref = pathlib.Path(interface.get(field,''))
         check(not ref.is_absolute() and '..' not in ref.parts and str(ref).startswith('assets/'), 'Unsafe/missing icon reference: '+str(p))
         icon = p.parent/ref
-        check(icon.is_file() and icon.read_bytes()==(root/avatar['tile']).read_bytes(), 'Non-portable or noncanonical avatar: '+str(p))
+        if meta['name'] == 'fruti-squad' and field == 'icon_small':
+            check(str(ref)=='assets/avatar-small.png', 'Unexpected PNG test path: '+str(p))
+            check(icon.is_file() and icon.read_bytes().startswith(b'\x89PNG\r\n\x1a\n'), 'Invalid PNG test icon: '+str(p))
+        else:
+            check(icon.is_file() and icon.read_bytes()==(root/avatar['tile']).read_bytes(), 'Non-portable or noncanonical avatar: '+str(p))
     check(interface.get('brand_color')==avatar['accent'], 'Avatar brand color mismatch: '+str(p))
     check('$'+meta['name'] in interface['default_prompt'], 'Invalid default_prompt: '+str(p))
     check(25<=len(interface['short_description'])<=64, 'Invalid UI short description: '+str(p))

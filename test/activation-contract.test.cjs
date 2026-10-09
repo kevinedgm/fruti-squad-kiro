@@ -41,7 +41,12 @@ try {
    assert(relative.startsWith('./assets/')&&!relative.includes('..'));
    const asset=path.join(dir,relative);
    assert(fs.existsSync(asset),'installed icon file missing: '+skill);
-   assert(fs.readFileSync(asset,'utf8').includes('<svg'),'expected SVG asset: '+skill);
+   const bytes=fs.readFileSync(asset);
+   if(relative.endsWith('.png')) {
+    assert.equal(skill,'fruti-squad'); assert.equal(field,'icon_small');
+    assert(bytes.subarray(0,8).equals(Buffer.from([137,80,78,71,13,10,26,10])));
+    assert.equal(bytes.readUInt32BE(16),96); assert.equal(bytes.readUInt32BE(20),96);
+   } else assert(bytes.toString('utf8').includes('<svg'),'expected SVG asset: '+skill);
   }
  }
 
