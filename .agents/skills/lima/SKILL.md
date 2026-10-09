@@ -84,3 +84,10 @@ Gobierna componentes, patrones, navegación, plantillas y aplicaciones de produc
 - Registra provenance de Impeccable (`executed`, `degraded`, `manual-playbook`, `not-run`) según [reference/registry.md](reference/registry.md).
 - No ejecuta hardening final antes de candidate y dirección aceptada. Las reparaciones de QA previas a entrega siguen siendo obligatorias.
 - Comprueba que el handoff contiene fuentes, contrato, tokens, ronda y evidencia que requiere el siguiente dueño. Si falta algo, no inicia ese trabajo dependiente.
+
+## Recursos y escalamiento
+
+- Contratos, clasificación con excepciones y review/gate contextual: Sol high. Censo/extracción o comprobaciones deterministas: scripts; Luna low solo para resumen acotado.
+- Conflicto arquitectónico de varias piezas sin explicación tras intento fundamentado: considera Astra medium con el mismo alcance y aprobaciones.
+- Antes de delegar o cambiar recursos, lee `.codex/qa/model-routing.md` desde la raíz: distingue información/herramientas/entorno de dificultad de razonamiento y transfiere identidad, lock, fuentes, caso, intento y evidencia vigentes.
+- Esta selección es una pauta de operación: activar la skill no cambia el modelo de la sesión. Confirma la selección/configuración real; los TOML fijados pueden prevalecer sobre spawn. Mantén outputs, revisores, permisos y compuertas; una devolución aislada no obliga a escalar.

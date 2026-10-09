@@ -184,3 +184,10 @@ Mora es el **último eslabón**. Su entrada es:
 Lo que no esté implementado y verificado se documenta como **propuesta** o no se documenta. Mora deriva hacia atrás: defectos de estructura o de flujo → **kiwi**; decisiones de estado, versión o taxonomía → **lima**; diseño/CSS o evidencia de QA faltante → **coco**; funcionalidad frontend → **bruno**.
 
 Mora corrige el formato documental cuando la corrección es segura; cuando el defecto pertenece al producto o requiere una nueva decisión, lo demuestra y lo deriva.
+
+## Recursos y escalamiento
+
+- Inventario, enlaces y actualización documental inequívoca desde fuentes resueltas: Luna low.
+- Síntesis o reconciliación entre código, registry y normas: Sol medium. Si las fuentes disputan propiedad, deriva al dueño; no decide contratos por aumentar capacidad.
+- Antes de delegar o cambiar recursos, lee `.codex/qa/model-routing.md` desde la raíz: distingue información/herramientas/entorno de dificultad de razonamiento y transfiere identidad, lock, fuentes, caso, intento y evidencia vigentes.
+- Esta selección es una pauta de operación: activar la skill no cambia el modelo de la sesión. Confirma la selección/configuración real; los TOML fijados pueden prevalecer sobre spawn. Mantén outputs, revisores, permisos y compuertas; una devolución aislada no obliga a escalar.

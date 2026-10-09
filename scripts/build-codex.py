@@ -38,6 +38,15 @@ for src in sorted((ROOT / '.kiro/skills').rglob('*')):
     records.append({'source':src.relative_to(ROOT).as_posix(), 'target':dest.relative_to(ROOT).as_posix(), 'source_sha256':hashlib.sha256(src.read_bytes()).hexdigest(), 'target_sha256':hashlib.sha256(dest.read_bytes()).hexdigest()})
 
 skills = {'kiwi':'kiwi','lima':'lima','coco':'coco','bruno':'bruno','mora':'mora-docs'}
+# Task-specific defaults, without imposing a global config on the consumer.
+agent_resources = {
+    'kiwi': {'model':'gpt-6.1-sol', 'model_reasoning_effort':'high'},
+    'lima': {'model':'gpt-6.1-sol', 'model_reasoning_effort':'high'},
+    'coco': {'model':'gpt-6.1-sol', 'model_reasoning_effort':'medium'},
+    'bruno': {'model':'gpt-6.1-sol', 'model_reasoning_effort':'medium'},
+    'mora': {'model':'gpt-6-luna', 'model_reasoning_effort':'low'},
+    'fruti-squad': {'model':'gpt-6.1-sol', 'model_reasoning_effort':'medium'},
+}
 agent_contracts = {
     'kiwi': {
         'description': 'Delegar definición de flujos, jerarquía, geometría y adaptación F0–F2. Entrega wireframes neutrales; no construye CSS final ni funcionalidad de producto.',
@@ -111,12 +120,13 @@ for name in [*skills, 'fruti-squad']:
 - Finaliza cuando el entregable de la operación y su handoff estén completos. Para propuesta UI exige READY_FOR_USER_REVIEW; un resultado de agente no es aprobación del usuario. Ante bloqueo registra recuperación, evidencia y acción mínima faltante, sin convertirlo en cumplimiento.
 
 ## Configuración y coordinación
+- Lee .codex/qa/model-routing.md antes de seleccionar recursos, cambiar de operación o escalar. Sus condiciones no amplían este rol; confirma el mecanismo y configuración efectiva, no un cambio supuesto desde la prosa.
 - Modelo, esfuerzo, sandbox, herramientas y red no se conceden mediante prosa: aplica la configuración efectiva y restricciones del host, sin ampliarlas.
 - No ejecuta etapas dependientes en paralelo ni escribe archivos que otro agente esté modificando sin handoff/coordinación explícitos. El revisor no modifica la propuesta durante su inspección.
 - No instala dependencias ni ejecuta rm -rf, sudo, git reset --hard, git push o commits dentro del flujo UI. Las reglas Kiro no son ACL nativas de Codex.
 - Lee .codex/qa/identity.md cuando emitas avisos; usa solo mecanismos reales de imagen/delegación del host.
 """
-    write(f'.codex/agents/{name}.toml', agent_toml({'name':name,'description':spec['description'],'developer_instructions':instructions}))
+    write(f'.codex/agents/{name}.toml', agent_toml({'name':name,'description':spec['description'],**agent_resources[name],'developer_instructions':instructions}))
 
 # Bundled Impeccable specialist TOMLs already follow the native schema.
 for src in (ROOT / '.agents/skills/impeccable/agents').glob('*.toml'):

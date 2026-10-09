@@ -90,3 +90,10 @@ Choose the mode from the requested surface, not the product, and persist it only
 - Tras init, continúa sin repetir context. No cambies un archivo de contexto como efecto secundario de un hallazgo de deriva.
 - Pin/unpin crea/elimina shortcuts mediante `scripts/impeccable pin <pin|unpin> <command>` solo cuando se solicita. Informa resultado/error real.
 - Para `hooks <on|off|status|ignore-rule|ignore-file|ignore-value|reset>`, carga [reference/hooks.md](reference/hooks.md). Para doctor solicitado, carga [reference/doctor.md](reference/doctor.md); distingue informe de reparación autorizada.
+
+## Recursos y escalamiento
+
+- Crítica/auditoría visual contextual: Sol high. Edición CSS delimitada del dueño: Sol medium. Inventario/extracción o copy inequívoca: Luna low.
+- Evidencia visual contradictoria o un fallo persistente de causa razonada: diagnostica y traslada al mismo dueño con evidencia; ningún helper reemplaza Coco R0 o Lima gate.
+- Antes de delegar o cambiar recursos, lee `.codex/qa/model-routing.md` desde la raíz: distingue información/herramientas/entorno de dificultad de razonamiento y transfiere identidad, lock, fuentes, caso, intento y evidencia vigentes.
+- Esta selección es una pauta de operación: activar la skill no cambia el modelo de la sesión. Confirma la selección/configuración real; los TOML fijados pueden prevalecer sobre spawn. Mantén outputs, revisores, permisos y compuertas; una devolución aislada no obliga a escalar.

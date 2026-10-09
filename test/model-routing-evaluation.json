@@ -1,0 +1,59 @@
+{
+  "kind": "textual_routing_forward_test_in_Work_not_native_TOML_loading",
+  "cases_sha256": "81ee992f359374544ceda2dbe349ebf1f4fdf28f4ef0f390932533b98f04d6b0",
+  "frozen_input_sha256": {
+    "AGENTS.md": "53530ad37000465659911d63ebd72d4aa301f532519dd91d319f413f0e7625d2",
+    ".fruti/policy.md": "74f854773ab028bb2a1124e3f34b5289467e51435794a0bdd46d3230f8574fd1",
+    ".codex/qa/model-routing.md": "1a1b88fb2b66198ab95ad1e65331223a70254c51f98878273f60511780ad9925",
+    ".codex/qa/pre-delivery.md": "5dee9802dbac21d92592a4a0de61cda1e65de871067d0c4d72e986cfaf277b5d",
+    ".agents/skills/fruti-squad/SKILL.md": "e3275efb0bdb2054e427a4b0107841123697683faba3c420e4299f6462faa22f",
+    ".fruti/runtime/bruno.yaml": "752e0ba62cf418d3e1ae0926319ffb7392820a10e3edfee813075940e233a824",
+    ".fruti/runtime/mora.yaml": "ff3a3e38398d7c595313eecfc242bae9f664e1b2fcf9f9bcfb63fa62f5717d64",
+    ".fruti/runtime/kiwi.yaml": "89a75963b69bb0b517f9569924800efd640911b4a5970a2f2a688ae9678fe682",
+    ".fruti/runtime/coco.yaml": "5af34d4025a3780be79ede8e50b0ea2abbf10b7c355e1a0a6df5f250d5b0f5a8",
+    ".fruti/runtime/lima.yaml": "35806df77918ab3c67f091d923ccbc348bab6f0538bbe36b3b2916bb57cc3fce",
+    ".codex/agents/impeccable_documenter.toml": "c891f1cb644ba63760e4405b7fcbcc1a3919da83aab73c05d24fa19f585d8bfe",
+    ".codex/agents/lima.toml": "1d7585504e0c4929e41fccf79840fa015db69464e1102e5da2ff31f5d26ef7d2",
+    ".codex/agents/kiwi.toml": "4fe9c9e7a809c906395da0f5792b692bb072fd19c7cb73df60eba07365a39f4e",
+    ".codex/agents/fruti-squad.toml": "7cb4f678db4a051a9d91dbef758b52308e4e3cb250d963c9694c67bc26b59fec",
+    ".codex/agents/impeccable_manual_edit_applier.toml": "6e629001c233b9fe4c45d1a13b0bb662d902c0d62184d36e1b0c0008f41c7593",
+    ".codex/agents/coco.toml": "9dc97c233f68e79864aedfcf20f3a4bc1958ff55cfed0e096743e7486b5d471e",
+    ".codex/agents/bruno.toml": "a3f768dd9e4f057d7470e06e92d1148fe8d4d909c4bedbebfee69376e70111e0",
+    ".codex/agents/mora.toml": "56c21629875fb21bb5e8d5a17fc9eb1a5fa74db25d871b6f40069664adf9d85b",
+    ".codex/agents/impeccable_finish_reviewer.toml": "1334c33503eef12cbdc9187d26c8eedced97fb7344b31e78e9e4f2903d0160d1",
+    ".codex/agents/impeccable_asset_producer.toml": "a41d6b26d5bac2213ca97665186e2e98e3fd1e9e4b0d320b8ce371b3ce17ecbd",
+    "test/model-routing-cases.json": "81ee992f359374544ceda2dbe349ebf1f4fdf28f4ef0f390932533b98f04d6b0"
+  },
+  "requested_resources": [
+    {
+      "model": "gpt-6-luna",
+      "effort": "low",
+      "complete_decisions": 4,
+      "total": 6,
+      "insufficient_cases": [
+        "focus_async",
+        "missing_foundations"
+      ]
+    },
+    {
+      "model": "gpt-6.1-sol",
+      "effort": "medium",
+      "complete_decisions": 6,
+      "total": 6,
+      "insufficient_cases": []
+    }
+  ],
+  "frozen_inputs_checked_unchanged": true,
+  "paired_observation_interval_seconds": 91,
+  "per_model_total_time": null,
+  "tokens_or_credits": null,
+  "resolved_model_attestation": false,
+  "native_TOML_loading": "NOT_VERIFIED",
+  "product_execution": "NOT_EXECUTED",
+  "notes": [
+    "Six hypothetical requests; same prompt and inputs; no writes/browser/delegation by workers.",
+    "Coordinator pin to Sol medium is the final decision after this frozen snapshot.",
+    "Review of answers by parent against the pre-existing role/resource criteria; not independent visual QA.",
+    "No global savings or optimal-model claim."
+  ]
+}

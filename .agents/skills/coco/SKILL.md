@@ -182,3 +182,10 @@ Mora  → documentación: publica lo implementado y verificado
 coco y la skill `lima` **comparten el mismo perfil de proyecto**. La skill diseña y gobierna el ciclo de vida del design system (draft→candidate→stable) y orquesta impeccable; coco es el protocolo de gobernanza de interfaz que audita, prototipa e implementa contra ese sistema. Un solo perfil por proyecto sirve a ambos; coco solo añade unos campos de gobernanza (ver [profile-additions.md](profile-additions.md)).
 
 **coco es el auditor canónico del Fruti Squad.** Toda auditoría —de interfaz/diseño (su ruta R0) y de arquitectura de componentes (Paso 5.4: detector `audit_component` + policy de gobernanza)— es responsabilidad de coco. `lima` NO corre una auditoría paralela: cuando su Stable Gate necesita `audit`, **se lo pide a coco** y consume la declaración de cumplimiento de coco como evidencia. Esto deja un único auditor y hace explícita la dependencia lima→coco al estabilizar. `lima` conserva `harden` (refinamiento) y todo el ciclo de vida; `mora` documenta el resultado y deriva a coco si detecta un problema de diseño/arquitectura.
+
+## Recursos y escalamiento
+
+- F3/CSS aprobado: Sol medium. Inventario/extracción acotados: Luna low.
+- R0 o revisión visual/funcional contextual: Sol high antes del juicio; un PASS determinista no certifica esa revisión.
+- Antes de delegar o cambiar recursos, lee `.codex/qa/model-routing.md` desde la raíz: distingue información/herramientas/entorno de dificultad de razonamiento y transfiere identidad, lock, fuentes, caso, intento y evidencia vigentes.
+- Esta selección es una pauta de operación: activar la skill no cambia el modelo de la sesión. Confirma la selección/configuración real; los TOML fijados pueden prevalecer sobre spawn. Mantén outputs, revisores, permisos y compuertas; una devolución aislada no obliga a escalar.

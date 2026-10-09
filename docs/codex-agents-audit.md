@@ -99,3 +99,7 @@ npx fruti-squad-codex install --update-tools
 ```
 
 Reconciliar conflictos reales sin sobrescribir indiscriminadamente la ronda del consumidor. Para completar validación nativa, registrar allí versión de Codex, configuración efectiva y origen de overrides; comprobar discovery y delegación con un entregable acotado antes de recorrer el gate UI. Se mantiene pendiente esta prueba, sin rebajar calidad ni modificar configuración para facilitar el cierre.
+
+## Actualización de recursos 0.3.9
+
+Este informe describe la inspección 0.3.8. La tabla de modelo/esfuerzo anterior es histórica y queda sustituida para 0.3.9 por [codex-models-audit.md](codex-models-audit.md). La nueva tarea autoriza recursos por actividad; conserva los límites y propiedades restantes.

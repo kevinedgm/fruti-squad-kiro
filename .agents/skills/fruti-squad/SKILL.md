@@ -40,3 +40,10 @@ Leer `docs/codex-guia-operativa.md` solo para dudas de instalación, autoría o 
 ## Verificación y entrega
 
 Comprueba que el siguiente rol recibe operación, identidad de ronda, lock/contrato, fuentes y evidencia vigentes. Ejecuta las devoluciones autorizadas antes de presentar. Solo `READY_FOR_USER_REVIEW` permite pedir comentarios sobre una propuesta UI certificada; un bloqueo terminal conserva borradores y explica la dependencia concreta. Para avisos de ejecución consulta `.codex/qa/identity.md`.
+
+## Recursos y escalamiento
+
+- Coordina con Sol medium para combinar operaciones y recuperaciones; asigna tareas por operación, no por jerarquía. Scripts sustituyen trabajo determinista.
+- Reanudación con contratos suficientes incompatibles: Sol high para diagnóstico; Astra medium solo para un problema sistémico persistente, conservando dueños y gates.
+- Antes de delegar o cambiar recursos, lee `.codex/qa/model-routing.md` desde la raíz: distingue información/herramientas/entorno de dificultad de razonamiento y transfiere identidad, lock, fuentes, caso, intento y evidencia vigentes.
+- Esta selección es una pauta de operación: activar la skill no cambia el modelo de la sesión. Confirma la selección/configuración real; los TOML fijados pueden prevalecer sobre spawn. Mantén outputs, revisores, permisos y compuertas; una devolución aislada no obliga a escalar.

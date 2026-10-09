@@ -23,7 +23,7 @@ Audita motion de un repositorio o superficie y escribe planes autocontenidos par
 
 1. Inspecciona stack, librerías, CSS/tokens, keyframes, props de motion, gestos y convenciones. Usa `rg` para transition, animation, @keyframes, useSpring, ease-in, transition: all, scale(0), prefers-reduced-motion y transform-origin. Mapea frecuencia de uso y personalidad de la superficie.
 2. Lee [AUDIT.md](AUDIT.md) al auditar. Evalúa sus ocho categorías: propósito/frecuencia; easing/duración; física/origen; interrupción; rendimiento; accesibilidad; cohesión/tokens; oportunidades. Las cifras del catálogo son recomendaciones si no pertenecen al contrato aprobado; no reemplazan tokens de Lima.
-3. Para alcance mayor que un repo pequeño, delega análisis de solo lectura por categoría/área cuando el host lo permita. Entrega ruta absoluta a AUDIT.md, sección, hechos inspeccionados y límites. Respeta slots reales; sin capacidad ejecuta secuencialmente y decláralo. Hereda modelo/permisos del host.
+3. Para alcance mayor que un repo pequeño, delega análisis de solo lectura por categoría/área cuando el host lo permita. Entrega ruta absoluta a AUDIT.md, sección, hechos inspeccionados y límites. Respeta slots reales; sin capacidad ejecuta secuencialmente y decláralo. Conserva permisos del host; selecciona recursos por operación conforme al protocolo de recursos, si la herramienta permite una selección real.
 4. Relee cada ubicación citada. Descarta duplicados, atribución errónea, decisiones deliberadas y excepciones justificadas. No presenta hallazgos sin evidencia de archivo y línea. Si el feel no es observable estáticamente, marca «no verificado» y prescribe prueba real.
 5. Entrega tabla `# | severidad | categoría | ubicación | hallazgo | corrección propuesta`, ordenada por impacto/esfuerzo. HIGH: motion que rompe uso, teclado/frecuencia elevada, dropped frames o scale(0); MEDIUM: origen, interrupción o reduced-motion incorrectos; LOW: polish, stagger o consolidación. Lista aparte 2–4 oportunidades solo si existen, sin fabricar problemas.
 6. Si el usuario no seleccionó alcance de planes, espera esa selección. Reutiliza selección/autorización explícita vigente. En ejecución no interactiva, usa los 3–5 hallazgos de mayor impacto/esfuerzo según el comportamiento existente.
@@ -45,3 +45,10 @@ Audita motion de un repositorio o superficie y escribe planes autocontenidos par
 Comprueba fuentes, excerpt/commit vigente, dueño, tokens/contrato y dependencias de cada plan. El ejecutor debe poder seguirlo sin referencias a la conversación. Distingue lo detectado en código de lo observado en navegador; exige feel-check con slow motion, frames o dispositivo real para gestos cuando corresponda.
 
 Finaliza con hallazgos confirmados y planes seleccionados escritos/indexados, o con la selección pendiente si no fue autorizada. Un informe/plan no solicita aprobación UI ni afirma cumplimiento visual. La implementación futura aplica `.codex/qa/pre-delivery.md` desde la raíz; compilar o leer un plan no demuestra que la animación funcione.
+
+## Recursos y escalamiento
+
+- Extracción de usos/keyframes delimitada: Luna low. Roadmap, física, interrupción, accesibilidad y juicio de motion: Sol high.
+- Dependencias entre estados, gestos o componentes sin causa local tras intento fundamentado: escala análisis; la implementación sigue en sus dueños.
+- Antes de delegar o cambiar recursos, lee `.codex/qa/model-routing.md` desde la raíz: distingue información/herramientas/entorno de dificultad de razonamiento y transfiere identidad, lock, fuentes, caso, intento y evidencia vigentes.
+- Esta selección es una pauta de operación: activar la skill no cambia el modelo de la sesión. Confirma la selección/configuración real; los TOML fijados pueden prevalecer sobre spawn. Mantén outputs, revisores, permisos y compuertas; una devolución aislada no obliga a escalar.

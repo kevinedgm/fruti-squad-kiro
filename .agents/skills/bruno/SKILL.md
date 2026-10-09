@@ -67,3 +67,10 @@ No escribas valores visuales ni cambies CSS, tokens, contratos, registry o pági
 - lo no ejecutado se marca **no verificado**, nunca se infiere.
 
 Lee `references/component-contract.md` para reglas de API y `references/handoffs.md` para compuertas de entrada/salida.
+
+## Recursos y escalamiento
+
+- Implementación R3 delimitada: Sol medium.
+- Estado asíncrono, teclado o restauración de foco con dependencias múltiples: Sol high; registra la reproducción antes de aumentar recursos.
+- Antes de delegar o cambiar recursos, lee `.codex/qa/model-routing.md` desde la raíz: distingue información/herramientas/entorno de dificultad de razonamiento y transfiere identidad, lock, fuentes, caso, intento y evidencia vigentes.
+- Esta selección es una pauta de operación: activar la skill no cambia el modelo de la sesión. Confirma la selección/configuración real; los TOML fijados pueden prevalecer sobre spawn. Mantén outputs, revisores, permisos y compuertas; una devolución aislada no obliga a escalar.

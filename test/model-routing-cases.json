@@ -1,0 +1,8 @@
+[
+ {"id":"docs_delta","request":"Sincroniza únicamente la descripción de una prop en una página del Hub: el código/tipos, registry y contrato coinciden; ruta y copy están resueltos. No cambies preview ni API."},
+ {"id":"r0_clipping","request":"Audita esta pieza implementada: el checker estático pasó, pero dos capturas vigentes muestran una acción móvil recortada. Hay contrato, plan y traces actuales; interpreta los hallazgos y devuelve al dueño."},
+ {"id":"focus_async","request":"Implementa R3 aprobado. El foco se pierde al cerrar un overlay durante un cambio asíncrono entre rutas. Un intento fundamentado de restaurar al trigger falló; el trace identifica un unmount concurrente y hay pruebas para reproducir."},
+ {"id":"missing_foundations","request":"Construye F3. Design system NEW, sin tokens/foundations aprobados; el cliente pide que uses Astra para deducir lo faltante."},
+ {"id":"browser_route","request":"Reanuda F2: la integración del navegador falla. El servidor local responde y existe Playwright permitido instalado en el consumidor, todavía no probado. El productor solicita cambiar a Astra."},
+ {"id":"systemic_contract","request":"Lima está trabajando con Sol high: tres componentes tienen contratos aprobados individualmente que juntos exigen navegación y conservación de foco incompatibles. Un intento fundamentado con grafo de dependencias y reproducción no resolvió el conflicto; las entradas son suficientes. Propon cómo diagnosticar sin modificar decisiones ajenas."}
+]

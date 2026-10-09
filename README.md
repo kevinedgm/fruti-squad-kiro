@@ -74,7 +74,7 @@ Las pruebas validan instalación, preservación de conflictos, perfiles, tematiz
 
 ## Compatibilidad
 
-Codex usa `.agents/skills` y agentes TOML bajo `.codex/agents`. Los modelos y permisos de los roles Fruti se heredan del host. Las reglas Kiro de herramientas y permisos no tienen traducción automática a ACL de Codex; el adaptador conserva sus límites como instrucciones.
+Codex usa `.agents/skills` y agentes TOML bajo `.codex/agents`. Los especialistas declaran modelo/esfuerzo por actividad; el coordinador usa Sol medium para enrutamiento contextual. Herramientas y permisos se heredan del host. La selección directa de una skill conserva el modelo de la sesión. Consulta [asignación de recursos](docs/codex-models-audit.md) para defaults, escalamiento y disponibilidad pendiente. Las reglas Kiro de herramientas y permisos no tienen traducción automática a ACL de Codex; el adaptador conserva sus límites como instrucciones.
 
 Si no hay subagentes, declarar ejecución secuencial de roles con las mismas compuertas. Si no hay navegador o detector disponible, reportar lo no verificado. La política menciona `fruti test` y `fruti foundations` como procedimientos; esta CLI solo implementa `install`, `init`, `theme` y `help`.
 

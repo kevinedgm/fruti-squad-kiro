@@ -1,6 +1,7 @@
 """Regression checks for schema classification; these do not run Codex agents."""
 import importlib.util
 import pathlib
+import subprocess
 import tempfile
 import tomllib
 import unittest
@@ -82,6 +83,17 @@ class CodexTomlTests(unittest.TestCase):
         self.assertEqual(report["runtime_loading"], "NOT_VERIFIED")
         self.assertEqual(report["execution"], "NOT_VERIFIED")
         self.assertEqual(sum(row["path"].startswith(".codex/agents/") for row in report["files"]), 10)
+
+    def test_resource_update_preserves_identity_and_nonresource_settings(self):
+        baseline = "d0b2ad83f4af0d2acaa16ddbd8e1df17e02ee347"
+        for path in sorted((ROOT / ".codex/agents").glob("*.toml")):
+            relative = path.relative_to(ROOT).as_posix()
+            old = tomllib.loads(subprocess.check_output(["git", "show", baseline + ":" + relative], cwd=ROOT).decode())
+            new = tomllib.loads(path.read_text())
+            excluded = {"model", "model_reasoning_effort", "developer_instructions"}
+            with self.subTest(path=relative):
+                self.assertEqual({k:v for k,v in old.items() if k not in excluded}, {k:v for k,v in new.items() if k not in excluded})
+                self.assertIn(old["developer_instructions"], new["developer_instructions"].replace("- Lee .codex/qa/model-routing.md antes de seleccionar recursos, cambiar de operación o escalar. Sus condiciones no amplían este rol; confirma el mecanismo y configuración efectiva, no un cambio supuesto desde la prosa.\n", "").replace("0. Lee .codex/qa/model-routing.md al seleccionar recursos o escalar. Un override textual no cambia el modelo; conserva este output y alcance al transferir evidencia al mismo dueño.\n", ""))
 
 
 if __name__ == "__main__":

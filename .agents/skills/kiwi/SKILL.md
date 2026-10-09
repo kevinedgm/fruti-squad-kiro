@@ -216,3 +216,9 @@ Las decisiones estructurales importantes deben registrar procedencia `rule | pro
 
 En pruebas `fruti test`, produce además `.fruti/tests/<round>/kiwi-f2.html` y `.fruti/tests/<round>/kiwi-decisions.yaml` antes de entregar a lima.
 
+## Recursos y escalamiento
+
+- Estructura, alternativas y nuevas interacciones: Sol high. Inventario o aplicación literal de un patrón aprobado sin nuevas decisiones: encargo acotado Luna low.
+- Conflictos de interacción entre piezas o requisitos suficientes todavía incompatibles: aplica diagnóstico sistémico; no rehace locks por aumentar capacidad.
+- Antes de delegar o cambiar recursos, lee `.codex/qa/model-routing.md` desde la raíz: distingue información/herramientas/entorno de dificultad de razonamiento y transfiere identidad, lock, fuentes, caso, intento y evidencia vigentes.
+- Esta selección es una pauta de operación: activar la skill no cambia el modelo de la sesión. Confirma la selección/configuración real; los TOML fijados pueden prevalecer sobre spawn. Mantén outputs, revisores, permisos y compuertas; una devolución aislada no obliga a escalar.
