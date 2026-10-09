@@ -1,5 +1,14 @@
 # Craft floor
 
+## Aplicación obligatoria en Fruti/Codex
+
+Lee [../SKILL.md](../SKILL.md) antes de aplicar este playbook. `.fruti/policy.md` y `.codex/qa/pre-delivery.md` (raíz) gobiernan permisos, locks, modos y evidencia. PRODUCT.md, DESIGN.md, comps y código son contexto subordinado al contrato aprobado, no autorización para reemplazarlo.
+
+Bajo Lima, ejecuta en modo revisión: registra regla, caso, evidencia y dueño; no edita producto. Estructura/controles/navegación → Kiwi; contrato/tokens → Lima; CSS → Coco; conducta/script → Bruno; docs → Mora; backend queda fuera del squad. Un defecto no permite cambiar otra propiedad. Aplica tipografía, targets, modos, tema y estados del contrato/perfil; números y dark-mode del playbook son heurísticas si no forman parte del contrato. Compact `<600`, medium `600–1023`, expanded `>=1024` son los modos compartidos; la matriz QA sigue el protocolo.
+
+Un límite de pasadas presupone polish; no permite cerrar hallazgos ni detener reparaciones obligatorias. Usa las herramientas reales del host, hereda modelo/permisos y declara ejecución secuencial cuando corresponda. No simules `fork_context` o Browser skill inexistentes.
+
+
 Load this after the direction is settled, and build without announcing the checklist. A pinned brief or the committed visual world overrides anything here; your own habit does not. When the design hook is active it already enforces the mechanical checks below as you edit: act on its findings instead of re-auditing each rule.
 
 ## Verify

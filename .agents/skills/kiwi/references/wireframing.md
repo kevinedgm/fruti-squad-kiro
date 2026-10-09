@@ -1,5 +1,7 @@
 # Wireframing F1/F2
 
+La neutralidad excluye styling final de marca; no excluye leer roles semánticos de tipografía, datos, contratos, geometría y locks aprobados. Los breakpoints de composición y viewports QA son conceptos distintos.
+
 ## Material
 
 - Kit neutral `assets/wireframe-kit.css`: grises, una familia de sistema, radios y espacios fijos.

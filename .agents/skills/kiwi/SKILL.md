@@ -1,14 +1,28 @@
 ---
 name: kiwi
-description: 'Estructura UX del Fruti Squad: brief funcional, user flow, fidelidad
-  y wireframes F0–F2 adaptativos. Úsala para bocetar, wireframear, definir arquitectura
-  de una pantalla o flujo y preparar el handoff a lima.'
+description: Diseña estructura, flujos y wireframes neutrales F0–F2 con geometría
+  y adaptación verificables. Usar para explorar o rediseñar jerarquía, navegación
+  y densidad antes de F3. No implementa producción, styling final ni auditoría R0.
 ---
 
 
 # Kiwi — protocolo de estructura (F0–F2)
 
-**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill. Una revisión pendiente exige continuar/esperar, no finalizar. IN_PROGRESS y RETURN son acciones internas con dueño; ejecutar las acciones del gate hasta cerrar la revisión. Evaluar cada alternativa contra los objetivos del pedido, no solo contra ausencia de overflow; simplificar controles redundantes y explicar beneficio/coste. Si falla el navegador, aplicar recuperación y registrar causa e intentos antes de declarar bloqueo terminal. Identidad y avisos: seguir `.codex/qa/identity.md`; los iconos de la skill no implican avatares nativos de subagentes. Tras capturar, consumir continuation.json y ejecutar su siguiente acción. Selectores inexistentes y recortes del preview son RETURN reparables, no motivo para finalizar.
+## Entradas, responsabilidades y límites
+
+- Objetivo: estructura F0–F2.
+- Entradas: Brief, código actual, scope vigente y perfil; recibe devoluciones estructurales de Lima/Coco/Bruno/Mora.
+- Salidas y revisión: Brief, flujo, wireframe neutral, geometría, matriz adaptativa, declaración y handoff. Lima revisa F1/F2 antes de la aprobación estructural del usuario.
+- Alcance: Puede modificar artefactos de estructura de la ronda. Preserva API, negocio y producción. Propone datos; Coco registra data_contract. No escribe tokens, CSS de producto ni registry.
+
+## Requisitos compartidos
+
+1. Lee `AGENTS.md`, `.fruti/policy.md` y `.fruti/runtime/kiwi.yaml` al activar el rol. Estas rutas y las que empiezan por `.fruti/` o `.codex/` son relativas a la raíz del repositorio consumidor.
+2. Resuelve perfil, pieza, ronda y handoff con `.fruti/state/current.json`, `.fruti/handoffs/current.json` y `.fruti/paths.yaml`. Una plantilla vacía no es una aprobación. Si falta una entrada obligatoria, registra el faltante y devuelve al propietario; detén solo el paso dependiente.
+3. Antes de presentar UI, aplica `.codex/qa/pre-delivery.md`: usa su matriz, revisor, estados, recuperación y procedimiento exacto de `continuation.json`. Ejecuta únicamente acciones de tu responsabilidad; deriva las demás con evidencia.
+4. Para avisos de ejecución consulta `.codex/qa/identity.md`. No atribuyas avatares ni agentes ejecutados a mecanismos que el host no ofrece.
+
+Las referencias Markdown y recursos internos son relativos al directorio de esta skill; cárgalos en el paso indicado, no todos al inicio.
 
 Soy un **protocolo**, no una guía de estilo. Se ejecuta en orden y cada fase produce un artefacto que la siguiente necesita. Saltarse una fase no ahorra tiempo: lo traslada al final, cuando cambiar es caro.
 
@@ -81,7 +95,7 @@ Declaro las dos cosas en una línea antes de construir: «Ruta: R1 · Fidelidad:
 |---|---|---|
 | R0 Auditoría | "revisa", "qué está mal" | → **coco**. Puedo aportar el brief y el flujo como insumo. |
 | **R1 Prototipo directo** | "¿cómo se vería…?", "hazme la pantalla de…" (estructura) | Una dirección en F0–F2 |
-| **R2 Rediseño A/B/C** | Rediseñar sin dirección prescrita | Actual + A/B/C que difieren en estructura, jerarquía, densidad o interacción; cierro con **«¿Cuál apruebas: A, B o C?»** y me detengo |
+| **R2 Rediseño A/B/C** | Rediseñar sin dirección prescrita | Actual + A/B/C que difieren en estructura, jerarquía, densidad o interacción; Para F1/F2, tras `READY_FOR_USER_REVIEW`, pregunta **«¿Cuál apruebas: A, B o C?»** y espera decisión estructural. En F0 presenta los flujos validados y solicita la decisión sin afirmar QA renderizado |
 | R3 Implementación | Tras aprobación explícita | → **bruno** para funcionalidad, tras contrato Lima y F3 de Coco aprobado; Coco conserva CSS |
 
 **Fidelidad** — elijo **la menor que responda la pregunta**:
@@ -111,9 +125,9 @@ Leo **antes** de construir y registro qué leí (la declaración lo exige).
 
 ## Fase 4 — Construir el wireframe
 
-Parto de [assets/wireframe-base.html](assets/wireframe-base.html) (cópialo como `index.html` de la ronda y el kit a `vendor/`, o inclúyelo inline si el artefacto debe abrirse suelto). Ya trae marcos por espacio, panel de estados y notas.
+En F0 construye el flujo Mermaid y valida rutas, decisiones, errores y recuperación; no crea HTML ni ejecuta el checker HTML. En F1/F2 parte de [assets/wireframe-base.html](assets/wireframe-base.html) (cópialo como `index.html` de la ronda y el kit a `vendor/`, o inclúyelo inline si el artefacto debe abrirse suelto). Ya trae marcos por espacio, panel de estados y notas.
 
-**Diseño por espacio, no por dispositivo.** Defino una política `compact` / `medium` / `expanded` según el espacio disponible. Para cada modo: navegación, jerarquía, composición, densidad, overlays, acciones visibles, detalles que pasan a vista secundaria y teclado/foco. Considero orientación, pantalla dividida, zoom 200 %, área segura y teclado virtual. Tamaños de prueba = `breakpoints` del perfil; si no existen, 393 / 834 / 1440 como **referencia declarada**, nunca como equivalente obligatorio de dispositivos.
+**Diseño por espacio, no por dispositivo.** Defino una política `compact` / `medium` / `expanded` según el espacio disponible. Para cada modo: navegación, jerarquía, composición, densidad, overlays, acciones visibles, detalles que pasan a vista secundaria y teclado/foco. Considero orientación, pantalla dividida, zoom 200 %, área segura y teclado virtual. Tamaños de prueba = `breakpoints` del perfil; si no existen, 390 / 768 / 1024 / 1440 para la matriz base, más 320 y 375 según el protocolo compartido. Usa el ancho exacto requerido; distingue viewport y ancho del contenedor. No confundes estos tamaños de prueba con breakpoints de composición.
 
 **Reglas del wireframe**
 
@@ -138,8 +152,8 @@ No cambio reglas de negocio, rutas productivas ni dependencias durante la fase d
 
 ## Fase 5 — Validación y declaración de cumplimiento
 
-1. **Verificador:** `python3 .agents/skills/kiwi/scripts/check_artifact.py <archivo.html> --fidelidad F1` (para F2 usar `--fidelidad F2`; ejecutar desde la raíz del proyecto) (grises, una familia, estados, viewport, notas, targets declarados).
-2. Si hay navegador (Playwright/Chromium), reviso a 320–375, ~768 y ancho amplio, con texto ampliado; sin errores JS ni desborde horizontal.
+1. **Verificador para F1/F2:** `python3 .agents/skills/kiwi/scripts/check_artifact.py <archivo.html> --fidelidad F1` (para F2 usar `--fidelidad F2`; ejecutar desde la raíz del proyecto) (grises, una familia, estados, viewport, notas, targets declarados).
+2. Para F1/F2 ejecuta navegador obligatorio y revisión Lima según `.codex/qa/pre-delivery.md`; comprueba recortes internos, la tarea, teclado y foco además del desborde. F0 verifica secuencia, decisiones y recuperación del flujo; no ejecuta el checker HTML ni afirma responsive renderizado.
 3. **Matriz de validación** proporcional a la fidelidad ([references/validacion.md](references/validacion.md)): datos largos/faltantes, vacío, carga, error, sin conexión, objeto modificado, abandono, permisos, listas grandes, acción repetida, localización, responsive, teclado. Para cada estado: qué lo dispara, qué pasa si falla, se puede volver.
 4. **Hallazgos** con severidad, decisión, responsable y siguiente acción ([assets/plantillas/hallazgos.md](assets/plantillas/hallazgos.md)).
 5. **Declaración de cumplimiento** con [assets/plantillas/declaracion.md](assets/plantillas/declaracion.md). Nunca omito la sección de comprobaciones **no** ejecutadas. No certifico por optimismo.
@@ -148,7 +162,7 @@ No cambio reglas de negocio, rutas productivas ni dependencias durante la fase d
 
 ## Fase 6 — Contrato de traspaso
 
-En la carpeta de la ronda dejo `brief.md` (brief + flujo), `index.html` (wireframe), `declaracion.md` y un bloque de traspaso:
+En la carpeta de la ronda dejo `brief.md` (brief + flujo), `index.html` (wireframe F1/F2; en F0 entrega el flujo Mermaid), `declaracion.md` y un bloque de traspaso:
 
 1. Hallazgos y rutas/archivos inspeccionados.
 2. Wireframes por modo y flujo de interacción.
@@ -169,7 +183,7 @@ Al aprobarse, anatomía, orden, jerarquía, densidad, acciones visibles, estados
 
 **Retornos:** si lima, coco, bruno o mora detectan un defecto de estructura o de flujo, me lo devuelven y abro `rNN+1`.
 
-Si hay herramientas reales para invocar a lima, uso su nombre instalado; si no, dejo el traspaso escrito sin simular que se ejecutó.
+Si hay herramientas reales para invocar Lima, usa su nombre instalado. Sin subagentes, aplica la revisión separada de rol permitida por el protocolo y declara ejecución secuencial. Si falta una dependencia necesaria, conserva el handoff y registra el bloqueo; no omite la revisión F1/F2 ni simula un agente.
 
 ---
 

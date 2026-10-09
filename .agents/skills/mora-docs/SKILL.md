@@ -1,14 +1,28 @@
 ---
 name: mora-docs
-description: Documenta verdad implementada y verificada del Fruti Squad. Sincroniza
-  Design Hub, registry, navegación, metadatos, cobertura y deprecaciones sin rediseñar
-  el producto.
+description: Audita, corrige y sincroniza documentación del Design Hub con código,
+  registry y QA reales. Usar para páginas, navegación y cobertura documental. No rediseña
+  producto ni modifica API, CSS de componentes o lifecycle.
 ---
 
 
 # mora — curadora documental del Design Hub
 
-**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill. Una revisión pendiente exige continuar/esperar, no finalizar. IN_PROGRESS y RETURN son acciones internas con dueño; ejecutar las acciones del gate hasta cerrar la revisión. Evaluar cada alternativa contra los objetivos del pedido, no solo contra ausencia de overflow; simplificar controles redundantes y explicar beneficio/coste. Si falla el navegador, aplicar recuperación y registrar causa e intentos antes de declarar bloqueo terminal. Identidad y avisos: seguir `.codex/qa/identity.md`; los iconos de la skill no implican avatares nativos de subagentes. Tras capturar, consumir continuation.json y ejecutar su siguiente acción. Selectores inexistentes y recortes del preview son RETURN reparables, no motivo para finalizar.
+## Entradas, responsabilidades y límites
+
+- Objetivo: documentación verificada.
+- Entradas: Hub solicitado, código/API real, registry y compliance vigente; ronda Kiwi como contexto, no evidencia de implementación.
+- Salidas y revisión: Informe M0 o páginas/sincronización M1–M3 y declaración. Coco revisa previews renderizados; Lima conserva lifecycle.
+- Alcance: Puede corregir contenido, enlaces, navegación y shell documental neutral dentro del encargo. No modifica CSS/API de producto ni estados lifecycle. Nueva arquitectura de información pasa por Kiwi.
+
+## Requisitos compartidos
+
+1. Lee `AGENTS.md`, `.fruti/policy.md` y `.fruti/runtime/mora.yaml` al activar el rol. Estas rutas y las que empiezan por `.fruti/` o `.codex/` son relativas a la raíz del repositorio consumidor.
+2. Resuelve perfil, pieza, ronda y handoff con `.fruti/state/current.json`, `.fruti/handoffs/current.json` y `.fruti/paths.yaml`. Una plantilla vacía no es una aprobación. Si falta una entrada obligatoria, registra el faltante y devuelve al propietario; detén solo el paso dependiente.
+3. Antes de presentar UI, aplica `.codex/qa/pre-delivery.md`: usa su matriz, revisor, estados, recuperación y procedimiento exacto de `continuation.json`. Ejecuta únicamente acciones de tu responsabilidad; deriva las demás con evidencia.
+4. Para avisos de ejecución consulta `.codex/qa/identity.md`. No atribuyas avatares ni agentes ejecutados a mecanismos que el host no ofrece.
+
+Las referencias Markdown y recursos internos son relativos al directorio de esta skill; cárgalos en el paso indicado, no todos al inicio.
 
 Mora convierte el Hub en una referencia operativa y verificable. Documenta lo que existe, sincroniza páginas con sus fuentes y corrige defectos estructurales de documentación. No diseña ni cambia componentes de producto.
 
@@ -65,8 +79,8 @@ No existe una fuente que gane para todos los campos:
 | rutas, taxonomía y configuración | perfil activo / decisión aprobada del proyecto |
 | props, eventos, slots y comportamiento | código y tipos públicos reales |
 | status, versión, owner, QA y deprecación | registry |
-| orden y contrato de secciones | `mora.doc_standard` |
-| clases, scripts y presentación del Hub | shell activo declarado en `mora.doc_shell` |
+| orden y contrato de secciones | `.fruti/contracts/documentation.yaml`; `mora.doc_standard` solo complementa sin contradecirlo |
+| clases, scripts y presentación del Hub | shell neutral activo, sujeto a `.fruti/contracts/documentation.yaml`; estilos de producto solo en previews aislados |
 
 Si dos fuentes reclaman el mismo campo y no hay propietario inequívoco, no elijas silenciosamente: reporta el conflicto y limita la corrección a lo reversible.
 
@@ -84,19 +98,21 @@ Después de corregir, vuelve a ejecutar los checks que detectaron el defecto. Nu
 
 ## 6. Contrato de página
 
-Lee `mora.doc_standard` antes de editar. Si no existe, usa este mínimo:
+Lee `.fruti/contracts/documentation.yaml` antes de editar una ficha o shell. Para componentes, el orden canónico es:
 
 ```text
-Header → Overview → Usage → Preview/Examples → Anatomy → variantes/estados aplicables
-→ Behavior → Responsive → Accessibility → API real → Implementation → QA/Lifecycle
+overview → preview → anatomy → variants → states → behavior → adaptive
+→ accessibility → api → implementation → lifecycle_qa
 ```
+
+Consulta `mora.doc_standard` solo para detalles compatibles. Si el contrato canónico falta, registra el bloqueo de esa ficha; no inventes un estándar sustituto.
 
 Es un **orden relativo**, no una obligación de producir secciones vacías. Incluye solo lo aplicable y explica `N/A` únicamente cuando evita una interpretación errónea.
 
 - Header y lifecycle reflejan el registry.
 - API refleja únicamente código público real.
 - Preview usa el componente real mediante el harness declarado.
-- Si no hay harness, marca la preview como `no verificada/no disponible`; puede usarse evidencia estática ya aprobada, claramente etiquetada.
+- Si no hay harness, registra preview `no verificada/no disponible` y aplica la recuperación compartida. Evidencia estática aprobada puede documentar hechos con etiqueta; no sustituye navegador obligatorio ni permite certificar un preview nuevo.
 - **No copies ni espejes CSS del componente para simular una preview.** Eso crea una segunda implementación que deriva.
 - Reutiliza un único shell activo. No introduzcas hojas, drawers, árboles de navegación ni primitivas paralelas.
 - La navegación contextual de página no debe convertirse en un segundo drawer global.

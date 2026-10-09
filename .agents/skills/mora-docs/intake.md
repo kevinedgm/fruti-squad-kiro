@@ -16,14 +16,14 @@ mora comparte el perfil con `lima` y coco, así que el intake es: **el intake de
 
 ## Los campos del architect (reusar literalmente)
 
-Usa el formulario exacto de `lima/reference/intake.md`. mora se apoya específicamente en: `hub_root`, `hub_language`, `registry_path` (derivado), `component_dir` (→ `production.component_layout`), `breakpoints`, `a11y_target`. También se beneficia de `design_system_name`.
+Consulta [../lima/reference/intake.md](../lima/reference/intake.md); reutiliza hechos inspeccionados y solicita solo decisiones faltantes, sin imponer un formulario fijo. mora se apoya específicamente en: `hub_root`, `hub_language`, `registry_path` (derivado), `component_dir` (→ `production.component_layout`), `breakpoints`, `a11y_target`. También se beneficia de `design_system_name`.
 
 ## Las adiciones de mora (presentar esto literalmente)
 
 ```yaml
 # === mora · documentation additions (append to the project intake) ===
 doc_standard:      # OPTIONAL. Ruta al spec del estándar de doc (orden de secciones + regla de honestidad).
-                   # Vacío => mora usa su orden canónico interno.
+                   # Vacío => mora usa su contrato `.fruti/contracts/documentation.yaml` (raíz).
                    # p. ej. ".../lima/reference/component-documentation.md"
 
 doc_shell:         # REQUIRED (o AUTO). La(s) hoja(s)/script(s) del único shell activo.
@@ -44,7 +44,7 @@ hub_preview:       # OPTIONAL. Cómo la Preview viva embebe el componente REAL (
 
 | Campo | Formato / valores permitidos | Si falta/es inválido |
 |---|---|---|
-| `doc_standard` | ruta del repo, `AUTO`, o vacío | `AUTO` → detecta el estándar instalado de lima; vacío → orden canónico interno de secciones (declarado) |
+| `doc_standard` | ruta del repo, `AUTO`, o vacío | `AUTO` → detecta el estándar instalado de lima; vacío → contrato `.fruti/contracts/documentation.yaml` (raíz) de secciones (declarado) |
 | `doc_shell` | lista de rutas reales del repo, o `AUTO` | `AUTO` → detecta el shell css/js del Hub + muestra; si no encuentra ninguno, mora señala que las páginas no tienen shell que reutilizar |
 | `serve_command` | string de shell, `AUTO`, o vacío | vacío → `python3 -m http.server` |
 | `coverage_script` | comando de shell, `AUTO`, o vacío | `AUTO` → detecta; vacío → cobertura reportada `manual` |

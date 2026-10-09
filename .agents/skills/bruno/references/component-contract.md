@@ -1,5 +1,7 @@
 # Contrato de implementación de una pieza
 
+Las entradas aprobadas del runtime Bruno son obligatorias. Una deuda registrada o autorización de trabajo parcial no demuestra aprobación estructural/F3 ni permite certificar R3; conserva el bloqueo dependiente y la evidencia no verificada.
+
 ## API
 
 - Props expresan intención, no estilo.

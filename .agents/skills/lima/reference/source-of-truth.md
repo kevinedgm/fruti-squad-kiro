@@ -23,14 +23,6 @@ Ask when the decision changes what the user can do. Infer visual mechanics from 
 
 ## Source precedence
 
-1. Explicit current user instruction.
-2. Active project profile.
-3. Theme input source + registry + stable contracts.
-4. Stable foundations/tokens/policies.
-5. Stable components/patterns/navigation.
-6. Candidate artifacts.
-7. Product applications/templates.
-8. Wireframes/explorations/deprecated.
-9. Skill inference.
+Consulta `.fruti/policy.md` (raíz del repositorio): instrucción vigente → lock/handoff aprobado → contrato de pieza → `.fruti/tokens.json` → perfil → registry → auditoría → prosa profunda. Aplica la autoridad por campo; `theming.source` declara el origen del tema y no autoriza sobrescribir un contrato aprobado. El código existente prueba hechos, no normas nuevas.
 
 A lower-precedence artifact never silently changes a higher-precedence rule.

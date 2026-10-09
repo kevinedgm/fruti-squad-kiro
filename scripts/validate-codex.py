@@ -23,6 +23,11 @@ for row in manifest['skills']:
         expected = expected.replace(correction['before'],correction['after'])
     if row['source'].endswith('/SKILL.md'):
         check(expected.split('---',2)[2]==dst.split('---',2)[2], 'Procedure body changed: '+row['target'])
+        front = src.split('---',2)[1]
+        if '/lima/' in row['source']:
+            front = '\n'.join('description: '+json.dumps(line[len('description: '):]) if line.startswith('description: ') else line for line in front.splitlines())
+        source_meta=yaml.safe_load(front); target_meta=yaml.safe_load(dst.split('---',2)[1])
+        check(all(target_meta.get(k)==v for k,v in source_meta.items() if k not in ('description',)), 'Optional metadata lost: '+row['target'])
     elif row['source'].endswith('/agents/openai.yaml'):
         pass  # Deliberately generated selector metadata, not procedural instructions.
     else:
@@ -34,11 +39,14 @@ paths = ['.kiro', *[x['path'] for x in manifest['shared_unchanged']]]
 result = subprocess.run(['git','diff','--exit-code',manifest['source_commit'],'--',*paths],cwd=root,capture_output=True,text=True)
 check(result.returncode==0, 'Kiro source/shared policy differs from source commit' if result.returncode==1 else 'Source commit unavailable: fetch full history before parity validation ('+result.stderr.strip()+')')
 for p in (root/'.agents/skills').glob('*/SKILL.md'):
+    check(p.read_text().startswith('---\n'), 'Frontmatter must start file: '+str(p))
     parts = p.read_text().split('---',2)
     check(len(parts)==3, 'Missing frontmatter: '+str(p))
     if len(parts)!=3: continue
     meta = yaml.safe_load(parts[1])
-    check(set(meta)=={'name','description'}, 'Unexpected metadata: '+str(p))
+    check({'name','description'} <= set(meta) <= {'name','description','license','compatibility','metadata','allowed-tools'}, 'Unsupported/missing metadata: '+str(p))
+    check('metadata' not in meta or isinstance(meta['metadata'], dict), 'Invalid metadata mapping: '+str(p))
+    check(len(meta['name'])<=64, 'Name too long: '+str(p))
     check(meta['name']==p.parent.name, 'Skill name mismatch: '+str(p))
     check(bool(re.fullmatch('[a-z0-9]+(?:-[a-z0-9]+)*',meta['name'])), 'Invalid name: '+str(p))
     check(0<len(meta['description'])<=1024, 'Invalid description length: '+str(p))
@@ -73,18 +81,25 @@ for p in (root/'.fruti/runtime').glob('*.yaml'):
     for op, settings in runtime['operations'].items():
         for ref in settings.get('references',[]) + settings.get('assets_on_demand',[]):
             check((root/resolve(ref)).is_file(), f'Missing runtime resource {p.name}:{op}: {ref}')
+# Static Markdown resource links resolve relative to the declaring file.
+for p in (root/'.agents/skills').rglob('*.md'):
+    for link in re.findall(r'(?<!!)\[[^\]]*\]\(([^)]+)\)', p.read_text()):
+        value=link.split('#',1)[0]
+        if not value or re.match(r'[a-z][a-z0-9+.-]*:',value) or '<' in value: continue
+        check((p.parent/value).exists(), 'Missing Markdown resource: '+str(p.relative_to(root))+': '+value)
 plugin = json.loads((root/'.codex-plugin/plugin.json').read_text())
 check(plugin['skills']=='./.agents/skills/' and (root/plugin['skills']).is_dir(), 'Invalid plugin skills path')
 check(plugin['version']==json.loads((root/'package.json').read_text())['version'], 'Plugin/package version mismatch')
 check(set(manifest['corrections']).issubset({r['source'].removeprefix('.kiro/skills/') for r in manifest['skills']}), 'Correction target outside source inventory')
-# All adapted resources must be retained, and all native specialist bodies retain source instructions.
+# All adapted resources must be retained, and native specialists load the canonical adapted skill procedure.
 check(len(list((root/'.kiro/skills').rglob('*')))>0, 'Missing baseline')
 check({r['source'] for r in manifest['skills']}=={p.relative_to(root).as_posix() for p in (root/'.kiro/skills').rglob('*') if p.is_file()}, 'Incomplete resource inventory')
 for p in (root/'.kiro/agents').glob('*.md'):
     body = p.read_text().split('---',2)[2]
     adapted = body.replace('.kiro/skills','.agents/skills').replace('Kiro','Codex')
     native = tomllib.loads((root/'.codex/agents'/p.with_suffix('.toml').name).read_text())
-    check(adapted in native['developer_instructions'], 'Agent procedure lost: '+p.name)
+    skill = 'mora-docs' if p.stem=='mora' else p.stem
+    check('.agents/skills/'+skill+'/SKILL.md' in native['developer_instructions'], 'Native agent missing canonical procedure: '+p.name)
 if errors:
     raise SystemExit('\n'.join(errors))
 print(f'PASS: {len(manifest["skills"])} resources, {len(manifest["shared_unchanged"])} shared files, 8 skills, 10 native agents, runtime links and source parity.')

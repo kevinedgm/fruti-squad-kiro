@@ -38,7 +38,7 @@ Same artifact, different workflow:
 
 - `create` / `redesign` → full pipeline (SKILL.md), ending at the Candidate Gate.
 - `critique` / `distill` / `adapt` / `polish` → re-enter that pre-candidate stage on the current piece.
-- `harden` / `audit` → post-candidate stabilization stage; only valid once the piece is `candidate`.
+- `harden` para estabilización → post-candidate con dirección aceptada. `audit` de estabilización requiere candidate; una auditoría directa R0 de Coco o M0 de Mora puede inspeccionar cualquier estado y entregar hallazgos, sin promoverlo ni construirlo.
 - `promote` → promotion.md (piece must be `stable`).
 - `deprecate` → deprecation path in lifecycle.md.
 

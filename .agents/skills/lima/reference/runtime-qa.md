@@ -69,7 +69,7 @@ Order of operations (mirrors the gate discipline): **run tests → collect evide
 
 ## Manual verification (when automation cannot reproduce a condition faithfully)
 
-Some conditions cannot be reproduced faithfully by headless automation (e.g. the browser's **native text/zoom at 200%**, which redistributes layout/viewport/controls differently from doubling `root font-size`). For these, a minimal **human-in-the-browser** check is the honest path — no new infrastructure required. The agent must not fabricate `manual-verified`; only a human (or a session with an interactive browser) can grant it.
+Some conditions cannot be reproduced faithfully by headless automation (e.g. the browser's **native text/zoom at 200%**, which redistributes layout/viewport/controls differently from doubling `root font-size`). For these, a minimal **human-in-the-browser** check is the honest path — no new infrastructure required. The agent must not fabricate `manual-verified`; solo el resultado explícito del usuario permite `manual-verified`; una prueba del agente en navegador conserva su procedencia runtime real, sin atribuirla al usuario.
 
 Native 200% zoom checklist (for `zoom200`):
 

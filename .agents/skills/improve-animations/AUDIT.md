@@ -1,6 +1,6 @@
 # Animation Audit Playbook
 
-The eight audit categories, what to look for in each, and the exact target values to cite in findings and plans. Distilled from Emil Kowalski's design engineering philosophy ([emilkowal.ski](https://emilkowal.ski/)). Never approximate a value that appears here — copy it.
+The eight audit categories, what to look for in each, and the exact target values to cite in findings and plans. Distilled from Emil Kowalski's design engineering philosophy ([emilkowal.ski](https://emilkowal.ski/)). Estos valores son criterios y propuestas, no reemplazos de tokens aprobados. Cita valores exactos del sistema; si propone uno nuevo, Lima decide antes de implementación.
 
 ## 1. Purpose & frequency
 
@@ -33,7 +33,7 @@ Decision order for easing:
 --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);     /* iOS-like drawer curve */
 ```
 
-Duration budgets — **UI animations stay under 300ms**:
+Duration budgets — regla general **UI <300ms**, con las excepciones ya previstas de modals/drawers (200–500ms), marketing y springs (duración no equivalente a transición CSS). Contrasta cada categoría con el motion aprobado; no informa una excepción como fallo universal:
 
 | Element | Duration |
 | --- | --- |

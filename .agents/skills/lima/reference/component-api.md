@@ -1,5 +1,7 @@
 # Component API — translating a stable contract into a framework API
 
+Aplicación en Codex: `.fruti/policy.md` gobierna propiedad y locks. Lima orquesta y revisa; Kiwi decide estructura, Coco CSS, Bruno implementación funcional y Mora documentación. Los verbos de edición de este documento se ejecutan por ese dueño, con las entradas y aprobaciones vigentes. Una revisión/API checkpoint no autoriza cambiar contratos. Las rutas `.fruti/` y `.codex/` son relativas a la raíz del repositorio consumidor.
+
 Authoritative owner of how a stable Design System contract becomes a reusable component API. `promotion.md` orchestrates promotion and loads this file for the API-design stage; it must not restate these rules. This file is **framework-agnostic** — concrete syntax, types, router, styling, icons, paths, and naming come from the active profile (project-profile.md).
 
 Three layers, three owners:

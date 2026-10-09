@@ -10,7 +10,7 @@ coco:
 
 ### ¿Cómo se llena entonces? (sin que hagas nada especial)
 
-coco, cada vez que le pides diseñar una pantalla, **empieza preguntando por el dato protagonista** (es el Paso 1 de su protocolo). En ese momento:
+coco, cada vez que le pides diseñar una pantalla, **inspecciona primero el dato protagonista en código y documentos; pregunta solo si falta una decisión** (es el Paso 1 de su protocolo). En ese momento:
 
 - Si ya tienes el modelo en código (tipos, DTOs, API), coco lo **lee** y registra la entidad.
 - Si aún no existe (proyecto en construcción), coco te pregunta los campos, tú respondes, y coco los **anota** en el `data_contract`.

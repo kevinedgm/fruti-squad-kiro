@@ -1,43 +1,59 @@
 ---
 name: impeccable
-description: Refina interfaces con crítica visual, adaptación, accesibilidad, jerarquía,
-  tipografía, color, layout, motion y hardening. Úsala como playbook de calidad visual
-  desde Lima, Coco o un agente UI.
+description: Aplica playbooks de crítica, auditoría y refinamiento visual. Usar desde
+  Lima en revisión o desde el dueño autorizado para mejoras de UI. No concede permisos
+  sobre estructura, tokens o funcionalidad ajenos; para roadmap de motion usa improve-animations.
+metadata:
+  version: 4.3.1
 ---
 
-This skill gives you the tools and permission to create design that earns to be called out-of-distribution craft: Whereas before, your design work would have been safe, timid and measured, you now approach every design task as an award-winning design director with impeccable understanding for what makes exceptional design work: production-grade code, peak creativity, a clear POV, deep understanding of the needs of the client and users, and exceptional craft.
+# Impeccable · playbooks de calidad visual
 
-Core principles:
-- Go all out. No hedging, no shortcuts. The deliverable must be complete (except assets the user must provide).
-- Dream big and bold. Distinct, beautiful, outstanding and highly inspiring work.
-- Verify in bounded passes, not a loop, and the ceiling covers the whole cycle: screenshots, defect scans, micro-edits, and rebuilds alike. Build fully, inspect once with a batched round (desktop and mobile together on the web; the shipped device classes on a native platform), fix everything it shows in one batch, confirm with at most one more round, and stop polishing. Open-ended self-QA burns the user's money doing worse what the finish handoffs do better.
+## Objetivo, activación y límites
 
-## Setup
+Activa esta skill para crítica, auditoría o refinamiento visual explícito, o cuando Lima/Coco necesiten uno de los playbooks de la tabla. Para auditar motion sin implementar, usa `improve-animations`. No sustituye el gobierno de Lima, estructura Kiwi, CSS Coco, funcionalidad Bruno ni documentación Mora.
 
-1. Run `<skill-base-dir>/scripts/impeccable context` once per session, where `<skill-base-dir>` is the directory that contains this SKILL.md (the skill folder, not a plugin root two levels above it); keep cwd at the user's project. That base directory resolves every `.agents/skills/impeccable/scripts/impeccable <verb>` command in this skill and its references, and `.agents/skills/impeccable/scripts` is the fallback only when the runtime reports no base directory. On a Windows shell without `sh`, call `.agents/skills/impeccable/scripts/impeccable.cmd` instead. The launcher runs a self-contained binary that ships next to it or is downloaded once on first run; no Node or other runtime is required. Pass a named source file or route as `--target <path>`. It loads PRODUCT.md, DESIGN.md, the matching surface brief, and native-platform guidance when applicable; follow its directives and do not rerun it.
-2. Load the request's playbook: its Commands-table reference for an explicit/implied sub-command, or [reference/new-work.md](reference/new-work.md) for a new surface or replacement visual world. Inspect target and incumbent visual truth before editing. When the app cannot run, start with committed visual-regression goldens or screenshot fixtures; verify target and freshness against current tokens, CSS, components, or assets, resolve conflicts, and compare theme/variant captures.
-3. After resolving analysis and direction, read [reference/craft-floor.md](reference/craft-floor.md) immediately before any UI edit, including small refinements. It carries the quality floor, the absolute bans, and the reflexes no detector catches. Do not load it for planning-only work.
+Recibe pieza/ronda, objetivo, modo de superficie, fuentes y contratos vigentes. Produce hallazgos verificables en modo revisión, o cambios del dueño autorizado con evidencia y handoff. El uso de un playbook no otorga permiso de escritura sobre otro rol.
 
-**Launcher unavailable:** On refusal or failure, send a separate message **before the next tool call**: “Context loading did not run; I’ll read the existing project context directly.” Then read existing PRODUCT.md and DESIGN.md without inventing missing context, follow applicable steps 2–3, and continue through permitted tools. This applies to planning and editing; launcher failure alone does not block either.
+## Entradas y preparación
 
-## How to design
+1. Lee `AGENTS.md`, `.fruti/policy.md` y `.codex/qa/pre-delivery.md` desde la raíz del consumidor. Comprueba lock, estado y contrato de la pieza antes de interpretar PRODUCT.md, DESIGN.md, comps o código como contexto. Si falta una decisión obligatoria, registra el faltante; no crea una norma sustituta.
+2. Selecciona revisión o edición del dueño. Bajo Lima, critique/distill/adapt/polish/harden producen hallazgos; Coco aplica CSS, Kiwi decide estructura y Bruno funcionalidad. Las auditorías no aplican correcciones de producto por sí solas.
+3. Resuelve el directorio de esta skill. Inspecciona `scripts/impeccable` o `scripts/impeccable.cmd` antes de ejecutar: el launcher puede descargar el engine si falta. Solo úsalo con un engine existente permitido o instalación ya autorizada; no descarga ni instala como efecto implícito de una tarea UI.
+4. Si el launcher puede ejecutarse sin ampliar autorización, corre `<skill-base-dir>/scripts/impeccable context` una vez por sesión, con cwd en el proyecto y `--target` real cuando aplique. Si falta o falla, comunica que context no se ejecutó y lee directamente los documentos existentes; no inventes contenido ni bloquees por la mera ausencia del launcher.
+5. Carga solo el playbook de la operación de la tabla. Para superficie nueva o mundo visual de reemplazo autorizado, lee [reference/new-work.md](reference/new-work.md). Antes de edición UI, lee [reference/craft-floor.md](reference/craft-floor.md); no es necesario para un informe sin cambios.
 
-- **The brief wins.** Honor pinned aesthetics, eras, materials, fonts, and palettes even when they conflict with a saturated-pattern warning. Redirecting a clear brief toward your taste is failure.
-- **Refinement preserves; redesign replaces.** Refinement keeps the incumbent identity, behavior, copy, and everything outside scope. Ask before replacing factual copy or adding claims. Redesign keeps product truth, content, function, native affordances, and constraints, but treats the old look as evidence and anti-reference; choose a replacement world in new-work and replace DESIGN.md. Never split the difference into polish on the discarded look.
-- **Visual authority is evidence, not a filename.** Missing DESIGN.md alone does not make a project greenfield; new-work decides whether to preserve, expand, or replace the incumbent world.
+## Procedimiento y decisiones
 
-## Modes
+1. Inspecciona la pieza y el problema concreto. Refinamiento conserva identidad, función, copy y alcance; rediseño conserva verdad de producto y contratos, y devuelve cambios estructurales a Kiwi antes de implementarlos. No sustituye DESIGN.md ni el tema aprobado solo porque se invocó esta skill.
+2. Registra la hipótesis o el hallazgo con fuente y propietario. Conserva instrucciones explícitas y decisiones aprobadas; identifica recomendaciones del playbook separadas de requisitos canónicos.
+3. Ejecuta los checks pertinentes y registra su procedencia: `executed`, `degraded`, `manual-playbook` o `not-run` según [../lima/reference/registry.md](../lima/reference/registry.md). Leer/aplicar manualmente criterios no equivale a ejecutar CLI, subagentes o navegador.
+4. Agrupa observaciones y reparaciones para evitar pulido sin objetivo. El consejo de dos pasadas limita polish discrecional, nunca reparaciones materiales ni el gate. Usa recuperación/agotamiento del protocolo compartido; no termina con fallos conocidos reparables.
+5. Antes de presentar UI, obtiene la revisión del rol y `READY_FOR_USER_REVIEW`. Para informe de auditoría entrega hallazgos y lo no verificado, sin afirmar apariencia ni lifecycle aprobados.
 
-The mode names what the visitor's success looks like on this surface.
+## Verificación y entrega
 
-- **Persuade:** the visitor decides and acts; design is the product. Landing pages, marketing, campaigns, pricing. Earn attention and action. Ship real imagery when the brief needs it; follow the committed world, not category habit.
-- **Operate:** the visitor completes a task. App UI, dashboards, editors, admin, settings, tools. Scanability, consistency, native expectations, and the real usage scene outrank expression. Brand lives in precise details.
-- **Read:** the visitor understands something. Docs, articles, guides, help, changelogs. Structure for comprehension, then make the reading experience worth staying in.
-- **Experience:** the visitor is inside the work itself. Portfolios, galleries, showcases. Let the artifact lead from the first viewport; the interface recedes.
+- Build comprueba compilación; detector comprueba sus reglas; ninguno prueba apariencia.
+- Navegador, capturas, traces y tareas corresponden a la pieza y revisión actuales, incluidos imports relevantes. Inspecciona de verdad las imágenes antes de afirmar revisión visual.
+- Entrega cambios o hallazgos, reglas aplicadas, rutas/evidencia, dueño de devolución y pendientes. No atribuye aprobación a un agente no ejecutado.
+- Pin/unpin, hooks y doctor alteran configuración: ejecútalos solo para la operación explícita solicitada o ya autorizada. No reparan deriva de contexto incidentalmente.
+
+## Referencias y modos
+
+Los enlaces y recursos internos son relativos al directorio de esta skill. Lee la referencia de la tabla solo cuando su operación se active. Las rutas `.fruti/`, `.codex/` y documentos de contexto de proyecto son relativas a la raíz del consumidor.
+
+### Modos de superficie
+
+El modo expresa la tarea del visitante en esta superficie.
+
+- **Persuade:** el visitante decide y actúa. Para landing, marketing, campañas y precios, sigue el brief aprobado y usa imágenes reales cuando las requiera.
+- **Operate:** el visitante completa una tarea. Prioriza lectura rápida, consistencia, convenciones nativas y contexto de uso en apps, dashboards, editores y herramientas.
+- **Read:** el visitante comprende información. Organiza docs, artículos, guías y ayuda para lectura y comprensión.
+- **Experience:** el visitante explora la obra. En portfolios y galerías, prioriza el artefacto desde el primer viewport.
 
 Choose the mode from the requested surface, not the product, and persist it only in that surface brief. A tool's landing page is still Persuade; a fashion house's documentation is still Read; a docs index is Read, not Persuade. See [new-work.md](reference/new-work.md) for new surfaces and [operate.md](reference/operate.md) for deeper Operate/Read guidance.
 
-## Commands
+### Comandos y referencias
 
 | Command | Category | Description | Reference |
 |---|---|---|---|
@@ -65,20 +81,12 @@ Choose the mode from the requested surface, not the product, and persist it only
 | `optimize [target]` | Fix | Diagnose and fix UI performance | [reference/optimize.md](reference/optimize.md) |
 | `live` | Iterate | Visual variant mode: pick elements in the browser, generate alternatives | [reference/live.md](reference/live.md) |
 
-Routing:
+## Selección y operaciones auxiliares
 
-- **No argument:** read [routing.md](reference/routing.md) and present its context-aware menu; never auto-run a command.
-- **Explicit or clearly implied request to run a command:** load its reference (native variant on native platforms) and follow it. Ask once if two commands fit.
-- **Workflow or command-selection question:** read [Workflow questions](reference/routing.md#workflow-questions).
-- **Otherwise:** treat the request as general design work. Missing PRODUCT.md routes a new surface or replacement world through init, then new-work; a narrow refinement of existing code proceeds on the incumbent implementation as `impeccable context` directs, offering init afterward rather than blocking on it.
-- `teach` aliases `init`. `craft` is a deprecated alias for ordinary new-work and adds nothing. `shape` owns task discovery, then enters new-work only for visual-world and surface-concept decisions.
-
-After init writes PRODUCT.md, resume without rerunning `impeccable context`; init loads the native platform reference itself when the platform it recorded is `ios`, `android`, or `adaptive`.
-
-**Pin / Unpin:** `.agents/skills/impeccable/scripts/impeccable pin <pin|unpin> <command>` creates or removes a standalone `$<command>` shortcut. Report the script's result concisely; relay stderr verbatim on error.
-
-**Hooks:** `$impeccable hooks <on|off|status|ignore-rule|ignore-file|ignore-value|reset>` manages the design detector hook for this project (auto-runs the detector after UI file edits and surfaces findings). Load [reference/hooks.md](reference/hooks.md) when the user invokes it with any argument.
-
-**Doctor:** `$impeccable doctor` reports and repairs drift between this project's Impeccable artifacts (PRODUCT.md, DESIGN.md and its sidecar, config, surface briefs, the hook) and what this version reads. Load [reference/doctor.md](reference/doctor.md) when the user invokes it, or when they ask what is out of date, stale, or needs refreshing. A `CONTEXT_STALE` directive in Setup's output is the cheap subset of the same report; act on it there per its own instructions rather than running doctor unasked.
-
-**Never repair drift as a side effect of a design task.** A `CONTEXT_STALE` finding is reported, not acted on, unless the user asks. The one exception is a finding marked `auto`, which the next write to that file performs anyway.
+- Sin argumento, lee [reference/routing.md](reference/routing.md) y presenta el menú contextual; no ejecuta un comando automáticamente.
+- Con operación explícita o inequívoca, lee su referencia y la variante nativa si aplica. Si dos operaciones cambian el alcance de forma distinta, resuelve esa decisión antes de escribir.
+- Para preguntas de workflow, consulta [reference/routing.md](reference/routing.md). Para trabajo nuevo autorizado, usa init/new-work cuando falte contexto; un refinamiento acotado puede inspeccionar código existente sin fabricar PRODUCT.md.
+- `teach` es alias de `init`; `craft` es alias deprecado de new-work. `shape` descubre la tarea y deriva decisiones estructurales a Kiwi.
+- Tras init, continúa sin repetir context. No cambies un archivo de contexto como efecto secundario de un hallazgo de deriva.
+- Pin/unpin crea/elimina shortcuts mediante `scripts/impeccable pin <pin|unpin> <command>` solo cuando se solicita. Informa resultado/error real.
+- Para `hooks <on|off|status|ignore-rule|ignore-file|ignore-value|reset>`, carga [reference/hooks.md](reference/hooks.md). Para doctor solicitado, carga [reference/doctor.md](reference/doctor.md); distingue informe de reparación autorizada.

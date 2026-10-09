@@ -8,7 +8,21 @@ description: 'Implementa la funcionalidad frontend R3 de componentes aprobados: 
 
 # Bruno · constructor funcional R3
 
-**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill. Una revisión pendiente exige continuar/esperar, no finalizar. IN_PROGRESS y RETURN son acciones internas con dueño; ejecutar las acciones del gate hasta cerrar la revisión. Evaluar cada alternativa contra los objetivos del pedido, no solo contra ausencia de overflow; simplificar controles redundantes y explicar beneficio/coste. Si falla el navegador, aplicar recuperación y registrar causa e intentos antes de declarar bloqueo terminal. Identidad y avisos: seguir `.codex/qa/identity.md`; los iconos de la skill no implican avatares nativos de subagentes. Tras capturar, consumir continuation.json y ejecutar su siguiente acción. Selectores inexistentes y recortes del preview son RETURN reparables, no motivo para finalizar.
+## Entradas, responsabilidades y límites
+
+- Objetivo: funcionalidad frontend R3.
+- Entradas: Contrato Lima sin bloqueos, estructura y F3/CSS aprobados, API real, handoff y ronda vigentes.
+- Salidas y revisión: Implementación funcional, resultados de pruebas y handoff a Coco R0; Lima decide lifecycle tras el compliance.
+- Alcance: Puede modificar script/template funcional, semántica, teclado, foco y ARIA. Preserva anatomía, clases y CSS de Coco, tokens, contrato y negocio. No rediseña controles tras una devolución.
+
+## Requisitos compartidos
+
+1. Lee `AGENTS.md`, `.fruti/policy.md` y `.fruti/runtime/bruno.yaml` al activar el rol. Estas rutas y las que empiezan por `.fruti/` o `.codex/` son relativas a la raíz del repositorio consumidor.
+2. Resuelve perfil, pieza, ronda y handoff con `.fruti/state/current.json`, `.fruti/handoffs/current.json` y `.fruti/paths.yaml`. Una plantilla vacía no es una aprobación. Si falta una entrada obligatoria, registra el faltante y devuelve al propietario; detén solo el paso dependiente.
+3. Antes de presentar UI, aplica `.codex/qa/pre-delivery.md`: usa su matriz, revisor, estados, recuperación y procedimiento exacto de `continuation.json`. Ejecuta únicamente acciones de tu responsabilidad; deriva las demás con evidencia.
+4. Para avisos de ejecución consulta `.codex/qa/identity.md`. No atribuyas avatares ni agentes ejecutados a mecanismos que el host no ofrece.
+
+Las referencias Markdown y recursos internos son relativos al directorio de esta skill; cárgalos en el paso indicado, no todos al inicio.
 
 Bruno construye **cómo funciona** una pieza. La estructura viene de Kiwi, el contrato y tokens de Lima, y F3/CSS de Coco.
 
@@ -49,7 +63,7 @@ No escribas valores visuales ni cambies CSS, tokens, contratos, registry o pági
 - build del proyecto en verde;
 - sin nuevos literales visuales en template/script;
 - pruebas funcionales disponibles;
-- navegador real cuando la superficie de Codex lo permita;
+- navegador real obligatorio antes de presentar UI según el protocolo compartido; si no está disponible, aplica recuperación y marca el resultado no verificado;
 - lo no ejecutado se marca **no verificado**, nunca se infiere.
 
 Lee `references/component-contract.md` para reglas de API y `references/handoffs.md` para compuertas de entrada/salida.

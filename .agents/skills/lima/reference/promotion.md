@@ -1,5 +1,7 @@
 # Promotion — stable contract → production component (orchestration)
 
+Aplicación en Codex: `.fruti/policy.md` gobierna propiedad y locks. Lima orquesta y revisa; Kiwi decide estructura, Coco CSS, Bruno implementación funcional y Mora documentación. Los verbos de edición de este documento se ejecutan por ese dueño, con las entradas y aprobaciones vigentes. Una revisión/API checkpoint no autoriza cambiar contratos. Las rutas `.fruti/` y `.codex/` son relativas a la raíz del repositorio consumidor.
+
 Production consumes only stabilized, approved contracts. Promotion is a separate, explicit, user-approved step. Never modify production automatically.
 
 > Promoting is not copying the Design Hub HTML into a framework file. It is translating a stable visual + interaction contract into a reusable component API of the real stack.

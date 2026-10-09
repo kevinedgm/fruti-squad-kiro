@@ -1,5 +1,7 @@
 # Política de reparación estructural
 
+Deriva estructura/flujo a Kiwi, contratos/tokens/lifecycle a Lima, CSS y auditoría R0 a Coco, funcionalidad frontend a Bruno. No asigna implementación funcional a Coco por una mención genérica de implementación. Una devolución no amplía el alcance de Mora.
+
 Usa esta matriz después del inventario. “Estructural” describe el documento o el Hub; no autoriza a cambiar el producto que la documentación representa.
 
 ## AUTO-CORREGIR

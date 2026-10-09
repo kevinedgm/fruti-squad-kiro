@@ -53,7 +53,7 @@ Every dependency — whether in `dependencies` or `profileDependencies` — must
 ## Operations
 
 - **Read first**, always, before designing.
-- **Write on every completed transition**, in the same step you change the artifact (no drift): draft→candidate sets `status=candidate, qa.candidate=true` (and `qa.visual` stays `"pending"` until browser/rendered QA actually runs); candidate→stable sets `status=stable, qa.stable=true` and requires `qa.visual="passed"`; promotion sets `production`; deprecation sets `status=deprecated, replacedBy`.
+- **Write on every completed transition**, in the same step you change the artifact (no drift): draft→candidate sets `status=candidate, qa.candidate=true` (and `qa.visual` stays `"pending"` until browser/rendered QA actually runs); candidate→stable sets `status=stable, qa.stable=true` and requires visual evidence accepted per quality-gates.md/runtime-qa.md; preserve its actual provenance rather than replacing it with a fabricated `passed` string; promotion sets `production`; deprecation sets `status=deprecated, replacedBy`.
 - **Respect dependencies**: do not promote a piece to production before its dependencies are stable; warn before deprecating a piece others depend on.
 - **Status lives only here** — a file may hold its own docs, never its own status.
 

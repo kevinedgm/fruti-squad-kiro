@@ -1,5 +1,7 @@
 # Adiciones al perfil para coco
 
+En Codex, `component_doc_standard` es compatibilidad descriptiva, no una orden para que Coco escriba páginas. Mora aplica `.fruti/contracts/documentation.yaml`; Lima escribe registry. Coco entrega fuentes y evidencia a esos dueños. Las rutas `.fruti/` y `.codex/` son relativas a la raíz del repositorio consumidor.
+
 coco reutiliza el **mismo perfil de proyecto** que la skill `lima` (`profiles/<project>.md`: `name`, `design_system`, `color_law`, `type_law`, `truth_sources`, `hub_root`, `registry_path`, `production.*`, `icon_library` dentro del stack, `a11y_target`, `breakpoints`, `anti_references`). **No** los duplica.
 
 Encima de ese perfil, coco lee un pequeño bloque `coco:` para las cosas que un *protocolo de gobernanza* necesita y una *skill de diseño* no. Si el bloque está ausente, coco cae a revisión manual y lo dice en su declaración de cumplimiento.
@@ -41,7 +43,7 @@ coco:
 | `governance_scripts.check_prototype` | Paso 5.1 | Valida el HTML del Hub contra la ley de color/etiquetas; si no, manual. |
 | `governance_scripts.audit_component` + `governance_policy` | Paso 5.4 | Corre el detector de arquitectura + aplica la policy; si no, revisión manual etiquetada `manual`. |
 | `governance_scripts.coverage` | Paso 5.4 | Confirma que todo componente está censado/documentado; si no, se omite y se declara. |
-| `component_doc_standard` | Paso 4 (documentar un componente de dominio nuevo) | Ordena la página viva del componente en el Hub. |
+| `component_doc_standard` | Handoff a Mora | Campo legacy descriptivo; Mora aplica `.fruti/contracts/documentation.yaml` y escribe la página. |
 
 ## Regla de honestidad
 

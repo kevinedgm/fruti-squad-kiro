@@ -9,6 +9,10 @@ Every plan written by `improve-animations` follows this structure. The executor 
 - **Commit**: <output of `git rev-parse --short HEAD` when this plan was written>
 - **Severity**: HIGH | MEDIUM | LOW
 - **Category**: <audit category>
+- **Artifact / round / revision**: <identidad vigente o no asignada; no inventar>
+- **Owner / reviewer**: <dueño existente y revisor según Fruti>
+- **Contract / lock / tokens**: <rutas y evidencia vigentes>
+- **Approvals / handoff**: <autorizaciones reales, faltantes y siguiente rol>
 - **Estimated scope**: <n files, rough size>
 
 ## Problem
@@ -39,7 +43,7 @@ configs, media queries. Never "use a nicer easing":
 How this codebase already does it, with one exemplar the executor should
 imitate (token names, file placement, prop patterns):
 
-- Easing tokens live in `src/styles/tokens.css`; add new curves there, e.g. `--ease-out: cubic-bezier(0.23, 1, 0.32, 1);`
+- Cita la ruta y token reales del perfil; `src/styles/tokens.css` es un ejemplo, no una ruta obligatoria. Nuevas curvas requieren decisión de Lima; el ejecutor no crea un sistema paralelo.
 - <exemplar file:line that already does this correctly>
 
 ## Steps
@@ -68,6 +72,6 @@ imitate (token names, file placement, prop patterns):
 ## Notes for the plan author
 
 - One plan per finding. If two findings share every file and the same fix pattern (e.g. the same easing token swap across components), they may merge into one plan.
-- Pull every value from [AUDIT.md](AUDIT.md) — never approximate from memory.
+- Extrae valores de tokens/contratos aprobados; [AUDIT.md](AUDIT.md) aporta propuestas justificadas para Lima, no autoridad sobre ellos.
 - The feel check is not optional. Motion can be mechanically correct and still feel wrong; give the executor (or the human reviewing the executor's diff) concrete things to watch for in slow motion.
-- After writing plans, create or update `plans/README.md` with: a table of plans (number, title, severity, status), the recommended execution order, and any dependencies between plans.
+- After writing plans, create or update `<directorio-resuelto>/README.md` with: a table of plans (number, title, severity, status), the recommended execution order, and any dependencies between plans.

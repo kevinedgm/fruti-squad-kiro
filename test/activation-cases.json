@@ -58,5 +58,61 @@
     "id": "motion-execute",
     "prompt": "Usa improve-animations execute plans/001-menu.md. El F3 aún no tiene aprobación.",
     "expected_skill": "improve-animations"
+  },
+  {
+    "id": "exclude-kiwi",
+    "prompt": "Implementa únicamente eventos y v-model con F3 aprobado; preserva estructura y CSS.",
+    "expected_skill": "bruno",
+    "excluded_skill": "kiwi",
+    "kind": "documentary-routing-example"
+  },
+  {
+    "id": "exclude-lima",
+    "prompt": "Corrige únicamente enlaces rotos de una página del Hub; no cambia lifecycle.",
+    "expected_skill": "mora-docs",
+    "excluded_skill": "lima",
+    "kind": "documentary-routing-example"
+  },
+  {
+    "id": "exclude-coco",
+    "prompt": "Explora tres jerarquías de wireframe neutral antes de aprobar estructura.",
+    "expected_skill": "kiwi",
+    "excluded_skill": "coco",
+    "kind": "documentary-routing-example"
+  },
+  {
+    "id": "exclude-bruno",
+    "prompt": "Ajusta exclusivamente CSS del F3 aprobado, sin cambiar eventos ni API.",
+    "expected_skill": "coco",
+    "excluded_skill": "bruno",
+    "kind": "documentary-routing-example"
+  },
+  {
+    "id": "exclude-mora-docs",
+    "prompt": "Reclasifica piezas y resuelve reutilización en registry.",
+    "expected_skill": "lima",
+    "excluded_skill": "mora-docs",
+    "kind": "documentary-routing-example"
+  },
+  {
+    "id": "exclude-impeccable",
+    "prompt": "Audita motion y crea roadmap sin editar producto.",
+    "expected_skill": "improve-animations",
+    "excluded_skill": "impeccable",
+    "kind": "documentary-routing-example"
+  },
+  {
+    "id": "exclude-improve-animations",
+    "prompt": "Construye CSS final de una pieza contratada con estructura aprobada.",
+    "expected_skill": "coco",
+    "excluded_skill": "improve-animations",
+    "kind": "documentary-routing-example"
+  },
+  {
+    "id": "exclude-fruti-squad",
+    "prompt": "Optimiza una consulta SQL sin cambios de UI.",
+    "expected_skill": null,
+    "excluded_skill": "fruti-squad",
+    "kind": "documentary-routing-example"
   }
 ]

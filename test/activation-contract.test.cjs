@@ -11,6 +11,7 @@ const cases = JSON.parse(read('test/activation-cases.json'));
 const skills = ['kiwi','lima','coco','bruno','mora-docs','impeccable','improve-animations','fruti-squad'];
 assert.deepEqual([...new Set(cases.map(x=>x.expected_skill).filter(Boolean))].sort(),skills.sort());
 assert(cases.some(x=>x.expected_skill===null), 'include an out-of-scope case');
+for (const skill of skills) assert(cases.some(x=>x.excluded_skill===skill && x.expected_skill!==skill), 'missing exclusion example: '+skill);
 const kiwi=read('.agents/skills/kiwi/SKILL.md');
 assert(!kiwi.includes('Coco (R3)'), 'Kiwi must not hand functional R3 to Coco');
 assert(kiwi.includes('**bruno**') && kiwi.includes('aprobado'));

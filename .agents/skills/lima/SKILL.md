@@ -4,105 +4,62 @@ description: 'Gobierna piezas UI del Fruti Squad: clasificación, reutilización
   tokens, registry y lifecycle draft→candidate→stable. Usar al crear, rediseñar, refinar
   o promover componentes, patrones o pantallas. Coordina Impeccable y consume la auditoría
   de Coco; no sustituye a Kiwi ni a Bruno. No usar para backend.'
+license: MIT
+metadata:
+  author: skill-architect
+  version: '1.0'
+  orchestrates: impeccable
 ---
 
-# Adaptive UI System Architect
+# Lima · gobierno del sistema UI
 
-**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill. Una revisión pendiente exige continuar/esperar, no finalizar. IN_PROGRESS y RETURN son acciones internas con dueño; ejecutar las acciones del gate hasta cerrar la revisión. Evaluar cada alternativa contra los objetivos del pedido, no solo contra ausencia de overflow; simplificar controles redundantes y explicar beneficio/coste. Si falla el navegador, aplicar recuperación y registrar causa e intentos antes de declarar bloqueo terminal. Identidad y avisos: seguir `.codex/qa/identity.md`; los iconos de la skill no implican avatares nativos de subagentes. Tras capturar, consumir continuation.json y ejecutar su siguiente acción. Selectores inexistentes y recortes del preview son RETURN reparables, no motivo para finalizar.
+## Entradas, responsabilidades y límites
 
-The architectural brain of the design system. It turns simple, natural-language UI requests into complete, reusable, adaptive design-system pieces — never accidental one-offs.
+- Objetivo: gobierno del sistema.
+- Entradas: Ronda estructural aprobada para fijar contratos; borrador F1/F2 para revisión interna; compliance vigente de Coco para lifecycle.
+- Salidas y revisión: Clasificación reuse/extend/new/local, contrato, orden de construcción, registry y handoff. Consume Coco R0; no firma su propio compliance.
+- Alcance: Puede gobernar contratos, tokens y registry según la política. Devuelve estructura a Kiwi, CSS a Coco, funcionalidad a Bruno y documentación a Mora. Una devolución no amplía permisos.
 
-**Governing principle:**
+## Requisitos compartidos
 
-> This skill *designs and governs* the system. `impeccable` *critiques and refines* it. The Design Hub is the *laboratory*. The registry holds the *truth*. Production consumes *only approved pieces*.
+1. Lee `AGENTS.md`, `.fruti/policy.md` y `.fruti/runtime/lima.yaml` al activar el rol. Estas rutas y las que empiezan por `.fruti/` o `.codex/` son relativas a la raíz del repositorio consumidor.
+2. Resuelve perfil, pieza, ronda y handoff con `.fruti/state/current.json`, `.fruti/handoffs/current.json` y `.fruti/paths.yaml`. Una plantilla vacía no es una aprobación. Si falta una entrada obligatoria, registra el faltante y devuelve al propietario; detén solo el paso dependiente.
+3. Antes de presentar UI, aplica `.codex/qa/pre-delivery.md`: usa su matriz, revisor, estados, recuperación y procedimiento exacto de `continuation.json`. Ejecuta únicamente acciones de tu responsabilidad; deriva las demás con evidencia.
+4. Para avisos de ejecución consulta `.codex/qa/identity.md`. No atribuyas avatares ni agentes ejecutados a mecanismos que el host no ofrece.
 
-**Project-agnostic core.** The skill itself contains no design-system, color, path, or stack specifics. Those live in the active **project profile** (see [reference/project-profile.md](reference/project-profile.md)). Load the active profile first, every session.
+Las referencias Markdown y recursos internos son relativos al directorio de esta skill; cárgalos en el paso indicado, no todos al inicio.
 
-**First run in a new project.** If there is no active profile yet (a fresh repo, or `profiles/` holds only `_TEMPLATE.md` and `examples/`), **initialize before designing**: generate a profile and scaffold the folders it points to (Design Hub, registry, optional QA harness). Run the guided flow or the one-command bootstrap in [reference/first-run.md](reference/first-run.md) / [scripts/init-project.sh](scripts/init-project.sh). Start from `profiles/_TEMPLATE.md`. This package intentionally does not ship completed profiles from real projects.
+## Objetivo y activación
 
-## Natural language is the interface
+Gobierna componentes, patrones, navegación, plantillas y aplicaciones de producto. Activa Lima para clasificar, resolver reuse/extend/new/local, fijar contratos, revisar borradores F1/F2, evaluar compuertas o promover una pieza estable. No construye estructura, CSS, funcionalidad ni páginas documentales.
 
-The user speaks plainly; you infer the process. Never require flags or a command grammar.
+## Procedimiento
 
-- "Créame el WebKit de Buttons." → new `button` component, full lifecycle in the Hub.
-- "Ahora haz Inputs." · "Necesito un DatePicker." → classify, check registry, design.
-- "Rediseña la navegación." → redesign a navigation pattern.
-- "Púlelo" / "no me convence" → refine loop on the current piece.
-- "Haz que funcione mejor en móvil." → adaptive pass for mobile.
-- "Ya me gusta, promuévelo al sistema estable." → stabilize: harden (lima) + audit (delegated to coco) + stable gate, then offer production.
+1. Lee el perfil activo y registry con [reference/project-profile.md](reference/project-profile.md). Si no hay perfil, sigue [reference/first-run.md](reference/first-run.md) y [reference/intake.md](reference/intake.md): reutiliza hechos del repositorio y valores predeterminados documentados; pregunta solo decisiones faltantes. No uses perfiles de ejemplo como perfil activo.
+2. Resuelve propósito, tarea e intención con [reference/request-router.md](reference/request-router.md) y [reference/design-process.md](reference/design-process.md). No exige al usuario flags ni gramática de comandos.
+3. Para una revisión interna F1/F2, contrasta el borrador Kiwi y su evidencia con el protocolo compartido. Devuelve hallazgos a Kiwi; esa revisión no fija un contrato definitivo ni sustituye aprobación estructural.
+4. Para contratar, comprueba aprobación estructural vigente y recibe brief, piezas, geometría, estados, matriz adaptativa y propuesta de datos. Un primitive conocido permite brief abreviado; no elimina entradas obligatorias. Si falta estructura, deriva a Kiwi.
+5. Clasifica cada pieza; busca registry, componentes y fuentes normativas para resolver reutilización. Una pantalla local puede ser `product-application`; no fuerces su promoción a sistema reutilizable. Registra piezas nuevas como `draft` con propietario y ronda.
+6. Fija contratos desde el lock aprobado con [reference/ui-artifact-contract.md](reference/ui-artifact-contract.md). Resuelve el target con `.fruti/contracts/implementation-target.yaml`; no cambia estructura por framework. Entrega a Coco clasificación, tokens/primitivas, contrato, piezas locales/sistema, estados y adaptación.
+7. Revisa F3 mediante [reference/impeccable-bridge.md](reference/impeccable-bridge.md) en modo revisión: critique, distill, adapt y polish producen hallazgos. Coco aplica CSS; Kiwi corrige estructura; Bruno corrige funcionalidad. No edites para hacer pasar tu propia revisión. Conserva aprobación F3 antes de Bruno.
+8. Consume el compliance vigente de Coco R0 y evalúa [reference/quality-gates.md](reference/quality-gates.md). Evaluar, transicionar y persistir son pasos separados. Actualiza registry solo después de cumplir la transición definida en [reference/lifecycle.md](reference/lifecycle.md).
+9. Para estabilizar una dirección candidate aceptada, coordina harden con el dueño y solicita R0 a Coco. Stable conserva aprobación explícita y evidencias exigidas; no equivale a producción. La promoción requiere otra autorización explícita y sigue [reference/promotion.md](reference/promotion.md): Bruno implementa, Coco verifica la UI, Lima registra.
+10. Entrega a Mora registry actualizado, fuentes reales, compliance y evidencia. Mora documenta; Lima no escribe páginas del Hub.
 
-Optional `/` shortcuts, never required: `/design`, `/critique`, `/polish`, `/harden`, `/adapt`, `/promote`, `/deprecate`. They resolve to the same workflows the router derives.
+## Decisiones, devoluciones y finalización
 
-## How much to ask
+- Actualiza hechos del perfil cuando el usuario los aporta; consulta [reference/source-of-truth.md](reference/source-of-truth.md) y `.fruti/policy.md` para propietario y precedencia. No inventes tokens ni cambies locks implícitamente.
+- Una devolución estructural va a Kiwi; CSS a Coco; funcionalidad a Bruno; documentación a Mora. Adjunta regla, caso, evidencia y restricciones congeladas.
+- Si falta un especialista, declara ejecución secuencial de roles solo si el host permite ejecutar sus procedimientos y entradas. Lima no adquiere permisos ajenos. Si no puede ejecutar el rol, deja handoff y bloqueo del paso dependiente.
+- Candidate se evalúa con sus criterios existentes; no inventes aprobación adicional. Stable y producción conservan sus aprobaciones separadas. Revisión favorable de un agente no es aprobación del usuario.
+- Finaliza la operación cuando contrato/orden o transición solicitados tienen entradas, evidencia y handoff vigentes. No declara visual verificado por registry, código estático o build. Informes de hallazgos no son propuestas aprobadas.
 
-No mandatory interview. If the request implies the piece and its purpose, inspect the system and start. Ask only when a **product decision that changes the experience** is missing (e.g. "should this destructive action be undoable?"), never a design detail (e.g. radius, spacing) — those are inferred from tokens and existing patterns. Authoritative rule: [reference/source-of-truth.md](reference/source-of-truth.md).
-
-## Squad flow — lima is the governance step
-
-In the Fruti Squad every member owns one activity, and work moves in one direction:
-
-```text
-Kiwi  → STRUCTURE     brief, user flow, wireframes F0–F2 (neutral kit)
-Lima  → GOVERNANCE    classify, reuse, register, fix the contract, decide status   ← this skill
-Coco  → VISUAL        high fidelity with the real system (F3/CSS), then audit (R0)
-Bruno → IMPLEMENTATION functional frontend R3
-Mora  → DOCUMENTATION publish only what is implemented and verified
-```
-
-**What lima receives (from kiwi):** an approved structure round (`<hub_root>/lab/<surface>/rNN/` with `brief.md`, `index.html`, `declaracion.md`) and its handoff: pieces, adaptation matrix, required states, data proposal. If there is no kiwi round and the request is structural (a new screen, flow, or feature), hand it to kiwi first. For a well-known primitive (e.g. a button), kiwi's abbreviated brief is enough.
-
-**What lima does (governance only):**
-
-1. **Classify** each piece: primitive · pattern · template · `product-application` (request-router.md).
-2. **Reuse first:** check the registry and existing components; mark each piece `reuse` / `extend` / `new` / `local`.
-3. **Register** new system pieces as `draft` in the registry (registry.md) with owner and source round.
-4. **Fix the contract** of each piece (ui-artifact-contract.md, component-api.md): states, variants, adaptive behavior, a11y target — derived from kiwi's frozen structure, never redesigned.
-5. **Hand coco a build order:** pieces, classification, contract, tokens/primitives to reuse, and which pieces are local vs system.
-6. **Gates:** when coco returns its compliance declaration, lima evaluates the Candidate/Stable gates (quality-gates.md) using **coco's audit as evidence**, records status/version/QA in the registry, and applies lifecycle transitions with user approval.
-7. **Release to mora:** only after the registry reflects the new status. mora documents what the registry and the real code say.
-
-**What lima does not do in the squad:** it does not author structure (kiwi), does not produce visual designs or code (coco), does not run a parallel audit (coco), and does not write Hub pages (mora). The impeccable passes (critique, distill, adapt, polish, harden) run in **review mode**: lima runs them against coco's output, records findings, and coco applies the changes.
-
-**Returns:** structural or flow defects → kiwi (new round). Visual, code, or QA defects → coco. Documentation drift → mora.
-
-**Standalone fallback:** if kiwi or coco are not installed in the project, lima runs the full pipeline below by itself and says so in one line.
-
-## The pipeline
-
-Two phases separated by user review. Design and light refinement happen before `candidate`; final hardening happens only after the user decides to stabilize a direction they have accepted.
-
-```text
-DRAFT
-  design the experience first (purpose → task → hierarchy → UX principles)  (design-process.md)
-  design → critique → distill → adapt → polish        (impeccable-bridge.md)
-  → architectural review (this skill)
-  → Candidate Gate (evaluate)                         (quality-gates.md)
-  → transition draft → candidate                      (lifecycle.md)
-  → registry: status=candidate, qa.candidate=true     (registry.md)
-CANDIDATE
-  → user review / iterations
-  → user requests stabilization
-  → harden (lima, impeccable-bridge.md)
-  → audit  (DELEGATED TO coco — design + component-architecture audit)
-  → Stable Gate (evaluate)                            (quality-gates.md)
-  → explicit user approval
-  → transition candidate → stable                     (lifecycle.md)
-  → registry: status=stable, qa.stable=true           (registry.md)
-STABLE
-  → optional explicit production approval
-  → production implementation (real stack)            (promotion.md)
-```
-
-`harden` and `audit` run **after** candidate, on purpose: never spend the final hardening pass on a direction the user can still reject or redesign. Evaluate → transition → persist are three separate responsibilities and never collapse into one.
-
-**Audit is coco's job, not lima's.** lima owns the lifecycle (gates, registry, versioning), the design pipeline, and the refinement passes up to `harden`. When the Stable Gate needs an `audit` (design compliance + component-architecture governance), lima **requests it from coco** and consumes coco's compliance report as the evidence — it does not run its own parallel audit. This keeps a single, canonical auditor (coco) and makes the architect→coco dependency explicit.
-
-## Phase map
+## Referencias por operación
 
 | Request is about... | Read |
 |---|---|
 | First run in a new project (no profile yet) — initialize | [reference/first-run.md](reference/first-run.md) + [scripts/README.md](scripts/README.md) |
-| The exact inputs to ask for on first run (fixed intake form + formats + mapping) | [reference/intake.md](reference/intake.md) |
+| Entradas de inicialización: hechos, decisiones faltantes, formatos y mapeo | [reference/intake.md](reference/intake.md) |
 | The active project's system, tokens, paths, stack | the active profile in `profiles/` via [reference/project-profile.md](reference/project-profile.md) (start from `profiles/_TEMPLATE.md`) |
 | Understanding + classifying + intent | [reference/request-router.md](reference/request-router.md) |
 | Designing for purpose/experience before appearance (universal UX process) | [reference/design-process.md](reference/design-process.md) |
@@ -119,16 +76,11 @@ STABLE
 | Expressing a stable contract as a reusable component API | [reference/component-api.md](reference/component-api.md) |
 | Promoting a stable piece into production | [reference/promotion.md](reference/promotion.md) |
 
-## Hard rules
+## Reglas de verificación
 
-- On a repo with no active profile, initialize first (first-run.md): **present the fixed intake form (intake.md) and ask the user for those inputs in that exact format** — do not roam the repo guessing a design system or invent tokens. Map the answers 1:1 to the profile, scaffold its Hub/registry, and confirm before any design. Never design against an assumed system, and never silently reuse another project's profile.
-- **The profile is LIVE — update it on request, any time.** If the user provides or changes system facts in natural language ("mi design system es X", "el color de acción ahora es #…", "cambia la fuente a …", "usamos React", "agrega el breakpoint 1280"), rewrite the matching field in `profiles/<project>.md` (`design_system`, `color_law`, `type_law`, `truth_sources`, `production.*`, `breakpoints`, `anti_references`) and confirm in one line. If the profile was initialized as `design_system: NEW`, this is how it gets promoted to the real system: when the user finally tells you their system, replace `NEW`/placeholder values with the real ones. Never require re-running init or the wizard for this — the profile file is the single living source of truth and editing it is a normal operation.
-- Design purpose, behavior, context, and experience before appearance; a request never jumps straight to visual variants (design-process.md). The skill is domain-agnostic — domains are input context, never rules.
-- Every piece is part of the system. A product-specific screen is legitimate, but it must be classified as `product-application` — it must not pretend to be reusable.
-- Never invent tokens/colors/type outside the active profile's design system; that system is the single visual truth.
-- Never treat the first version as finished; always run the refine pipeline.
-- Never add a variant that only adds complexity; detect and cut it.
-- Never run the final hardening pass before the user has accepted the direction (candidate).
-- Never modify production automatically; production requires explicit promotion approval.
-- Never rely on conversation memory for system state; the registry is the persistent truth.
-- The skill is stack-agnostic; the real technology comes from the profile and project inspection at promotion time.
+- Comprueba la ronda, aprobación y contratos actuales; el registry expresa lifecycle, no prueba por sí solo render ni comportamiento.
+- Comprueba que todas las dependencias del registry resuelven antes de promover.
+- Conserva el sistema real y las fronteras de componente; cada variante debe justificar una necesidad y no solo complejidad.
+- Registra provenance de Impeccable (`executed`, `degraded`, `manual-playbook`, `not-run`) según [reference/registry.md](reference/registry.md).
+- No ejecuta hardening final antes de candidate y dirección aceptada. Las reparaciones de QA previas a entrega siguen siendo obligatorias.
+- Comprueba que el handoff contiene fuentes, contrato, tokens, ronda y evidencia que requiere el siguiente dueño. Si falta algo, no inicia ese trabajo dependiente.

@@ -1,5 +1,7 @@
 # Estándar de ronda documental
 
+Para fichas de componentes, consulta primero `.fruti/contracts/documentation.yaml` (raíz): su shell neutral y orden canónico prevalecen sobre ejemplos de este documento. No introduce secciones o CSS paralelos; Kiwi estructura el encargo y Mora valida contenido.
+
 Estándar que deben cumplir las rondas que cambian la estructura del Design Hub. Lo **escribe y valida mora**; lo **ejecuta kiwi** cuando wireframea el Hub, y lo **respeta mora** cuando publica las páginas reales. El objetivo es que decisión, representación y evidencia sean trazables entre sí.
 
 | Paso | Quién | Artefacto |

@@ -2,6 +2,27 @@
 
 Este contrato operativo Codex aplica también a pedidos directos como «usa Kiwi para rediseñar este componente». Completa la evaluación y reparación dentro del alcance autorizado antes de pedir observaciones al usuario. Conserva todas las aprobaciones estructurales, F3 y lifecycle de `.fruti/policy.md`; revisión interna y aprobación del usuario son actos distintos.
 
+## Alcance del gate y comunicación
+
+Este gate certifica propuestas UI renderizadas F1/F2/F3/R3 y previews documentales. F0 comprueba flujo y decisiones; informes R0/M0, planes de motion, inicialización y correcciones puramente textuales no afirman aprobación visual. Pueden entregar hallazgos o hechos verificados indicando lo no verificado; no usar ese informe para eludir una compuerta UI/lifecycle.
+
+Comunica progreso y solicita una entrada imprescindible mientras el trabajo está `IN_PROGRESS` o `RETURN`. La prohibición de presentar una UI certificada no prohíbe esos mensajes. La devolución del revisor no autoriza ampliar estructura, CSS, tokens, contratos ni negocio: deriva al propietario definido en `.fruti/policy.md`.
+
+## Consumo de continuidad
+
+- Ruta desde la raíz: `.fruti/tests/<round>/<revision>/continuation.json` cuando `evidence.json` se guarda en ese directorio. La regla exacta del recolector es `dirname(evidencePath)/continuation.json`; no busca un archivo global.
+- Productor: `.codex/qa/collect-browser.cjs`, después de preparar/capturar evidencia y ejecutar el gate. Consumidores: coordinador y dueño de cada `next_actions`. El revisor completa la revisión en `evidence.json`; no inventa aprobación en continuation.
+- Antes de actuar, carga `plan.json`, `evidence.json`, estado y handoff actuales. Comprueba `artifact`, `round`, `revision`, `stage` e inputs/hashes del plan y evidencia. Compara `continuation.plan_sha256` con el SHA256 del plan actual. El checkpoint inicial puede no tener hash; en ese caso no es una decisión vigente.
+- Si falta, está incompleto o desactualizado, conserva la evidencia útil, ejecuta el verificador sobre plan/evidencia actuales y regenera mediante el recolector cuando corresponda. No reutilices un `READY_FOR_USER_REVIEW` anterior.
+- `IN_PROGRESS`: completa casos/evidencia o revisión faltante. `RETURN`: entrega el defecto a su dueño, corrige dentro del alcance y recaptura la revisión nueva. `READY_FOR_USER_REVIEW`: presenta únicamente esa revisión; no implica aprobación del usuario. `BLOCKED`: comprueba el diagnóstico terminal exigido abajo y reporta dependencia sin certificar cumplimiento.
+- Si una acción está fuera del alcance del consumidor, registra el hallazgo y realiza handoff al dueño existente. Si no tiene dueño resoluble, registra la laguna y pide únicamente la decisión que cambie responsabilidades. No ejecutes una acción solo porque aparece en el JSON.
+
+## Recuperación y límite de ejecución
+
+Cada reintento debe cambiar una causa diagnosticada o usar una alternativa permitida. Si reaparece el mismo error sin nueva corrección viable, registra el resultado y pasa al siguiente mecanismo de recuperación; no repitas idéntica operación indefinidamente. Espera revisores usando el estado real de su herramienta, con avisos de progreso; si terminó sin evidencia suficiente, devuelve requisitos concretos. Si la herramienta no permite saber el resultado o continuar, registra esa limitación y conserva el checkpoint.
+
+El protocolo no define un número universal de intentos ni tiempo máximo del revisor. No inventes un límite que conceda PASS, una aprobación sustitutiva ni una ejecución en segundo plano. Agotamiento significa que no queda una recuperación viable y permitida tras el diagnóstico, con intentos y alternativas registrados.
+
 ## Ciclo obligatorio
 
 1. El dueño produce una revisión y ejecuta sus comprobaciones. El verificador estático no certifica render, composición, responsive ni funcionalidad.

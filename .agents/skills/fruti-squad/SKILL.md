@@ -7,12 +7,18 @@ description: Coordina el flujo UI Fruti Squad en Codex mediante Kiwi, Lima, Coco
 
 Leer `AGENTS.md` y `.fruti/policy.md`. Resolver estado, perfil activo y handoff; nunca fijar un proyecto consumidor en la skill. Resolver las rutas lógicas mediante `.fruti/paths.yaml`.
 
-Antes de cada presentación al usuario aplicar `.codex/qa/pre-delivery.md`: solicitar revisión al dueño indicado, devolver fallos al productor y repetir corrección/comprobación automáticamente dentro del alcance. No tratar un informe de self-check como QA independiente. Kiwi → Lima revisión del borrador ocurre antes de solicitar aprobación estructural; el contrato definitivo sigue después de esa aprobación. Para F3, Lima usa Impeccable en revisión y Coco corrige; Bruno permanece bloqueado hasta aprobación F3. R3 vuelve a Coco R0 y Lima gate. No finalizar con una segunda revisión pendiente: esperar, procesar su resultado y completar la reprobación. Aplicar recuperación de navegador antes de declarar bloqueo terminal y mantener declaración/hallazgos actualizados. No imponer el pipeline de producción a un pedido limitado a propuesta.
+## Entradas y límites
+
+Recibe solicitud, pieza/ronda, perfil y handoff vigentes. Produce coordinación, estado, handoffs y una presentación respaldada por evidencia. No edita producto ni asume responsabilidades de especialistas. Todas las rutas `.fruti/`, `.codex/`, `AGENTS.md` y `docs/` son relativas a la raíz del repositorio consumidor.
+
+Lee `.codex/qa/pre-delivery.md` antes de una propuesta UI y para consumir el checkpoint exacto `dirname(evidencePath)/continuation.json`. Conserva su matriz, revisión, estados, recuperación e identidad; deriva cada acción al dueño. Progreso, consultas indispensables e informes no son aprobación de UI.
+
+## Procedimiento
 
 Coordinar sin sustituir a los especialistas:
 
 1. Kiwi resuelve brief, flujo, estructura y adaptación F0–F2. En rediseño, completar understand → inventory → scope aprobado → redesign_plan antes de construir.
-2. Presentar la ronda y registrar aprobación estructural cuando sea requerida. Una entrega de agente es evidencia, nunca aprobación del usuario.
+2. Para F1/F2, obtener revisión Lima del borrador y el gate vigente antes de presentar; después registrar aprobación estructural requerida. F0 valida flujo sin afirmar navegador/render. Una entrega de agente es evidencia, nunca aprobación del usuario.
 3. Lima clasifica reuse/extend/new/local, registra draft, fija contratos y tokens. Devolver defectos estructurales a Kiwi con reglas fallidas.
 4. Coco materializa F3/CSS con estructura congelada y sistema real. Bloquear aprobación visual final si design_system NEW carece de foundations aprobadas.
 5. Presentar F3 y registrar aprobación vigente antes de R3.
@@ -31,8 +37,6 @@ Si no hay herramientas reales de delegación, declarar ejecución secuencial de 
 
 Leer `docs/codex-guia-operativa.md` solo para dudas de instalación, autoría o compatibilidad de host. No inventar comandos `fruti test`/`fruti foundations`: son procedimientos documentados, no verbos de la CLI distribuida.
 
-IN_PROGRESS y RETURN del gate son trabajo interno: ejecutar sus acciones con dueño, completar la matriz y esperar al revisor. No cerrar el turno por QA pendiente. El revisor debe evaluar cada alternativa contra los objetivos observables del pedido y devolver controles redundantes o propuestas que no resuelven el problema original. Explicar beneficio y coste al presentar la propuesta ya revisada.
+## Verificación y entrega
 
-Para identidad y avisos de ejecución, seguir `.codex/qa/identity.md`. Los iconos de las skills no implican personalización de avisos nativos de subagentes.
-
-Tras capturar, consumir `continuation.json` y ejecutar la siguiente acción con dueño. Selectores inexistentes y recortes del marco de preview son RETURN reparables: coordinar su corrección y recaptura, sin cerrar el encargo por esos defectos.
+Comprueba que el siguiente rol recibe operación, identidad de ronda, lock/contrato, fuentes y evidencia vigentes. Ejecuta las devoluciones autorizadas antes de presentar. Solo `READY_FOR_USER_REVIEW` permite pedir comentarios sobre una propuesta UI certificada; un bloqueo terminal conserva borradores y explica la dependencia concreta. Para avisos de ejecución consulta `.codex/qa/identity.md`.

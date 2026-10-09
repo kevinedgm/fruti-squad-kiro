@@ -1,5 +1,7 @@
 # Adiciones al perfil para mora
 
+El contrato `.fruti/contracts/documentation.yaml` (raíz) gobierna shell y orden; los campos legacy `doc_standard`/`doc_shell` solo complementan sin contradecirlo.
+
 mora reutiliza el **mismo perfil de proyecto** que la skill `lima` y coco (`profiles/<project>.md`: `name`, `design_system`, `hub_root`, `hub_layout`, `registry_path`, `production.*`, `breakpoints`, `a11y_target`). **No** los duplica.
 
 Encima de ese perfil, mora lee un pequeño bloque `mora:` para las cosas que una *curadora de documentación* necesita. Si un campo está ausente, mora cae a un default razonable y lo dice en su declaración de cumplimiento.

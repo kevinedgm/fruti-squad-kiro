@@ -1,5 +1,14 @@
 ### Purpose
 
+## Aplicación obligatoria en Fruti/Codex
+
+Lee [../SKILL.md](../SKILL.md) antes de aplicar este playbook. `.fruti/policy.md` y `.codex/qa/pre-delivery.md` (raíz) gobiernan permisos, locks, modos y evidencia. PRODUCT.md, DESIGN.md, comps y código son contexto subordinado al contrato aprobado, no autorización para reemplazarlo.
+
+Bajo Lima, ejecuta en modo revisión: registra regla, caso, evidencia y dueño; no edita producto. Estructura/controles/navegación → Kiwi; contrato/tokens → Lima; CSS → Coco; conducta/script → Bruno; docs → Mora; backend queda fuera del squad. Un defecto no permite cambiar otra propiedad. Aplica tipografía, targets, modos, tema y estados del contrato/perfil; números y dark-mode del playbook son heurísticas si no forman parte del contrato. Compact `<600`, medium `600–1023`, expanded `>=1024` son los modos compartidos; la matriz QA sigue el protocolo.
+
+Un límite de pasadas presupone polish; no permite cerrar hallazgos ni detener reparaciones obligatorias. Usa las herramientas reales del host, hereda modelo/permisos y declara ejecución secuencial cuando corresponda. No simules `fork_context` o Browser skill inexistentes.
+
+
 Resolve one stable target, run two independent assessments, synthesize a design critique, persist a snapshot, and ask the user what to improve next. The chat response is the primary deliverable; the snapshot is an archive of that run.
 
 ### Hard Invariants
@@ -38,14 +47,11 @@ Sub-agent gate (all harnesses):
 - If and only if sub-agents are unavailable, fall back sequentially: finish and record Assessment A, then run Assessment B, then synthesize, and emit the degraded banner.
 - Whichever path you take, declare it in the report header (see Report header provenance). Skipping sub-agents without the banner is the most common failure of this command.
 
-Codex sub-agent gate (overrides the default above; Codex's permission model requires asking before spawning):
-- Asking is the normal path, not a degradation. Approving and spawning is the dual-agent path; do not emit the degraded banner just for asking.
-- If `spawn_agent` is exposed and the user explicitly allowed sub-agents, delegation, or parallel agent work, spawn A and B immediately.
-- If `spawn_agent` is exposed but the user did not explicitly allow sub-agents, ask exactly once: "Impeccable critique is designed to run two independent sub-agents for an unanchored assessment. May I use sub-agents for this critique?" Then stop until the user answers.
-- If allowed, spawn A and B. If declined, run sequentially and lead the report with `⚠️ DEGRADED: single-context (sub-agents declined by user)`.
-- If `spawn_agent` is not exposed, do not ask; run sequentially and lead with `⚠️ DEGRADED: single-context (spawn_agent unavailable in this session)`.
-- If spawning fails after permission, run sequentially and lead with `⚠️ DEGRADED: single-context (sub-agent spawn failed: <exact error>)`.
-Prefer `fork_context: false` with self-contained prompts containing cwd, target, live URL, references, product context, and output contract. If using `fork_context: true`, omit `agent_type`, `model`, and `reasoning_effort`.
+Compuerta de subagentes en Codex:
+- Respeta autorización vigente e instrucciones aplicables del host; `AGENTS.md` puede autorizar delegación. No afirma que Codex exige preguntar universalmente.
+- Si se permite y existe `spawn_agent`, ejecuta A y B con inputs autocontenidos y contexto independiente usando los argumentos reales del host.
+- Sin capacidad/autorización aplicable, ejecuta las dos pasadas por separado y declara `degraded` con la razón concreta; no simula independencia.
+- Si falla spawn, registra el error y usa el fallback permitido, manteniendo la misma evidencia/revisión.
 
 If browser automation is available, each assessment creates its own new tab. Never reuse an existing tab, even if it is already at the right URL.
 

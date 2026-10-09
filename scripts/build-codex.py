@@ -32,7 +32,7 @@ for src in sorted((ROOT / '.kiro/skills').rglob('*')):
         meta = yaml.safe_load(front)
         if meta['name'] == 'lima':
             meta['description'] = 'Gobierna piezas UI del Fruti Squad: clasificación, reutilización, contratos, tokens, registry y lifecycle draft→candidate→stable. Usar al crear, rediseñar, refinar o promover componentes, patrones o pantallas. Coordina Impeccable y consume la auditoría de Coco; no sustituye a Kiwi ni a Bruno. No usar para backend.'
-        text = '---\n' + yaml.safe_dump({k:meta[k] for k in ('name','description')}, allow_unicode=True, sort_keys=False) + '---' + body
+        text = '---\n' + yaml.safe_dump(meta, allow_unicode=True, sort_keys=False) + '---' + body
     dest.write_text(text)
     shutil.copymode(src, dest)
     records.append({'source':src.relative_to(ROOT).as_posix(), 'target':dest.relative_to(ROOT).as_posix(), 'source_sha256':hashlib.sha256(src.read_bytes()).hexdigest(), 'target_sha256':hashlib.sha256(dest.read_bytes()).hexdigest()})
@@ -50,7 +50,7 @@ Para identidad y avisos de ejecución, leer .codex/qa/identity.md; usar el avata
 La política compartida y los contratos canónicos resuelven atribuciones heredadas: Kiwi F0–F2; Lima gobierno; Coco F3/CSS y R0; Bruno funcionalidad R3; Mora documentación verificada. Respetar locks y aprobaciones vigentes.
 Las reglas permissions de Kiro son intención de control, no configuración nativa de Codex. Usar permisos/sandbox del host. No ejecutar rm -rf, sudo, git reset --hard ni git push. No hacer commit. El orquestador coordina sin editar producto; cada especialista limita sus escrituras a su propiedad y evidencia/handoffs.
 No interpretar un resultado de agente como aprobación del usuario. Si falta una aprobación requerida, devolver la propuesta concreta y detener el downstream dependiente. No inventar herramientas ni simular delegaciones. Si no hay subagentes, ejecutar los mismos roles secuencialmente con la misma separación y declararlo.
-''' + adapt(body)
+''' + f'Procedimiento operativo canónico: .agents/skills/{skill}/SKILL.md. Leer las referencias de la operación seleccionada; la fuente Kiro se conserva como historial, no como un segundo procedimiento ejecutable.\n'
     write(f'.codex/agents/{name}.toml', 'name = '+json.dumps(name)+'\ndescription = '+json.dumps(desc, ensure_ascii=False)+'\ndeveloper_instructions = '+json.dumps(instructions, ensure_ascii=False)+'\n')
 
 # Bundled Impeccable specialist TOMLs already follow the native schema.
@@ -81,5 +81,5 @@ for src in sorted((ROOT / '.fruti').rglob('*')):
         shared.append({'path':src.relative_to(ROOT).as_posix(), 'sha256':hashlib.sha256(src.read_bytes()).hexdigest()})
 for record in records:
     record['target_sha256'] = hashlib.sha256((ROOT / record['target']).read_bytes()).hexdigest()
-write('docs/codex-parity.json', json.dumps({'version':2,'source_commit':BASE,'corrections':corrections,'transformations':['.kiro/skills → .agents/skills', 'steering → AGENTS.md', 'Kiro/product command labels → Codex', 'SKILL metadata normalized to name+description; Lima description shortened only', 'Kiro agent body → native TOML developer_instructions; permissions intent documented', 'agents/openai.yaml UI metadata generated; Impeccable helpers exposed as native agents'], 'skills':records,'shared_unchanged':shared}, ensure_ascii=False, indent=2)+'\n')
+write('docs/codex-parity.json', json.dumps({'version':2,'source_commit':BASE,'corrections':corrections,'transformations':['.kiro/skills → .agents/skills', 'steering → AGENTS.md', 'Kiro/product command labels → Codex', 'SKILL YAML normalized preserving supported optional metadata; Lima description clarified', 'Native agents load canonical adapted SKILL procedures; Kiro originals retained as immutable history', 'agents/openai.yaml UI metadata generated; Impeccable helpers exposed as native agents'], 'skills':records,'shared_unchanged':shared}, ensure_ascii=False, indent=2)+'\n')
 print(f'Built Codex adapter: {len(records)} skill resources; {len(shared)} unchanged shared files.')

@@ -1,5 +1,14 @@
 > **Additional context needed**: target platforms/devices and usage contexts.
 
+## Aplicación obligatoria en Fruti/Codex
+
+Lee [../SKILL.md](../SKILL.md) antes de aplicar este playbook. `.fruti/policy.md` y `.codex/qa/pre-delivery.md` (raíz) gobiernan permisos, locks, modos y evidencia. PRODUCT.md, DESIGN.md, comps y código son contexto subordinado al contrato aprobado, no autorización para reemplazarlo.
+
+Bajo Lima, ejecuta en modo revisión: registra regla, caso, evidencia y dueño; no edita producto. Estructura/controles/navegación → Kiwi; contrato/tokens → Lima; CSS → Coco; conducta/script → Bruno; docs → Mora; backend queda fuera del squad. Un defecto no permite cambiar otra propiedad. Aplica tipografía, targets, modos, tema y estados del contrato/perfil; números y dark-mode del playbook son heurísticas si no forman parte del contrato. Compact `<600`, medium `600–1023`, expanded `>=1024` son los modos compartidos; la matriz QA sigue el protocolo.
+
+Un límite de pasadas presupone polish; no permite cerrar hallazgos ni detener reparaciones obligatorias. Usa las herramientas reales del host, hereda modelo/permisos y declara ejecución secuencial cuando corresponda. No simules `fork_context` o Browser skill inexistentes.
+
+
 Adapt an existing design to a different context: another screen size, device, platform, or use case. The trap is treating adaptation as scaling. The job is rethinking the experience for the new context.
 
 **Web only** (mobile web included). Native platforms (`ios` / `android` / `adaptive`) route to [adapt.native.md](adapt.native.md) instead; if the project is native, switch to it now.
@@ -130,9 +139,10 @@ Apply changes systematically:
 ### Responsive Breakpoints
 
 Choose appropriate breakpoints:
-- Mobile: 320px-767px
-- Tablet: 768px-1023px
-- Desktop: 1024px+
+- Compact: ancho disponible <600px
+- Medium: 600px–1023px
+- Expanded: >=1024px
+- Viewports QA: los del perfil más los exigidos por el protocolo compartido; no equivalen a breakpoints de composición.
 - Or content-driven breakpoints (where design breaks)
 
 ### Layout Adaptation Techniques

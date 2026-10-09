@@ -1,6 +1,6 @@
 # Component documentation — the Design Hub documentation standard
 
-> **Authority note.** `.fruti/contracts/documentation.yaml` (owner: mora) is the single normative source for the canonical page's **shell, section set and section order**. This file keeps only guidance that does not conflict with it: the golden rule, sources of truth, the lifecycle-gated API rule, reusable primitives and the consistency rule. The "Page shell" and "Mandatory section order" below are **superseded** — they are kept as a mapping so older references resolve.
+> **Authority note.** `.fruti/contracts/documentation.yaml` (owner: mora) is the single normative source for the canonical page's **shell, section set and section order**. This file keeps only guidance that does not conflict with it: the golden rule, sources of truth, the lifecycle-gated API rule, reusable primitives and the consistency rule. El mapa siguiente conserva equivalencias de nombres antiguos; shell y orden paralelos fueron retirados. Consulta el contrato canónico, no un orden legacy.
 
 | Legacy section here | Canonical section in `documentation.yaml` |
 |---|---|
@@ -17,7 +17,7 @@
 | QA/Lifecycle | `lifecycle_qa` |
 | Do/Don't, Related | not canonical sections; add them only by extending `documentation.yaml` through Lima/Mora, never per page |
 
-Authoritative owner of **how every Design System artifact is documented**. Not a gallery, not a static mockup: each artifact has one **canonical, living, Vuetify-style reference page**. `design-hub.md` owns building demos in the lab; this file owns the documentation standard every page must follow, so no page invents its own visual religion.
+Guía complementaria; la autoridad del contrato documental pertenece a Mora mediante `.fruti/contracts/documentation.yaml`. Not a gallery, not a static mockup: each artifact has one **canonical, living, Vuetify-style reference page**. `design-hub.md` owns building demos in the lab; el contrato canónico determina shell, secciones y orden que cada página debe seguir, so no page invents its own visual religion.
 
 > **Golden rule.** Documentation describes **what actually exists** and states clearly **what does not yet exist**. It never documents aspired-to props, variants, or APIs as if they worked. A beautiful page claiming `loading`, `density`, `rounded`, `variant`, `elevation` all work while the real component laughs from another folder is a failure.
 
@@ -35,27 +35,9 @@ project profile     → design-system context
 
 Status/version live only in the registry; do not restate them in multiple files. Prefer reflecting the real source over re-typing a table that will drift.
 
-## Page shell (SUPERSEDED — see the authority note; the contract's neutral monochrome shell applies)
+## Shell y orden canónicos
 
-Every component page uses the shared docs shell:
-
-```text
-[ left nav: Design System, grouped Foundations/Components, current item + lifecycle badge ]
-[ readable content column (~760px) ]
-[ "On this page" sticky index (desktop) / compact index (mobile) ]
-```
-
-On ≤1000px the left nav becomes a togglable drawer (burger + scrim + Escape). Anchors must work. This shell is provided by `docs.css` + `docs.js` in the Hub; reuse it, never re-layout per page.
-
-## Mandatory section order (SUPERSEDED — use the section set in `documentation.yaml`)
-
-Include a section only when it applies; omit (do not empty-stub) what doesn't:
-
-```text
-Component Header → Overview → Usage → Anatomy → Variants/Intents → Sizes/Shapes
-→ States → Behaviors → Responsive → Examples → Playground → Accessibility
-→ API Reference (Props · Slots · Emits · Types) → Do/Don't → Implementation → QA/Lifecycle
-```
+Antes de crear/editar una ficha lee `.fruti/contracts/documentation.yaml` desde la raíz. Mora conserva shell neutral y orden `overview → preview → anatomy → variants → states → behavior → adaptive → accessibility → api → implementation → lifecycle_qa`. Omite secciones no aplicables. Los estilos del producto solo entran en previews reales aislados. No deduzcas un layout obligatorio de ejemplos anteriores.
 
 ## Section contracts
 

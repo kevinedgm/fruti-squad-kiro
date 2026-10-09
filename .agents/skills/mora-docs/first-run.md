@@ -21,10 +21,11 @@ Inspecciona primero, completa los campos mecánicos y pregunta solo lo que requi
 Si el proyecto es totalmente nuevo, corre primero el bootstrap de Lima — crea `profiles/<project>.md`, el Hub y el registry:
 
 ```bash
-# desde la raíz del repo
-bash mis-agentes/skills/lima/scripts/init-project.sh \
-  --intake my-intake.yaml --qa playwright
+# desde la raíz del repositorio consumidor
+npx fruti-squad-codex init
 ```
+
+Lima gobierna la inicialización: consulta [../lima/reference/first-run.md](../lima/reference/first-run.md) antes de ejecutarla.
 
 Luego añade el bloque `mora:` de mora (desde [intake.md](intake.md)) a ese perfil generado. mora lee el mismo archivo.
 
@@ -40,11 +41,11 @@ Incluso con un perfil, algunas capacidades dependen del tooling del proyecto. mo
 | Servir + validar páginas | `mora.serve_command` (o python3) | reporta el check de HTTP/shell como no ejecutado |
 | Reusar el shell de doc real | `mora.doc_shell` | señala que las páginas no tienen shell que reutilizar (riesgo de páginas sin estilo) |
 | Preview viva del componente | `mora.hub_preview` / un harness corriendo | marca la preview no disponible/no verificada; no duplica CSS |
-| Orden de secciones + spec de honestidad | `mora.doc_standard` | usa el orden canónico interno de mora, declarado |
+| Orden de secciones + spec de honestidad | `mora.doc_standard` | consulta `.fruti/contracts/documentation.yaml` (raíz); si falta, registra ese bloqueo sin inventar otro estándar |
 
-Ninguna de estas impide que mora *cure*; solo cambian qué checks son verificables vs manuales. La entrega (AGENT.md §8) siempre dice la verdad sobre cuáles corrieron.
+Puede entregar una auditoría o corrección textual con faltantes explícitos. Un preview nuevo requiere recuperación, navegador y revisión de `.codex/qa/pre-delivery.md` antes de presentarlo como UI certificada. La entrega ([SKILL.md](SKILL.md) §8) siempre dice la verdad sobre cuáles corrieron.
 
 ## Resultado
 
 - mora queda enlazada a `profiles/<project>.md` (compartido con Lima y Coco), incluyendo un bloque `mora:`.
-- Desde aquí aplica AGENT.md: contexto (§1) → inventario proporcional (§2) → modo M0–M3 (§3) → propiedad de la verdad (§4) → reparación (§5) → contrato de página (§6) → verificación (§7) → entrega (§8).
+- Desde aquí aplica [SKILL.md](SKILL.md): contexto (§1) → inventario proporcional (§2) → modo M0–M3 (§3) → propiedad de la verdad (§4) → reparación (§5) → contrato de página (§6) → verificación (§7) → entrega (§8).

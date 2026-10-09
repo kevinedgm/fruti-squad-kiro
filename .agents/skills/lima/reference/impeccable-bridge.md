@@ -1,5 +1,7 @@
 # Impeccable bridge — orchestrating the refinement specialist
 
+Aplicación en Codex: `.fruti/policy.md` gobierna propiedad y locks. Lima orquesta y revisa; Kiwi decide estructura, Coco CSS, Bruno implementación funcional y Mora documentación. Los verbos de edición de este documento se ejecutan por ese dueño, con las entradas y aprobaciones vigentes. Una revisión/API checkpoint no autoriza cambiar contratos. Las rutas `.fruti/` y `.codex/` son relativas a la raíz del repositorio consumidor.
+
 This skill is the architectural brain; `impeccable` is the specialist for critique, simplification, adaptation, and hardening. It does NOT decide the design system's architecture — this skill does.
 
 ## Invoking impeccable in this workspace
