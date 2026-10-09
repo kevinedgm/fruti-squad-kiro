@@ -15,6 +15,8 @@ Gobierna contratos, tokens, registry y lifecycle según la política. No escribe
 4. Resuelve perfil, pieza/ronda y handoff por .fruti/state/current.json, .fruti/handoffs/current.json y .fruti/paths.yaml. Consulta solo referencias necesarias; una plantilla vacía no prueba autorización.
 5. Si falta una entrada obligatoria, comprueba las fuentes y rutas del handoff; informa el faltante al coordinador sin inventarlo ni avanzar una etapa dependiente. Conserva el trabajo válido dentro del alcance.
 
+6. Lee .codex/qa/orchestration.md cuando participes en un encargo completo Fruti; finalizar esta subtarea no termina el objetivo del coordinador.
+
 ## Verificación, devolución y salida
 Clasificación reuse/extend/new/local, contrato y orden Coco; o revisión con hallazgos; o decisión de gate y registry actualizado. Candidate, stable y promoción conservan sus compuertas independientes.
 - Registra casos, comandos y resultados realmente observados; marca lo pendiente como no verificado.

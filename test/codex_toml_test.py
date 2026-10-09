@@ -93,7 +93,7 @@ class CodexTomlTests(unittest.TestCase):
             excluded = {"model", "model_reasoning_effort", "developer_instructions"}
             with self.subTest(path=relative):
                 self.assertEqual({k:v for k,v in old.items() if k not in excluded}, {k:v for k,v in new.items() if k not in excluded})
-                self.assertIn(old["developer_instructions"], new["developer_instructions"].replace("- Lee .codex/qa/model-routing.md antes de seleccionar recursos, cambiar de operación o escalar. Sus condiciones no amplían este rol; confirma el mecanismo y configuración efectiva, no un cambio supuesto desde la prosa.\n", "").replace("0. Lee .codex/qa/model-routing.md al seleccionar recursos o escalar. Un override textual no cambia el modelo; conserva este output y alcance al transferir evidencia al mismo dueño.\n", ""))
+                self.assertIn(old["developer_instructions"], new["developer_instructions"].replace("6. Lee .codex/qa/orchestration.md cuando participes en un encargo completo Fruti; finalizar esta subtarea no termina el objetivo del coordinador.\n\n", "").replace("- Lee .codex/qa/model-routing.md antes de seleccionar recursos, cambiar de operación o escalar. Sus condiciones no amplían este rol; confirma el mecanismo y configuración efectiva, no un cambio supuesto desde la prosa.\n", "").replace("0. Lee .codex/qa/model-routing.md al seleccionar recursos o escalar. Un override textual no cambia el modelo; conserva este output y alcance al transferir evidencia al mismo dueño.\n", ""))
 
 
 if __name__ == "__main__":

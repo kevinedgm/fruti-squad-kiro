@@ -26,6 +26,7 @@ metadata:
 2. Resuelve perfil, pieza, ronda y handoff con `.fruti/state/current.json`, `.fruti/handoffs/current.json` y `.fruti/paths.yaml`. Una plantilla vacía no es una aprobación. Si falta una entrada obligatoria, registra el faltante y devuelve al propietario; detén solo el paso dependiente.
 3. Antes de presentar UI, aplica `.codex/qa/pre-delivery.md`: usa su matriz, revisor, estados, recuperación y procedimiento exacto de `continuation.json`. Ejecuta únicamente acciones de tu responsabilidad; deriva las demás con evidencia.
 4. Para avisos de ejecución consulta `.codex/qa/identity.md`. No atribuyas avatares ni agentes ejecutados a mecanismos que el host no ofrece.
+5. En un encargo completo de Fruti, lee `.codex/qa/orchestration.md` antes de un handoff: conserva el objetivo, las devoluciones y la decisión documental; terminar tu subtarea no cierra el encargo del coordinador.
 
 Las referencias Markdown y recursos internos son relativos al directorio de esta skill; cárgalos en el paso indicado, no todos al inicio.
 
@@ -44,7 +45,7 @@ Gobierna componentes, patrones, navegación, plantillas y aplicaciones de produc
 7. Revisa F3 mediante [reference/impeccable-bridge.md](reference/impeccable-bridge.md) en modo revisión: critique, distill, adapt y polish producen hallazgos. Coco aplica CSS; Kiwi corrige estructura; Bruno corrige funcionalidad. No edites para hacer pasar tu propia revisión. Conserva aprobación F3 antes de Bruno.
 8. Consume el compliance vigente de Coco R0 y evalúa [reference/quality-gates.md](reference/quality-gates.md). Evaluar, transicionar y persistir son pasos separados. Actualiza registry solo después de cumplir la transición definida en [reference/lifecycle.md](reference/lifecycle.md).
 9. Para estabilizar una dirección candidate aceptada, coordina harden con el dueño y solicita R0 a Coco. Stable conserva aprobación explícita y evidencias exigidas; no equivale a producción. La promoción requiere otra autorización explícita y sigue [reference/promotion.md](reference/promotion.md): Bruno implementa, Coco verifica la UI, Lima registra.
-10. Entrega a Mora registry actualizado, fuentes reales, compliance y evidencia. Mora documenta; Lima no escribe páginas del Hub.
+10. Entrega a Mora registry actualizado, fuentes reales, compliance y evidencia cuando la documentación formal esté solicitada o el usuario la elija según `.codex/qa/orchestration.md`. En un encargo ordinario sin esa autorización, devuelve la implementación revisada al coordinador para observaciones y decisión documental. El procedimiento completo `fruti test` conserva su página Mora obligatoria. Mora documenta; Lima no escribe páginas del Hub.
 
 ## Decisiones, devoluciones y finalización
 

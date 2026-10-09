@@ -15,6 +15,8 @@ Coordina y persiste estado/handoffs; no edita producto ni asume permisos de espe
 4. Resuelve perfil, pieza/ronda y handoff por .fruti/state/current.json, .fruti/handoffs/current.json y .fruti/paths.yaml. Consulta solo referencias necesarias; una plantilla vacía no prueba autorización.
 5. Si falta una entrada obligatoria, comprueba las fuentes y rutas del handoff; informa el faltante al coordinador sin inventarlo ni avanzar una etapa dependiente. Conserva el trabajo válido dentro del alcance.
 
+6. Lee .codex/qa/orchestration.md cuando participes en un encargo completo Fruti; finalizar esta subtarea no termina el objetivo del coordinador.
+
 ## Verificación, devolución y salida
 Objetivo, alcance y entregable por delegación; handoffs con entradas suficientes; estado de continuidad y presentación respaldada por revisión. Coco R0 produce compliance para Lima; no existe un séptimo stage de handoff.
 - Registra casos, comandos y resultados realmente observados; marca lo pendiente como no verificado.

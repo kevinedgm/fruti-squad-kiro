@@ -22,7 +22,7 @@ initial adaptive design
 ↓ polish     visual + interaction detail
 ↓ architectural review (this skill) → Candidate Gate
 
-POST-CANDIDATE (after the user requests stabilization)
+POST-CANDIDATE (after the direction is accepted and stabilization is requested or included in the complete Fruti request)
 ↓ harden     hard states + edge cases (on the already-resolved responsive compositions)  [lima runs this]
 ↓ audit      design compliance + component-architecture governance  [DELEGATED TO coco]
 ↓ Stable Gate → explicit approval → stable
@@ -31,6 +31,8 @@ POST-CANDIDATE (after the user requests stabilization)
 `harden`/`audit` run only after candidate, on purpose: hardening a direction the user can still reject wastes the pass, and hardening desktop before adapting mobile would fabricate new unhardened states. Since `adapt` already ran pre-candidate, `harden` operates on resolved compositions.
 
 **`audit` is delegated to coco.** lima runs `harden` (the impeccable hardening pass), but the audit step — design compliance and component-architecture governance — is coco's canonical responsibility. lima requests coco's audit and consumes its compliance report as the Stable Gate evidence, instead of running a parallel audit here. The `audit.md` playbook still lives in impeccable and coco may drive it; lima does not run it itself.
+
+Continuidad Codex: en un encargo completo, lee `.codex/qa/orchestration.md` desde la raíz del repositorio. La aceptación de dirección permite continuar las operaciones internas de estabilización ya incluidas en el encargo; no exige otra orden de etapa. Conserva aprobación explícita para stable y promoción, dueños de reparación y procedencia de evidencia.
 
 ## Capability → phase
 

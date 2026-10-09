@@ -140,11 +140,13 @@ Las rutas lógicas como `agentes/kiwi/references/geometry-contract.md` se resuel
 | 6 | Bruno | Estructura, contrato y F3 aprobados | Funcionalidad, API, eventos, teclado/foco y pruebas |
 | 7 | Coco | Implementación real de Bruno | R0 canónico: checks y revisión visual, compliance de la ronda |
 | 8 | Lima | Compliance vigente | Gate, lifecycle y registry; sin repetir auditoría |
-| 9 | Mora | Registry, contrato, código/API y QA | Hub sobre shell neutral, preview real y resultado multidimensional |
+| 9 | Usuario / Mora autorizada | Implementación revisada; registry, contrato, código/API y QA | Observaciones o decisión documental; si procede, Hub neutral y preview real |
+
+Lee [orchestration](../.codex/qa/orchestration.md) al iniciar el encargo y tras cada handoff. El especialista completa su etapa; el orquestador continúa el objetivo. Candidate no detiene harden, auditoría y demo ya autorizados. Kiwi genera tres alternativas realmente distintas y nuevas rondas ante rechazo. Un pedido de una pieza no autoriza rediseñar toda la página. La documentación formal Mora es opcional si no se solicitó, conservando registros internos y las exigencias documentales del contrato. El procedimiento completo `fruti test` mantiene sus requisitos propios, incluida página Mora; no certificarlo a partir de un encargo de implementación sin esa documentación.
 
 No ejecutar estos pasos dependientes en paralelo. Dar al especialista `artifact`, `round`, operación, perfil activo, lock/contrato, rutas de evidencia y delta del handoff. Esperar su entrega antes del siguiente dueño.
 
-Mantener la estrategia de lifecycle original: draft → refine (critique/distill/adapt/polish) → Candidate Gate → candidate → revisión/solicitud de estabilización → harden → auditoría Coco → Stable Gate → aprobación → stable → promoción a producción con aprobación explícita. Aprobar una etapa no aprueba automáticamente las siguientes.
+Mantener la estrategia de lifecycle original: draft → refine (critique/distill/adapt/polish) → Candidate Gate → candidate → dirección aceptada y estabilización solicitada o incluida en el encargo completo → harden → auditoría Coco → Stable Gate → aprobación → stable → promoción a producción con aprobación explícita. Aprobar una etapa no aprueba automáticamente las siguientes.
 
 Una instrucción explícita vigente del usuario tiene la prioridad original. Registrar la aprobación o desviación concreta con su alcance; no confundir un resultado de subagente, un build exitoso o una frase de un reporte con autorización del usuario.
 

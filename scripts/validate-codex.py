@@ -66,7 +66,7 @@ for p in (root/'.codex/agents').glob('*.toml'):
     data = tomllib.loads(p.read_text())
     check(all(data.get(k) for k in ['name','description','developer_instructions']), 'Invalid agent TOML: '+str(p))
     check('.kiro/' not in p.read_text(), 'Unadapted native agent path: '+str(p))
-for filename in ['pre-delivery.md','collect-browser.cjs','verify-delivery.cjs']:
+for filename in ['pre-delivery.md','orchestration.md','collect-browser.cjs','verify-delivery.cjs']:
     check((root/'.codex/qa'/filename).is_file(), 'Missing pre-delivery resource: '+filename)
 for name in ['kiwi','lima','coco','bruno','mora','fruti-squad']:
     check('.codex/qa/pre-delivery.md' in tomllib.loads((root/'.codex/agents'/f'{name}.toml').read_text())['developer_instructions'], 'Agent lacks pre-delivery gate: '+name)

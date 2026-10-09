@@ -47,7 +47,9 @@ Impeccable conserva sus procedimientos y recursos. Improve Animations audita y e
 
 ## Flujo y calidad
 
-Kiwi → aprobación estructural → Lima contrato → Coco F3/CSS → aprobación F3 → Bruno R3 → Coco R0 → Lima gate → Mora.
+Kiwi → aprobación estructural → Lima contrato → Coco F3/CSS → aprobación F3 → Bruno R3 → Coco R0 → Lima gate → entrega revisada → Mora cuando esté autorizada.
+
+Desde 0.3.11, [el protocolo de continuidad](.codex/qa/orchestration.md) mantiene el objetivo entre handoffs: tres alternativas estructurales distintas de Kiwi, nueva ronda ante rechazo, reparación/reprobación por dueño y estabilización interna sin pedir otra orden. Conserva las aprobaciones de estructura, F3, stable y producción. La documentación formal de Mora se solicita al revisar la implementación, salvo que el encargo ya la incluya; contratos, estado, API y evidencia siguen siendo obligatorios.
 
 Las etapas dependientes se ejecutan en orden. Un resultado de agente es evidencia, no aprobación del usuario. El registry conserva draft → candidate → stable y las aprobaciones de promoción. Los defectos regresan a su dueño; una ronda rechazada no se sobrescribe.
 

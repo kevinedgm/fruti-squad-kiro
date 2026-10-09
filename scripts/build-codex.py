@@ -110,6 +110,8 @@ for name in [*skills, 'fruti-squad']:
 4. Resuelve perfil, pieza/ronda y handoff por .fruti/state/current.json, .fruti/handoffs/current.json y .fruti/paths.yaml. Consulta solo referencias necesarias; una plantilla vacía no prueba autorización.
 5. Si falta una entrada obligatoria, comprueba las fuentes y rutas del handoff; informa el faltante al coordinador sin inventarlo ni avanzar una etapa dependiente. Conserva el trabajo válido dentro del alcance.
 
+6. Lee .codex/qa/orchestration.md cuando participes en un encargo completo Fruti; finalizar esta subtarea no termina el objetivo del coordinador.
+
 ## Verificación, devolución y salida
 {spec['output']}
 - Registra casos, comandos y resultados realmente observados; marca lo pendiente como no verificado.

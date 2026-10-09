@@ -27,6 +27,10 @@ assert(fs.existsSync(path.join(root,plugin.skills)));
 const target=fs.mkdtempSync(path.join(os.tmpdir(),'fruti-script-regression-'));
 try {
  install({target,quiet:true});
+ const orchestration='.codex/qa/orchestration.md';
+ assert.equal(fs.readFileSync(path.join(target,orchestration),'utf8'),read(orchestration), 'installed coordinator protocol must match package');
+ for(const role of ['kiwi','lima','coco','bruno','mora-docs','fruti-squad']) assert(read('.agents/skills/'+role+'/SKILL.md').includes(orchestration), 'role must explicitly load coordination protocol: '+role);
+ for(const role of ['kiwi','lima','coco','bruno','mora','fruti-squad']) assert(read('.codex/agents/'+role+'.toml').includes(orchestration), 'native agent must explicitly load coordination protocol: '+role);
  for(const skill of skills){
   const dir=path.join(target,'.agents/skills',skill);
   const ui=fs.readFileSync(path.join(dir,'agents/openai.yaml'),'utf8');

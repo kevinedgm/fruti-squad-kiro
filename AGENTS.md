@@ -6,7 +6,7 @@ Leer `.fruti/policy.md` al iniciar el flujo. Resolver `.fruti/state/current.json
 
 ## Propiedad y orden
 
-Kiwi (F0–F2 estructura) → Lima (clasificación/contrato) → Coco (F3/CSS) → Bruno (funcionalidad R3) → Coco (auditoría R0) → Lima (gate/lifecycle) → Mora (documentación verificada).
+Kiwi (F0–F2 estructura) → Lima (clasificación/contrato) → Coco (F3/CSS) → Bruno (funcionalidad R3) → Coco (auditoría R0) → Lima (gate/lifecycle) → Mora (documentación formal cuando esté autorizada).
 
 - Leer el SKILL.md del rol activado y su runtime; cargar únicamente las referencias de la operación activa. Un vínculo es un índice, no una orden de precarga.
 - Coordinar con el agente `fruti-squad` o la skill `$fruti-squad`. Delegar etapas a especialistas cuando las herramientas reales lo permitan; esperar la entrega antes del siguiente paso dependiente. No ejecutar etapas dependientes en paralelo.
@@ -14,6 +14,10 @@ Kiwi (F0–F2 estructura) → Lima (clasificación/contrato) → Coco (F3/CSS) �
 - Registrar aprobaciones reales del usuario. Una salida de subagente no es aprobación. Reutilizar autorización explícita vigente para el mismo alcance; cuando cambie materialmente, presentar la nueva ronda antes de continuar el trabajo dependiente.
 - No inventar datos, tokens, normas, APIs, previews ni resultados de verificaciones. Documentar faltantes y derivarlos al dueño.
 - Persistir handoffs y estado compactos con la ronda correcta, incluyendo las copias de ronda exigidas por la política. No reutilizar evidencia de otra ronda como evidencia recién generada.
+
+## Continuidad del encargo completo
+
+Lee `.codex/qa/orchestration.md` al iniciar un encargo Fruti y después de cada handoff. Para encargos completos, coordina el rediseño de la pieza solicitada hasta la implementación revisada; una petición limitada expresamente a wireframes, auditoría o documentación conserva ese límite; no amplíes la página ni cierres al llegar a candidate. Kiwi presenta tres alternativas estructurales distintas y repite la ronda si se rechazan. Conserva aprobación estructural y F3 antes de etapas dependientes. Tras aceptación de dirección, ejecuta estabilización interna y demo sin exigir otra orden del usuario; stable/promoción conservan aprobación real. Presenta el componente revisado para ajustes o documentación formal con Mora, activándola solo si está solicitada o el usuario la elige. Contratos, API, estado, handoffs y evidencia siguen siendo obligatorios.
 
 ## Revisión interna antes de la entrega
 

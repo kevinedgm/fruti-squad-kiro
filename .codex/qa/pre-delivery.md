@@ -2,6 +2,8 @@
 
 Este contrato operativo Codex aplica también a pedidos directos como «usa Kiwi para rediseñar este componente». Completa la evaluación y reparación dentro del alcance autorizado antes de pedir observaciones al usuario. Conserva todas las aprobaciones estructurales, F3 y lifecycle de `.fruti/policy.md`; revisión interna y aprobación del usuario son actos distintos.
 
+Lee `.codex/qa/orchestration.md` al continuar un encargo completo: este gate certifica una revisión, no termina el objetivo del orquestador. Las aprobaciones F2/F3 y lifecycle siguen vigentes; la documentación formal Mora se decide al entregar la implementación revisada, salvo que ya esté solicitada.
+
 ## Alcance del gate y comunicación
 
 Este gate certifica propuestas UI renderizadas F1/F2/F3/R3 y previews documentales. F0 comprueba flujo y decisiones; informes R0/M0, planes de motion, inicialización y correcciones puramente textuales no afirman aprobación visual. Pueden entregar hallazgos o hechos verificados indicando lo no verificado; no usar ese informe para eludir una compuerta UI/lifecycle.

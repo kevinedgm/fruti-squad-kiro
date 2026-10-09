@@ -35,7 +35,7 @@ Reaching candidate is automatic once the Candidate Gate passes. No hardening yet
 ### Phase 2 — reach stable (after user accepts the direction)
 
 ```text
-CANDIDATE → user review / iterations → user requests stabilization
+CANDIDATE → user review / iterations → stabilization requested explicitly or already included in the complete Fruti request
 → harden → audit
 → evaluate Stable Gate
 → PASS → explicit user approval
@@ -43,7 +43,7 @@ CANDIDATE → user review / iterations → user requests stabilization
 → registry: status=stable, qa.stable=true
 ```
 
-`harden` and `audit` run here, not before candidate.
+`harden` and `audit` run here, not before candidate. For a complete Codex Fruti request, read `.codex/qa/orchestration.md` from the repository root: after the direction is accepted, continue harden, audit and realistic-context evidence without waiting for another stage command. Explicit Stable Gate approval and production approval remain mandatory. A limited prototype request does not authorize the whole pipeline.
 
 ## Transition rules
 
