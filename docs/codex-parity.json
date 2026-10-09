@@ -25,7 +25,7 @@
       },
       {
         "before": "# Kiwi — protocolo de estructura (F0–F2)",
-        "after": "# Kiwi — protocolo de estructura (F0–F2)\n\n**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill. Una revisión pendiente exige continuar/esperar, no finalizar. IN_PROGRESS y RETURN son acciones internas con dueño; ejecutar las acciones del gate hasta cerrar la revisión. Evaluar cada alternativa contra los objetivos del pedido, no solo contra ausencia de overflow; simplificar controles redundantes y explicar beneficio/coste. Si falla el navegador, aplicar recuperación y registrar causa e intentos antes de declarar bloqueo terminal."
+        "after": "# Kiwi — protocolo de estructura (F0–F2)\n\n**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill. Una revisión pendiente exige continuar/esperar, no finalizar. IN_PROGRESS y RETURN son acciones internas con dueño; ejecutar las acciones del gate hasta cerrar la revisión. Evaluar cada alternativa contra los objetivos del pedido, no solo contra ausencia de overflow; simplificar controles redundantes y explicar beneficio/coste. Si falla el navegador, aplicar recuperación y registrar causa e intentos antes de declarar bloqueo terminal. Identidad y avisos: seguir `.codex/qa/identity.md`; los iconos de la skill no implican avatares nativos de subagentes."
       }
     ],
     "mora-docs/SKILL.md": [
@@ -39,7 +39,7 @@
       },
       {
         "before": "# mora — curadora documental del Design Hub",
-        "after": "# mora — curadora documental del Design Hub\n\n**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill. Una revisión pendiente exige continuar/esperar, no finalizar. IN_PROGRESS y RETURN son acciones internas con dueño; ejecutar las acciones del gate hasta cerrar la revisión. Evaluar cada alternativa contra los objetivos del pedido, no solo contra ausencia de overflow; simplificar controles redundantes y explicar beneficio/coste. Si falla el navegador, aplicar recuperación y registrar causa e intentos antes de declarar bloqueo terminal."
+        "after": "# mora — curadora documental del Design Hub\n\n**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill. Una revisión pendiente exige continuar/esperar, no finalizar. IN_PROGRESS y RETURN son acciones internas con dueño; ejecutar las acciones del gate hasta cerrar la revisión. Evaluar cada alternativa contra los objetivos del pedido, no solo contra ausencia de overflow; simplificar controles redundantes y explicar beneficio/coste. Si falla el navegador, aplicar recuperación y registrar causa e intentos antes de declarar bloqueo terminal. Identidad y avisos: seguir `.codex/qa/identity.md`; los iconos de la skill no implican avatares nativos de subagentes."
       }
     ],
     "kiwi/references/fidelidad.md": [
@@ -71,7 +71,7 @@
       },
       {
         "before": "# coco — protocolo obligatorio (agnóstico del proyecto)",
-        "after": "# coco — protocolo obligatorio (agnóstico del proyecto)\n\n**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill. Una revisión pendiente exige continuar/esperar, no finalizar. IN_PROGRESS y RETURN son acciones internas con dueño; ejecutar las acciones del gate hasta cerrar la revisión. Evaluar cada alternativa contra los objetivos del pedido, no solo contra ausencia de overflow; simplificar controles redundantes y explicar beneficio/coste. Si falla el navegador, aplicar recuperación y registrar causa e intentos antes de declarar bloqueo terminal."
+        "after": "# coco — protocolo obligatorio (agnóstico del proyecto)\n\n**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill. Una revisión pendiente exige continuar/esperar, no finalizar. IN_PROGRESS y RETURN son acciones internas con dueño; ejecutar las acciones del gate hasta cerrar la revisión. Evaluar cada alternativa contra los objetivos del pedido, no solo contra ausencia de overflow; simplificar controles redundantes y explicar beneficio/coste. Si falla el navegador, aplicar recuperación y registrar causa e intentos antes de declarar bloqueo terminal. Identidad y avisos: seguir `.codex/qa/identity.md`; los iconos de la skill no implican avatares nativos de subagentes."
       }
     ],
     "improve-animations/SKILL.md": [
@@ -117,13 +117,13 @@
     "lima/SKILL.md": [
       {
         "before": "# Adaptive UI System Architect",
-        "after": "# Adaptive UI System Architect\n\n**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill. Una revisión pendiente exige continuar/esperar, no finalizar. IN_PROGRESS y RETURN son acciones internas con dueño; ejecutar las acciones del gate hasta cerrar la revisión. Evaluar cada alternativa contra los objetivos del pedido, no solo contra ausencia de overflow; simplificar controles redundantes y explicar beneficio/coste. Si falla el navegador, aplicar recuperación y registrar causa e intentos antes de declarar bloqueo terminal."
+        "after": "# Adaptive UI System Architect\n\n**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill. Una revisión pendiente exige continuar/esperar, no finalizar. IN_PROGRESS y RETURN son acciones internas con dueño; ejecutar las acciones del gate hasta cerrar la revisión. Evaluar cada alternativa contra los objetivos del pedido, no solo contra ausencia de overflow; simplificar controles redundantes y explicar beneficio/coste. Si falla el navegador, aplicar recuperación y registrar causa e intentos antes de declarar bloqueo terminal. Identidad y avisos: seguir `.codex/qa/identity.md`; los iconos de la skill no implican avatares nativos de subagentes."
       }
     ],
     "bruno/SKILL.md": [
       {
         "before": "# Bruno · constructor funcional R3",
-        "after": "# Bruno · constructor funcional R3\n\n**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill. Una revisión pendiente exige continuar/esperar, no finalizar. IN_PROGRESS y RETURN son acciones internas con dueño; ejecutar las acciones del gate hasta cerrar la revisión. Evaluar cada alternativa contra los objetivos del pedido, no solo contra ausencia de overflow; simplificar controles redundantes y explicar beneficio/coste. Si falla el navegador, aplicar recuperación y registrar causa e intentos antes de declarar bloqueo terminal."
+        "after": "# Bruno · constructor funcional R3\n\n**Compuerta previa a entrega (Codex):** antes de presentar una propuesta o declarar cumplimiento, leer `.codex/qa/pre-delivery.md`. Producir evidencia real de navegador, entregar al revisor del rol y reparar/reprobar las devoluciones dentro del alcance autorizado. Solo `READY_FOR_USER_REVIEW` permite presentar la propuesta; un PASS estático nunca certifica responsive ni visual. Esto también aplica a una invocación directa de esta skill. Una revisión pendiente exige continuar/esperar, no finalizar. IN_PROGRESS y RETURN son acciones internas con dueño; ejecutar las acciones del gate hasta cerrar la revisión. Evaluar cada alternativa contra los objetivos del pedido, no solo contra ausencia de overflow; simplificar controles redundantes y explicar beneficio/coste. Si falla el navegador, aplicar recuperación y registrar causa e intentos antes de declarar bloqueo terminal. Identidad y avisos: seguir `.codex/qa/identity.md`; los iconos de la skill no implican avatares nativos de subagentes."
       }
     ],
     "kiwi/scripts/check_artifact.py": [
@@ -152,7 +152,7 @@
       "source": ".kiro/skills/bruno/SKILL.md",
       "target": ".agents/skills/bruno/SKILL.md",
       "source_sha256": "3e16429b679af8c9184db4b6ec9250afef3fe29f1ec4eba5f0795c9feaa350fc",
-      "target_sha256": "e6d6de272939baab7dc1e075a8a00e38746a6b7db7e2aa2f77a485d61ff31bc8"
+      "target_sha256": "ecf90886a6f36db496e4defc8cc3276b9216ec291ae67eda9f5c81b8e2548a00"
     },
     {
       "source": ".kiro/skills/bruno/references/component-contract.md",
@@ -170,7 +170,7 @@
       "source": ".kiro/skills/coco/SKILL.md",
       "target": ".agents/skills/coco/SKILL.md",
       "source_sha256": "5b40f8564adf173c4adb9dbde8b98f8589e155377a099a11cc4e702d752b973f",
-      "target_sha256": "5ae7e59d6bfa183b2875d2485ec704d600493704762fc9cf31143399f01844ee"
+      "target_sha256": "35ac1df02f9404355f0331070f4d1793a2c837d621558809958bfba626390f5b"
     },
     {
       "source": ".kiro/skills/coco/examples/data_contract.example.md",
@@ -230,7 +230,7 @@
       "source": ".kiro/skills/impeccable/agents/openai.yaml",
       "target": ".agents/skills/impeccable/agents/openai.yaml",
       "source_sha256": "cbd8bd68fa00935dd0f179adb169252629cf7ee443ea9dc7db77e7ef2cf77446",
-      "target_sha256": "be12aa13ff8244c8ff9517baec8ea4fdb58fc23988000f004277b177394b0128"
+      "target_sha256": "dfc44e6bf2c5052cd85e4a6425658f996057d9bf9da2a25b0cc9576383252eb7"
     },
     {
       "source": ".kiro/skills/impeccable/reference/adapt.md",
@@ -542,7 +542,7 @@
       "source": ".kiro/skills/kiwi/SKILL.md",
       "target": ".agents/skills/kiwi/SKILL.md",
       "source_sha256": "cb7cb4d5d7cb4d56dd1925fd452dbf12dc4fb58d6cbe13bc1c44ff8a088d3120",
-      "target_sha256": "cd916f121b0eac8b82bde5da965b8eb896efd842e47cdecfa310f81dd57bb097"
+      "target_sha256": "d719ae8ba33d998b3df13a83441a4e825aaaba811f933d62231977aba1c1fe6c"
     },
     {
       "source": ".kiro/skills/kiwi/assets/plantillas/brief.md",
@@ -638,7 +638,7 @@
       "source": ".kiro/skills/lima/SKILL.md",
       "target": ".agents/skills/lima/SKILL.md",
       "source_sha256": "9d188e6791228eb87d24992431b7e1e3923925eb331247344e675206cfcf0e89",
-      "target_sha256": "080aa1fb65a824a1be5bc9b942b821a00f4f3a6e70aaa9000887934f8d99764d"
+      "target_sha256": "0b8e9b302b50628b0ffb2961b63b6ac9cbc2c51db07a7b6f2c895d3e45d05ccb"
     },
     {
       "source": ".kiro/skills/lima/profiles/_TEMPLATE.md",
@@ -776,7 +776,7 @@
       "source": ".kiro/skills/mora-docs/SKILL.md",
       "target": ".agents/skills/mora-docs/SKILL.md",
       "source_sha256": "de72553da82331bc6840a130fba6b08305af134bc6be5db374ad8a41d7f4bde8",
-      "target_sha256": "cb30f3fcf0ea10d170829fb29831166d6808dabd4bfaae668db67e4a186c21e8"
+      "target_sha256": "dc975740b664b00290688e29b671b0fbda40d7e749018045736456f4401553fb"
     },
     {
       "source": ".kiro/skills/mora-docs/documentation-round-standard.md",

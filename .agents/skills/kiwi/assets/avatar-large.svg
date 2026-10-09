@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="uva-icon uva-kiwi" role="img" aria-label="Kiwi">
+  <style>.uva-kiwi{stroke-width:var(--uva-stroke,2.75)}.uva-kiwi:dir(rtl){transform:scaleX(-1)}.uva-kiwi--organizar{--uva-kiwi-contorno:uva-kiwi-trazar;--uva-kiwi-eje:uva-kiwi-trazar;--uva-kiwi-fila:uva-kiwi-trazar;--uva-kiwi-secundaria:uva-kiwi-trazar}.uva-kiwi__contorno{stroke-dasharray:1 1.1;animation:var(--uva-kiwi-contorno,none) 380ms cubic-bezier(.2,.6,.3,1) 0ms 1 both}.uva-kiwi__eje{stroke-dasharray:1 1.1;animation:var(--uva-kiwi-eje,none) 240ms cubic-bezier(.3,0,.2,1) 320ms 1 both}.uva-kiwi__fila{stroke-dasharray:1 1.1;animation:var(--uva-kiwi-fila,none) 220ms cubic-bezier(.3,0,.2,1) 540ms 1 both}.uva-kiwi__secundaria{stroke-dasharray:1 1.1;animation:var(--uva-kiwi-secundaria,none) 180ms cubic-bezier(.3,0,.2,1) 740ms 1 both}@keyframes uva-kiwi-trazar{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}@media (prefers-reduced-motion:reduce){.uva-kiwi--organizar{--uva-kiwi-contorno:none;--uva-kiwi-eje:none;--uva-kiwi-fila:none;--uva-kiwi-secundaria:none}}</style>
+  <rect width="24" height="24" rx="5.25" fill="#161616"/>
+  <g transform="translate(12 12) scale(0.82) translate(-12 -12)" fill="none" stroke="#7FCF5B" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
+  <ellipse class="uva-kiwi__contorno" pathLength="1" cx="12" cy="12" rx="8.75" ry="7.05"/>
+  <path class="uva-kiwi__eje" pathLength="1" d="M9 5.73V18.27"/>
+  <path class="uva-kiwi__fila" pathLength="1" d="M9 11H20.31"/>
+  <path class="uva-kiwi__secundaria" pathLength="1" d="M15 11V18.27"/>
+  </g>
+</svg>

@@ -46,7 +46,7 @@ for name in [*skills, 'fruti-squad']:
     skill = skills.get(name, 'fruti-squad')
     instructions = f'''Leer AGENTS.md y .fruti/policy.md. Resolver el estado, perfil activo y handoff desde .fruti/state/current.json; resolver rutas lógicas por .fruti/paths.yaml.
 Leer .agents/skills/{skill}/SKILL.md al activar esta skill. El runtime del dueño selecciona la operación y solo sus referencias necesarias; no precargar directorios.
-Antes de entregar incluso un pedido directo, leer .codex/qa/pre-delivery.md y ejecutar productor → revisor → reparación → reprobación. Una revisión pendiente no termina el encargo: esperar su resultado y continuar. Ejecutar las acciones con dueño de IN_PROGRESS/RETURN; revisar cada alternativa contra los objetivos del pedido, no solo geometría, y explicar beneficio/coste. Ante fallo de navegador, aplicar recuperación y registrar el bloqueo concreto si no hay alternativa permitida. Una salida estática no es aprobación UI; exigir evidencia vigente y gate READY_FOR_USER_REVIEW antes de presentar propuestas.
+Para identidad y avisos de ejecución, leer .codex/qa/identity.md; usar el avatar del rol solo con un mecanismo de imagen compatible con el host, sin prometer cambiar avisos nativos. Antes de entregar incluso un pedido directo, leer .codex/qa/pre-delivery.md y ejecutar productor → revisor → reparación → reprobación. Una revisión pendiente no termina el encargo: esperar su resultado y continuar. Ejecutar las acciones con dueño de IN_PROGRESS/RETURN; revisar cada alternativa contra los objetivos del pedido, no solo geometría, y explicar beneficio/coste. Ante fallo de navegador, aplicar recuperación y registrar el bloqueo concreto si no hay alternativa permitida. Una salida estática no es aprobación UI; exigir evidencia vigente y gate READY_FOR_USER_REVIEW antes de presentar propuestas.
 La política compartida y los contratos canónicos resuelven atribuciones heredadas: Kiwi F0–F2; Lima gobierno; Coco F3/CSS y R0; Bruno funcionalidad R3; Mora documentación verificada. Respetar locks y aprobaciones vigentes.
 Las reglas permissions de Kiro son intención de control, no configuración nativa de Codex. Usar permisos/sandbox del host. No ejecutar rm -rf, sudo, git reset --hard ni git push. No hacer commit. El orquestador coordina sin editar producto; cada especialista limita sus escrituras a su propiedad y evidencia/handoffs.
 No interpretar un resultado de agente como aprobación del usuario. Si falta una aprobación requerida, devolver la propuesta concreta y detener el downstream dependiente. No inventar herramientas ni simular delegaciones. Si no hay subagentes, ejecutar los mismos roles secuencialmente con la misma separación y declararlo.
@@ -57,11 +57,18 @@ No interpretar un resultado de agente como aprobación del usuario. Si falta una
 for src in (ROOT / '.agents/skills/impeccable/agents').glob('*.toml'):
     write('.codex/agents/' + src.name, src.read_text())
 
+avatars = json.loads((ROOT / '.fruti/identity/avatars.json').read_text())['members']
 for skill in [*skills.values(), 'impeccable', 'improve-animations', 'fruti-squad']:
     labels = {'mora-docs':'Mora · Documentation','fruti-squad':'Fruti Squad · Orchestrator','improve-animations':'Improve Animations'}
     label = labels.get(skill, skill.capitalize())
     interface = {'display_name':label, 'short_description':f'{label}: contratos y evidencia UI', 'default_prompt':f'Usa ${skill} para resolver esta solicitud respetando el flujo y contratos de Fruti Squad.'}
-    write(f'.agents/skills/{skill}/agents/openai.yaml', yaml.safe_dump({'interface':interface}, allow_unicode=True, sort_keys=False))
+    # Reuse the canonical tiles unchanged; portable even when a skill is installed alone.
+    member = 'mora' if skill == 'mora-docs' else skill if skill in avatars else 'fruti-squad'
+    avatar = avatars[member]
+    for size in ['small', 'large']:
+        write(f'.agents/skills/{skill}/assets/avatar-{size}.svg', (ROOT / avatar['tile']).read_text())
+    interface.update({'icon_small':'./assets/avatar-small.svg', 'icon_large':'./assets/avatar-large.svg', 'brand_color':avatar['accent']})
+    write(f'.agents/skills/{skill}/agents/openai.yaml', 'interface:\n' + ''.join(f'  {key}: {json.dumps(value, ensure_ascii=False)}\n' for key, value in interface.items()))
 
 # Preserve all shared contracts/runtime/evidence formats; only path mapping changes.
 paths = yaml.safe_load((ROOT / '.fruti/paths.yaml').read_text())

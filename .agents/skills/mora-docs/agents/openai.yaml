@@ -1,5 +1,7 @@
 interface:
-  display_name: Mora · Documentation
-  short_description: 'Mora · Documentation: contratos y evidencia UI'
-  default_prompt: Usa $mora-docs para resolver esta solicitud respetando el flujo
-    y contratos de Fruti Squad.
+  display_name: "Mora · Documentation"
+  short_description: "Mora · Documentation: contratos y evidencia UI"
+  default_prompt: "Usa $mora-docs para resolver esta solicitud respetando el flujo y contratos de Fruti Squad."
+  icon_small: "./assets/avatar-small.svg"
+  icon_large: "./assets/avatar-large.svg"
+  brand_color: "#8468E8"

@@ -44,6 +44,14 @@ for p in (root/'.agents/skills').glob('*/SKILL.md'):
     check(0<len(meta['description'])<=1024, 'Invalid description length: '+str(p))
     check('TODO:' not in parts[2], 'Unfinished generated skill: '+str(p))
     interface = yaml.safe_load((p.parent/'agents/openai.yaml').read_text())['interface']
+    member = 'mora' if meta['name']=='mora-docs' else meta['name'] if meta['name'] in ['kiwi','lima','coco','bruno','fruti-squad'] else 'fruti-squad'
+    avatar = json.loads((root/'.fruti/identity/avatars.json').read_text())['members'][member]
+    for field in ['icon_small','icon_large']:
+        ref = pathlib.Path(interface.get(field,''))
+        check(not ref.is_absolute() and '..' not in ref.parts and str(ref).startswith('assets/'), 'Unsafe/missing icon reference: '+str(p))
+        icon = p.parent/ref
+        check(icon.is_file() and icon.read_bytes()==(root/avatar['tile']).read_bytes(), 'Non-portable or noncanonical avatar: '+str(p))
+    check(interface.get('brand_color')==avatar['accent'], 'Avatar brand color mismatch: '+str(p))
     check('$'+meta['name'] in interface['default_prompt'], 'Invalid default_prompt: '+str(p))
     check(25<=len(interface['short_description'])<=64, 'Invalid UI short description: '+str(p))
 for p in (root/'.codex/agents').glob('*.toml'):

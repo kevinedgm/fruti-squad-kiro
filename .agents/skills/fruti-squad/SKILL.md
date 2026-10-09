@@ -32,3 +32,5 @@ Si no hay herramientas reales de delegación, declarar ejecución secuencial de 
 Leer `docs/codex-guia-operativa.md` solo para dudas de instalación, autoría o compatibilidad de host. No inventar comandos `fruti test`/`fruti foundations`: son procedimientos documentados, no verbos de la CLI distribuida.
 
 IN_PROGRESS y RETURN del gate son trabajo interno: ejecutar sus acciones con dueño, completar la matriz y esperar al revisor. No cerrar el turno por QA pendiente. El revisor debe evaluar cada alternativa contra los objetivos observables del pedido y devolver controles redundantes o propuestas que no resuelven el problema original. Explicar beneficio y coste al presentar la propuesta ya revisada.
+
+Para identidad y avisos de ejecución, seguir `.codex/qa/identity.md`. Los iconos de las skills no implican personalización de avisos nativos de subagentes.

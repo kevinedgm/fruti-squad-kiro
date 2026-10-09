@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="uva-icon uva-lima" role="img" aria-label="Lima">
+  <style>.uva-lima{stroke-width:var(--uva-stroke,2.25)}.uva-lima--validar{--uva-lima-contenedor:uva-lima-trazar;--uva-lima-entrada:uva-lima-trazar;--uva-lima-eje:uva-lima-trazar;--uva-lima-salida:uva-lima-trazar}.uva-lima__contenedor{stroke-dasharray:1 1.1;animation:var(--uva-lima-contenedor,none) 360ms cubic-bezier(.2,.6,.3,1) 0ms 1 both}.uva-lima__entrada{stroke-dasharray:1 1.1;animation:var(--uva-lima-entrada,none) 160ms cubic-bezier(.3,0,.2,1) 300ms 1 both}.uva-lima__eje{stroke-dasharray:1 1.1;animation:var(--uva-lima-eje,none) 220ms cubic-bezier(.3,0,.2,1) 440ms 1 both}.uva-lima__salida{stroke-dasharray:1 1.1;animation:var(--uva-lima-salida,none) 160ms cubic-bezier(.3,0,.2,1) 640ms 1 both}@keyframes uva-lima-trazar{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}@media (prefers-reduced-motion:reduce){.uva-lima--validar{--uva-lima-contenedor:none;--uva-lima-entrada:none;--uva-lima-eje:none;--uva-lima-salida:none}}</style>
+  <rect width="24" height="24" rx="5.25" fill="#161616"/>
+  <g transform="translate(12 12) scale(0.92) translate(-12 -12)" fill="none" stroke="#C9F36B" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round">
+  <path class="uva-lima__contenedor" pathLength="1" d="M12.00 3.15 L19.66 7.57 L19.66 16.42 L12.00 20.85 L4.34 16.43 L4.34 7.57Z"/>
+  <path class="uva-lima__entrada" pathLength="1" d="M9.6 9.75H14.4"/>
+  <path class="uva-lima__eje" pathLength="1" d="M12 9.75V14.25"/>
+  <path class="uva-lima__salida" pathLength="1" d="M9.6 14.25H14.4"/>
+  </g>
+</svg>

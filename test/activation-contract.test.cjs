@@ -26,6 +26,20 @@ assert(fs.existsSync(path.join(root,plugin.skills)));
 const target=fs.mkdtempSync(path.join(os.tmpdir(),'fruti-script-regression-'));
 try {
  install({target,quiet:true});
+ for(const skill of skills){
+  const dir=path.join(target,'.agents/skills',skill);
+  const ui=fs.readFileSync(path.join(dir,'agents/openai.yaml'),'utf8');
+  for(const field of ['icon_small','icon_large']){
+   const match=ui.match(new RegExp('  '+field+': (.+)'));
+   assert(match,'missing installed icon metadata: '+skill);
+   const relative=JSON.parse(match[1]);
+   assert(relative.startsWith('./assets/')&&!relative.includes('..'));
+   const asset=path.join(dir,relative);
+   assert(fs.existsSync(asset),'installed icon file missing: '+skill);
+   assert(fs.readFileSync(asset,'utf8').includes('<svg'),'expected SVG asset: '+skill);
+  }
+ }
+
  const kiwiScript='.agents/skills/kiwi/scripts/check_artifact.py';
  assert(kiwi.includes(kiwiScript));
  const help=execFileSync('python3',[kiwiScript,'--help'],{cwd:target,encoding:'utf8'});

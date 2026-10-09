@@ -1,5 +1,7 @@
 interface:
-  display_name: Coco
-  short_description: 'Coco: contratos y evidencia UI'
-  default_prompt: Usa $coco para resolver esta solicitud respetando el flujo y contratos
-    de Fruti Squad.
+  display_name: "Coco"
+  short_description: "Coco: contratos y evidencia UI"
+  default_prompt: "Usa $coco para resolver esta solicitud respetando el flujo y contratos de Fruti Squad."
+  icon_small: "./assets/avatar-small.svg"
+  icon_large: "./assets/avatar-large.svg"
+  brand_color: "#C89A68"
