@@ -6,6 +6,8 @@ Leer `.fruti/policy.md` al iniciar el flujo. Resolver `.fruti/state/current.json
 
 ## Propiedad y orden
 
+Antes de investigar o diseñar UI, lee `.codex/qa/project-components.md`, el perfil activo y `.fruti/project.json` si existe. Comprueba framework, componentes reutilizables y nomenclatura aislada de estilos; registra decisiones y evidencia en brief/contrato/handoff. La configuración no autoriza cambiar stack, contratos ni bibliotecas.
+
 Kiwi (F0–F2 estructura) → Lima (clasificación/contrato) → Coco (F3/CSS) → Bruno (funcionalidad R3) → Coco (auditoría R0) → Lima (gate/lifecycle) → Mora (documentación formal cuando esté autorizada).
 
 - Leer el SKILL.md del rol activado y su runtime; cargar únicamente las referencias de la operación activa. Un vínculo es un índice, no una orden de precarga.

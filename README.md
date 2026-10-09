@@ -40,6 +40,22 @@ npx fruti-squad-codex theme
 
 ## Pedir trabajo
 
+### Base de componentes y estilos propios
+
+Desde 0.3.16 puedes configurar un proyecto existente sin reinicializarlo:
+
+```bash
+npx fruti-squad-codex project \
+  --framework vue3 \
+  --components grana-ui/src/components \
+  --css-prefix nsa-ui
+npx fruti-squad-codex project --show
+```
+
+La carpeta debe existir dentro del proyecto. Repite `--components` para varias raíces; proporcionar la opción reemplaza la lista anterior. También admite estas opciones `init`. El comando conserva los campos que no cambias, el perfil, tema, estado y componentes. Escribe `.fruti/project.json`, que los roles leen junto al perfil activo; framework y versiones se contrastan con el código instalado, sin migraciones automáticas.
+
+Antes de crear controles, Kiwi inventaría candidatos reales y Lima decide reutilización/composición o justifica una pieza nueva. Coco y Bruno integran la API comprobada. Los estilos nuevos usan, por ejemplo, `.nsa-ui-stat-filter__title`; preservan tokens y clases públicas existentes y evitan sobrescrituras globales. Coco comprueba convivencia con las bibliotecas realmente presentes en navegador. El protocolo canónico es [.codex/qa/project-components.md](.codex/qa/project-components.md); la configuración no ejecuta por sí sola una auditoría ni garantiza aislamiento.
+
 ```text
 Usa $fruti-squad para diseñar este formulario con el flujo completo.
 ```
@@ -90,7 +106,7 @@ Las pruebas validan instalación, preservación de conflictos, perfiles, tematiz
 
 Codex usa `.agents/skills` y agentes TOML bajo `.codex/agents`. Los especialistas declaran modelo/esfuerzo por actividad; el coordinador usa Sol medium para enrutamiento contextual. Herramientas y permisos se heredan del host. La selección directa de una skill conserva el modelo de la sesión. Consulta [asignación de recursos](docs/codex-models-audit.md) para defaults, escalamiento y disponibilidad pendiente. Las reglas Kiro de herramientas y permisos no tienen traducción automática a ACL de Codex; el adaptador conserva sus límites como instrucciones.
 
-Si no hay subagentes, declarar ejecución secuencial de roles con las mismas compuertas. Si no hay navegador o detector disponible, reportar lo no verificado. La política menciona `fruti test` y `fruti foundations` como procedimientos; esta CLI solo implementa `install`, `init`, `theme` y `help`.
+Si no hay subagentes, declarar ejecución secuencial de roles con las mismas compuertas. Si no hay navegador o detector disponible, reportar lo no verificado. La política menciona `fruti test` y `fruti foundations` como procedimientos; esta CLI implementa `install`, `init`, `theme`, `project`, `plugin` y `help`.
 
 Ver la [guía operativa](docs/codex-guia-operativa.md) para estructura completa, contratos, aprobaciones, creación de skills/agentes, tematización, verificaciones y límites heredados.
 

@@ -4,6 +4,8 @@ Todas las rutas de este protocolo son relativas a la raíz del repositorio consu
 
 ## Encargo y alcance
 
+Al iniciar la investigación y delegar cada etapa, lee `.codex/qa/project-components.md` y transmite raíces de componentes, framework comprobado y namespace. La tabla de reutilización viaja en artefactos/handoffs existentes; no recrees controles ni amplíes permisos sobre bibliotecas por conveniencia.
+
 - Una invocación de Fruti Squad para crear o rediseñar una pieza comprende investigación, alternativas, contrato, F3, implementación R3, auditoría, reparación y entrega de la pieza solicitada. No exige al usuario pedir las etapas por separado.
 - Registra el objetivo completo, la superficie exacta y el criterio de entrega en el brief y handoffs existentes. Un pedido limitado expresamente a wireframes, auditoría o documentación conserva ese límite.
 - Inspecciona los padres y usos necesarios para comprender y probar la pieza; esa inspección no autoriza rediseñar toda la página. Conserva API, funciones y superficies ajenas al alcance.

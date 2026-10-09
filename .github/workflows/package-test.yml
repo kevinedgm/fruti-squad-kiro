@@ -61,6 +61,11 @@ jobs:
           test -s .fruti/theme/tokens.css
           test -s .fruti/theme/tokens.json
           npx fruti-squad-codex theme
+          mkdir -p src/components
+          npx fruti-squad-codex project --framework vue3 --components src/components --css-prefix nsa-ui
+          test -s .fruti/project.json
+          test -s .codex/qa/project-components.md
+          npx fruti-squad-codex project --show
           npx fruti-squad-codex plugin --dry-run
           npx fruti-squad-codex plugin
           test -f .agents/plugins/marketplace.json
