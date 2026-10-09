@@ -3,6 +3,17 @@ const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypt
 const hash=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
 const producers={F1:'kiwi',F2:'kiwi',F3:'coco',R3:'bruno',DOCS:'mora'};
 const reviewers={F1:'lima',F2:'lima',F3:'lima',R3:'coco',DOCS:'coco'};
+function taskContractValid(c){
+ const t=c.task_contract;
+ const indexes=(values,list)=>Array.isArray(values)&&values.length>0&&new Set(values).size===values.length&&values.every(i=>Number.isInteger(i)&&i>=0&&i<list.length);
+ if(typeof t?.description!=='string'||!t.description.trim()||!indexes(t.action_indexes,c.actions||[])||!indexes(t.outcome_indexes,c.expected||[]))return false;
+ if(t.outcome_indexes.some(i=>{const x=c.expected[i];return !x||!['text','textIncludes','visible','focused','attribute','url','urlIncludes'].some(k=>x[k]!==undefined)}))return false;
+ const start=Math.min(...t.action_indexes);
+ if(t.action_indexes.length!==c.actions.length-start||t.action_indexes.some((value,i)=>value!==start+i))return false; // All actions after setup belong to the task; no trailing setup can fake its outcome.
+ const actions=t.action_indexes.map(i=>c.actions[i]);
+ if(actions.some(a=>a.selector&&/\[\s*data-(v|w|s)\s*(?:[=~|^$*]|\])/.test(a.selector)))return false; // Preview controls set up cases, not component tasks.
+ return actions.some(a=>['click','fill'].includes(a.type)||(a.type==='press'&&!/^(Shift\+)?Tab$/.test(a.key)))&&(!c.keyboard||actions.some(a=>a.type==='press'&&!/^(Shift\+)?Tab$/.test(a.key)));
+}
 function verify(plan,evidence,root=process.cwd(),planPath) {
  const errors=[],check=(ok,msg)=>{if(!ok)errors.push(msg)};
  const file=rel=>{check(typeof rel==='string'&&!path.isAbsolute(rel)&&!rel.split(/[\\/]/).includes('..'),'unsafe evidence path');return typeof rel==='string'?path.resolve(root,rel):''};
@@ -40,7 +51,7 @@ function verify(plan,evidence,root=process.cwd(),planPath) {
   for(const k of ['url','width','height','state','zoom','variant'])check(run[k]===c[k],`case mismatch ${c.id}: ${k}`);
   check(JSON.stringify(run.actions_executed)===JSON.stringify(c.actions||[]),'interaction trace mismatch: '+c.id);
   check(JSON.stringify(run.expected_checked)===JSON.stringify(c.expected||[]),'expected state not checked: '+c.id);
-  if(c.task)check(run.checks?.task_completion==='PASS','task incomplete: '+c.id);
+  if(c.task){check(taskContractValid(c),'component task contract missing/invalid: '+c.id);check(run.checks?.task_completion==='PASS'&&run.task_outcome_changed===true,'task incomplete/unchanged: '+c.id);}
   if(c.keyboard)check(run.checks?.keyboard==='PASS','keyboard not checked: '+c.id);
   check(run.browser==='chromium'||run.browser==='firefox'||run.browser==='webkit','real browser required');
   check(Array.isArray(run.findings)&&run.findings.length===0,'unresolved browser findings: '+c.id);
@@ -87,4 +98,4 @@ if(require.main===module){
   const result=verify(JSON.parse(fs.readFileSync(planPath)),JSON.parse(fs.readFileSync(evidencePath)),process.cwd(),planPath);console.log(JSON.stringify(result,null,2));process.exitCode=result.errors.length?1:0;
  }catch(e){console.error('IN_PROGRESS: repair plan/evidence input:',e.message);process.exitCode=1}
 }
-module.exports={verify,hash};
+module.exports={verify,hash,taskContractValid};

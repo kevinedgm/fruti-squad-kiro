@@ -12,6 +12,7 @@ function plan(root,url){
  p.cases.find(c=>c.id==='normal-1440').keyboard=true;
  p.cases.find(c=>c.id==='normal-1440').actions=[{type:'press',key:'Tab'},{type:'press',key:'Enter'}];
  p.cases.find(c=>c.id==='normal-1440').expected=[{selector:'#action',text:'Hecho'}];
+ for(const c of p.cases.filter(c=>c.task))c.task_contract={description:'Activate component action and verify its result',action_indexes:[c.keyboard?1:0],outcome_indexes:[0]};
  for(const c of p.cases.filter(c=>c.state==='long-content'))c.expected=[{selector:'h1',textIncludes:'extraordinariamente'}];
  fs.writeFileSync(path.join(root,'plan.json'),JSON.stringify(p));return p;
 }

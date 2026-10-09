@@ -1,6 +1,6 @@
 // Synthetic evidence tests exercise integrity/coverage, not screenshot appearance.
 const assert=require('node:assert/strict'),fs=require('node:fs'),os=require('node:os'),path=require('node:path');
-const {verify,hash}=require('../.codex/qa/verify-delivery.cjs');
+const {verify,hash,taskContractValid}=require('../.codex/qa/verify-delivery.cjs');
 const {plan,review}=require('./delivery-fixtures.cjs');
 const png=(width,height)=>{const b=Buffer.alloc(24);Buffer.from([137,80,78,71,13,10,26,10]).copy(b);b.writeUInt32BE(width,16);b.writeUInt32BE(height,20);return b}; // synthetic PNG header; no rendering claim
 const root=fs.mkdtempSync(path.join(os.tmpdir(),'fruti-gate-'));
@@ -10,7 +10,7 @@ try{
  const runs=p.cases.map(c=>{
   const shots=['viewport','full-page'].map(kind=>{const rel=c.id+'-'+kind+'.png';fs.writeFileSync(path.join(root,rel),png(c.width,c.height));return {kind,path:rel,sha256:hash(path.join(root,rel))}});
   const rel=c.id+'-trace.zip';fs.writeFileSync(path.join(root,rel),Buffer.from([80,75,3,4]));
-  return {...c,case_id:c.id,browser:'chromium',zoom_method:c.zoom===2?'css-zoom':'none',errors:[],findings:[],actions_executed:c.actions||[],expected_checked:c.expected||[],checks:{task_completion:c.task?'PASS':'NOT_APPLICABLE',keyboard:c.keyboard?'PASS':'NOT_APPLICABLE',...Object.fromEntries(['horizontal_overflow','clipping','required_content','required_actions'].map(k=>[k,'PASS']))},screenshots:shots,trace:{path:rel,sha256:hash(path.join(root,rel))}};
+  return {...c,case_id:c.id,task_outcome_changed:!!c.task,browser:'chromium',zoom_method:c.zoom===2?'css-zoom':'none',errors:[],findings:[],actions_executed:c.actions||[],expected_checked:c.expected||[],checks:{task_completion:c.task?'PASS':'NOT_APPLICABLE',keyboard:c.keyboard?'PASS':'NOT_APPLICABLE',...Object.fromEntries(['horizontal_overflow','clipping','required_content','required_actions'].map(k=>[k,'PASS']))},screenshots:shots,trace:{path:rel,sha256:hash(path.join(root,rel))}};
  });
  const good=review({...Object.fromEntries(['artifact','round','revision','stage','producer'].map(k=>[k,p[k]])),inputs:p.inputs,plan_sha256:hash(path.join(root,'plan.json')),runs});
  const run=e=>verify(p,e,root,path.join(root,'plan.json'));
@@ -37,6 +37,15 @@ try{
  reject(e=>e.review.findings=[{rule_id:'CLIP',status:'closed',retest_case_ids:[]}],'closure without retest');
  reject(e=>e.runs[0].errors=['Console error'],'browser errors');
  reject(e=>e.plan_sha256='old','modified plan');
+ const weak=structuredClone(p);const keyboard=weak.cases.find(c=>c.keyboard);
+ keyboard.actions=[{type:'press',key:'Tab'}];keyboard.task_contract.action_indexes=[0];
+ assert(!taskContractValid(keyboard),'Tab-only contract invalid even before evidence evaluation');
+ assert.notEqual(verify(weak,good,root,path.join(root,'plan.json')).status,'READY_FOR_USER_REVIEW','Tab alone does not execute a component task');
+ const setup=structuredClone(p);const mobile=setup.cases.find(c=>c.task&&!c.keyboard);
+ mobile.actions=[{type:'click',selector:'[data-v="a"]'}];
+ assert.notEqual(verify(setup,good,root,path.join(root,'plan.json')).status,'READY_FOR_USER_REVIEW','preview selection is not a component task');
+ assert(!taskContractValid({task:true,actions:[{type:'click',selector:'#inert'},{type:'click',selector:'[data-s="done"]'}],expected:[{selector:'h1',text:'Changed'}],task_contract:{description:'Task',action_indexes:[0],outcome_indexes:[0]}}),'trailing setup cannot fake task outcome');
+ assert(!taskContractValid({task:true,actions:[{type:'click',selector:'[data-s = "long"]'}],expected:[{selector:'h1',text:'Changed'}],task_contract:{description:'Task',action_indexes:[0],outcome_indexes:[0]}}),'preview filter handles whitespace');
  const pending=structuredClone(good);pending.review={status:'NOT_REVIEWED'};
  assert.equal(run(pending).status,'IN_PROGRESS','pending review continues internally');
  assert(run(pending).next_actions.some(a=>a.owner==='lima'));
@@ -52,6 +61,7 @@ try{
  const staleBlock=structuredClone(incomplete);staleBlock.plan_sha256='old';staleBlock.blocker.plan_sha256='old';
  assert.equal(run(staleBlock).status,'IN_PROGRESS','obsolete blocker cannot end current revision');
  reject(e=>e.review.objective_checks[0].evidence_case_ids=['normal-320'],'goal must be contrasted in mobile and expanded');
+ reject(e=>e.runs.find(r=>r.task).task_outcome_changed=false,'unchanged task outcome cannot pass');
  reject(e=>e.review.objective_checks=[],'review must address user objective');
  fs.appendFileSync(path.join(root,'component.html'),'<!-- revision changed -->');
  assert.equal(run(good).status,'IN_PROGRESS','changed source invalidates evidence');

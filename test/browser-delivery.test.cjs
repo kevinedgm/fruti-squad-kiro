@@ -18,6 +18,8 @@ function html(clip){return `<!doctype html><html lang="es"><head><meta name="vie
   const staticOutput=execFileSync('python3',[path.join(repo,'.agents/skills/kiwi/scripts/check_artifact.py'),'component.html','--fidelidad','F2'],{encoding:'utf8'});
   assert(staticOutput.includes('0 errores · 0 avisos'));
   let evidence=await collect('plan.json','bad/evidence.json',tooling);
+  assert.equal(JSON.parse(fs.readFileSync('bad/continuation.json')).status,'RETURN','capture failure automatically returns internal repair work');
+  assert(JSON.parse(fs.readFileSync('bad/continuation.json')).next_actions.some(a=>a.owner==='kiwi'));
   assert(evidence.runs.some(r=>r.findings?.some(f=>f.includes('clipping'))),'actual browser catches clipped content');
   assert.equal(verify(p,review(evidence),root,'plan.json').status,'RETURN','even signed review cannot override clipping');
   fs.writeFileSync('component.html',html(false));p=plan(root,url);
@@ -26,6 +28,43 @@ function html(clip){return `<!doctype html><html lang="es"><head><meta name="vie
   assert.equal(verify(p,evidence,root,'plan.json').status,'IN_PROGRESS','actual capture still needs independent image review');
   // Synthetic review is ONLY for testing gate plumbing, not a product acceptance claim.
   assert.equal(verify(p,review(evidence),root,'plan.json').status,'READY_FOR_USER_REVIEW');
+  assert.equal(JSON.parse(fs.readFileSync('fixed/continuation.json')).status,'IN_PROGRESS','successful capture continues to independent review');
+  const missing=plan(root,url);missing.cases.find(c=>c.id==='normal-390').actions=[{type:'click',selector:'[data-w="390"]'}];
+  fs.writeFileSync('plan.json',JSON.stringify(missing));
+  const mismatch=await collect('plan.json','mismatch/evidence.json',tooling);
+  assert(mismatch.runs.find(c=>c.case_id==='normal-390').errors.some(e=>e.includes('Missing action target')));
+  const next=JSON.parse(fs.readFileSync('mismatch/continuation.json'));
+  assert.equal(next.status,'RETURN','390/393 mismatch is repairable, not terminal BLOCKED');
+  assert(next.failed_cases.some(c=>c.id==='normal-390'));
+  fs.writeFileSync('component.html',html(false).replace('<header>','<div class="wf-frame" style="height:150px;overflow:hidden"><header>').replace('</header>','</header></div>'));
+  const framed=plan(root,url);
+  const frameEvidence=await collect('plan.json','frame/evidence.json',tooling);
+  assert(frameEvidence.runs.find(c=>c.case_id==='zoom').findings.some(f=>f.includes('clipping')),'fixed preview frame clips enlarged content');
+  assert.equal(JSON.parse(fs.readFileSync('frame/continuation.json')).status,'RETURN','preview framing defect remains a repair, never waived');
+  fs.writeFileSync('component.html',html(false));plan(root,url);
+  const repairedFrame=await collect('plan.json','frame-fixed/evidence.json',tooling);
+  assert(repairedFrame.runs.every(c=>!c.errors.length&&!c.findings.length));
+  assert.equal(JSON.parse(fs.readFileSync('frame-fixed/continuation.json')).status,'IN_PROGRESS');
+  const Module=require('node:module'),originalLoad=Module._load;
+  fs.mkdirSync('unavailable',{recursive:true});fs.writeFileSync('unavailable/continuation.json',JSON.stringify({status:'READY_FOR_USER_REVIEW'}));
+  try{
+   Module._load=function(request,...args){if(request==='playwright')throw Error('simulated missing dependency');return originalLoad.call(this,request,...args)};
+   await assert.rejects(collect('plan.json','unavailable/evidence.json'),/Playwright unavailable/);
+  }finally{Module._load=originalLoad}
+  assert.equal(JSON.parse(fs.readFileSync('unavailable/continuation.json')).status,'IN_PROGRESS','missing tooling cannot retain READY');
+  fs.writeFileSync('invalid-plan.json','invalid JSON');fs.writeFileSync('unavailable/continuation.json',JSON.stringify({status:'READY_FOR_USER_REVIEW'}));
+  await assert.rejects(collect('invalid-plan.json','unavailable/evidence.json',tooling),SyntaxError);
+  assert.equal(JSON.parse(fs.readFileSync('unavailable/continuation.json')).status,'IN_PROGRESS','invalid input cannot retain READY');
+  const realBrowser=await tooling.chromium.launch({headless:true});
+  try{
+   let contexts=0;
+   fs.mkdirSync('interrupted',{recursive:true});fs.writeFileSync('interrupted/continuation.json',JSON.stringify({status:'READY_FOR_USER_REVIEW',plan_sha256:'old'}));
+   await assert.rejects(collect('plan.json','interrupted/evidence.json',{chromium:{launch:async()=>({newContext:async options=>{if(++contexts===2)throw Error('simulated interrupted context');return realBrowser.newContext(options)},close:async()=>{}})}}),/simulated interrupted context/);
+   const interrupted=JSON.parse(fs.readFileSync('interrupted/continuation.json'));
+   assert.equal(interrupted.status,'IN_PROGRESS','interruption cannot retain old READY');
+   assert.equal(JSON.parse(fs.readFileSync('interrupted/evidence.json')).runs.length,1);
+   assert(interrupted.remaining_case_ids.length===8&&interrupted.plan_sha256!=='old');
+  }finally{await realBrowser.close()}
   const browser=await tooling.chromium.launch({headless:true});
   try{const page=await browser.newPage({viewport:{width:320,height:844}});await page.setContent('<section style="height:100px;overflow:hidden"><div id="scroll" style="height:100px;overflow:auto"><p style="height:500px">Contenido desplazable</p></div></section>');assert.deepEqual(await page.locator('#scroll').evaluate(inspectRequired),[],'intentional nested scrolling remains valid');await page.evaluate(()=>document.querySelector('#scroll').style.overflow='visible');assert((await page.locator('#scroll').evaluate(inspectRequired)).some(x=>x.includes('clipping')),'unreachable clipping by outer parent fails');}finally{await browser.close()}
   const disclosureBrowser=await tooling.chromium.launch({headless:true});
